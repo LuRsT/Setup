@@ -1,0 +1,33 @@
+#Exports
+export MYVIMRC="$XDG_CONFIG_HOME/vimrc"
+export VIMINIT='source $MYVIMRC'
+
+export EDITOR=vim
+export HISTCONTROL=ignoredups
+export HISTFILESIZE=10000 # Record last 10,000 commands
+export HISTSIZE=10000 # Record last 10,000 commands per session
+export PATH=$HOME/bin/:$PATH
+export TERM=screen-256color
+export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
+export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
+export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Alias
+alias vim="vim +normal\\'\\\""
+alias v='vim'
+alias vi='vim'
+alias :q='exit'
+alias ls='ls --color=auto'
+#alias gcc='gcc -Werror -Wall -pedantic'
+alias cnetworkmanager='/home/lurst/bin/cnetworkmanager/cnetworkmanager'
+alias ll='ls -lash'
+alias g='git'
+alias gcheck='git diff | grep "Dumper "'
+alias t='sh ~/bin/todo.sh'
+alias dropboxd='~/.dropbox-dist/dropboxd'
+alias tmux="TERM=screen-256color-bce tmux"
+alias mocp='mocp -A'
+alias spacechem='cd bin/spacechem; mono SpaceChem.exe'
+alias halt='halt -p'
+alias ducks='du -cms * | sort -rn | head'

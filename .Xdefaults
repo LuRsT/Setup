@@ -1,0 +1,67 @@
+Xcursor.theme: redglass
+Xcursor.size:  16
+
+URxvt*scrollBar_right: false
+URxvt*scrollBar:       false
+URxvt*borderLess:      false
+
+!URxvt*font: xft:Monaco for Powerline:pixelsize=10
+!URxvt*font: xft:Terminus for Powerline:pixelsize=12
+!URxvt*font: xft:Anonymous\ Pro\ for\ Powerline:pixelsize=13
+URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=11
+
+Xft.rgba:      rgb
+Xft.hinting:   1
+Xft.autohint:  0
+Xft.antialias: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+
+! tangoesque scheme
+! from http://wiki.archlinux.org/index.php/Xdefaults
+*background: #111111
+*foreground: #babdb6
+*color0:     #000000
+*color8:     #555753
+*color1:     #ff6565
+*color9:     #ff8d8d
+*color2:     #93d44f
+*color10:    #c8e7a8
+*color3:     #eab93d
+*color11:    #ffc123
+*color4:     #204a87
+*color12:    #3465a4
+*color5:     #ce5c00
+*color13:    #f57900
+*color6:     #89b6e2
+*color14:    #46a4ff
+*color7:     #cccccc
+*color15:    #ffffff
+
+! For some combo keys to work
+URxvt.keysym.M-Up:      \033[1;3A
+URxvt.keysym.M-Down:    \033[1;3B
+URxvt.keysym.M-Right:   \033[1;3C
+URxvt.keysym.M-Left:    \033[1;3D
+URxvt.keysym.M-Prior:   \033[5;3~
+URxvt.keysym.M-Next:    \033[6;3~
+URxvt.keysym.M-End:     \033[1;3F
+URxvt.keysym.M-Home:    \033[1;3H
+
+URxvt.keysym.C-Up:      \033[1;5A
+URxvt.keysym.C-Down:    \033[1;5B
+URxvt.keysym.C-Right:   \033[1;5C
+URxvt.keysym.C-Left:    \033[1;5D
+URxvt.keysym.C-Prior:   \033[5;5~
+URxvt.keysym.C-Next:    \033[6;5~
+URxvt.keysym.C-End:     \033[1;5F
+URxvt.keysym.C-Home:    \033[1;5H
+
+! For normal keys to work
+! http://www.netswarm.net/misc/urxvt-xtermcompat.txt has more if needed
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End:  \033[4~
+*URxvt*keysym.F1:  \033OP
+*URxvt*keysym.F2:  \033OQ
+*URxvt*keysym.F3:  \033OR
+*URxvt*keysym.F4:  \033OS

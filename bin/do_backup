@@ -1,0 +1,37 @@
+#!/bin/bash
+
+ORIGIN_LOCATION=$1
+BCK_LOCATION=$2
+
+if [[ ! -d "${ORIGIN_LOCATION}" ]]; then
+    echo "NEEDS A SOURCE LOCATION!"
+    exit 244
+fi
+
+
+if [[ "x${BCK_LOCATION}" == "x" ]]; then
+    echo "NEEDS A BACKUP LOCATION!"
+    exit 245
+fi
+
+BCK_VERSION=`date +'%Y%m%d%H%M%S'`
+
+if [[ -h "${BCK_LOCATION}/current" ]]; then
+    REAL_LOCATION=`readlink ${BCK_LOCATION}/current`
+    cp -al "${BCK_LOCATION}/${REAL_LOCATION}/." "${BCK_LOCATION}/bck_${BCK_VERSION}"
+    rm "${BCK_LOCATION}/current"
+fi
+
+mkdir -p "${BCK_LOCATION}/bck_${BCK_VERSION}"
+rsync -av --one-file-system --delete "${ORIGIN_LOCATION}" "${BCK_LOCATION}/bck_${BCK_VERSION}"
+RES_RSYNC=$?
+
+if [[ "x${RES_RSYNC}" != "x0" ]]; then
+    rm -rf "${BCK_LOCATION}/bck_${BCK_VERSION}"
+    if [[ "${RES_RSYNC}" == 127 ]]; then
+        echo "O Gil usa distros parvas sem rsync by default"
+    fi
+    exit ${RES_RSYNC}
+fi
+
+ln -s "bck_${BCK_VERSION}" "${BCK_LOCATION}/current"

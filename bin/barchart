@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+# Prints a barchart of a file made out of duplicated strings,
+# displaying their relative size to each other.
+
+if ( !scalar @ARGV ) {
+    print "Missing Argument.\n";
+    print "usage: barchart file.txt\n";
+    exit();
+}
+
+my $file = open(FILE, '<', $ARGV[0]);
+
+my $max = 0;
+my %struct;
+
+# Generate structure
+while(<FILE>) {
+    my $word = $_;
+
+    $struct{$word} += 1;
+    if ($max < $struct{$word}) {
+        $max = $struct{$word};
+    }
+}
+
+for my $key ( keys %struct) {
+    my $stars = ( $struct{$key} / $max ) * 10;
+    printf("%10s| %s", '0' x $stars, $key);
+}

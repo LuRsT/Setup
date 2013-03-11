@@ -1,0 +1,64 @@
+set ruler
+set tabstop=4
+set autoindent
+set showmatch
+set expandtab
+
+set nocompatible
+
+set ignorecase
+set smartcase
+set incsearch
+
+set   showcmd
+map Q gq
+
+
+
+" reformat paragraph with no arguments:
+"map ** {!}par j<CR>
+map ** {!} perl -MText::Autoformat -e'autoformat({ all => 1 , justify => 'full' })' j<CR><CR>
+" set noautoindent
+map ,, :set noautoindent<CR>
+" set autoindent
+map ,. :set autoindent<CR>
+
+
+:nmap ,t mQG:?^-- $<CR>:nohl<CR>o<ESC>dG:r !~/bin/sigMaker.pl -nonoise jcp\%<CR>`Q 
+:nmap ,o mQG:?^-- $<CR>:nohl<CR>o<ESC>dG:r !~/bin/sigMaker.pl -nonoise thome\%<CR>`Q 
+
+map tt ebi'<ESC>ea'<ESC>
+
+"substituite block of mail by [...]
+" d[  =  do [
+map d[ c[...]<CR><CR><ESC>
+
+
+
+map <F4> :w!<CR>:!aspell -d pt_PT -c %<CR>:e! %<CR>
+map <F5> :w!<CR>:!aspell -c %<CR>:e! %<CR>
+map <silent> <F8> :so $HOME/.vimrcMAIL<BAR>echo "Reloaded .vimrcMAIL"<CR>
+
+
+
+"put comments in greee
+colorscheme default
+hi Comment        guifg=#80a0ff ctermfg=darkgreen
+hi Search         term=reverse   ctermfg=white   ctermbg=LightGreen
+set hls
+
+
+"=====[ Spelling support ]==================================
+"
+"" Correct common mistypings in-the-fly...
+iab nao não
+iab e' é
+iab 'a à
+iab a' á
+iab esta' está
+"iab cao cão
+
+"iab ;t 't
+""iab moer more
+"iab previosu previous
+"

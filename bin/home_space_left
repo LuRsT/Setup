@@ -1,0 +1,1 @@
+bar --command 'df -h' --regex '([0-9]{1,3})\% \/home' --reverse --tmux --mini

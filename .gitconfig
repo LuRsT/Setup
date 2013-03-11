@@ -1,0 +1,61 @@
+[alias]
+    #I like using the interactive mode to make complex commits
+    ai = add --interactive
+
+    # All the aliases relate to commits. Note that
+    # they are grouped by common prefixes, so I don't
+    # confuse what I want done by accident.
+    c = commit
+    # commit with a message
+    cm = commit -m
+    cma = commit -a -m
+
+    # amending the previous commit
+    ca = commit --amend
+    #caa = commit -a --amend -C HEAD
+
+    # reset
+    # soft resets
+    r = reset
+    r1 = reset HEAD^
+    r2 = reset HEAD^^
+    ## hard resets
+    rh = reset --hard
+    rh1 = reset HEAD^ --hard
+    rh1 = reset HEAD^^ --hard
+
+    # shortcuts for commands
+    s = status
+    d = diff
+    dc = diff --cached
+    a = add
+    ch = checkout
+    b = branch
+    l = log
+    f = fetch
+    r = reset
+    p = pull
+    show-graph = log --graph --abbrev-commit --pretty=oneline
+    show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
+
+    l50 = "!git log --abbrev-commit --date=short --pretty=format:'%x00%h%x00%cd%x00%s%x00%an%x00%d' | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-50s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, $3, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$4), $5, $6 }' | less -R"
+    l80 = "!git log --abbrev-commit --date=short --pretty=format:'%x00%h%x00%cd%x00%s%x00%an%x00%d' | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m \\033[32m%s\\033[0m  %-80s \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, $3, gensub(/(.{79}).{2,}/, \"\\\\1…\",\"g\",$4), $5, $6 }' | less -R"
+    lg50 = "!git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-50s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{49}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }' | less -R"
+    lg80 = "!git log --graph --color=always --abbrev-commit --date=relative --pretty=format:'%x00%h%x00%s%x00%cd%x00%an%x00%d' | gawk -F '\\0' '{ printf \"%s\\033[31m%s\\033[0m %-80s \\033[32m%14s\\033[0m \\033[30;1m%s\\033[0m\\033[33m%s\\n\", $1, $2, gensub(/(.{79}).{2,}/, \"\\\\1…\",\"g\",$3), $4, $5, $6 }' | less -R"
+
+    verbs  = !git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr
+    curses = !git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE "(fuck|shit|bitch|damn|piss)"
+[apply]
+    whitespace = nowarn
+[github]
+    user = lurst
+[user]
+    name = Gilberto Gonçalves
+    email = lursty@gmail.com
+[color]
+    ui = auto
+[push]
+    default = matching
+
+[diff]
+    tool = vimdiff

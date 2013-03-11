@@ -1,0 +1,1 @@
+bar --command "acpi" --regex "([0-9]{1,3})\%" --tmux --mini

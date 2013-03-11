@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+# From http://matt.might.net/articles/console-hacks-exploiting-frequency/
+# Exemple: cat ~/.bash_history | frequency | sort -rn | head
+
+my %counts = () ;
+
+while ( my $cmd = <STDIN> ) {
+    chomp $cmd ;
+    if ( !$counts{ $cmd } ) { $counts{ $cmd }  = 1; }
+    else                    { $counts{ $cmd } += 1; }
+}
+
+foreach $k ( keys %counts ) {
+    my $count = $counts{ $k } ;
+    print "$count $k\n" ;
+}

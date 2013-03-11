@@ -1,0 +1,1 @@
+OPTIONS=boulder:0, color, autodig, !cmdassist, norest_on_space, !autopickup
