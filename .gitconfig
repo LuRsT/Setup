@@ -55,7 +55,7 @@
 [color]
     ui = auto
 [push]
-    default = matching
+    default = current
 
 [diff]
     tool = vimdiff

@@ -70,6 +70,9 @@ set shiftround
 
 highlight LineNr ctermfg=Grey
 
+" Change vertical bars char
+set fillchars+=vert:\ 
+
 " Save buffer automatically when changing files
 set autowrite
 
@@ -385,7 +388,7 @@ let g:focuscolour = 0
 
 function! ToggleFocusColor()
   if (g:focuscolour)
-    colorscheme desert
+    colorscheme zenburn
     let g:focuscolour = 0
   else
     colorscheme focus-dark
