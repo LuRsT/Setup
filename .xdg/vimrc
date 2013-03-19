@@ -100,8 +100,11 @@ au bufnewfile *.t 0r ~/.vim/skeletons/template.t
 "set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{fugitive#statusline()}
 "set laststatus=2
 
-" Set correct syntax to tt2 files
-au BufNewFile,BufRead *.tt2 set ft=tt2html
+" Set correct syntax to .tt2 files
+au BufNewFile,BufRead *.tt2 set filetype=tt2html
+
+" Set correct syntax to .md files
+au BufNewFile,BufRead *.md set filetype=markdown
 
 " Map Leader
 " Leader is mapped already to \
