@@ -291,8 +291,9 @@ augroup END
 "====[ END Damian Presentation ]====
 
 " Execute files
-autocmd FileType perl   nmap W :!clear;echo;echo;perl %;echo;echo;echo<CR>
+autocmd FileType perl   nmap W :!clear;echo;echo;perl    %;echo;echo;echo<CR>
 autocmd FileType python nmap W :!clear;echo;echo;python2 %;echo;echo;echo<CR>
+autocmd FileType php    nmap W :!clear;echo;echo;php     %;echo;echo;echo<CR>
 
 " Locate Module
 map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
