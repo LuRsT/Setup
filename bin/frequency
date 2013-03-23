@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # From http://matt.might.net/articles/console-hacks-exploiting-frequency/
-# Exemple: cat ~/.bash_history | frequency | sort -rn | head
+# Example: cat ~/.bash_history | frequency | sort -rn | head
 
 my %counts = () ;
 
