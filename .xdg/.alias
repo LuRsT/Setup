@@ -1,4 +1,4 @@
-#Exports
+# Exports
 export MYVIMRC="$XDG_CONFIG_HOME/vimrc"
 export VIMINIT='source $MYVIMRC'
 
@@ -33,3 +33,4 @@ alias spacechem='cd bin/spacechem; mono SpaceChem.exe'
 alias halt='halt -p'
 alias ducks='du -cms * | sort -rn | head'
 alias grep='grep --color'
+alias selva='telnet -4 selva.grogue.org 8888'
