@@ -158,6 +158,7 @@ nmap <silent> <F6> :call ToggleFocusColor()<CR>
 
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
+let NERDTreeDirArrows=1
 
 " Search buffer
 let g:ctrlp_map = '<F8>'
