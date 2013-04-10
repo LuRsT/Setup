@@ -4,7 +4,14 @@ My dotfiles and ~/bin
 
 ### Requirements
 
-"none"
+* tidy
+* rsync
+
+#### Perl libs
+
+* Text::ASCIITable
+* Getopt::Long
+* Text::CSV
 
 ## ~/bin
 
@@ -18,7 +25,7 @@ My CLI soap client, needs some work but works for my use, receives two parameter
 
 Note: soaper dislikes \n inside tags
 
-### view_csv
+### view\_csv
 
 Perl script
 
@@ -26,7 +33,7 @@ Pretty viewer for CSVs
 
     view_csv test.csv
 
-### locate_mod.pl
+### locate\_mod.pl
 
 Perl script
 

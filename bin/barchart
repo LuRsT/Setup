@@ -7,27 +7,28 @@ use warnings;
 # displaying their relative size to each other.
 
 if ( !scalar @ARGV ) {
-    print "Missing Argument.\n";
-    print "usage: barchart file.txt\n";
-    exit();
+    die <<MSG;
+Missing Argument.
+    usage: barchart file.txt
+MSG
 }
 
 my $file = open(FILE, '<', $ARGV[0]);
 
-my $max = 0;
-my %struct;
+my $max    = 0;
+my %struct = ();
 
 # Generate structure
-while(<FILE>) {
+while( <FILE> ) {
     my $word = $_;
 
     $struct{$word} += 1;
-    if ($max < $struct{$word}) {
-        $max = $struct{$word};
+    if ($max < $struct{ $word }) {
+        $max = $struct{ $word };
     }
 }
 
-for my $key ( keys %struct) {
+for my $key ( keys %struct ) {
     my $stars = ( $struct{$key} / $max ) * 10;
-    printf("%10s| %s", '0' x $stars, $key);
+    printf( "%10s| %s", '0' x $stars, $key );
 }
