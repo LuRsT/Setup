@@ -38,3 +38,5 @@ if [ -f ${XDG_CONFIG_HOME}/.alias_extra ]; then
 fi
 
 wiki() { dig +short txt $1.wp.dg.cx }
+
+~/.xmodmap 2&> /dev/null
