@@ -3,8 +3,8 @@ let s:cpo_save=&cpo
 
 """ Function keys INDEX """"""""""""""""""""""
 "<F1> :call ToggleFocusMode()<CR>
-"<F3> :GrepBuffer<CR>
 "<F2> Hide Numbers and NERDTree
+"<F3> :GrepBuffer<CR>
 "<F4> Paste
 "<F5> Refresh File
 "<F6> :call ToggleFocusColor()<CR>
@@ -12,7 +12,6 @@ let s:cpo_save=&cpo
 "<F8> :CtrlPBuffer<CR>
 "<F9> Flake8 Check<CR>
 "<F11> :call ToggleContrast()<CR>
-"
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
@@ -132,12 +131,7 @@ nnoremap <leader>a :Ack
 "Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
-
 "==============[ F-KEYS ]==================================
-
-" F1 is new ESC
-map <F1> <Esc>
-imap <F1> <Esc>
 
 nmap <silent> <F1> :call ToggleFocusMode()<CR>
 
@@ -184,7 +178,8 @@ nmap <silent> <F11> :call ToggleContrast()<CR>
 "=============[ Filetype stuff ]================================
 
 autocmd FileType perl   nn <silent> _F :g/^\s*sub<CR>
-autocmd FileType python nn <silent> _F :g/^\s*def<CR>
+autocmd FileType python nn <silent> _F :g/^\s*def\ <CR>
+autocmd FileType php    nn <silent> _F :g/^\s*function<CR>
 
 "==============[ Perl Specific ]=================================
 
