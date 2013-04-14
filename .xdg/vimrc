@@ -33,6 +33,7 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 "set title "Show filename in titlebar of window
 set cpo&vim
 set background=dark
+
 "BS past autoindents, line boundaries, and even the start of insertion
 set backspace=indent,eol,start
 set cmdheight=2
@@ -128,6 +129,9 @@ nnoremap <C-l> <C-w>l
 " Ack
 nnoremap <leader>a :Ack
 
+"Grep
+nnoremap <leader>g :Grep
+
 "Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
@@ -173,7 +177,6 @@ function ToggleContrast()
 endfunction
 
 nmap <silent> <F11> :call ToggleContrast()<CR>
-
 
 "=============[ Filetype stuff ]================================
 
@@ -282,7 +285,6 @@ augroup VisibleNaughtiness
     autocmd BufEnter  *           set nolist
     autocmd BufEnter  *       endif
 augroup END
-
 
 "====[ END Damian Presentation ]====
 
