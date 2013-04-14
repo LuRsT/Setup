@@ -397,3 +397,7 @@ function! ToggleFocusColor()
     let g:focuscolour = 1
   endif
 endfunc
+
+
+map <ESC>[8~    <End>
+map <ESC>[7~    <Home>

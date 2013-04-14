@@ -69,3 +69,4 @@ URxvt*keysym.End:  \033[4~
 *URxvt*keysym.F2:  \033OQ
 *URxvt*keysym.F3:  \033OR
 *URxvt*keysym.F4:  \033OS
+*URxvt*keysym.F5:  \033OS
