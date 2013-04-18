@@ -3,6 +3,9 @@ source $HOME/bin/antigen.zsh
 
 COMPLETION_WAITING_DOTS=true
 
+# Don't create .pyc files
+PYTHONDONTWRITEBYTECODE=1
+
 # Load the oh-my-zsh's library.
 antigen-use oh-my-zsh
 
