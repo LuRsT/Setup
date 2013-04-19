@@ -135,6 +135,12 @@ nnoremap <leader>g :Grep
 "Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
+" Easier Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 "==============[ F-KEYS ]==================================
 
 nmap <silent> <F1> :call ToggleFocusMode()<CR>
