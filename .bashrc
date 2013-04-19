@@ -2,7 +2,7 @@
 export XDG_CONFIG_HOME="${HOME}/.xdg"
 
 # Dont create .pyc files
-PYTHONDONTWRITEBYTECODE=1
+export PYTHONDONTWRITEBYTECODE=1
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
