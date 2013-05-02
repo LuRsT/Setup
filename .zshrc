@@ -1,8 +1,6 @@
 ## ANTIGEN CONFIG
 source $HOME/bin/antigen.zsh
 
-COMPLETION_WAITING_DOTS=true
-
 # Load the oh-my-zsh's library.
 antigen-use oh-my-zsh
 
@@ -24,8 +22,13 @@ antigen-apply
 
 ## END ANTIGEN
 
+export COMPLETION_WAITING_DOTS=true
+
 # XDG
 export XDG_CONFIG_HOME="${HOME}/.xdg"
+
+# Don't create .pyc files
+export PYTHONDONTWRITEBYTECODE=1
 
 # Source alias
 if [ -f ${XDG_CONFIG_HOME}/.alias ]; then

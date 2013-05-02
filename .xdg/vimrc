@@ -5,7 +5,6 @@ let s:cpo_save=&cpo
 "<F1> :call ToggleFocusMode()<CR>
 "<F2> Hide Numbers and NERDTree
 "<F3> :GrepBuffer<CR>
-"<F4> Paste
 "<F5> Refresh File
 "<F6> :call ToggleFocusColor()<CR>
 "<F7> :NERDTreeToggle<CR>
@@ -96,19 +95,11 @@ au bufnewfile *.pl 0r ~/.vim/skeletons/template.pl
 au bufnewfile *.pm 0r ~/.vim/skeletons/template.pm
 au bufnewfile *.t 0r ~/.vim/skeletons/template.t
 
-"Nice Statusline ( No need since I know use vim-powerline
-"set statusline=%F%m%r%h%w\ (%{&ff}){%Y}[%l,%v][%p%%]\ %{fugitive#statusline()}
-"set laststatus=2
-
 " Set correct syntax to .tt2 files
 au BufNewFile,BufRead *.tt2 set filetype=tt2html
 
 " Set correct syntax to .md files
 au BufNewFile,BufRead *.md set filetype=markdown
-
-" Map Leader
-" Leader is mapped already to \
-"let mapleader = ","
 
 " Map Control+arrow keys to useful stuff
 nmap <C-Up>    <PageUp>
@@ -135,8 +126,15 @@ nnoremap <leader>g :Grep
 "Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
+" Easier Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
 "==============[ F-KEYS ]==================================
 
+" Toggle Focus Mode
 nmap <silent> <F1> :call ToggleFocusMode()<CR>
 
 " Change to 'old_style'
@@ -144,9 +142,6 @@ nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR>
 
 "Shows GrepBuffer
 nnoremap <silent> <F3> :GrepBuffer<CR>
-
-" To toggle paste
-set pastetoggle=<F4>
 
 "Refresh current file
 nmap <silent> <F5> :e %<CR>
@@ -264,7 +259,7 @@ command! WQ wq
 
 " Snipet for adding persistent_undo:
 if has ('persistent_undo')
-    set undodir=$HOME/tmp/.vim/undo_files
+    set undodir=$HOME/tmp/vim/undo_files
     set undolevels=5000
     set undofile
 endif
@@ -292,6 +287,7 @@ augroup END
 autocmd FileType perl   nmap W :Shell perl %<CR>
 autocmd FileType python nmap W :Shell python %<CR>
 autocmd FileType php    nmap W :Shell php %<CR>
+autocmd FileType html   nmap W :!firefox %<CR>
 
 " Locate Module
 map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
@@ -353,12 +349,6 @@ endf
 au FileType perl nn <silent> _f :call Fix("%")<Enter>
 au FileType perl vn <silent> _f :call Fix("")<Enter>
 
-" show KNF violations
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.*/
-"let c_space_errors=1
-
-
 " From https://opensource.conformal.com/wiki/vim
 function! s:ExecuteInShell(command, bang)
     let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
@@ -397,7 +387,6 @@ function! ToggleFocusColor()
     let g:focuscolour = 1
   endif
 endfunc
-
 
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>

@@ -12,4 +12,7 @@
 .xdg/Thunar
 .xdg/xfce4
 .xdg/midori
+.xdg/deadbeef
+.xdg/vlc
+.xdg/gtk-3.0
 .wmii/history*
