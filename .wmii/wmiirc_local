@@ -1,0 +1,34 @@
+MODKEY=Mod4
+
+WMII_NORMCOLORS='#333333 #999999 #333333'
+WMII_FOCUSCOLORS='#333333 #FFFFFF #333333'
+
+WMII_MENU="dmenu -b -fn '$WMII_FONT' -nf '$1' -nb '$2' -sf '$4' -sb '$5'"
+
+WMII_TERM="urxvt"
+
+WMII_BACKGROUND='#333333'
+
+WMII_FONT='xft:Source\ Code\ Pro\ for\ Powerline-7'
+
+# Configure wmii
+wmiir write /ctl <<!
+    bar on top
+!
+
+status() {
+    echo -n ' Wlan0:' $(iwconfig wlan0 | awk '/Quality/{print $2}' | sed 's/.*=//' | awk -F"/" '{printf("%.0f%%", $1/$2*100)}') '| Bat:' $(acpi -b | sed -n 's/.*\([0-9][0-9]:[0-9][0-9]\):[0-9][0-9].*/\1/p') '|' $(uptime | sed 's/.*: //; s/,//g') '|' $(date '+%c')
+}
+
+terminal() {
+    wmiir setsid urxvt "$@"
+}
+
+urxvt &
+sh .autostart.sh &
+
+wmiir write /tagrules <<!
+    /.*(fox|chrom).*/ -> 2
+    /.*dgin.*/ -> 5
+    /(Thunar|spacefm)/ -> 4
+!

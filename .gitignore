@@ -11,3 +11,5 @@
 .xdg/Trolltech.conf
 .xdg/Thunar
 .xdg/xfce4
+.xdg/midori
+.wmii/history*
