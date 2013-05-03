@@ -11,9 +11,15 @@ WMII_BACKGROUND='#333333'
 
 WMII_FONT='xft:Source\ Code\ Pro\ for\ Powerline-7'
 
-# Configure wmii
+################### Configure wmii
 wmiir write /ctl <<!
     bar on top
+!
+
+wmiir write /tagrules <<!
+    /.*(fox|chrom).*/ -> 2
+    /.*dgin.*/ -> 5
+    /(Thunar|spacefm)/ -> 4
 !
 
 status() {
@@ -24,11 +30,8 @@ terminal() {
     wmiir setsid urxvt "$@"
 }
 
+#################### Autostart stuff
 urxvt &
 sh .autostart.sh &
 
-wmiir write /tagrules <<!
-    /.*(fox|chrom).*/ -> 2
-    /.*dgin.*/ -> 5
-    /(Thunar|spacefm)/ -> 4
-!
+
