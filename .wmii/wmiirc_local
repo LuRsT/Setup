@@ -1,15 +1,11 @@
 MODKEY=Mod4
 
-WMII_NORMCOLORS='#333333 #999999 #333333'
-WMII_FOCUSCOLORS='#333333 #FFFFFF #333333'
-
-WMII_MENU="dmenu -b -fn '$WMII_FONT' -nf '$1' -nb '$2' -sf '$4' -sb '$5'"
-
-WMII_TERM="urxvt"
-
-WMII_BACKGROUND='#333333'
+WMII_NORMCOLORS='#CCCCCC #303030 #CCCCCC'
+WMII_FOCUSCOLORS='#CCCCCC #303030 #CCCCCC'
 
 WMII_FONT='xft:Source\ Code\ Pro\ for\ Powerline-7'
+
+WMII_TERM="urxvt"
 
 ################### Configure wmii
 wmiir write /ctl <<!
@@ -18,7 +14,7 @@ wmiir write /ctl <<!
 
 wmiir write /tagrules <<!
     /.*(fox|chrom).*/ -> 2
-    /.*dgin.*/ -> 5
+    /.*dgin.*/ -> ~5
     /(Thunar|spacefm)/ -> 4
 !
 
@@ -33,5 +29,3 @@ terminal() {
 #################### Autostart stuff
 urxvt &
 sh .autostart.sh &
-
-

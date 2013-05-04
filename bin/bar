@@ -7,13 +7,14 @@ use Term::ANSIColor;
 use Getopt::Long;
 
 my ( $cmd, $regex ) = q{};
-my ( $tmux, $mini, $help, $reverse ) = 0;
+my ( $tmux, $mini, $help, $reverse, $no_color ) = 0;
 
 GetOptions('command=s' => \$cmd,
            'regex=s'   => \$regex,
            'tmux'      => \$tmux,
            'mini'      => \$mini,
            'reverse'   => \$reverse,
+           'no-color'  => \$no_color,
            'help'      => \$help);
 
 if ( $help ) { print help(); exit; }
@@ -77,6 +78,9 @@ sub show {
     }
     if ( $tmux ) {
         return '#[fg=' . $c . ']' . $string . "#[default]\n";
+    }
+    if ( $no_color ) {
+        return $string;
     }
 
     return colored [ $c ], $string;
