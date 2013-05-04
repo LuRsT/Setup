@@ -10,9 +10,9 @@ override_utf8_locale yes
 
 TEXT
 ,[{"full_text": " ❤ $acpitemp°C ","color": "\#DC322F"},
-  {"full_text": " ⚙ [$cpubar] ","color": "\#DC322F"},
+  {"full_text": " ⚙ [$cpubar] ","color": "\#B49900"},
   {"full_text": " ≣ [$membar] ", "color":"\#B58900"},
-  {"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] ","color":"\#33CC99"},
+  {"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] ","color":"\#11AA66"},
   {"full_text": " ⚡ ${battery_percent BAT1}% ","color":"\#9933CC"},
   {"full_text": " ${time %a %d %b} ${time %H:%M} "}
 ]
