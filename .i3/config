@@ -28,6 +28,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec urxvt
 
+# locks screen
+bindsym $mod+Shift+x exec i3lock
+
 # kill focused window
 bindsym $mod+Shift+c kill
 
@@ -147,27 +150,35 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #bar {
-#    status_command i3status --config ~/.i3/status.conf
+##    status_command    i3status
+#    status_command    ~/.i3/status
+#    position          top
+#    workspace_buttons yes
+#    tray_output       primary
+#
+#    colors {
+#        background #000000
+#        statusline #ffffff
+#
+#        focused_workspace  #ffffff #285577
+#        active_workspace   #ffffff #333333
+#        inactive_workspace #888888 #222222
+#        urgent_workspace   #ffffff #900000
+#    }
+#
 #}
 
 
 bar {
-#    status_command    i3status
-    status_command    ~/.i3/status
-    position          top
-    workspace_buttons yes
-    tray_output       primary
+    position top
+    status_command ~/.i3/conky
 
     colors {
-        background #000000
-        statusline #ffffff
-
-        focused_workspace  #ffffff #285577
-        active_workspace   #ffffff #333333
-        inactive_workspace #888888 #222222
-        urgent_workspace   #ffffff #900000
+        statusline #AAAAAA
+        background #333333
+        focused_workspace $gray2 $gray2 #FFFFFF
+        inactive_workspace $gray1 $gray1 #AAAAAA
     }
-
 }
 
 exec urxvt
