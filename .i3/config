@@ -5,7 +5,7 @@ client.focused          $gray1 $gray1 #FFFFFF #333333
 client.focused_inactive $gray2 $gray2 #FFFFFF #000000
 client.unfocused        $gray2 $gray2 #FFFFFF #000000
 
-new_window pixel 2
+new_window pixel 1
 
 set $mod Mod4
 
