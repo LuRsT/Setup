@@ -290,7 +290,7 @@ autocmd FileType php    nmap W :Shell php %<CR>
 autocmd FileType html   nmap W :!firefox %<CR>
 
 " Locate Module
-map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
+autocmd FileType perl   map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
 
 """ FocusMode
 " From: http://paulrouget.com/e/vimdarkroom/
