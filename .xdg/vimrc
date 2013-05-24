@@ -91,9 +91,9 @@ set grepprg=/bin/grep
 let Grep_OpenQuickfixWindow = 1
 
 " Skeletons
-au bufnewfile *.pl 0r ~/.vim/skeletons/template.pl
-au bufnewfile *.pm 0r ~/.vim/skeletons/template.pm
-au bufnewfile *.t 0r ~/.vim/skeletons/template.t
+au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
+au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
+au bufnewfile *.t  0r $XDG_CONFIG_HOME/vim/skeletons/template.t
 
 " Set correct syntax to .tt2 files
 au BufNewFile,BufRead *.tt2 set filetype=tt2html
