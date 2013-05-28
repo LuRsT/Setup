@@ -27,9 +27,6 @@ export COMPLETION_WAITING_DOTS=true
 # XDG
 export XDG_CONFIG_HOME="${HOME}/.xdg"
 
-# Don't create .pyc files
-export PYTHONDONTWRITEBYTECODE=1
-
 # Source alias
 if [ -f ${XDG_CONFIG_HOME}/.alias ]; then
     . ${XDG_CONFIG_HOME}/.alias
