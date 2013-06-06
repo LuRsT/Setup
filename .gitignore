@@ -15,4 +15,6 @@
 .xdg/deadbeef
 .xdg/vlc
 .xdg/gtk-3.0
+.xdg/tint2
+.xdg/dconf
 .wmii/history*
