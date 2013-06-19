@@ -38,3 +38,6 @@ if [ -f ${XDG_CONFIG_HOME}/.alias_extra ]; then
 fi
 
 wiki() { dig +short txt $1.wp.dg.cx }
+
+export WORKON_HOME=~/.virtualenvs
+source /usr/bin/virtualenvwrapper.sh
