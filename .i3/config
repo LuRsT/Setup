@@ -5,6 +5,8 @@ client.focused          $gray1 $gray1 #FFFFFF #333333
 client.focused_inactive $gray2 $gray2 #FFFFFF #000000
 client.unfocused        $gray2 $gray2 #FFFFFF #000000
 
+for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
+
 new_window pixel 1
 
 set $mod Mod4
@@ -151,3 +153,4 @@ bar {
 
 exec urxvt
 exec sh /home/lurst/.autostart.sh
+
