@@ -1,3 +1,5 @@
-$@;
-notify-send "Finished doing:
-$@"
+for i in "$@"; do
+    $i;
+    notify-send "Finished doing:
+    $i"
+done
