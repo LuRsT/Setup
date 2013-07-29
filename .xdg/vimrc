@@ -69,6 +69,10 @@ set shiftround
 
 highlight LineNr ctermfg=Grey
 
+" 80 chars
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
 " Change vertical bars char
 set fillchars+=vert:\ 
 

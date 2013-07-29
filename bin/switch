@@ -7,7 +7,7 @@
 DEFAULT_OUTPUT='LVDS1'
 
 # outputs to toggle if connected
-OUTPUTS='VGA1 HDMI1'
+OUTPUTS='VGA1'
 
 # get info from xrandr
 XRANDR=`xrandr`
@@ -20,14 +20,12 @@ do
     then
         if [[ $XRANDR == *$CURRENT\ connected\ \(* ]] # is disabled
         then
-                EXECUTE+="--output $CURRENT --auto --above $DEFAULT_OUTPUT "
+            EXECUTE+="--off --output $CURRENT --auto"
         else
-                EXECUTE+="--output $CURRENT --off "
+            EXECUTE+="--auto --output $CURRENT --off "
         fi
-    else # make sure disconnected outputs are off 
-            EXECUTE+="--output $CURRENT --off "
     fi
 done
 
-xrandr --output $DEFAULT_OUTPUT --auto $EXECUTE
-
+xrandr --output $DEFAULT_OUTPUT $EXECUTE
+echo xrandr --output $DEFAULT_OUTPUT $EXECUTE
