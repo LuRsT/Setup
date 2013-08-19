@@ -105,17 +105,8 @@ au BufNewFile,BufRead *.tt2 set filetype=tt2html
 " Set correct syntax to .md files
 au BufNewFile,BufRead *.md set filetype=markdown
 
-" Map Control+arrow keys to useful stuff
-"nmap <C-Up>    <PageUp>
-"nmap <C-Down>  <PageDown>
-"nmap <C-Left>  gT
-"nmap <C-Right> gt
-
 " Filter html
 nmap <C-p> :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<CR>
-
-" Map tabs better
-nmap <C-l> gt
 
 " Easy navigation with splits
 nnoremap <C-k> <C-w>k
@@ -225,28 +216,15 @@ nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 
 "==============[ Shortcuts ]=================================
 
-" Insert common Perl code structures...
-" warn does not buffer
-iab subo sub {<CR>my $s = shift;<CR>my %a = @_;<CR><CR>return;<CR>}<ESC>5kwi
-iab dprint print STDERR sprintf("%s %s: %s\n", '<C-R>%','gil', "" );<ESC>?""<CR>a
-iab dprintd print STDERR sprintf("%s %s: %s\n", '<C-R>%','gil',Dumper() );<ESC>?()<CR>a
+" PYTHON
 
-iab cprint $c->log->debug( '<C-R>%' . Dumper() );<ESC>?()<CR>a
+iab ptrace import pdb; pdb.set_trace()
 
-" template toolkit
+" PERL
+
+iab logthis $c->log->debug(Dumper stuff);<ESC>?stuff<CR>cw
 iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detail) %]</pre><ESC>?detail<CR>cw
 
-" search for use strict;
-" Include logger package
-" create a logger global object, jump back to where we were
-iab mklogj <ESC>/use strict<CR>jjouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<CR><ESC>:sleep 2<ESC>''
-map mklogj <ESC>/use strict<CR>jjouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<CR><ESC>:sleep 2<ESC>''
-
-iab mklog <ESC>ouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<ESC>
-map mklog <ESC>ouse Sonaecom::Logger;<CR>my $l = Sonaecom::Logger::get_logger();<ESC>
-
-" Log stuff
-iab logthis $c->log->debug(Dumper stuff);<ESC>?stuff<CR>cw
 
 " pressing < or > will let you indent/unident selected lines
 vnoremap < <g<ESC>
@@ -325,33 +303,7 @@ function! ToggleFocusMode()
 endfunc
 
 " Execute comands and print results in vim
-map ç :cexpr system(getline("."))<cr>:cope<cr><cr>
-
-" Function that fixes some perl problems
-fu! Fix(global)
-    let hk_match = '\(\w\+\)\(\s*=>\)'
-    if search( hk_match ) != 0
-        execute a:global . "s/" . hk_match . "/'\\1'\\2/gc"
-    endif
-
-    let bw_match = '\(\%(\$\w\+\|->\){\)\s*\(\w\+\)\s*\}'
-    if search( bw_match ) != 0
-        execute a:global . "s/" . bw_match . "/\\1'\\2'}/gc"
-    endif
-
-    let fd_match = '\%(=cut\n\+\)\@<!\n\(sub\s\+\(\%(prepare_\)\?\(\w\+\)\)\)'
-    if search( fd_match ) != 0
-        execute a:global . 's/' . fd_match . '/\r=function \2 OPTIONS\r\rThis functions process the \3 step.\r\r=cut\r\r\1/gc'
-    endif
-
-    let sp_match = '\s\+$'
-    if search( sp_match ) != 0
-        execute a:global . 's/' . sp_match . '//gc'
-    endif
-endf
-
-au FileType perl nn <silent> _f :call Fix("%")<Enter>
-au FileType perl vn <silent> _f :call Fix("")<Enter>
+map C :cexpr system(getline("."))<cr>:cope<cr><cr>
 
 " From https://opensource.conformal.com/wiki/vim
 function! s:ExecuteInShell(command, bang)
