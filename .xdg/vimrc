@@ -258,6 +258,7 @@ command! Q  q
 command! W  w
 command! Wq wq
 command! WQ wq
+command! Tabnew tabnew
 
 "====[ After Damian Presentation ]====
 
