@@ -112,6 +112,9 @@ nmap <C-p> :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Command-T
+nnoremap <C-t> :CommandT<CR>
+
 " Ack
 nnoremap <leader>a :Ack
 
