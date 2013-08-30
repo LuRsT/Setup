@@ -39,5 +39,11 @@ fi
 
 wiki() { dig +short txt $1.wp.dg.cx }
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/.virtualenvs
+#source /usr/bin/virtualenvwrapper.sh
+
+source /etc/bash_completion.d/virtualenvwrapper
+xrdb -merge ~/.Xdefaults
+
+# for tmux: export 256color
+[ -n "$TMUX" ] && export TERM=screen-256color
