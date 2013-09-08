@@ -17,7 +17,7 @@ font pango:Source\ Code\ Pro\ for\ Powerline 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec ssh-agent urxvt
 
 # locks screen
 bindsym $mod+Shift+x exec i3lock -c "#000000"
