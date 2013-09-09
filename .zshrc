@@ -39,8 +39,15 @@ fi
 
 wiki() { dig +short txt $1.wp.dg.cx }
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+grep_output="$(uname -a | grep -oh "Ubuntu")"
+
+if [ $grep_output = "Ubuntu" ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /etc/bash_completion.d/virtualenvwrapper
+else
+    export WORKON_HOME=~/.virtualenvs
+    source /usr/bin/virtualenvwrapper.sh
+fi
 
 xrdb -merge ~/.Xdefaults
 
