@@ -39,13 +39,13 @@ fi
 
 wiki() { dig +short txt $1.wp.dg.cx }
 
-grep_output="$(uname -a | grep -oh "Ubuntu")"
+grep_output="$(uname -a | grep -oh 'Ubuntu')"
 
+export WORKON_HOME=$HOME/.virtualenvs
 if [ $grep_output = "Ubuntu" ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
     source /etc/bash_completion.d/virtualenvwrapper
 else
-    export WORKON_HOME=~/.virtualenvs
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
     source /usr/bin/virtualenvwrapper.sh
 fi
 
