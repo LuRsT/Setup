@@ -93,6 +93,10 @@ let g:Powerline_symbols='fancy'
 " Grep
 set grepprg=/bin/grep
 let Grep_OpenQuickfixWindow = 1
+let Grep_Default_Options = '-rin'
+let Grep_Skip_Dirs = '.git'
+let Grep_Skip_Files = 'tags *.pyc'
+let Grep_Default_Filelist = '*'
 
 " Skeletons
 au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
