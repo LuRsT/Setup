@@ -1,4 +1,4 @@
-feh --bg-tile ~/media/img/noise.png &
+feh --bg-tile $HOME/.xdg/background.png &
 
 # Remove beep
 xset b 0 440 10 &
