@@ -53,3 +53,15 @@ xrdb -merge ~/.Xdefaults
 
 # for tmux: export 256color
 [ -n "$TMUX" ] && export TERM=screen-256color
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% "
+    #RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(git_custom_status) $EPS1"
+    RPS1="${${KEYMAP/vicmd/⚡}/(main|viins)/}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+bindkey -v
