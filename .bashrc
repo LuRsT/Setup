@@ -27,6 +27,13 @@ complete -cf sudo
 complete -cf man
 complete -cf pacman
 
+# Autocd to a directory when you type it
+shopt -s autocd
+
+# Correct for misspelled directory names
+shopt -s cdspell
+shopt -s dirspell
+
 setterm -blength 0
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
