@@ -7,7 +7,7 @@ client.unfocused        $gray2 $gray2 #FFFFFF #000000
 
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 
-new_window pixel 1
+# new_window pixel 1
 
 set $mod Mod4
 
@@ -16,9 +16,7 @@ font pango:Source\ Code\ Pro\ for\ Powerline 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
 bindsym $mod+Return exec ssh-agent urxvt
-
 bindsym $mod+e exec thunar
 
 # locks screen
@@ -153,6 +151,6 @@ bar {
     }
 }
 
-exec urxvt
 exec sh /home/lurst/.autostart.sh
 
+for_window [window_role="pop-up"] floating enable
