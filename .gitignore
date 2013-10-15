@@ -18,3 +18,5 @@
 .xdg/tint2
 .xdg/dconf
 .wmii/history*
+*.so
+*.pyc

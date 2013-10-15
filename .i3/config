@@ -153,6 +153,5 @@ bar {
     }
 }
 
-exec urxvt
 exec sh /home/lurst/.autostart.sh
 
