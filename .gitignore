@@ -18,3 +18,9 @@
 .xdg/tint2
 .xdg/dconf
 .wmii/history*
+*.so
+*.pyc
+.xdg/vim/ruby/command-t/Makefile
+.xdg/vim/ruby/command-t/ext.c
+.xdg/vim/ruby/command-t/match.c
+.xdg/vim/ruby/command-t/matcher.c
