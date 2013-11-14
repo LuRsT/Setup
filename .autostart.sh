@@ -7,10 +7,10 @@ xset b 0 440 10 &
 xbacklight -set 60 &
 
 redshift -l 38:-9 &
-unclutter &
+unclutter -keystroke -idle 1 &
 nm-applet &
 ~/.dropbox-dist/dropboxd &
 DISPLAY='' wuala ^
 
-
-#xmodmap /home/lurst/.Xmodmap
+setxkbmap gb
+bash /home/lurst/.xmodmap

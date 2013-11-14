@@ -1,4 +1,4 @@
-# Copyright 2010-2012 Wincent Colaiuta. All rights reserved.
+# Copyright 2010-2013 Wincent Colaiuta. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -77,6 +77,18 @@ module CommandT
           ::VIM::command "silent b #{@initial_buffer.number}"
         end
       end
+    end
+
+    # Take current matches and stick them in the quickfix window.
+    def quickfix
+      hide
+
+      matches = @matches.map do |match|
+        "{ 'filename': '#{VIM::escape_for_single_quotes match}' }"
+      end.join(', ')
+
+      ::VIM::command 'call setqflist([' + matches + '])'
+      ::VIM::command 'cope'
     end
 
     def refresh
@@ -175,10 +187,11 @@ module CommandT
       @initial_window   = $curwin
       @initial_buffer   = $curbuf
       @match_window     = MatchWindow.new \
-        :prompt               => @prompt,
+        :highlight_color      => get_string('g:CommandTHighlightColor'),
         :match_window_at_top  => get_bool('g:CommandTMatchWindowAtTop'),
         :match_window_reverse => get_bool('g:CommandTMatchWindowReverse'),
-        :min_height           => min_height
+        :min_height           => min_height,
+        :prompt               => @prompt
       @focus            = @prompt
       @prompt.focus
       register_for_key_presses
@@ -260,6 +273,7 @@ module CommandT
       selection = File.expand_path selection, @path
       selection = relative_path_under_working_directory selection
       selection = sanitize_path_string selection
+      selection = File.join('.', selection) if selection =~ /^\+/
       ensure_appropriate_window_selection
 
       @active_finder.open_selection command, selection, options
@@ -298,6 +312,7 @@ module CommandT
         'CursorRight'           => ['<Right>', '<C-l>'],
         'CursorStart'           => '<C-a>',
         'Delete'                => '<Del>',
+        'Quickfix'              => '<C-q>',
         'Refresh'               => '<C-f>',
         'SelectNext'            => ['<C-n>', '<C-j>', '<Down>'],
         'SelectPrev'            => ['<C-p>', '<C-k>', '<Up>'],
@@ -327,8 +342,8 @@ module CommandT
     end
 
     def list_matches
-      matches = @active_finder.sorted_matches_for @prompt.abbrev, :limit => match_limit
-      @match_window.matches = matches
+      @matches = @active_finder.sorted_matches_for @prompt.abbrev, :limit => match_limit
+      @match_window.matches = @matches
     end
 
     def buffer_finder
@@ -342,7 +357,8 @@ module CommandT
         :max_caches             => get_number('g:CommandTMaxCachedDirectories'),
         :always_show_dot_files  => get_bool('g:CommandTAlwaysShowDotFiles'),
         :never_show_dot_files   => get_bool('g:CommandTNeverShowDotFiles'),
-        :scan_dot_directories   => get_bool('g:CommandTScanDotDirectories')
+        :scan_dot_directories   => get_bool('g:CommandTScanDotDirectories'),
+        :wild_ignore            => get_string('g:CommandTWildIgnore')
     end
 
     def jump_finder

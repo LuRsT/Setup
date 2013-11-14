@@ -28,7 +28,7 @@
     s = status
     d = diff
     dc = diff --cached
-    a = add
+    a = add --all
     ch = checkout
     b = branch
     l = log

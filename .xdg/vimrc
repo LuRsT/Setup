@@ -125,6 +125,8 @@ nnoremap <leader>a :Ack
 "Grep
 nnoremap <leader>g :Grep
 
+let g:EasyMotion_leader_key = '<leader>'
+
 "Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
