@@ -70,8 +70,8 @@ set shiftround
 highlight LineNr ctermfg=Grey
 
 " 80 chars
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
 
 " Change vertical bars char
 set fillchars+=vert:\ 
@@ -135,6 +135,19 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" For dragging visual blocks
+runtime plugin/dragvisuals.vim
+
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+vmap  <expr>  <LEFT>   DVB_Drag('left')
+vmap  <expr>  <RIGHT>  DVB_Drag('right')
+vmap  <expr>  <DOWN>   DVB_Drag('down')
+vmap  <expr>  <UP>     DVB_Drag('up')
+vmap  <expr>  D        DVB_Duplicate()
+
 
 "==============[ F-KEYS ]==================================
 

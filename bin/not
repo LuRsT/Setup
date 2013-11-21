@@ -1,5 +1,2 @@
-for i in "$@"; do
-    $i;
-    notify-send "Finished doing:
-    $i"
-done
+STRING=$(echo $1)
+notify-send "Finished doing: $STRING"
