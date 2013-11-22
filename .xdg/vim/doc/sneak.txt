@@ -1,0 +1,218 @@
+*sneak.txt*                                                        Version 1.1
+
+                    Sneak - the missing motion for Vim
+
+==============================================================================
+1. Overview                                                            *sneak*
+
+Sneak provides a way to move quickly and precisely to locations that would 
+be awkward to reach with built-in Vim motions. 
+
+Sneak is invoked with s (sneak forward) or S (sneak backwards), followed by
+exactly two characters:
+
+    s{char}{char}
+
+Thus, you can often reach a target with only 3 keystrokes. Sneak always moves 
+immediately to the first {char}{char} match. Additional matches are
+highlighted, and you can reach them by pressing ; (similar to the built-in 
+behavior for |f| and |t|).
+
+Sneak has a few other features, but above all, Sneak tries to get out of your
+way: highlights and autocmds are removed as soon as the cursor is moved.
+
+Sneak is tested on 7.2+. Vi-compatibility must be disabled. 'nocompatible'
+
+==============================================================================
+2. Usage                                                         *sneak-usage*
+
+Sneak is invoked by one of the provided mappings. |sneak-defaults|
+You can change these mappings. |sneak-mappings|
+
+Examples (cursor position indicated with brackets []): >
+
+    [L]orem ipsum dolor sit amet, consectetur adipisicing elit
+<
+Type ssi to go to the beginning of the word "sit": >
+
+    Lorem ipsum dolor [s]it amet, consectetur adipisicing elit
+<
+Type ; to go to the next match: >
+
+    Lorem ipsum dolor sit amet, consectetur adipi[s]icing elit
+<
+Type Sdo to go backwards to the beginning of the word "dolor": >
+
+    Lorem ipsum [d]olor sit amet, consectetur adipisicing elit
+<
+Type dzad to delete from the cursor to the first instance of "ad": >
+
+    Lorem ipsum [a]dipisicing elit
+<
+------------------------------------------------------------------------------
+2.1 Default mappings                                          *sneak-defaults*
+
+Sneak default NORMAL-mode mappings:
+
+    Normal-mode mapping      | Description
+    -------------------------|----------------------------------------------
+    s{char}{char}            | Go to the next occurrence of {char}{char}
+    S{char}{char}            | Go to the previous occurrence of {char}{char}
+    ;                        | Go to the next match
+    , or \                   | Go to the previous match
+    {range}s{char}{char}     | Invoke |sneak-vertical-scope|
+    {range}S{char}{char}     | Invoke backwards |sneak-vertical-scope|
+    {operator}z{char}{char}  | Perform {operator} from the cursor to the next
+                             | occurrence of {char}{char}
+    {operator}Z{char}{char}  | Perform {operator} from the cursor to the 
+                             | previous occurrence of {char}{char}
+
+Sneak default VISUAL-mode mappings:
+
+    Visual-mode mapping      | Description
+    -------------------------|----------------------------------------------
+    s{char}{char}            | Go to the next occurrence of {char}{char}
+    Z{char}{char}            | Go to the previous occurrence of {char}{char}
+    ;                        | Go to the next match
+    , or \                   | Go to the previous match
+
+
+==============================================================================
+3. Features                                                   *sneak-features*
+
+------------------------------------------------------------------------------
+3.1 Normal Mode
+
+------------------------------------------------------------------------------
+3.2 Visual Mode
+
+------------------------------------------------------------------------------
+3.3 Text Object (for use with an |operator|)
+
+------------------------------------------------------------------------------
+3.4 Vertical Scope                                      *sneak-vertical-scope*
+
+==============================================================================
+4. Configuration                                         *sneak-configuration*
+
+Sneak is designed with sane, effective defaults, so that you (hopefully) don't
+need to configure anything; but you can override the defaults in your |vimrc|
+file using the following settings.
+
+------------------------------------------------------------------------------
+4.1 Options                                                    *sneak-options*
+
+Following is a list of Sneak options with their default values.
+To change an option, add a |let| statement in your |vimrc|, for example: >
+
+    let g:sneak#nextprev_f = 0
+<
+g:sneak#nextprev_f = 1
+g:sneak#nextprev_t = 1
+
+    0 : Pressing |f| (or |t|) will NOT clear the last Sneak search. So you could
+        define different maps for <Plug>SneakNext or <Plug>SneakPrevious and
+        still use ; and , for |f| and |t| as usual.
+
+    1 : Pressing |f| (or |t|) will causing ; and , to apply to that motion instead
+        of the last s or S. This allows you to use ; and , for all three
+        motions.
+
+g:sneak#textobject_z = 1
+
+    0 : Disables "operator" support, so Sneak will not map {operator}z
+
+    1 : Enables "operator" support, so operations like dzab, dZab, 
+        czab, cZab, yzab, and yZab invoke Sneak.
+
+g:sneak#use_ic_scs = 0
+
+    0 : Always case-sensitive
+
+    1 : Case sensitivity is determined by 'ignorecase' and 'smartcase'.
+
+------------------------------------------------------------------------------
+4.2 Custom Highlighting                                      *sneak-highlight*
+
+Sneak uses two highlight groups:
+
+    SneakPluginTarget
+
+      Highlights additional matches.
+      Default color is hideous magenta :)
+
+    SneakPluginScope
+
+      Highlights the search "scope" for |sneak-vertical-scope|.
+      Default color is white (or black if background=light)
+
+There are three ways to override the default colors (listed in order of
+decreasing elegance):
+
+    1. Link to existing highlight groups (for example, "ErrorMsg" and
+       "Comment") so that the colors are implicitly chosen by your
+       currently-activated colorscheme: >
+
+       hi link SneakPluginTarget ErrorMsg
+       hi link SneakPluginScope  Comment
+<
+    2. To define specific colors _regardless_ of the current colorscheme, you
+       probably need to define an |autocmd| on the |ColorScheme| event: >
+
+       augroup SneakPluginColors
+           autocmd!
+           autocmd ColorScheme * hi SneakPluginTarget guifg=black guibg=red ctermfg=black ctermbg=red
+           autocmd ColorScheme * hi SneakPluginScope  guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+       augroup END
+<
+       |autocmd| is necessary because otherwise your colorscheme will
+       (probably) clear the highlights when it kicks in.
+
+    3. Edit your color scheme directly: >
+
+       hi SneakPluginTarget guifg=black guibg=red ctermfg=black ctermbg=red
+       hi SneakPluginScope  guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+<
+------------------------------------------------------------------------------
+4.3 Custom Mappings                                           *sneak-mappings*
+
+You can remap any Sneak feature (except the "text object" mappings) by 
+defining one or more of these <Plug> mappings in your |vimrc|. Replace ? with 
+the key sequence that you want to map to each respective feature: >
+
+      nmap ? <Plug>SneakForward
+      nmap ? <Plug>SneakBackward
+      nmap ? <Plug>SneakNext
+      nmap ? <Plug>SneakPrevious
+      xmap ? <Plug>VSneakForward
+      xmap ? <Plug>VSneakBackward
+      xmap ? <Plug>VSneakNext
+      xmap ? <Plug>VSneakPrevious
+<
+==============================================================================
+5. Contributing                                           *sneak-contributing*
+
+Report bugs or request features on GitHub:
+
+    https://github.com/justinmk/vim-sneak
+
+In your bug report, it is helpful to include the output of this command: >
+
+    :call sneak#debug#report()
+<
+If you have any code improvements, fork the above repository and send a pull 
+request!
+
+Author: Justin M. Keyes <justinkz+vim@gmail.com>
+
+==============================================================================
+6. Credits                                                     *sneak-credits*
+
+Sneak was inspired by vim-seek and vim-easymotion.
+
+Tim Pope's plugin sources were used for reference and best practices.
+
+easymotion.txt was used for the initial version of this document.
+
+==============================================================================
+vim:tw=78:sw=4:ts=8:ft=help:norl:
