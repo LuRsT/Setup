@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# based off of this: http://sirupsen.com/a-simple-imgur-bash-screenshot-utility/
+
+scrot -s "/tmp/shot.png"
+notify-send "Screeshot taken!"
