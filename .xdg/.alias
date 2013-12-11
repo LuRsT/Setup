@@ -39,3 +39,7 @@ alias urxvt='exec ssh-agent urxvt'
 alias webserver='python -m SimpleHTTPServer'
 
 alias shut='sudo halt -p'
+
+unalias gp
+
+PATH="/usr/local/heroku/bin:$PATH"
