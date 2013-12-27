@@ -37,6 +37,7 @@ alias gr='grep -rn --exclude tags'
 alias work='workon `pwd | egrep -o "[^//]+$"`'
 alias urxvt='exec ssh-agent urxvt'
 alias webserver='python -m SimpleHTTPServer'
+alias c='cheat'
 
 alias shut='sudo halt -p'
 

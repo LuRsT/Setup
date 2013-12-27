@@ -93,7 +93,7 @@ let g:Powerline_symbols='fancy'
 " Grep
 set grepprg=/bin/grep
 let Grep_OpenQuickfixWindow = 1
-let Grep_Default_Options = '-rin'
+let Grep_Default_Options = '-riIn'
 let Grep_Skip_Dirs = '.git'
 let Grep_Skip_Files = 'tags *.pyc'
 let Grep_Default_Filelist = '*'
@@ -172,7 +172,7 @@ let NERDTreeDirArrows=1
 
 " Search buffer
 let g:ctrlp_map = '<F8>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Flake8 check
 autocmd FileType python map <buffer> <F9> :call Flake8()<CR>
