@@ -10,7 +10,7 @@ URxvt*.transparent: true
 URxvt*.shading: 50
 
 !URxvt*font: xft:SouceCodePro:pixelsize=11
-URxvt*font: xft:Source\ Code\ Pro\ Light:pixelsize=11
+URxvt*font: xft:Source\ Code\ Pro\ Regular:pixelsize=11
 
 Xft.rgba:      rgb
 Xft.hinting:   1

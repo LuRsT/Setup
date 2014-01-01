@@ -11,7 +11,7 @@ new_window pixel 1
 
 set $mod Mod4
 
-font pango:Source\ Code\ Pro\ Light 8
+font pango:Source\ Code\ Pro\ Regular 8
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -145,7 +145,7 @@ bar {
     tray_output       primary
     workspace_buttons yes
     status_command    ~/.i3/conky
-    font pango:Source\ Code\ Pro\ Light 8
+    font pango:Source\ Code\ Pro\ Regular 8
 
     colors {
         statusline #AAAAAA
