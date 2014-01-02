@@ -1,0 +1,15 @@
+#!/bin/bash
+
+filename=$1
+extension="${filename##*.}"
+
+if [ "$extension" == "gz" ]; then
+    tar -zxvf $filename
+elif [ "$extension" == "tar" ]; then
+    tar -xvf $filename
+elif [ "$extension" == "bz2" ]; then
+    tar jxf $filename
+else
+    cat `which untar`
+fi
+
