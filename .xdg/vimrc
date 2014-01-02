@@ -240,7 +240,7 @@ nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 
 " PYTHON
 
-iab ptrace import pdb; pdb.set_trace()
+iab pdb import pdb; pdb.set_trace()
 
 " PERL
 

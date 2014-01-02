@@ -26,7 +26,7 @@ bindsym $mod+Shift+x exec i3lock -c "#000000"
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p exec dmenu_run -sb "#DDDDDD" -sb "#555555" -nb "#333333"
 
 # change focus
 bindsym $mod+h focus left
