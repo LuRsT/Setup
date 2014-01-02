@@ -74,7 +74,7 @@ highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
 " Change vertical bars char
-set fillchars+=vert:\ 
+set fillchars+=vert:█
 
 " Save buffer automatically when changing files
 set autowrite
@@ -87,8 +87,19 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 " Powerline
+"set laststatus=2
+"let g:Powerline_symbols='fancy'
+
+
+" Airline
 set laststatus=2
-let g:Powerline_symbols='fancy'
+set ttimeoutlen=1
+
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
 
 " Grep
 set grepprg=/bin/grep

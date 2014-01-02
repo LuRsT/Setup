@@ -1,2 +1,2 @@
 STRING=$(echo $1)
-notify-send "Finished doing: $STRING"
+notify-send "$STRING"
