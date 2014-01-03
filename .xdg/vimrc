@@ -259,10 +259,6 @@ iab logthis $c->log->debug(Dumper stuff);<ESC>?stuff<CR>cw
 iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detail) %]</pre><ESC>?detail<CR>cw
 
 
-" pressing < or > will let you indent/unident selected lines
-vnoremap < <g<ESC>
-vnoremap > >g<ESC>
-
 " some common typos
 command! Qa qa
 command! Q  q
@@ -270,6 +266,9 @@ command! W  w
 command! Wq wq
 command! WQ wq
 command! Tabnew tabnew
+command! Vs vs
+command! Set set
+
 
 "====[ After Damian Presentation ]====
 
