@@ -77,6 +77,9 @@ call matchadd('ColorColumn', '\%81v', 100)
 " Change vertical bars char
 set fillchars+=vert:█
 
+" Python Mode
+set nofoldenable
+
 " Save buffer automatically when changing files
 set autowrite
 
@@ -131,8 +134,8 @@ nnoremap <C-l> <C-w>l
 " CtrlT
 nnoremap <C-t> :CtrlP<CR>
 
-" Ack
-nnoremap <leader>a :Ack
+" Silver Searcher (Ag)
+nnoremap <leader>a :Ag
 
 "Grep
 nnoremap <leader>g :Grep
@@ -232,8 +235,7 @@ inoremap # X<C-H>#
 " Make BS/DEL work as expected
 vmap <BS> x
 
-" Insert ticks around word ... must NOT be on last char of word
-"map tt ebi'<ESC>ea'<ESC>
+" Insert ticks around word
 map tt ysiw'
 map TT ebi{'<ESC>ea'}<ESC>
 
@@ -270,6 +272,7 @@ command! WQ wq
 command! Tabnew tabnew
 command! Vs vs
 command! Set set
+command! E e
 
 
 "====[ After Damian Presentation ]====
