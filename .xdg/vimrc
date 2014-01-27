@@ -66,6 +66,7 @@ set smartcase
 
 set expandtab
 set shiftround
+set mouse=a
 
 highlight LineNr ctermfg=Grey
 
@@ -252,6 +253,7 @@ nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 " PYTHON
 
 iab pdb import pdb; pdb.set_trace()
+iab pudb import pudb; pu.db
 
 " PERL
 
