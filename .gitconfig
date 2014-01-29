@@ -28,13 +28,15 @@
     rh1 = reset HEAD^^ --hard
 
     # shortcuts for commands
-    s = status
-    d = difftool
+    s = status --short -b
+    d = diff
+    ds = diff --stat
     dc = diff --cached
+    dcs = diff --stat --cached
     a = add
     ch = checkout
     b = branch
-    l = log
+    l = log --stat
     f = fetch
     r = reset
     p = pull
