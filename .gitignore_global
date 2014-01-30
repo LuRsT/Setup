@@ -1,3 +1,5 @@
+tags
+
 # Compiled source #
 ###################
 *.com
@@ -6,7 +8,6 @@
 *.exe
 *.o
 *.so
-*.pyc
 
 # Packages #
 ############
@@ -34,11 +35,5 @@
 ._*
 .Spotlight-V100
 .Trashes
-Icon?
 ehthumbs.db
 Thumbs.db
-
-# Python #
-##########
-venv/
-conv/

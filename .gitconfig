@@ -62,3 +62,5 @@
     tool = vimdiff
 [difftool]
     prompt = false
+[core]
+    excludesfile = /home/lurst/.gitignore_global
