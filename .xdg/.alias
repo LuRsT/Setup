@@ -33,14 +33,15 @@ alias halt='halt -p'
 alias ducks='du -cms * | sort -rn | head'
 alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
-alias gr='grep -rn --exclude tags'
 alias work='workon `pwd | egrep -o "[^//]+$"`'
 alias urxvt='exec ssh-agent urxvt'
 alias webserver='python -m SimpleHTTPServer'
 alias c='cheat'
+alias f='find . -iname '
 
 alias shut='sudo halt -p'
 
 unalias gp
+unalias gr
 
 PATH="/usr/local/heroku/bin:$PATH"
