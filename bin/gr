@@ -1,0 +1,10 @@
+#!/bin/bash
+
+search_term=$1
+context=$2
+
+if [[ -n ${context} ]]; then
+    grep -rIin ${search_term} -C ${context} *
+else
+    grep -rIin ${search_term} *
+fi
