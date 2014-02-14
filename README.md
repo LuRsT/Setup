@@ -64,6 +64,8 @@ Deletes trailing whitespaces from files.
 Example use:
 
     # Removes trailing whitespace from python files
+    # Also removes extra whitelines if there are more
+    # than 3 whitelines
     find . -iname "*.py" | xargs -l cleaner
 
     # Is is known to corrupt git repos, so, NEVER do this:
