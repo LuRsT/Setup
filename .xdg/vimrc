@@ -57,6 +57,7 @@ set gdefault
 set nobackup
 set directory=.
 set noswapfile
+set foldlevel=99
 
 set nocompatible
 set autoindent
@@ -220,6 +221,20 @@ autocmd FileType perl set autoindent|set smartindent
 autocmd FileType perl set makeprg=perl\ -c\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 
+"==============[ Python Specific ]=================================
+"
+" Add the virtualenv's site-packages to vim path
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
 " Use tab and shift tab to indent region
 nmap <tab> v>
 nmap <s-tab> v<
@@ -278,10 +293,9 @@ command! E e
 "====[ After Damian Presentation ]====
 
 " Snipet for adding persistent_undo:
-if has ('persistent_undo')
-    set undodir=$HOME/tmp/vim/undo_files
-    set undolevels=5000
+if has('persistent_undo')
     set undofile
+    set undodir=$XDG_CONFIG_HOME/vim/undo_files/
 endif
 
 " Use smartcompletion plugin
