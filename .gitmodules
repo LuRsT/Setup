@@ -1,0 +1,3 @@
+[submodule ".xdg/vim/bundle/vim-airline"]
+	path = .xdg/vim/bundle/vim-airline
+	url = git@github.com:bling/vim-airline.git
