@@ -1,6 +1,17 @@
 #!/bin/bash
 
-# based off of this: http://sirupsen.com/a-simple-imgur-bash-screenshot-utility/
+SCREENSHOT_PATH="/tmp/screenshots";
+mkdir $SCREENSHOT_PATH;
 
-scrot -s "/tmp/shot.png"
-notify-send "Screeshot taken!"
+MAX_NUMBER=$(ls $SCREENSHOT_PATH | egrep -oh "[0-9]+" | sort -n | tail -1);
+
+if [ -z $MAX_NUMBER ]; then
+    FILE_ID=0;
+else
+    FILE_ID=${MAX_NUMBER};
+fi
+echo $FILE_ID;
+FILE_ID=$((FILE_ID + 1));
+
+scrot -s "${SCREENSHOT_PATH}/${FILE_ID}.png";
+notify-send "Screeshot taken! at: ${SCREENSHOT_PATH}/${FILE_ID}.png";
