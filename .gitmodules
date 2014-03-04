@@ -10,9 +10,12 @@
 [submodule ".xdg/vim/bundle/python-mode"]
 	path = .xdg/vim/bundle/python-mode
 	url = git@github.com:klen/python-mode.git
-[submodule ".xdg/vim/vim-gitgutter"]
-	path = .xdg/vim/vim-gitgutter
-	url = git@github.com:airblade/vim-gitgutter.git
-[submodule ".xdg/vim/vim-fugitive"]
-	path = .xdg/vim/vim-fugitive
+[submodule ".xdg/vim/bundle/vim-fugitive"]
+	path = .xdg/vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
+[submodule ".xdg/vim/bundle/vim-gitgutter"]
+	path = .xdg/vim/bundle/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
+[submodule ".xdg/vim/bundle/jedi-vim"]
+	path = .xdg/vim/bundle/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim.git
