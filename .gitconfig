@@ -29,6 +29,7 @@
 
     # shortcuts for commands
     s = status --short -b
+    ss = !hr && git status --short -b
     d = diff
     ds = diff --stat
     dc = diff --cached
@@ -46,6 +47,7 @@
     verbs  = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     curses = "!git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE '(fuck|shit|bitch|damn|piss)'"
     find   = !git --no-pager log --pretty='format:%H %s %N' | grep '$1'
+    g = grep --break --heading --line-number
 [apply]
     whitespace = nowarn
 [github]
@@ -66,3 +68,6 @@
     prompt = false
 [core]
     excludesfile = /home/lurst/.gitignore_global
+[grep]
+    extendRegexp = true
+    lineNumber = true
