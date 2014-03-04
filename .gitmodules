@@ -22,3 +22,6 @@
 [submodule ".xdg/vim/bundle/vim-easymotion"]
 	path = .xdg/vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion
+[submodule ".xdg/vim/bundle/tagbar"]
+	path = .xdg/vim/bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
