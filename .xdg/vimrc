@@ -9,7 +9,6 @@ let s:cpo_save=&cpo
 "<F6> :call ToggleFocusColor()<CR>
 "<F7> :NERDTreeToggle<CR>
 "<F8> :CtrlPBuffer<CR>
-"<F9> Flake8 Check<CR>
 "<F11> :call ToggleContrast()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""
 
@@ -19,6 +18,7 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
 set t_Co=256
 
 call pathogen#infect()
+call pathogen#helptags()
 
 syntax on
 colorscheme zenburn
@@ -26,8 +26,6 @@ filetype plugin indent on
 
 let &cpo=s:cpo_save
 unlet s:cpo_save
-
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 "set title "Show filename in titlebar of window
 set cpo&vim
@@ -91,11 +89,6 @@ set fileformats=unix,mac,dos
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" Powerline
-"set laststatus=2
-"let g:Powerline_symbols='fancy'
-
-
 " Airline
 set laststatus=2
 set ttimeoutlen=1
@@ -117,7 +110,6 @@ let Grep_Default_Filelist = '*'
 " Skeletons
 au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
-au bufnewfile *.t  0r $XDG_CONFIG_HOME/vim/skeletons/template.t
 
 " Set correct syntax to .tt2 files
 au BufNewFile,BufRead *.tt2 set filetype=tt2html
@@ -132,14 +124,11 @@ au BufNewFile,BufRead *.md set filetype=markdown
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" CtrlT
+" CtrlP
 nnoremap <C-t> :CtrlP<CR>
 
 " Silver Searcher (Ag)
 nnoremap <leader>a :Ag
-
-"Grep
-nnoremap <leader>g :Grep
 
 let g:EasyMotion_leader_key = '<leader>'
 
@@ -184,14 +173,11 @@ nmap <silent> <F6> :call ToggleFocusColor()<CR>
 
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
-let NERDTreeDirArrows=1
+let NERDTreeDirArrows = 1
 
 " Search buffer
 let g:ctrlp_map = '<F8>'
 let g:ctrlp_cmd = 'CtrlP'
-
-" Flake8 check
-autocmd FileType python map <buffer> <F9> :call Flake8()<CR>
 
 " Activate contrast
 function ToggleContrast()
@@ -222,7 +208,7 @@ autocmd FileType perl set makeprg=perl\ -c\ %\ $*
 autocmd FileType perl set errorformat=%f:%l:%m
 
 "==============[ Python Specific ]=================================
-"
+
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os.path
@@ -234,6 +220,12 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+"==============[ Markdown Specific ]=================================
+
+au BufRead,BufNewFile *.mkd,*.markdown,*.mdwn   set filetype=mkd
+
+"==================================================================
 
 " Use tab and shift tab to indent region
 nmap <tab> v>

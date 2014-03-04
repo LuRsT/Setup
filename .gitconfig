@@ -71,3 +71,5 @@
 [grep]
     extendRegexp = true
     lineNumber = true
+[gui]
+    diffcontext = 17

@@ -1,0 +1,27 @@
+[submodule ".xdg/vim/bundle/vim-airline"]
+	path = .xdg/vim/bundle/vim-airline
+	url = git@github.com:bling/vim-airline.git
+[submodule ".xdg/vim/bundle/ctrlp"]
+	path = .xdg/vim/bundle/ctrlp
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule ".xdg/vim/bundle/ag"]
+	path = .xdg/vim/bundle/ag
+	url = git@github.com:vim-scripts/ag.vim.git
+[submodule ".xdg/vim/bundle/python-mode"]
+	path = .xdg/vim/bundle/python-mode
+	url = git@github.com:klen/python-mode.git
+[submodule ".xdg/vim/bundle/vim-fugitive"]
+	path = .xdg/vim/bundle/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git
+[submodule ".xdg/vim/bundle/vim-gitgutter"]
+	path = .xdg/vim/bundle/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
+[submodule ".xdg/vim/bundle/jedi-vim"]
+	path = .xdg/vim/bundle/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim.git
+[submodule ".xdg/vim/bundle/vim-easymotion"]
+	path = .xdg/vim/bundle/vim-easymotion
+	url = https://github.com/Lokaltog/vim-easymotion
+[submodule ".xdg/vim/bundle/tagbar"]
+	path = .xdg/vim/bundle/tagbar
+	url = git@github.com:majutsushi/tagbar.git
