@@ -66,3 +66,5 @@
     prompt = false
 [core]
     excludesfile = /home/lurst/.gitignore_global
+[gui]
+    diffcontext = 17

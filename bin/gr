@@ -1,10 +1,11 @@
 #!/bin/bash
 
-search_term=$1
-context=$2
+SEARCH_TERM=$1
+CONTEXT=$2
+PROGRAM="ag"
 
-if [[ -n ${context} ]]; then
-    grep -rIin ${search_term} -C ${context} *
+if [[ -n ${CONTEXT} ]]; then
+    ${PROGRAM} ${SEARCH_TERM} -C ${CONTEXT}
 else
-    grep -rIin ${search_term} *
+    ${PROGRAM} ${SEARCH_TERM}
 fi
