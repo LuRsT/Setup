@@ -209,6 +209,9 @@ autocmd FileType perl set errorformat=%f:%l:%m
 
 "==============[ Python Specific ]=================================
 
+let g:python_highlight_all = 1
+let g:python_highlight_space_errors = 1
+
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os.path
