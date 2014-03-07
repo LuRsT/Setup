@@ -79,6 +79,9 @@ set fillchars+=vert:█
 " Python Mode
 set nofoldenable
 
+" Pyflakes
+let g:pyflakes_use_quickfix = 0
+
 " Save buffer automatically when changing files
 set autowrite
 
