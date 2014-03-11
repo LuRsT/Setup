@@ -142,7 +142,6 @@ bindsym $mod+r mode "resize"
 
 bar {
     position          top
-    tray_output       primary
     workspace_buttons yes
     status_command    ~/.i3/conky
     font pango:Source\ Code\ Pro\ Regular 8
