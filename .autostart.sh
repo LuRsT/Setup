@@ -7,7 +7,7 @@ xset b 0 440 10 &
 xbacklight -set 60 &
 
 redshift -l 38:-9 &
-unclutter -keystroke -idle 1 &
+unclutter -keystroke -idle 5 &
 nm-applet &
 xfce4-power-manager > /dev/null
 xfsettingsd > /dev/null

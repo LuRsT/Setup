@@ -38,6 +38,7 @@ alias urxvt='exec ssh-agent urxvt'
 alias webserver='python -m SimpleHTTPServer'
 alias c='cheat'
 alias f='find . -iname '
+alias ggrep='git grep'
 
 alias shut='sudo halt -p'
 

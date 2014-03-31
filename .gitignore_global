@@ -31,3 +31,10 @@ tags
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Python Stuff
+####################
+.ropeproject*
+dist/
+build/
+*.pyc
