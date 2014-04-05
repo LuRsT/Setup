@@ -195,6 +195,10 @@ endfunction
 
 nmap <silent> <F11> :call ToggleContrast()<CR>
 
+
+" Delete trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 "=============[ Filetype stuff ]================================
 
 autocmd FileType perl   nn <silent> _F :g/^\s*sub<CR>

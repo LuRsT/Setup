@@ -3,10 +3,10 @@
 # This script toggles the extended monitor outputs if something is connected
 #
 
-# notebook monitor
+# Laptop monitor
 DEFAULT_OUTPUT='LVDS1'
 
-# outputs to toggle if connected
+# Outputs to toggle if connected
 OUTPUTS='VGA1'
 
 # get info from xrandr
