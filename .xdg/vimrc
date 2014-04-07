@@ -21,7 +21,6 @@ call pathogen#infect()
 call pathogen#helptags()
 
 syntax on
-colorscheme zenburn
 filetype plugin indent on
 
 let &cpo=s:cpo_save
@@ -30,6 +29,8 @@ unlet s:cpo_save
 "set title "Show filename in titlebar of window
 set cpo&vim
 set background=dark
+
+colorscheme zenburn
 
 "BS past autoindents, line boundaries, and even the start of insertion
 set backspace=indent,eol,start
@@ -175,7 +176,8 @@ vmap  <expr>  D        DVB_Duplicate()
 "==============[ F-KEYS ]==================================
 
 " Toggle Focus Mode
-nmap <silent> <F1> :call ToggleFocusMode()<CR>
+let g:focus_use_default_mapping = 0
+nmap <F1> <Plug>FocusModeToggle
 
 " Change to 'old_style'
 nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR>
@@ -209,6 +211,10 @@ function ToggleContrast()
 endfunction
 
 nmap <silent> <F11> :call ToggleContrast()<CR>
+
+
+" Delete trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
 
 "=============[ Filetype stuff ]================================
 
