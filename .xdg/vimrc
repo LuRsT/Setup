@@ -56,6 +56,7 @@ set nobackup
 set directory=.
 set noswapfile
 set foldlevel=99
+set foldmethod=indent
 
 set nocompatible
 set autoindent
@@ -78,6 +79,13 @@ set fillchars+=vert:█
 
 " Python Mode
 set nofoldenable
+
+let g:pymode_lint_todo_symbol = 'W'
+let g:pymode_lint_comment_symbol = 'C'
+let g:pymode_lint_visual_symbol = 'R'
+let g:pymode_lint_error_symbol = 'E'
+let g:pymode_lint_info_symbol = 'I'
+let g:pymode_lint_pyflakes_symbol = 'F'
 
 " Pyflakes
 let g:pyflakes_use_quickfix = 0
@@ -122,6 +130,13 @@ au BufNewFile,BufRead *.md set filetype=markdown
 
 " Filter html
 "nmap <C-p> :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<CR>
+
+
+
+" Open/Close folds with space button
+nnoremap <space> za
+vnoremap <space> zf
+
 
 " Easy navigation with splits
 nnoremap <C-k> <C-w>k
