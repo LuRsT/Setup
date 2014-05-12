@@ -48,6 +48,7 @@
     curses = "!git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE '(fuck|shit|bitch|damn|piss)'"
     find   = !git --no-pager log --pretty='format:%H %s %N' | grep '$1'
     g = grep --break --heading --line-number
+    plush = "!git pull && git push"
 [apply]
     whitespace = nowarn
 [github]
