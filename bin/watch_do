@@ -4,7 +4,7 @@
 # watch_do arena.result "cat arena.result"
 # watch_do dev "cat arena.result"
 
-while inotifywait -e modify -r $1;
+while inotifywait -e modify -r "$1";
 do
     $2;
 done
