@@ -28,21 +28,21 @@ export XDG_CONFIG_HOME="${HOME}/.xdg"
 
 # Source alias
 if [ -f ${XDG_CONFIG_HOME}/.alias ]; then
-    . ${XDG_CONFIG_HOME}/.alias
+    source ${XDG_CONFIG_HOME}/.alias
 fi
 
 # Source extra alias
 if [ -f ${XDG_CONFIG_HOME}/.alias_extra ]; then
-    . ${XDG_CONFIG_HOME}/.alias_extra
+    source ${XDG_CONFIG_HOME}/.alias_extra
 fi
 
 wiki() { dig +short txt $1.wp.dg.cx }
 
-grep_output="$(uname -a | grep -c 'Ubuntu')"
+IS_UBUNTU="$(uname -a | grep -c 'Ubuntu')"
 
 export WORKON_HOME=$HOME/.virtualenvs
-if [[ $grep_output == 1 ]]; then
-    source /etc/bash_completion.d/virtualenvwrapper
+if [[ $IS_UBUNTU == 1 ]]; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 else
     export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
     source /usr/bin/virtualenvwrapper.sh
@@ -64,3 +64,4 @@ xrdb -merge ~/.Xdefaults
 #zle -N zle-line-init
 #zle -N zle-keymap-select
 #bindkey -v
+

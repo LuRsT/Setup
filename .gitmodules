@@ -22,3 +22,6 @@
 [submodule ".xdg/vim/bundle/tagbar"]
 	path = .xdg/vim/bundle/tagbar
 	url = git@github.com:majutsushi/tagbar.git
+[submodule ".xdg/vim/bundle/jedi-vim"]
+	path = .xdg/vim/bundle/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim
