@@ -49,6 +49,7 @@
     find   = !git --no-pager log --pretty='format:%H %s %N' | grep '$1'
     g = grep --break --heading --line-number
     plush = "!git pull && git push"
+    ctags = !.git/hooks/ctags
 [apply]
     whitespace = nowarn
 [github]
@@ -60,7 +61,6 @@
     ui = auto
 [push]
     default = current
-
 [diff]
     tool = vimdiff
 [merge]
@@ -74,3 +74,5 @@
     lineNumber = true
 [gui]
     diffcontext = 17
+[init]
+    templatedir = ~/.git_template
