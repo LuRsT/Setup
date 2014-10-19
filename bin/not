@@ -1,2 +1,4 @@
-STRING=$(echo $1)
-notify-send "$STRING"
+#!/bin/bash
+
+eval "$@"
+notify-send "[DONE] Master! ($@)"

@@ -119,6 +119,7 @@ let Grep_Skip_Dirs = '.git'
 let Grep_Skip_Files = 'tags *.pyc'
 let Grep_Default_Filelist = '*'
 
+
 " Skeletons
 au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
@@ -271,6 +272,9 @@ vmap <BS> x
 
 " Insert ticks around word
 map tt ysiw'
+map '' ysiw'
+map `` ysiw`
+map "" ysiw"
 map TT ebi{'<ESC>ea'}<ESC>
 
 " Little change to make it return to same line
@@ -291,6 +295,7 @@ nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 iab pdb import pdb; pdb.set_trace()
 iab pudb import pudb; pu.db
 
+
 " PERL
 
 iab logthis $c->log->debug(Dumper stuff);<ESC>?stuff<CR>cw
@@ -298,6 +303,7 @@ iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detail) %]</pre><E
 
 
 " some common typos
+command! QA qa
 command! Qa qa
 command! Q  q
 command! W  w

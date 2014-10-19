@@ -1,4 +1,4 @@
-feh --bg-tile $HOME/.xdg/background.png
+feh --bg-fill $HOME/.xdg/background.png
 
 # Remove beep
 xset b 0 440 10 &
