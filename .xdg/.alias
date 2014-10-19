@@ -7,11 +7,15 @@ export PYTHONDONTWRITEBYTECODE=1
 export HISTCONTROL=ignoredups
 export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
-export PATH=$HOME/bin/:$PATH
 export TERM=xterm-256color
 export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
+
+export PATH=$HOME/bin/:$PATH
 export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
 export PATH="$PATH:/home/lurst/.gem/ruby/2.0.0/bin"
+export PATH="$PATH:/home/lurst/.gem/ruby/2.1.0/bin"
+export PATH="$PATH:/usr/local/heroku/bin"
+
 export _JAVA_AWT_WM_NONREPARENTING=1
 export GREP_COLOR=1
 
@@ -36,14 +40,14 @@ alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
 alias work='workon `pwd | egrep -o "[^//]+$"`'
 alias urxvt='exec ssh-agent urxvt'
-alias webserver='python -m SimpleHTTPServer'
+alias webserver='python2 -m SimpleHTTPServer'
 alias c='cheat'
+alias n='numbrs'
 alias f='find . -iname '
 alias ggrep='git grep'
+alias write='fsize 18 && vim -u ~/focus.vim ~/txt/wiki/$(date +"%d-%m-%y").md'
 
 alias shut='sudo halt -p'
 
 unalias gp
 unalias gr
-
-PATH="/usr/local/heroku/bin:$PATH"
