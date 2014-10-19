@@ -46,7 +46,7 @@ alias c='cheat'
 alias n='numbrs'
 alias f='find . -iname '
 alias ggrep='git grep'
-alias write='fsize 18 && vim -u ~/focus.vim ~/txt/wiki/$(date +"%d-%m-%y").md'
+alias iwrite="fsize 18 && time vim -u $XDG_CONFIG_HOME/focus.vim ~/txt/wiki/$(date +"%d-%m-%y").md"
 
 alias hr="hr '─'"
 alias alert="not 'Finished doing it'"
