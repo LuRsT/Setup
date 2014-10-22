@@ -46,7 +46,10 @@ alias c='cheat'
 alias n='numbrs'
 alias f='find . -iname '
 alias ggrep='git grep'
-alias iwrite="fsize 18 && time vim -u $XDG_CONFIG_HOME/focus.vim ~/txt/wiki/750/$(date +"%d-%m-%y").md"
+
+WORDS_DIR="$HOME/txt/wiki/750/"
+alias iwrite="fsize 18 && vim -u $XDG_CONFIG_HOME/focus.vim $WORDS_DIR$(date +"%d-%m-%y").md"
+alias words="wc $WORDS_DIR* | awk '/md/ {print \$2}' | DISPLAY_NUMBERS=1 GRAPH_SIZE=10 vspark"
 
 alias hr="hr '─'"
 alias alert="not 'Finished doing it'"
