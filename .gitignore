@@ -2,3 +2,4 @@
 .wmii/history*
 *.so
 *.pyc
+bin/*
