@@ -272,7 +272,6 @@ vmap <BS> x
 
 " Insert ticks around word
 map tt ysiw'
-map '' ysiw'
 map `` ysiw`
 map "" ysiw"
 map TT ebi{'<ESC>ea'}<ESC>
