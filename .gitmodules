@@ -13,9 +13,6 @@
 [submodule ".xdg/vim/bundle/vim-fugitive"]
 	path = .xdg/vim/bundle/vim-fugitive
 	url = git@github.com:tpope/vim-fugitive.git
-[submodule ".xdg/vim/bundle/vim-gitgutter"]
-	path = .xdg/vim/bundle/vim-gitgutter
-	url = git@github.com:airblade/vim-gitgutter.git
 [submodule ".xdg/vim/bundle/vim-easymotion"]
 	path = .xdg/vim/bundle/vim-easymotion
 	url = https://github.com/Lokaltog/vim-easymotion

@@ -2,7 +2,7 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 
 """ Function keys INDEX """"""""""""""""""""""
-"<F1> :call ToggleFocusMode()<CR>
+"<F1> FocusModeToggle
 "<F2> Hide Numbers and NERDTree
 "<F3> :GrepBuffer<CR>
 "<F5> Refresh File
@@ -274,7 +274,6 @@ vmap <BS> x
 
 " Insert ticks around word
 map tt ysiw'
-map '' ysiw'
 map `` ysiw`
 map "" ysiw"
 map TT ebi{'<ESC>ea'}<ESC>
@@ -352,34 +351,6 @@ autocmd FileType html   nmap W :!firefox %<CR>
 
 " Locate Module
 autocmd FileType perl   map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
-
-""" FocusMode
-" From: http://paulrouget.com/e/vimdarkroom/
-" And:  http://laktek.com/2012/09/05/distraction-free-writing-with-vim/
-function! ToggleFocusMode()
-  if (&foldcolumn != 12)
-    set background=light
-    highlight LineNr term=bold cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=NONE guibg=NONE
-    set laststatus=0
-    set nonumber
-
-    set laststatus=0
-    set numberwidth=10
-    set foldcolumn=12
-    set noruler
-    hi FoldColumn ctermbg=none
-    hi LineNr ctermfg=DarkGrey ctermbg=none
-    hi NonText ctermfg=0
-    set nocursorline
-  else
-    set cursorline
-    set laststatus=2
-    set numberwidth=4
-    set foldcolumn=0
-    set ruler
-    set number
-  endif
-endfunc
 
 " Execute comands and print results in vim
 map C :cexpr system(getline("."))<cr>:cope<cr><cr>

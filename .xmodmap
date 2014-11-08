@@ -1,3 +1,10 @@
 xmodmap -e 'remove Lock = Caps_Lock' &&
 xmodmap -e 'keysym Caps_Lock = Control_L' &&
 xmodmap -e 'add Control = Control_L'
+xmodmap -e 'keycode 22 = BackSpace Insert'
+
+xmodmap -e 'keycode 111 = Up Prior'
+xmodmap -e 'keycode 113 = Left Home'
+xmodmap -e 'keycode 114 = Right End'
+xmodmap -e 'keycode 116 = Down Next'
+
