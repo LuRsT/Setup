@@ -87,6 +87,8 @@ let g:pymode_lint_visual_symbol = 'R'
 let g:pymode_lint_error_symbol = 'E'
 let g:pymode_lint_info_symbol = 'I'
 let g:pymode_lint_pyflakes_symbol = 'F'
+let g:pymode_rope_complete_on_dot = 0
+
 
 " Pyflakes
 let g:pyflakes_use_quickfix = 0

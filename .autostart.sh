@@ -17,3 +17,5 @@ DISPLAY='' wuala ^
 
 setxkbmap gb &
 bash /home/lurst/.xmodmap &
+
+pnmixer &
