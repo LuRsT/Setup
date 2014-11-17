@@ -75,4 +75,4 @@
 [gui]
     diffcontext = 17
 [init]
-    templatedir = ~/.git_template
+    templatedir = ~/.xdg/git_template
