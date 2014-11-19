@@ -1,18 +1,12 @@
-#!/bin/sh -e
-#
-# Usage: browser
-# pipe html to a browser
-# e.g.
-# $ echo '<h1>hi mom!</h1>' | browser
-# $ ron -5 man/rip.5.ron | browser
+#!/bin/sh
 
 if [ -t 0 ]; then
     if [ -n "$1" ]; then
-        open $1
+        $BROWSER $1
     else
         cat <<usage
 Usage: browser
-pipe html to a browser
+       pipe html to a browser
 
 $ echo '<h1>hi mom!</h1>' | browser
 $ ron -5 man/rip.5.ron | browser
@@ -21,5 +15,5 @@ usage
 else
     f="/tmp/browser.$RANDOM.html"
     cat /dev/stdin > $f
-    open $f
+    $BROWSER $f
 fi
