@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for i in */.git ; do
+    DIR_NAME=$(echo "$i" | sed 's/\/.*//');
+    #cd "${i/\/.*/}";
+    cd $DIR_NAME;
+    echo "Updating ${DIR_NAME}...";
+    git pull;
+    cd ..;
+done
