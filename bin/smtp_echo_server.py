@@ -6,8 +6,6 @@ from smtpd import DebuggingServer
 class PrettyDebugginServer(DebuggingServer):
 
     def process_message(self, peer, mailfrom, rcpttos, data):
-        inheaders = 1
-        lines = data.split('\n')
         print '---------- MESSAGE FOLLOWS ----------'
         message = message_from_string(data)
 

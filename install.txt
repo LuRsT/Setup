@@ -30,3 +30,5 @@ sudo pacman -S unclutter
 sudo pacman -S ctags
 sudo pacman -S redshift
 sudo pacman -S feh
+sudo pacman -S scrot
+sudo pacman -S xclip
