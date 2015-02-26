@@ -17,10 +17,13 @@ export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
 export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
 export PATH="$PATH:/home/lurst/.gem/ruby/2.0.0/bin"
 export PATH="$PATH:/home/lurst/.gem/ruby/2.1.0/bin"
+export PATH="$PATH:/home/lurst/.gem/ruby/2.2.0/bin"
 export PATH="$PATH:/usr/local/heroku/bin"
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export GREP_COLOR=1
+
+export BROWSER='firefox'
 
 # Alias
 alias vim="vim +normal\\'\\\""
