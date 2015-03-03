@@ -29,6 +29,7 @@ export BROWSER='firefox'
 alias vim="vim +normal\\'\\\""
 alias v='vim'
 alias vi='vim'
+alias nv='nvim'
 alias :q='exit'
 alias ls='ls --color=auto'
 #alias gcc='gcc -Werror -Wall -pedantic'
