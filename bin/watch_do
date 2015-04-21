@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Watch for modification of a file and execute something
 #
 # e.g.
