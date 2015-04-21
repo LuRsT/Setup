@@ -121,6 +121,17 @@ let Grep_Skip_Dirs = '.git'
 let Grep_Skip_Files = 'tags *.pyc'
 let Grep_Default_Filelist = '*'
 
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+
 
 " Skeletons
 au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
@@ -347,7 +358,7 @@ augroup END
 autocmd FileType perl   nmap W :Shell perl %<CR>
 autocmd FileType python nmap W :Shell python %<CR>
 autocmd FileType php    nmap W :Shell php %<CR>
-autocmd FileType html   nmap W :!firefox %<CR>
+autocmd FileType html   nmap W :Shell firefox %<CR>
 
 " Locate Module
 autocmd FileType perl   map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
@@ -396,3 +407,5 @@ endfunc
 
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
+
+map <C-p> :Shell isort -sl -w 200 %<CR>
