@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import asyncore
 from email import message_from_string
 from smtpd import DebuggingServer
