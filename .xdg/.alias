@@ -12,7 +12,7 @@ export BROWSER="firefox"
 
 export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
 
-export PATH="$HOME/bin/:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
 export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
 export PATH="$PATH:/home/lurst/.gem/ruby/2.0.0/bin"
@@ -51,6 +51,7 @@ alias webserver='python2 -m SimpleHTTPServer'
 alias c='cheat'
 alias n='numbrs'
 alias f='find . -iname '
+alias m='make'
 alias ggrep='git grep'
 
 WORDS_DIR="$HOME/txt/wiki/750/"
