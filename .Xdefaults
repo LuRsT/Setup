@@ -10,9 +10,9 @@ URxvt*.transparent: true
 URxvt*.shading: 50
 
 !URxvt*font: xft:SouceCodePro:pixelsize=11
-URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=11
+URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=12
 
-# Scrollback buffer lines - 65535 is max on most machines (64 is default)
+! Scrollback buffer lines - 65535 is max on most machines (64 is default)
 URxvt*saveLines: 12000
 
 Xft.rgba:      rgb
