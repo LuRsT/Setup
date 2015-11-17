@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ -t 0 ]; then
     if [ -n "$1" ]; then
@@ -13,7 +13,7 @@ $ ron -5 man/rip.5.ron | browser
 usage
     fi
 else
-    f="/tmp/browser.$RANDOM.html"
-    cat /dev/stdin > $f
-    $BROWSER $f
+    file_path="/tmp/browser.${RANDOM}.html"
+    cat /dev/stdin > $file_path
+    $BROWSER $file_path
 fi
