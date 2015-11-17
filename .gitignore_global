@@ -36,3 +36,8 @@ Thumbs.db
 dist/
 build/
 *.pyc
+.idea
+.pydevproject
+*.egg-info
+.coverage
+*.egg
