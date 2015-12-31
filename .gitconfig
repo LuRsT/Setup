@@ -44,9 +44,9 @@
     show-graph = log --graph --abbrev-commit --pretty=oneline
     show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
 
-    verbs  = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
+    verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     curses = "!git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE '(fuck|shit|bitch|damn|piss)'"
-    find   = !git --no-pager log --pretty='format:%H %s %N' | grep '$1'
+    find = !git --no-pager log --pretty='format:%H %s %N' | grep '$1'
     g = grep --break --heading --line-number
     plush = "!git pull && git push"
     ctags = !.git/hooks/ctags
@@ -64,7 +64,7 @@
 [diff]
     tool = vimdiff
 [merge]
-    tool = vimdiff
+    tool = meld
 [difftool]
     prompt = false
 [core]
