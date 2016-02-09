@@ -73,6 +73,6 @@
     extendRegexp = true
     lineNumber = true
 [gui]
-    diffcontext = 17
+	diffcontext = 99
 [init]
     templatedir = ~/.xdg/git_template
