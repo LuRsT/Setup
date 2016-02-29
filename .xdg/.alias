@@ -23,6 +23,8 @@ export PATH="$PATH:/usr/local/heroku/bin"
 export _JAVA_AWT_WM_NONREPARENTING=1
 export GREP_COLOR=1
 
+export PERL5LIB="$HOME/perl5/lib/perl5"
+
 # Alias
 alias vim="vim +normal\\'\\\""
 alias v='vim'
