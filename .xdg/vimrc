@@ -4,7 +4,6 @@ let s:cpo_save=&cpo
 """ Function keys INDEX """"""""""""""""""""""
 "<F1> FocusModeToggle
 "<F2> Hide Numbers and NERDTree
-"<F3> :GrepBuffer<CR>
 "<F5> Refresh File
 "<F6> :call ToggleFocusColor()<CR>
 "<F7> :NERDTreeToggle<CR>
@@ -196,14 +195,21 @@ nmap <F1> <Plug>FocusModeToggle
 " Change to 'old_style'
 nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR>
 
-"Shows GrepBuffer
-nnoremap <silent> <F3> :GrepBuffer<CR>
-
 "Refresh current file
 nmap <silent> <F5> :e %<CR>
 
 " Change to focus colorscheme
 nmap <silent> <F6> :call ToggleFocusColor()<CR>
+
+function! ToggleFocusColor()
+  if (g:focuscolour)
+    colorscheme zenburn
+    let g:focuscolour = 0
+  else
+    colorscheme focus-dark
+    let g:focuscolour = 1
+  endif
+endfunc
 
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
@@ -212,20 +218,6 @@ let NERDTreeDirArrows = 1
 " Search buffer
 let g:ctrlp_map = '<F8>'
 let g:ctrlp_cmd = 'CtrlP'
-
-" Activate contrast
-function ToggleContrast()
-    if exists("g:zenburn_high_Contrast")
-        unlet g:zenburn_high_Contrast
-    else
-      let g:zenburn_high_Contrast = 1
-    endif
-
-    colorscheme zenburn
-endfunction
-
-nmap <silent> <F11> :call ToggleContrast()<CR>
-
 
 " Delete trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -306,12 +298,6 @@ nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 
 iab pdb import pdb; pdb.set_trace()
 iab pudb import pudb; pu.db
-
-
-" PERL
-
-iab logthis $c->log->debug(Dumper stuff);<ESC>?stuff<CR>cw
-iab ttdump <ESC>o[% USE Dumper %]<CR><pre>[% Dumper.dump_html(detail) %]</pre><ESC>?detail<CR>cw
 
 
 " some common typos
@@ -395,17 +381,8 @@ cabbrev shell Shell
 
 let g:focuscolour = 0
 
-function! ToggleFocusColor()
-  if (g:focuscolour)
-    colorscheme zenburn
-    let g:focuscolour = 0
-  else
-    colorscheme focus-dark
-    let g:focuscolour = 1
-  endif
-endfunc
-
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
+map <BS>        ^H
 
 map <C-p> :Shell isort -sl -w 200 %<CR>
