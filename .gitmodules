@@ -16,3 +16,9 @@
 [submodule ".xdg/vim/bundle/tagbar"]
 	path = .xdg/vim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar
+[submodule ".xdg/vim/bundle/syntastic"]
+	path = .xdg/vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule ".xdg/vim/bundle/editorconfig-vim"]
+	path = .xdg/vim/bundle/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
