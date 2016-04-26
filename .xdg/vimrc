@@ -78,19 +78,9 @@ call matchadd('ColorColumn', '\%81v', 100)
 set fillchars+=vert:█
 
 " Python Mode
-set nofoldenable
-
-let g:pymode_lint_todo_symbol = 'W'
-let g:pymode_lint_comment_symbol = 'C'
-let g:pymode_lint_visual_symbol = 'R'
-let g:pymode_lint_error_symbol = 'E'
-let g:pymode_lint_info_symbol = 'I'
-let g:pymode_lint_pyflakes_symbol = 'F'
-let g:pymode_rope_complete_on_dot = 0
-
-
-" Pyflakes
-let g:pyflakes_use_quickfix = 0
+let g:pymode_rope_complete_on_dot = 1
+let g:pymode_folding = 0
+let g:pymode_lint = 0
 
 " Save buffer automatically when changing files
 set autowrite
@@ -111,14 +101,6 @@ let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
-
-" Grep
-set grepprg=/bin/grep
-let Grep_OpenQuickfixWindow = 1
-let Grep_Default_Options = '-riIn'
-let Grep_Skip_Dirs = '.git'
-let Grep_Skip_Files = 'tags *.pyc'
-let Grep_Default_Filelist = '*'
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -142,9 +124,8 @@ au BufNewFile,BufRead *.tt2 set filetype=tt2html
 " Set correct syntax to .md files
 au BufNewFile,BufRead *.md set filetype=markdown
 
-" Filter html
-"nmap <C-p> :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<CR>
-
+" Open Quickfix Window with 'M'
+map M :cope<CR><CR>
 
 
 " Open/Close folds with space button
@@ -172,9 +153,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" For dragging visual blocks
-runtime plugin/dragvisuals.vim
 
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
@@ -321,9 +299,6 @@ if has('persistent_undo')
     set undodir=$XDG_CONFIG_HOME/vim/undo_files/
 endif
 
-" Use smartcompletion plugin
-runtime plugin/smartcom.vim
-
 " Make naughty characters visible...
 " (uBB is right double angle, uB7 is middle dot)
 exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
@@ -385,4 +360,4 @@ map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
 map <BS>        ^H
 
-map <C-p> :Shell isort -sl -w 200 %<CR>
+autocmd QuickFixCmdPost *grep* cwindow
