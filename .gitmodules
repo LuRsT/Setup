@@ -22,3 +22,9 @@
 [submodule ".xdg/vim/bundle/editorconfig-vim"]
 	path = .xdg/vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule ".xdg/vim/bundle/vim-gitgutter"]
+	path = .xdg/vim/bundle/vim-gitgutter
+	url = https://github.com/editorconfig/vim-gitgutter.git
+[submodule ".xdg/vim/bundle/vim-ags"]
+	path = .xdg/vim/bundle/vim-ags
+	url = https://github.com/gabesoft/vim-ags

@@ -138,10 +138,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " CtrlP
-nnoremap <C-t> :CtrlP<CR>
+nnoremap <C-p> :CtrlP<CR>
 
-" Silver Searcher (Ag)
-nnoremap <leader>a :Ag
+" Silver Searcher
+nnoremap <leader>a :Ags
 
 let g:EasyMotion_leader_key = '<leader>'
 
