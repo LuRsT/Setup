@@ -32,3 +32,11 @@ sudo pacman -S redshift
 sudo pacman -S feh
 sudo pacman -S scrot
 sudo pacman -S xclip
+
+
+# Ubuntu stuff
+
+sudo apt-get install \
+    zsh redshift vim-gtk tmux vlc git htop exuberant-ctags chromium-browser \
+    virtualenvwrapper vlc-plugin-vlsub sensors-applet  xfce4-goodies \
+    xfce4-clipman-plugin
