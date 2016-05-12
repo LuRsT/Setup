@@ -62,6 +62,3 @@ alias words="wc $WORDS_DIR* | awk '/md/ {print \$2}' | DISPLAY_NUMBERS=1 GRAPH_S
 alias hr="hr '─'"
 alias k="setxkbmap gb && sh ~/.xmodmap"
 alias shut='sudo halt -p'
-
-unalias gp
-unalias gr
