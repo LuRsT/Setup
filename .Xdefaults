@@ -5,9 +5,9 @@ URxvt*scrollBar_right: false
 URxvt*scrollBar:       false
 URxvt*borderLess:      false
 
-URxvt*.transparent: true
+URxvt*.transparent: false
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-URxvt*.shading: 50
+URxvt*.shading: 10
 
 !URxvt*font: xft:SouceCodePro:pixelsize=11
 URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=12
