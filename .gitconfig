@@ -50,6 +50,7 @@
     g = grep --break --heading --line-number
     plush = "!git pull && git push"
     ctags = !.git/hooks/ctags
+    remove-deleted-files="!git ls-files --deleted -z | xargs -0 git rm"
 [apply]
     whitespace = nowarn
 [github]
