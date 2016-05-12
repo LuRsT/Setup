@@ -41,3 +41,7 @@ build/
 *.egg-info
 .coverage
 *.egg
+
+# Others
+#
+tags
