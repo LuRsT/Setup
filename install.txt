@@ -1,28 +1,43 @@
-git clone https://github.com/LuRsT/Setup.git
-cd Setup/
-cd $HOME
-ln -s dev/Setup/bin
-ln -s dev/Setup/.xdg
-ln -s dev/Setup/.i3
-ln -s dev/Setup/.icons
-ln -s dev/Setup/.fonts
-ln -s dev/Setup/.zshrc
-ln -s dev/Setup/.gitconfig
-ln -s dev/Setup/.gitignore_global
-ln -s dev/Setup/.Xdefaults
-rm .bashrc
-ln -s dev/Setup/.bashrc
-ln -s dev/Setup/.xmodmap
-ln -s dev/Setup/.tmux.conf
+# How to
+
+    git clone https://github.com/LuRsT/Setup.git
+    cd Setup/
+    cd $HOME
+    ln -s dev/Setup/bin
+    ln -s dev/Setup/.xdg
+    ln -s dev/Setup/.i3
+    ln -s dev/Setup/.icons
+    ln -s dev/Setup/.fonts
+    ln -s dev/Setup/.zshrc
+    ln -s dev/Setup/.gitconfig
+    ln -s dev/Setup/.gitignore_global
+    ln -s dev/Setup/.Xdefaults
+    rm .bashrc
+    ln -s dev/Setup/.bashrc
+    ln -s dev/Setup/.xmodmap
+    ln -s dev/Setup/.tmux.conf
 
 # Other
 
-chsh lurst -s /usr/bin/zsh
+## Default shell to zsh
+
+    chsh lurst -s /usr/bin/zsh
+
+## Incase vim fails to execue python
+
+    sudo update-alternatives --config vim
+
+## Update git submodules
+
+    cd ~/dev/Setup
+    git modules init
+    git modules sync
+
 
 
 # Ubuntu stuff
 
-sudo apt-get install \
+sudo apt install \
     zsh redshift vim-gtk tmux vlc git htop exuberant-ctags chromium-browser \
     virtualenvwrapper vlc-plugin-vlsub sensors-applet  xfce4-goodies \
     xfce4-clipman-plugin
