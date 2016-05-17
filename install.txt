@@ -10,28 +10,14 @@ ln -s dev/Setup/.zshrc
 ln -s dev/Setup/.gitconfig
 ln -s dev/Setup/.gitignore_global
 ln -s dev/Setup/.Xdefaults
-ln -s dev/Setup/.bashrc
 rm .bashrc
 ln -s dev/Setup/.bashrc
 ln -s dev/Setup/.xmodmap
 ln -s dev/Setup/.tmux.conf
 
+# Other
 
-# PACMAN STUFF
-
-sudo pacman -S base-devel
-sudo pacman -S community/python-virtualenvwrapper
-sudo pacman -S gvim i3 conky tmux vlc
-sudo pacman -S git htop tree
-sudo pacman -S rxvt-unicode chromium
-sudo pacman -S zsh
-sudo pacman -S dmenu
-sudo pacman -S unclutter
-sudo pacman -S ctags
-sudo pacman -S redshift
-sudo pacman -S feh
-sudo pacman -S scrot
-sudo pacman -S xclip
+chsh lurst -s /usr/bin/zsh
 
 
 # Ubuntu stuff
