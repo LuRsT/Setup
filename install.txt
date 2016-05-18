@@ -40,4 +40,5 @@
 sudo apt install \
     zsh redshift vim-gtk tmux vlc git htop exuberant-ctags chromium-browser \
     virtualenvwrapper vlc-plugin-vlsub sensors-applet  xfce4-goodies \
-    xfce4-clipman-plugin
+    xfce4-clipman-plugin tree
+
