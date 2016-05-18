@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+project_name=${PWD##*/}
+mkvirtualenv $project_name
+
+echo "cd $(pwd)" >> $VIRTUAL_ENV/bin/postactivate
