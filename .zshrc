@@ -39,12 +39,7 @@ wiki() { dig +short txt $1.wp.dg.cx }
 IS_UBUNTU="$(uname -a | grep -c 'Ubuntu')"
 
 export WORKON_HOME=$HOME/.virtualenvs
-if [[ $IS_UBUNTU == 1 ]]; then
-    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-else
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-    source /usr/bin/virtualenvwrapper.sh
-fi
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 xrdb -merge ~/.Xdefaults
 
