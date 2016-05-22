@@ -1,9 +1,0 @@
-#!/bin/bash
-
-# based off of this: http://sirupsen.com/a-simple-imgur-bash-screenshot-utility/
-
-scrot -s "shot.png"
-FILE_URL=$(imgur "shot.png" | head -1)
-echo $FILE_URL | xclip
-notify-send "Done, file uploaded to: $FILE_URL"
-rm "shot.png"

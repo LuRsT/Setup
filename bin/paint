@@ -1,4 +1,0 @@
-#!/bin/bash
-# From: http://www.climagic.org/coolstuff/tron-etch-a-sketch.html
-
-reset;x=$(($COLUMNS/2));y=$(($LINES/2));xdir=0;ydir=-1;on=0;color=44;while true ; do read -srn1 direction ; case "$direction" in A) ydir=-1;xdir=0 ;; B)ydir=1;xdir=0 ;; C) ydir=0;xdir=1 ;; D) ydir=0;xdir=-1 ;; p) on=$(( $on ^ 1 )) ; continue ;; [0-9]) color=4$direction ; continue ;; *) continue ;; esac ; ox=$x; oy=$y ; x=$(( $x + $xdir )) ; y=$(( $y + $ydir )) ; if [[ "$on" -eq "1" ]]; then paintcolor=$color ; else paintcolor=49 ; fi ; printf "\033[%s;%sH\033[47m \033[0m\033[%s;%sH\033[%sm \033[0m\033[0;0H" $y $x $oy $ox $paintcolor ; sleep 0.01 ; done
