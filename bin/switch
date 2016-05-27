@@ -3,16 +3,15 @@
 # This script toggles the extended monitor outputs if something is connected
 #
 
-# Laptop monitor
-DEFAULT_OUTPUT='LVDS1'
+DEFAULT_OUTPUT='eDP1'
 
 # Outputs to toggle if connected
-OUTPUTS='VGA1'
+OUTPUTS='HDMI1'
+OUTPUTS='DP1'
 
-# get info from xrandr
-XRANDR=`xrandr`
+XRANDR=$(xrandr)
 
-EXECUTE=""
+EXECUTE=''
 
 for CURRENT in $OUTPUTS
 do
