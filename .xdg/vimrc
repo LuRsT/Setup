@@ -120,6 +120,7 @@ let g:syntastic_python_checkers = ['flake8']
 " Skeletons
 au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
+au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.html
 
 " Set correct syntax to .tt2 files
 au BufNewFile,BufRead *.tt2 set filetype=tt2html
