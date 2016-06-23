@@ -8,6 +8,7 @@ let s:cpo_save=&cpo
 "<F6> :call ToggleFocusColor()<CR>
 "<F7> :NERDTreeToggle<CR>
 "<F8> :CtrlPBuffer<CR>
+"<F9> :TagbarToggle<CR>
 "<F11> :call ToggleContrast()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""
 
@@ -198,6 +199,9 @@ let NERDTreeDirArrows = 1
 " Search buffer
 let g:ctrlp_map = '<F8>'
 let g:ctrlp_cmd = 'CtrlP'
+
+" Tagbar toggle
+nnoremap <silent> <F9> :TagbarToggle<CR>
 
 " Delete trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
