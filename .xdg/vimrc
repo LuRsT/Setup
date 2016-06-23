@@ -68,6 +68,8 @@ set expandtab
 set shiftround
 set mouse=a
 
+set cm=blowfish2
+
 highlight LineNr ctermfg=Grey
 
 " 80 chars
@@ -80,7 +82,7 @@ set fillchars+=vert:█
 " Python Mode
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_folding = 0
-let g:pymode_lint = 0
+let g:pymode_lint = 1
 
 " Save buffer automatically when changing files
 set autowrite
