@@ -7,7 +7,6 @@ DEFAULT_OUTPUT='eDP1'
 
 # Outputs to toggle if connected
 OUTPUTS='HDMI1'
-OUTPUTS='DP1'
 
 XRANDR=$(xrandr)
 
