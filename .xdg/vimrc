@@ -33,6 +33,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags'
 Plugin 'bling/vim-airline'
 Plugin 'akiomik/git-gutter-vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'taglist.vim'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()            " required
 
