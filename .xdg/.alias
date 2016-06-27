@@ -54,6 +54,7 @@ alias f='find . -iname '
 alias m='make'
 alias ggrep='git grep'
 alias git-new-workdir='/usr/share/doc/git/contrib/workdir/git-new-workdir'
+alias less='less -S'
 
 WORDS_DIR="$HOME/txt/wiki/750/"
 alias iwrite="fsize 18 && vim -u $XDG_CONFIG_HOME/focus.vim $WORDS_DIR$(date +"%d-%m-%y").md"
