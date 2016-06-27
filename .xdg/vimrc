@@ -12,15 +12,32 @@ let s:cpo_save=&cpo
 "<F11> :call ToggleContrast()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-set runtimepath=$XDG_CONFIG_HOME/vim,$XDG_CONFIG_HOME/vim/after,$VIM,$VIMRUNTIME
-
-" 256 Colors
-set t_Co=256
-
-call pathogen#infect()
-call pathogen#helptags()
-
+set t_Co=256 " 256 Colors
 syntax on
+
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+
+""" BEGIN Vundle """
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'L9'
+Plugin 'tpope/vim-fugitive'
+Plugin 'klen/python-mode'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+Plugin 'gabesoft/vim-ags'
+Plugin 'bling/vim-airline'
+Plugin 'akiomik/git-gutter-vim'
+
+call vundle#end()            " required
+
+""" END Vundle """
+
 filetype plugin indent on
 
 let &cpo=s:cpo_save
@@ -99,7 +116,7 @@ let NERDTreeDirArrows = 1
 set laststatus=2
 set ttimeoutlen=1
 
-let g:airline_theme='powerlineish'
+let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#branch#enabled = 1
