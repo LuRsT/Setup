@@ -93,10 +93,6 @@ set cm=blowfish2
 
 highlight LineNr ctermfg=Grey
 
-" 80 chars
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
-
 " Change vertical bars char
 set fillchars+=vert:█
 
@@ -104,6 +100,8 @@ set fillchars+=vert:█
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_folding = 0
 let g:pymode_lint = 1
+let g:pymode_lint_ignore = "W391"
+let g:pymode_options_colorcolumn = 0
 
 " Save buffer automatically when changing files
 set autowrite
@@ -350,9 +348,6 @@ autocmd FileType html   nmap W :Shell firefox %<CR>
 
 " Locate Module
 autocmd FileType perl   map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
-
-" Execute comands and print results in vim
-map C :cexpr system(getline("."))<cr>:cope<cr><cr>
 
 " From https://opensource.conformal.com/wiki/vim
 function! s:ExecuteInShell(command, bang)
