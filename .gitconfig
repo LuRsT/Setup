@@ -17,16 +17,6 @@
     cl = clean -fd
     cp = cherry-pick
 
-    # reset
-    # soft resets
-    r = reset
-    r1 = reset HEAD^
-    r2 = reset HEAD^^
-    ## hard resets
-    rh = reset --hard
-    rh1 = reset HEAD^ --hard
-    rh1 = reset HEAD^^ --hard
-
     # shortcuts for commands
     s = status --short -b
     ss = !hr && git status --short -b
@@ -41,15 +31,16 @@
     f = fetch
     r = reset
     p = pull
+
+    g = grep --break --heading --line-number
+    ups= reset --soft HEAD^
     show-graph = log --graph --abbrev-commit --pretty=oneline
     show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
 
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     curses = "!git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE '(fuck|shit|bitch|damn|piss)'"
-    find = !git --no-pager log --pretty='format:%H %s %N' | grep '$1'
-    g = grep --break --heading --line-number
+    find = "!git --no-pager log --pretty='format:%H %s %N' | grep '$1'"
     plush = "!git pull && git push"
-    ctags = !.git/hooks/ctags
     remove-deleted-files="!git ls-files --deleted -z | xargs -0 git rm"
 [apply]
     whitespace = nowarn
