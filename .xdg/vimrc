@@ -36,6 +36,7 @@ Plugin 'akiomik/git-gutter-vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'taglist.vim'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()            " required
 
@@ -140,20 +141,21 @@ au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.html
 
-" Set correct syntax to .tt2 files
+" Set correct syntax to files
 au BufNewFile,BufRead *.tt2 set filetype=tt2html
-
-" Set correct syntax to .md files
+au BufNewFile,BufRead *.j2 set filetype=html
 au BufNewFile,BufRead *.md set filetype=markdown
+
+" SHORTCUTS
 
 " Open Quickfix Window with 'M'
 map M :cope<CR><CR>
 
+map S :Gstatus<CR>
 
 " Open/Close folds with space button
 nnoremap <space> za
 vnoremap <space> zf
-
 
 " Easy navigation with splits
 nnoremap <C-k> <C-w>k
@@ -164,8 +166,6 @@ nnoremap <C-p> :CtrlP<CR>
 
 " Silver Searcher
 nnoremap <leader>a :Ags
-
-let g:EasyMotion_leader_key = '<leader>'
 
 "Create a window and shows prove
 nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
@@ -210,6 +210,9 @@ function! ToggleFocusColor()
     let g:focuscolour = 1
   endif
 endfunc
+
+let g:focuscolour = 0
+
 
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
@@ -272,9 +275,6 @@ vmap <s-tab> <gv
 " Fold everything
 xmap za set foldmethod=indent
 
-"But not magic outdenting of comments...
-inoremap # X<C-H>#
-
 " Make BS/DEL work as expected
 vmap <BS> x
 
@@ -295,13 +295,13 @@ vnoremap <silent> _x :!tidy -quiet -indent -xml -utf8 -w 120<cr>
 " set copiler to perlcritic; make for current file; open error window
 nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
 
-"==============[ Shortcuts ]=================================
 
-" PYTHON
+" MACROS
+
+" Python
 
 iab pdb import pdb; pdb.set_trace()
 iab pudb import pudb; pu.db
-
 
 " some common typos
 command! QA qa
@@ -315,8 +315,6 @@ command! Vs vs
 command! Set set
 command! E e
 
-
-"====[ After Damian Presentation ]====
 
 " Snipet for adding persistent_undo:
 if has('persistent_undo')
@@ -337,8 +335,6 @@ augroup VisibleNaughtiness
     autocmd BufEnter  *           set nolist
     autocmd BufEnter  *       endif
 augroup END
-
-"====[ END Damian Presentation ]====
 
 " Execute files
 autocmd FileType perl   nmap W :Shell perl %<CR>
@@ -375,8 +371,6 @@ endfunction
 
 command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
 cabbrev shell Shell
-
-let g:focuscolour = 0
 
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
