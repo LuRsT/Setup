@@ -37,6 +37,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'taglist.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'alfredodeza/pytest.vim'
 
 call vundle#end()            " required
 
@@ -95,13 +97,13 @@ set cm=blowfish2
 highlight LineNr ctermfg=Grey
 
 " Change vertical bars char
-set fillchars+=vert:█
+"set fillchars+=vert:█
 
 " Python Mode
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_folding = 0
 let g:pymode_lint = 1
-let g:pymode_lint_ignore = "W391"
+let g:pymode_lint_ignore = "W391,E501"
 let g:pymode_options_colorcolumn = 0
 
 " Save buffer automatically when changing files
@@ -282,7 +284,7 @@ vmap <BS> x
 map tt ysiw'
 map `` ysiw`
 map "" ysiw"
-map TT ebi{'<ESC>ea'}<ESC>
+map TT ebi'<ESC>ea'<ESC>
 
 " Little change to make it return to same line
 nnoremap <silent> _t ml:%!perltidy -q<cr><ESC>'l
