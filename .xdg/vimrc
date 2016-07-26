@@ -178,6 +178,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Display filename in statusbar
+nnoremap <C-x> :set statusline=%f<CR>
+
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
