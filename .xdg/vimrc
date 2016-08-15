@@ -382,3 +382,6 @@ map <ESC>[7~    <Home>
 map <BS>        ^H
 
 autocmd QuickFixCmdPost *grep* cwindow
+
+# Highlight word under cursor
+autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
