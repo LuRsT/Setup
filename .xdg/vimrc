@@ -2,10 +2,7 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 
 """ Function keys INDEX """"""""""""""""""""""
-"<F1> FocusModeToggle
-"<F2> Hide Numbers and NERDTree
 "<F5> Refresh File
-"<F6> :call ToggleFocusColor()<CR>
 "<F7> :NERDTreeToggle<CR>
 "<F8> :CtrlPBuffer<CR>
 "<F9> :TagbarToggle<CR>
@@ -49,7 +46,6 @@ filetype plugin indent on
 let &cpo=s:cpo_save
 unlet s:cpo_save
 
-"set title "Show filename in titlebar of window
 set cpo&vim
 set background=dark
 
@@ -91,8 +87,6 @@ set smartcase
 set expandtab
 set shiftround
 set mouse=a
-
-set cm=blowfish2
 
 highlight LineNr ctermfg=Grey
 
@@ -137,40 +131,27 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 
-
 " Skeletons
 au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
 au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.html
 
 " Set correct syntax to files
-au BufNewFile,BufRead *.tt2 set filetype=tt2html
 au BufNewFile,BufRead *.j2 set filetype=html
 au BufNewFile,BufRead *.md set filetype=markdown
 
 " SHORTCUTS
-
-" Open Quickfix Window with 'M'
-map M :cope<CR><CR>
-
 map S :Gstatus<CR>
 
 " Open/Close folds with space button
 nnoremap <space> za
 vnoremap <space> zf
 
-" Easy navigation with splits
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
 " CtrlP
 nnoremap <C-p> :CtrlP<CR>
 
 " Silver Searcher
 nnoremap <leader>a :Ags
-
-"Create a window and shows prove
-nnoremap <silent> _pr :!prove<cr>:cope<cr><cr>
 
 " Easier Split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -181,43 +162,10 @@ nnoremap <C-H> <C-W><C-H>
 " Display filename in statusbar
 nnoremap <C-x> :set statusline=%f<CR>
 
-" Remove any introduced trailing whitespace after moving...
-let g:DVB_TrimWS = 1
-
-vmap  <expr>  <LEFT>   DVB_Drag('left')
-vmap  <expr>  <RIGHT>  DVB_Drag('right')
-vmap  <expr>  <DOWN>   DVB_Drag('down')
-vmap  <expr>  <UP>     DVB_Drag('up')
-vmap  <expr>  D        DVB_Duplicate()
-
-
 "==============[ F-KEYS ]==================================
-
-" Toggle Focus Mode
-let g:focus_use_default_mapping = 0
-nmap <F1> <Plug>FocusModeToggle
-
-" Change to 'old_style'
-nmap <silent> <F2> :set invnumber<CR>:NERDTreeClose<CR>
 
 "Refresh current file
 nmap <silent> <F5> :e %<CR>
-
-" Change to focus colorscheme
-nmap <silent> <F6> :call ToggleFocusColor()<CR>
-
-function! ToggleFocusColor()
-  if (g:focuscolour)
-    colorscheme zenburn
-    let g:focuscolour = 0
-  else
-    colorscheme focus-dark
-    let g:focuscolour = 1
-  endif
-endfunc
-
-let g:focuscolour = 0
-
 
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
@@ -230,45 +178,6 @@ let g:ctrlp_cmd = 'CtrlP'
 " Tagbar toggle
 nnoremap <silent> <F9> :TagbarToggle<CR>
 
-" Delete trailing whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-"=============[ Filetype stuff ]================================
-
-autocmd FileType perl   nn <silent> _F :g/^\s*sub<CR>
-autocmd FileType python nn <silent> _F :g/^\s*def\ <CR>
-autocmd FileType php    nn <silent> _F :g/^\s*function<CR>
-
-"==============[ Perl Specific ]=================================
-
-autocmd FileType perl setlocal keywordprg=perldoc\ -T\ -f
-autocmd FileType perl set autoindent|set smartindent
-
-" Check perl code with :make
-autocmd FileType perl set makeprg=perl\ -c\ %\ $*
-autocmd FileType perl set errorformat=%f:%l:%m
-
-"==============[ Python Specific ]=================================
-
-let g:python_highlight_all = 1
-let g:python_highlight_space_errors = 1
-
-" Add the virtualenv's site-packages to vim path
-py << EOF
-import os.path
-import sys
-import vim
-if 'VIRTUAL_ENV' in os.environ:
-    project_base_dir = os.environ['VIRTUAL_ENV']
-    sys.path.insert(0, project_base_dir)
-    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
-EOF
-
-"==============[ Markdown Specific ]=================================
-
-au BufRead,BufNewFile *.mkd,*.markdown,*.mdwn   set filetype=mkd
-
 "==================================================================
 
 " Use tab and shift tab to indent region
@@ -276,30 +185,6 @@ nmap <tab> v>
 nmap <s-tab> v<
 vmap <tab> >gv
 vmap <s-tab> <gv
-
-" Fold everything
-xmap za set foldmethod=indent
-
-" Make BS/DEL work as expected
-vmap <BS> x
-
-" Insert ticks around word
-map tt ysiw'
-map `` ysiw`
-map "" ysiw"
-map TT ebi'<ESC>ea'<ESC>
-
-" Little change to make it return to same line
-nnoremap <silent> _t ml:%!perltidy -q<cr><ESC>'l
-vnoremap <silent> _t :!perltidy -q<cr>
-
-"clean up xml
-nnoremap <silent> _x :%!tidy -quiet -indent -xml -utf8 -w 120<cr>
-vnoremap <silent> _x :!tidy -quiet -indent -xml -utf8 -w 120<cr>
-
-" set copiler to perlcritic; make for current file; open error window
-nnoremap <silent> _pc :compiler perlcritic<cr>:make<cr>:cope<cr><cr>
-
 
 " MACROS
 
@@ -315,13 +200,9 @@ command! Q  q
 command! W  w
 command! Wq wq
 command! WQ wq
-command! Tabnew tabnew
 command! Vs vs
-command! Set set
-command! E e
 
 
-" Snipet for adding persistent_undo:
 if has('persistent_undo')
     set undofile
     set undodir=$XDG_CONFIG_HOME/vim/undo_files/
@@ -340,15 +221,6 @@ augroup VisibleNaughtiness
     autocmd BufEnter  *           set nolist
     autocmd BufEnter  *       endif
 augroup END
-
-" Execute files
-autocmd FileType perl   nmap W :Shell perl %<CR>
-autocmd FileType python nmap W :Shell python %<CR>
-autocmd FileType php    nmap W :Shell php %<CR>
-autocmd FileType html   nmap W :Shell firefox %<CR>
-
-" Locate Module
-autocmd FileType perl   map L :cexpr system("locate_mod.pl " . shellescape(expand('<cWORD>')))<cr>:cope<cr><cr>
 
 " From https://opensource.conformal.com/wiki/vim
 function! s:ExecuteInShell(command, bang)
@@ -379,9 +251,10 @@ cabbrev shell Shell
 
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
-map <BS>        ^H
 
-autocmd QuickFixCmdPost *grep* cwindow
-
-# Highlight word under cursor
+" Highlight word under cursor
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
+
+" Delete trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
