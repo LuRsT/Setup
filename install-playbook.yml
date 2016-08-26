@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  sudo: True
+  tasks:
+   - name: Install things
+     apt: pkg={{ item.name }} state=installed update_cache=true
+     with_items:
+        - { name: 'zsh' }
+        - { name: 'redshift' }
+        - { name: 'vim-gtk' }
+        - { name: 'tmux' }
+        - { name: 'vlc' }
+        - { name: 'git' }
+        - { name: 'htop' }
+        - { name: 'exuberant-ctags' }
+        - { name: 'chromium-browser' }
+        - { name: 'virtualenvwrapper' }
+        - { name: 'vlc-plugin-vlsub' }
+        - { name: 'sensors-applet' }
+        - { name: 'xfce4-goodies' }
+        - { name: 'xfce4-clipman-plugin' }
+        - { name: 'tree' }
+   - name: Set zsh as default shell
+     raw: chsh lurst -s /usr/bin/zsh

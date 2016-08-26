@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  vars:
+     username: lurst
+     home_dir: /home/{{ username }}
+     source_dir: /home/{{ username }}/dev/Setup
+  tasks:
+   - name: Link dotfiles
+     file: src={{ source_dir }}/{{ item.name }} dest={{ home_dir }}/{{ item.name }} state=link
+     with_items:
+        - { name: '.nethackrc' }
+        - { name: '.bashrc' }
+        - { name: '.fonts' }
+        - { name: '.gitconfig' }
+        - { name: '.gitignore_global' }
+        - { name: '.icons' }
+        - { name: '.inputrc' }
+        - { name: '.psqlrc' }
+        - { name: '.tmux.conf' }
+        - { name: '.Xdefaults' }
+        - { name: '.xdg' }
+        - { name: '.xmodmap' }
+        - { name: '.zshrc' }
+        - { name: 'bin' }
