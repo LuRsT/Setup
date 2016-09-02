@@ -10,21 +10,6 @@ export HISTSIZE=10000 # Record last 10,000 commands per session
 export TERM=xterm-256color
 export BROWSER="firefox"
 
-export LD_LIBRARY_PATH="/opt/java/jre/lib/i386"
-
-export PATH="$HOME/bin:$PATH"
-export PATH="$PATH:/usr/share/java/apache-ant/bin/ant"
-export PATH="$PATH:/home/lurst/.gem/ruby/1.9.1/bin"
-export PATH="$PATH:/home/lurst/.gem/ruby/2.0.0/bin"
-export PATH="$PATH:/home/lurst/.gem/ruby/2.1.0/bin"
-export PATH="$PATH:/home/lurst/.gem/ruby/2.2.0/bin"
-export PATH="$PATH:/usr/local/heroku/bin"
-
-export _JAVA_AWT_WM_NONREPARENTING=1
-export GREP_COLOR=1
-
-export PERL5LIB="$HOME/perl5/lib/perl5"
-
 # Alias
 alias vim="vim +normal\\'\\\""
 alias v='vim'
@@ -33,10 +18,8 @@ alias nv='nvim'
 alias :q='exit'
 alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'
-alias cnetworkmanager='/home/lurst/bin/cnetworkmanager/cnetworkmanager'
 alias ll='ls -lash'
 alias g='git'
-alias gcheck='git diff | grep "Dumper "'
 alias t='sh ~/bin/todo.sh'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias tmux="TERM=screen-256color-bce tmux"
@@ -46,22 +29,15 @@ alias ducks='du -cms * | sort -rn | head'
 alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
 alias work='workon `pwd | egrep -o "[^//]+$"`'
-alias urxvt='exec ssh-agent urxvt'
 alias webserver='python2 -m SimpleHTTPServer'
 alias c='cheat'
 alias n='numbrs'
 alias f='find . -iname '
 alias m='make'
 alias ggrep='git grep'
-alias git-new-workdir='/usr/share/doc/git/contrib/workdir/git-new-workdir'
 alias less='less -S'
 alias kk='kill %'
 alias update='sudo apt update && sudo apt upgrade'
-
-WORDS_DIR="$HOME/txt/wiki/750/"
-alias iwrite="fsize 18 && vim -u $XDG_CONFIG_HOME/focus.vim $WORDS_DIR$(date +"%d-%m-%y").md"
-alias words="wc $WORDS_DIR* | awk '/md/ {print \$2}' | DISPLAY_NUMBERS=1 GRAPH_SIZE=10 vspark"
-
 alias hr="hr '─'"
 alias k="setxkbmap gb && sh ~/.xmodmap"
 alias shut='sudo halt -p'
