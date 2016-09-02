@@ -21,6 +21,7 @@
     s = status --short -b
     ss = !hr && git status --short -b
     d = diff
+    dr = diff -R
     ds = diff --stat
     dc = diff --cached
     dcs = diff --stat --cached
@@ -65,6 +66,4 @@
     extendRegexp = true
     lineNumber = true
 [gui]
-	diffcontext = 99
-[init]
-    templatedir = ~/.xdg/git_template
+    diffcontext = 99

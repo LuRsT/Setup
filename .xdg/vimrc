@@ -36,6 +36,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 call vundle#end()            " required
 
@@ -94,11 +95,13 @@ highlight LineNr ctermfg=Grey
 "set fillchars+=vert:█
 
 " Python Mode
-let g:pymode_rope_complete_on_dot = 0
 let g:pymode_folding = 0
 let g:pymode_lint = 1
 let g:pymode_lint_ignore = "W391,E501"
 let g:pymode_options_colorcolumn = 0
+
+" Disable rope
+let g:pymode_rope = 0
 
 " Save buffer automatically when changing files
 set autowrite
@@ -258,3 +261,5 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " Delete trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+
+set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
