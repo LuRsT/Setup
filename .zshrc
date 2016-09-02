@@ -34,17 +34,8 @@ if [ -f ${XDG_CONFIG_HOME}/.alias_extra ]; then
     source ${XDG_CONFIG_HOME}/.alias_extra
 fi
 
-wiki() { dig +short txt $1.wp.dg.cx }
-
-IS_UBUNTU="$(uname -a | grep -c 'Ubuntu')"
-
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-
-xrdb -merge ~/.Xdefaults
-
-# for tmux: export 256color
-[ -n "$TMUX" ] && export TERM=screen-256color
 
 man() {
     env \
