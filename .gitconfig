@@ -20,7 +20,7 @@
     # shortcuts for commands
     s = status --short -b
     ss = !hr && git status --short -b
-    d = diff
+    d = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
     dr = diff -R
     ds = diff --stat
     dc = diff --cached
