@@ -2,11 +2,6 @@
 
 My dotfiles and ~/bin
 
-### Requirements
-
-* tidy
-* rsync
-
 #### Perl libs
 
 * Text::ASCIITable
@@ -15,16 +10,6 @@ My dotfiles and ~/bin
 
 ## ~/bin
 
-### soaper
-
-bash script
-
-My CLI soap client, needs some work but works for my use, receives two parameters, a file and a WSDL url
-
-    soaper test.xml http://www.w3schools.com/webservices/tempconvert.asmx?op=FahrenheitToCelsius
-
-Note: soaper dislikes \n inside tags
-
 ### view\_csv
 
 Perl script
@@ -32,14 +17,6 @@ Perl script
 Pretty viewer for CSVs
 
     view_csv test.csv
-
-### locate\_mod.pl
-
-Perl script
-
-Useful to locate modules by mod name.
-
-    locate_mod.pl Data::Dumper
 
 ### barchart
 
