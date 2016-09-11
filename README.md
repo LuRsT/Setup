@@ -2,21 +2,7 @@
 
 My dotfiles and ~/bin
 
-#### Perl libs
-
-* Text::ASCIITable
-* Getopt::Long
-* Text::CSV
-
 ## ~/bin
-
-### view\_csv
-
-Perl script
-
-Pretty viewer for CSVs
-
-    view_csv test.csv
 
 ### barchart
 
