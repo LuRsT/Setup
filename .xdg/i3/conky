@@ -2,4 +2,4 @@
 
 echo "{\"version\":2}"
 echo "[[]"
-conky -c ~/.i3/conkyrc
+conky -c /home/lurst/.xdg/i3/conkyrc

@@ -13,6 +13,7 @@ TEXT
   {"full_text": " ⚙ [$cpubar] "},
   {"full_text": " ≣ [$membar] "},
   {"full_text": " ≈ ${wireless_essid wlan0} [${wireless_link_qual_perc wlan0}%] "},
+  {"full_text": " Up: ${upspeed enx9cebe824461e} Down: ${downspeed enx9cebe824461e} "},
   {"full_text": " ⚡ ${battery_percent BAT1}% "},
   {"full_text": " ${time %a %d %b} ${time %H:%M} "}
 ]

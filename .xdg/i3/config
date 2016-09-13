@@ -16,11 +16,11 @@ font pango:Source\ Code\ Pro\ Regular 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Return exec ssh-agent urxvt
+bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+e exec thunar
 
 # locks screen
-bindsym $mod+Shift+x exec i3lock -c "#111111"
+bindsym $mod+Shift+x exec lock_screen.sh
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -143,7 +143,7 @@ bindsym $mod+r mode "resize"
 bar {
     position          top
     workspace_buttons yes
-    status_command    ~/.i3/conky
+    status_command    /home/lurst/.xdg/i3/conky
     font pango:Source\ Code\ Pro\ Regular 8
 
     colors {
@@ -154,6 +154,6 @@ bar {
     }
 }
 
-exec sh /home/lurst/.autostart.sh
-
 for_window [window_role="pop-up"] floating enable
+
+exec autostart.sh
