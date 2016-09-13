@@ -1,4 +1,0 @@
-#!/bin/sh
-
-echo "Do we have any Dumpers?" >> "$1"
-echo `git diff --cached | grep Dumper` >> "$1"
