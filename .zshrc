@@ -37,6 +37,10 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
+
+# for tmux: export 256color
+[ -n "$TMUX" ] && export TERM=screen-256color
+
 man() {
     env \
         LESS_TERMCAP_md=$'\e[1;36m' \
