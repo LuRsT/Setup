@@ -143,7 +143,7 @@ bindsym $mod+r mode "resize"
 bar {
     position          top
     workspace_buttons yes
-    status_command    /home/lurst/.xdg/i3/conky
+    status_command    /home/lurst/.i3/conky
     font pango:Source\ Code\ Pro\ Regular 8
 
     colors {
