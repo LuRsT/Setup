@@ -6,6 +6,7 @@ client.focused_inactive $gray2 $gray2 #FFFFFF #000000
 client.unfocused        $gray2 $gray2 #FFFFFF #000000
 
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
+for_window [window_role="pop-up"] floating enable
 
 new_window pixel 1
 
@@ -35,9 +36,9 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 # move focused window
@@ -72,12 +73,6 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -109,8 +104,10 @@ assign [class="chromium"] 2
 
 # reload the configuration file
 bindsym $mod+Shift+r restart
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+m restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -154,6 +151,9 @@ bar {
     }
 }
 
-for_window [window_role="pop-up"] floating enable
-
 exec autostart.sh
+
+# Sound control for multimedia keyboards
+bindsym XF86AudioRaiseVolume exec --no-startup-id notify "pactl set-sink-volume 1 +5%"
+bindsym XF86AudioLowerVolume exec --no-startup-id notify "pactl set-sink-volume 1 -5%"
+bindsym XF86AudioMute        exec --no-startup-id notify "pactl set-sink-mute   1 toggle"
