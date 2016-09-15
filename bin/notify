@@ -1,4 +1,4 @@
 #!/bin/bash
 
 eval "$@"
-notify-send "[DONE] Master! ($@)"
+notify-send "Done ($@)"
