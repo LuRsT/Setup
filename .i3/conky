@@ -1,5 +1,0 @@
-#!/bin/sh
-
-echo "{\"version\":2}"
-echo "[[]"
-conky -c /home/lurst/.i3/conkyrc

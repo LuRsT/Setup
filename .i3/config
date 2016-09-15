@@ -105,9 +105,6 @@ assign [class="chromium"] 2
 # reload the configuration file
 bindsym $mod+Shift+r restart
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+m restart
-
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -140,7 +137,7 @@ bindsym $mod+r mode "resize"
 bar {
     position          top
     workspace_buttons yes
-    status_command    /home/lurst/.i3/conky
+    status_command    i3blocks
     font pango:Source\ Code\ Pro\ Regular 8
 
     colors {
