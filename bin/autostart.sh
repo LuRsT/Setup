@@ -9,4 +9,6 @@ feh --bg-scale ~/.xdg/background.jpg &
 # Setup Caps Lock to Ctrl
 setxkbmap gb && sh ~/.xmodmap &
 
-xfce4-xclipman &
+xfce4-clipman &
+
+nm-applet &
