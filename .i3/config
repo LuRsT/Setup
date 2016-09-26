@@ -98,9 +98,9 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 
-# Moving firefox automaticaly to workspace 2
-assign [class="firefox"] 2
-assign [class="chromium"] 2
+# Moving browsers automaticaly to workspace 2
+assign [class="Firefox"] 2
+assign [class="chromium-browser"] 2
 
 # reload the configuration file
 bindsym $mod+Shift+r restart
