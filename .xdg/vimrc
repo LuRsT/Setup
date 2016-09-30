@@ -37,6 +37,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'tpope/vim-dispatch'
 
 call vundle#end()            " required
 
@@ -88,6 +89,7 @@ set smartcase
 set expandtab
 set shiftround
 set mouse=a
+set clipboard=unnamedplus
 
 highlight LineNr ctermfg=Grey
 
