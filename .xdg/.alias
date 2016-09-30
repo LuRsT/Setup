@@ -37,7 +37,6 @@ alias m='make'
 alias ggrep='git grep'
 alias less='less -S'
 alias kk='kill %'
-alias update='sudo apt update && sudo apt upgrade'
 alias hr="hr '─'"
 alias k="setxkbmap gb && sh ~/.xmodmap"
 alias shut='sudo halt -p'
