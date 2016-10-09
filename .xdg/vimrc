@@ -30,7 +30,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'gabesoft/vim-ags'
 Plugin 'bling/vim-airline'
 Plugin 'akiomik/git-gutter-vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'taglist.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'scrooloose/nerdtree'
@@ -154,8 +153,8 @@ map S :Gstatus<CR>
 nnoremap <space> za
 vnoremap <space> zf
 
-" CtrlP
-nnoremap <C-p> :CtrlP<CR>
+" FZFinder
+nnoremap <C-p> :FZF<CR>
 
 " Silver Searcher
 nnoremap <leader>a :Ags
