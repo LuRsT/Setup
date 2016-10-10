@@ -37,7 +37,6 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'tpope/vim-dispatch'
 Plugin 'junegunn/fzf'
-Plugin 'janko-m/vim-test'
 
 call vundle#end()            " required
 
