@@ -4,7 +4,6 @@ let s:cpo_save=&cpo
 """ Function keys INDEX """"""""""""""""""""""
 "<F5> Refresh File
 "<F7> :NERDTreeToggle<CR>
-"<F8> :CtrlPBuffer<CR>
 "<F9> :TagbarToggle<CR>
 "<F11> :call ToggleContrast()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""
@@ -176,10 +175,6 @@ nmap <silent> <F5> :e %<CR>
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
 let NERDTreeDirArrows = 1
-
-" Search buffer
-let g:ctrlp_map = '<F8>'
-let g:ctrlp_cmd = 'CtrlP'
 
 " Tagbar toggle
 nnoremap <silent> <F9> :TagbarToggle<CR>
