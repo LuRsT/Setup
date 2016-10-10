@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-echo `hostname`
+TIME=$(date +"%H:%M")
+HOSTNAME=$(hostname)
+echo $HOSTNAME [$TIME]
