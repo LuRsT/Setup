@@ -24,3 +24,5 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$
 
 export WORKON_HOME="${HOME}/.virtualenvs"
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -13,34 +13,29 @@ syntax on
 
 set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
 
-""" BEGIN Vundle """
-filetype off                  " required
+""" BEGIN Plugins
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=$XDG_CONFIG_HOME/vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'L9'
+Plug 'tpope/vim-fugitive'
+Plug 'klen/python-mode'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'gabesoft/vim-ags'
+Plug 'bling/vim-airline'
+Plug 'akiomik/git-gutter-vim'
+Plug 'taglist.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdtree'
+Plug 'chase/vim-ansible-yaml'
+Plug 'alfredodeza/pytest.vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'tpope/vim-dispatch'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'L9'
-Plugin 'tpope/vim-fugitive'
-Plugin 'klen/python-mode'
-Plugin 'scrooloose/syntastic'
-Plugin 'majutsushi/tagbar'
-Plugin 'gabesoft/vim-ags'
-Plugin 'bling/vim-airline'
-Plugin 'akiomik/git-gutter-vim'
-Plugin 'taglist.vim'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'scrooloose/nerdtree'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'alfredodeza/pytest.vim'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'tpope/vim-dispatch'
-Plugin 'junegunn/fzf'
+call plug#end()
 
-call vundle#end()            " required
-
-""" END Vundle """
 
 filetype plugin indent on
 
@@ -258,5 +253,8 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 " Delete trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-
 set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
+
+
+
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)

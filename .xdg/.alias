@@ -8,13 +8,14 @@ export HISTCONTROL=ignoredups
 export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
 export TERM=xterm-256color
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export BROWSER="firefox"
 
 # Alias
 alias vim="vim +normal\\'\\\""
 alias v='vim'
 alias vi='vim'
-alias nv='nvim'
+alias nv='nvim -u $XDG_CONFIG_HOME/vimrc_neovim'
 alias :q='exit'
 alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'
@@ -41,3 +42,6 @@ alias hr="hr '─'"
 alias k="setxkbmap gb && sh ~/.xmodmap"
 alias shut='sudo halt -p'
 alias ed='ed -p:'
+
+# Ultimate search alias
+alias s='rg'

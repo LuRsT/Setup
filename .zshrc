@@ -16,6 +16,9 @@ antigen-bundle zsh-users/zsh-syntax-highlighting
 # Load the theme.
 antigen-theme gallois
 
+# fzf
+antigen-bundle andrewferrier/fzf-z
+
 # Tell antigen that you're done.
 antigen-apply
 
@@ -51,3 +54,5 @@ man() {
         LESS_TERMCAP_us=$'\e[1;32m' \
         man "$@"
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
