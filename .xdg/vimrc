@@ -40,6 +40,7 @@ Plug 'alfredodeza/pytest.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-dispatch'
 Plug 'mbbill/undotree'
+Plug 'tpope/vim-eunuch'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
