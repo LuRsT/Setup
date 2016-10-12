@@ -23,9 +23,10 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Plugins
 Plug 'L9'
 Plug 'tpope/vim-fugitive'
-Plug 'klen/python-mode'
+Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'scrooloose/syntastic'
 Plug 'majutsushi/tagbar'
 Plug 'gabesoft/vim-ags'
@@ -38,8 +39,12 @@ Plug 'chase/vim-ansible-yaml'
 Plug 'alfredodeza/pytest.vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tpope/vim-dispatch'
+Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
+" Themes
+Plug 'jnurmine/zenburn'
 
 call plug#end()
 

@@ -1,3 +1,0 @@
-[submodule ".xdg/vim/bundle/ag"]
-	path = .xdg/vim/bundle/ag
-	url = https://github.com/vim-scripts/ag.vim
