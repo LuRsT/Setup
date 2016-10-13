@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Cleaning Docker containers..."
+docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker stop
+docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker rm
+
+echo "Cleaning Docker volumes..."
+docker volume rm $(docker volume ls -q)
+
+echo "Cleaning Docker images..."
+docker images | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
