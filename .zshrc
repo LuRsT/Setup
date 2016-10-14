@@ -12,13 +12,18 @@ antigen bundle ssh-agent
 antigen bundle andrewferrier/fzf-z
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-antigen bundle frmendes/geometry
-
-#antigen theme gallois
+antigen bundle lurst/geometry
 
 antigen apply
 
 ## END ANTIGEN
+
+# Options for geometry theme
+export PROMPT_VIRTUALENV_ENABLED=true
+export PROMPT_GEOMETRY_GIT_CONFLICTS=true
+export PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
+export PROMPT_GEOMETRY_COLORIZE_ROOT=true
+
 
 # Change XDG dir
 export XDG_CONFIG_HOME="${HOME}/.xdg"
