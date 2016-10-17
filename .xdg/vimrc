@@ -25,30 +25,30 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 Plug 'L9'
-Plug 'tpope/vim-fugitive'
-Plug 'klen/python-mode', { 'for': 'python' }
-Plug 'scrooloose/syntastic'
-Plug 'majutsushi/tagbar'
-Plug 'gabesoft/vim-ags'
-Plug 'bling/vim-airline'
-Plug 'akiomik/git-gutter-vim'
 Plug 'taglist.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdtree'
-Plug 'chase/vim-ansible-yaml'
-Plug 'alfredodeza/pytest.vim'
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'tpope/vim-dispatch'
-Plug 'mbbill/undotree'
-Plug 'tpope/vim-eunuch'
+Plug 'akiomik/git-gutter-vim'
+Plug 'alfredodeza/pytest.vim'
+Plug 'bling/vim-airline'
+Plug 'chase/vim-ansible-yaml'
+Plug 'gabesoft/vim-ags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'majutsushi/tagbar'
+Plug 'mbbill/undotree'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-tbone'
 
 " Themes
 Plug 'jnurmine/zenburn'
 
 call plug#end()
-
 
 filetype plugin indent on
 
@@ -145,11 +145,6 @@ let g:syntastic_python_checkers = ['flake8']
 
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
-
-" Skeletons
-au bufnewfile *.pl 0r $XDG_CONFIG_HOME/vim/skeletons/template.pl
-au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.pm
-au bufnewfile *.pm 0r $XDG_CONFIG_HOME/vim/skeletons/template.html
 
 " Set correct syntax to files
 au BufNewFile,BufRead *.j2 set filetype=html
