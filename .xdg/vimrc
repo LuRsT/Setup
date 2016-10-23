@@ -26,6 +26,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 Plug 'L9'
 Plug 'taglist.vim'
+
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'akiomik/git-gutter-vim'
 Plug 'alfredodeza/pytest.vim'
@@ -44,6 +45,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-tbone'
+Plug 'tweekmonster/braceless.vim'
 
 " Themes
 Plug 'jnurmine/zenburn'
