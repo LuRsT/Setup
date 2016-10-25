@@ -10,6 +10,9 @@ export HISTSIZE=10000 # Record last 10,000 commands per session
 export TERM=xterm-256color
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export BROWSER="firefox"
+export GOPATH="$HOME/.gospace"
+
+export PATH="${PATH}:$GOPATH/bin"
 
 # Alias
 alias vim="vim +normal\\'\\\""
@@ -44,4 +47,4 @@ alias shut='sudo halt -p'
 alias ed='ed -p:'
 
 # Ultimate search alias
-alias s='rg'
+alias s='ag'
