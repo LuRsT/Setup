@@ -32,6 +32,7 @@ Plug 'akiomik/git-gutter-vim'
 Plug 'alfredodeza/pytest.vim'
 Plug 'bling/vim-airline'
 Plug 'chase/vim-ansible-yaml'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabesoft/vim-ags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -158,9 +159,6 @@ map S :Gstatus<CR>
 " Open/Close folds with space button
 nnoremap <space> za
 vnoremap <space> zf
-
-" FZFinder
-nnoremap <C-p> :FZF<CR>
 
 " Silver Searcher
 nnoremap <leader>a :Ags
