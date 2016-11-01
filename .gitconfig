@@ -57,3 +57,7 @@
     lineNumber = true
 [gui]
     diffcontext = 99
+
+# To do: git clone gh:lurst/hr
+[url "git@github.com:"]
+    insteadOf = gh:
