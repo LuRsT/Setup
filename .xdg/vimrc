@@ -40,6 +40,7 @@ Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'majutsushi/tagbar'
 Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-dispatch'

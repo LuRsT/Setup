@@ -1,7 +1,8 @@
 #!/bin/bash
 
+stop_docker
+
 echo "Cleaning Docker containers..."
-docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker stop
 docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker rm
 
 echo "Cleaning Docker volumes..."
