@@ -107,6 +107,9 @@ highlight LineNr ctermfg=Grey
 " Change vertical bars char
 "set fillchars+=vert:█
 
+" Make it faster to edit python files
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+
 " Python Mode
 let g:pymode_folding = 0
 let g:pymode_lint = 1

@@ -24,7 +24,6 @@ alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'
 alias ll='ls -lash'
 alias g='git'
-alias t='sh ~/bin/todo.sh'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias tmux="TERM=screen-256color-bce tmux"
 alias mocp='mocp -A'
@@ -45,6 +44,7 @@ alias hr="hr '─'"
 alias k="setxkbmap gb && sh ~/.xmodmap"
 alias shut='sudo halt -p'
 alias ed='ed -p:'
+alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 
 # Ultimate search alias
 alias s='ag'

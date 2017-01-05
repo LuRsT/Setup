@@ -1,6 +1,6 @@
 [alias]
     ai = add --interactive
-    c = commit
+    c = commit -v
     cm = commit -m
     cma = commit -a -m
     ca = commit --amend
@@ -27,6 +27,7 @@
     ups = reset --soft HEAD^
     show-graph = log --graph --abbrev-commit --pretty=oneline
     show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
+    show-tags = "log --no-walk --tags --pretty='%h %d %s' --decorate=full"
 
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     curses = "!git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE '(fuck|shit|bitch|damn|piss)'"
