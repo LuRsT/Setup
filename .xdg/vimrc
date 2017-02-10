@@ -153,6 +153,9 @@ let g:syntastic_python_checkers = ['flake8']
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
 
+" Re-tag
+nnoremap T :Start pytags<CR>
+
 " Set correct syntax to files
 au BufNewFile,BufRead *.j2 set filetype=html
 au BufNewFile,BufRead *.md set filetype=markdown
