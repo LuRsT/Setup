@@ -4,7 +4,7 @@
 unclutter -idle 2 &
 
 # Setup background
-feh --bg-center ~/.xdg/background.jpg &
+setup_background &
 
 # Setup Caps Lock to Ctrl
 setxkbmap gb && sh ~/.xmodmap &
@@ -12,3 +12,5 @@ setxkbmap gb && sh ~/.xmodmap &
 xfce4-clipman &
 
 nm-applet &
+
+dropbox start &

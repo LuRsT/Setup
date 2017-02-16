@@ -1,0 +1,3 @@
+#!/bin/bash
+
+feh --bg-center ~/.xdg/background.jpg
