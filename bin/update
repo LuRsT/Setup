@@ -5,3 +5,7 @@ sudo apt -y upgrade
 sudo apt -y autoremove
 sudo apt -y autoclean
 sudo apt -y clean
+
+antigen update
+
+echo "Update plugins in vim pls"

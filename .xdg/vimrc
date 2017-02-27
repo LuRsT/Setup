@@ -24,13 +24,15 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins
+
 Plug 'L9'
 Plug 'taglist.vim'
 
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'akiomik/git-gutter-vim'
 Plug 'alfredodeza/pytest.vim'
-Plug 'bling/vim-airline'
+"Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'chase/vim-ansible-yaml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabesoft/vim-ags'
@@ -38,19 +40,17 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'majutsushi/tagbar'
-Plug 'mbbill/undotree'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-vinegar'
 Plug 'tweekmonster/braceless.vim'
-
-" Themes
-Plug 'jnurmine/zenburn'
 
 call plug#end()
 
@@ -62,7 +62,7 @@ unlet s:cpo_save
 set cpo&vim
 set background=dark
 
-colorscheme zenburn
+colorscheme gil
 
 "BS past autoindents, line boundaries, and even the start of insertion
 set backspace=indent,eol,start
@@ -102,10 +102,11 @@ set shiftround
 set mouse=a
 set clipboard=unnamedplus
 
-highlight LineNr ctermfg=Grey
-
 " Change vertical bars char
 "set fillchars+=vert:█
+
+" Highlight column
+set colorcolumn=81
 
 " Make it faster to edit python files
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
@@ -119,6 +120,16 @@ let g:pymode_options_colorcolumn = 0
 " Disable rope
 let g:pymode_rope = 0
 
+" Configure Ctrlp
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'depends'
+
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ctrlp_use_caching = 0
+endif
+
 " Save buffer automatically when changing files
 set autowrite
 
@@ -129,6 +140,20 @@ set fileformats=unix,mac,dos
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" NERDTree git plugin
+let g:NERDTreeIndicatorMapCustom = {
+\ "Modified"  : "✹",
+\ "Staged"    : "✚",
+\ "Untracked" : "u",
+\ "Renamed"   : "➜",
+\ "Unmerged"  : "═",
+\ "Deleted"   : "✖",
+\ "Dirty"     : "✗",
+\ "Clean"     : "✔︎",
+\ 'Ignored'   : '☒',
+\ "Unknown"   : "?"
+\ }
+
 " Airline
 set laststatus=2
 set ttimeoutlen=1
@@ -138,6 +163,17 @@ let g:airline_powerline_fonts = 1
 
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
+
+" Lighline
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -272,7 +308,5 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 autocmd BufWritePre * :%s/\s\+$//e
 
 set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
-
-
 
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)

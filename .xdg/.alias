@@ -48,3 +48,4 @@ alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 
 # Ultimate search alias
 alias s='ag'
+alias weather="curl wttr.in"
