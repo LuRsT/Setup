@@ -13,7 +13,6 @@ hi Constant        ctermfg=249 ctermbg=NONE
 hi htmlTagName     ctermfg=249 ctermbg=NONE
 hi Identifier      ctermfg=239 ctermbg=NONE
 hi Boolean         ctermfg=243 ctermbg=NONE cterm=NONE
-hi PreProc         ctermfg=243 ctermbg=NONE
 hi Type            ctermfg=249 ctermbg=NONE
 hi Function        ctermfg=255 ctermbg=NONE cterm=bold
 hi Repeat          ctermfg=244 ctermbg=NONE
@@ -41,26 +40,28 @@ hi Error           ctermfg=1   ctermbg=NONE
 hi TODO            ctermfg=10  ctermbg=NONE cterm=italic
 hi Operator        ctermfg=255 ctermbg=NONE
 
+hi PreProc         ctermfg=243 ctermbg=NONE
+
 " False None True
-hi pythonStatement ctermfg=255
+hi pythonStatement   ctermfg=255
 " as assert break continue del exec global
-hi pythonStatement ctermfg=255
+hi pythonStatement   ctermfg=255
 " lambda nonlocal pass print return with yield
-hi pythonStatement ctermfg=255
+hi pythonStatement   ctermfg=255
 " class def nextgroup=pythonFunction skipwhite
-hi pythonStatement ctermfg=255
+hi pythonStatement   ctermfg=255
 " elif else if
 hi pythonConditional ctermfg=255
 " for while
-hi pythonRepeat ctermfg=255
+hi pythonRepeat      ctermfg=255
 " and in is not or
-hi pythonOperator ctermfg=255
+hi pythonOperator    ctermfg=255
 " except finally raise try
-hi pythonException ctermfg=255
+hi pythonException   ctermfg=255
 " from import
-hi pythonInclude ctermfg=255
+hi pythonInclude     ctermfg=255
 " async await
-hi pythonAsync ctermfg=255
+hi pythonAsync       ctermfg=255
 
 
 hi link character       constant
