@@ -424,3 +424,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
 
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+
+" Get name of vim identifier (for changing colors)
+map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>

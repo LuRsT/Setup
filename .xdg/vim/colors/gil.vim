@@ -8,12 +8,10 @@ let g:colors_name = "gil"
 
 " Colors
 " 1     Red
-" 2     Green
-" 4     Blue
-" 6     Light Blue
-" 10    Light Green
+" 10    Green
 "
 " 235   Black
+" 235   Super Dark Grey
 " 240   Dark Dark Grey
 " 245   Dark Grey
 " 250   Grey
@@ -37,20 +35,23 @@ hi Visual          ctermfg=250 ctermbg=235   cterm=italic
 hi SpecialKey      ctermfg=235 ctermbg=NONE  cterm=NONE
 hi MatchParen      ctermfg=250 ctermbg=245   cterm=NONE
 
-hi ColorColumn     ctermfg=NONE ctermbg=240  cterm=NONE
-hi Cursor          ctermfg=1    ctermbg=2    cterm=NONE
+hi ColorColumn     ctermfg=NONE ctermbg=236  cterm=NONE
+hi Cursor          ctermfg=NONE ctermbg=NONE cterm=NONE
 hi CursorLine      ctermfg=NONE ctermbg=235  cterm=NONE
 hi CursorLineNR    ctermfg=250  ctermbg=NONE cterm=NONE
 hi VertSplit       ctermfg=235  ctermbg=235  cterm=NONE
 hi SignColumn      ctermfg=235  ctermbg=235  cterm=NONE
-hi IncSearch       ctermfg=255  ctermbg=235  cterm=NONE
+
+" Search when cursor is on word
+hi IncSearch       ctermfg=245  ctermbg=NONE cterm=NONE
+
 hi Search          ctermfg=250  ctermbg=235  cterm=underline
 hi NERDTreeFile    ctermfg=245  ctermbg=NONE cterm=NONE
 
-hi Comment         ctermfg=10   ctermbg=NONE cterm=bold
-hi Statement       ctermfg=250  ctermbg=NONE cterm=NONE
-hi String          ctermfg=4    ctermbg=NONE cterm=NONE
-hi Number          ctermfg=6    ctermbg=NONE cterm=NONE
+hi Comment         ctermfg=240  ctermbg=NONE cterm=bold
+hi Statement       ctermfg=255  ctermbg=NONE cterm=NONE
+hi String          ctermfg=231  ctermbg=NONE cterm=NONE
+hi Number          ctermfg=255  ctermbg=NONE cterm=NONE
 
 hi Error           ctermfg=1    ctermbg=NONE cterm=NONE
 hi TODO            ctermfg=10   ctermbg=NONE cterm=italic
@@ -59,31 +60,28 @@ hi Operator        ctermfg=255  ctermbg=NONE cterm=NONE
 
 " Autocomplete menu
 hi Pmenu           ctermfg=250 ctermbg=235   cterm=NONE
-hi PmenuSel        ctermfg=235 ctermbg=4   cterm=NONE
+hi PmenuSel        ctermfg=235 ctermbg=250   cterm=NONE
 
 hi PreProc         ctermfg=245 ctermbg=NONE cterm=NONE
 
 " # PYTHON SPECIFIC "
 " False None True
-hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
-" as assert break continue del exec global
-hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
 " lambda nonlocal pass print return with yield
-hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
 " class def nextgroup=pythonFunction skipwhite
-hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
+" as assert break continue del exec global
+hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=bold
 " elif else if
-hi pythonConditional ctermfg=255 ctermbg=NONE cterm=NONE
+hi pythonConditional ctermfg=255 ctermbg=NONE cterm=bold
 " for while
-hi pythonRepeat      ctermfg=255 ctermbg=NONE cterm=NONE
+hi pythonRepeat      ctermfg=255 ctermbg=NONE cterm=bold
 " and in is not or
-hi pythonOperator    ctermfg=255 ctermbg=NONE cterm=NONE
+hi pythonOperator    ctermfg=255 ctermbg=NONE cterm=bold
 " except finally raise try
-hi pythonException   ctermfg=255 ctermbg=NONE cterm=NONE
+hi pythonException   ctermfg=255 ctermbg=NONE cterm=bold
 " from import
-hi pythonInclude     ctermfg=255 ctermbg=NONE cterm=NONE
+hi pythonInclude     ctermfg=255 ctermbg=NONE cterm=bold
 " async await
-hi pythonAsync       ctermfg=255 ctermbg=NONE cterm=NONE
+hi pythonAsync       ctermfg=255 ctermbg=NONE cterm=bold
 
 " # Git Commit specific
 hi diffAdded   ctermfg=10
@@ -121,3 +119,19 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 endfunction
 
 call NERDTreeHighlightFile('py',  'green', 'none', 'green', '#151515')
+
+
+" New ones
+hi Title         ctermfg=255   ctermbg=NONE cterm=bold
+hi WildMenu      ctermfg=255   ctermbg=NONE cterm=NONE
+hi Underlined    ctermfg=255   ctermbg=NONE cterm=underline
+hi Directory     ctermfg=255   ctermbg=NONE cterm=underline
+hi ErrorMsg      ctermfg=1     ctermbg=NONE cterm=underline
+hi mkdCode                                  cterm=italic
+hi mkdSnippetSH                             cterm=italic
+" TODO Add lightline colors
+
+
+" Custom
+syn match equalsign "="
+hi equalsign ctermfg=3  ctermbg=NONE cterm=italic
