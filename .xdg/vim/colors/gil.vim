@@ -5,63 +5,89 @@ if exists("syntax on")
 endif
 let g:colors_name = "gil"
 
+
+" Colors
+" 1     Red
+" 2     Green
+" 4     Blue
+" 6     Light Blue
+" 10    Light Green
+"
+" 235   Black
+" 240   Dark Dark Grey
+" 245   Dark Grey
+" 250   Grey
+" 255   Light Grey
+"""""
+
+
 " Greys
-hi Normal          ctermfg=250 ctermbg=235
-hi NonText         ctermfg=236 ctermbg=NONE
-hi Special         ctermfg=253 ctermbg=NONE
-hi Constant        ctermfg=249 ctermbg=NONE
-hi htmlTagName     ctermfg=249 ctermbg=NONE
-hi Identifier      ctermfg=239 ctermbg=NONE
-hi Boolean         ctermfg=243 ctermbg=NONE cterm=NONE
-hi Type            ctermfg=249 ctermbg=NONE
-hi Function        ctermfg=255 ctermbg=NONE cterm=bold
-hi Repeat          ctermfg=244 ctermbg=NONE
-hi linenr          ctermfg=241 ctermbg=235
-hi CursorLineNR    ctermfg=241 ctermbg=234
-hi Visual          ctermfg=250 ctermbg=237 cterm=italic
-hi SpecialKey      ctermfg=236 ctermbg=NONE
-hi MatchParen      ctermfg=253 ctermbg=242
-hi Pmenu           ctermfg=250 ctermbg=237
-hi PmenuSel        ctermfg=235 ctermbg=111
-hi ColorColumn                 ctermbg=236
-hi CursorLine                  ctermbg=236 cterm=none
-hi VertSplit       ctermfg=235 ctermbg=235
-hi SignColumn      ctermfg=235 ctermbg=235
-hi IncSearch       ctermfg=255 ctermbg=235 cterm=NONE
-hi Search          ctermfg=250 ctermbg=235 cterm=underline
-hi NERDTreeFile    ctermfg=246
+hi Normal          ctermfg=250 ctermbg=235   cterm=NONE
+hi NonText         ctermfg=235 ctermbg=NONE  cterm=NONE
+hi Special         ctermfg=250 ctermbg=NONE  cterm=NONE
+hi Constant        ctermfg=250 ctermbg=NONE  cterm=NONE
+hi htmlTagName     ctermfg=250 ctermbg=NONE  cterm=NONE
+hi Identifier      ctermfg=240 ctermbg=NONE  cterm=NONE
+hi Boolean         ctermfg=245 ctermbg=NONE  cterm=bold
+hi Type            ctermfg=250 ctermbg=NONE  cterm=NONE
+hi Function        ctermfg=255 ctermbg=NONE  cterm=NONE
+hi Repeat          ctermfg=245 ctermbg=NONE  cterm=NONE
+hi linenr          ctermfg=240 ctermbg=235   cterm=NONE
+hi Visual          ctermfg=250 ctermbg=235   cterm=italic
+hi SpecialKey      ctermfg=235 ctermbg=NONE  cterm=NONE
+hi MatchParen      ctermfg=250 ctermbg=245   cterm=NONE
 
-hi Comment         ctermfg=10  ctermbg=NONE cterm=bold
-hi Statement       ctermfg=7   ctermbg=NONE cterm=NONE
-hi String          ctermfg=4   ctermbg=NONE
-hi Number          ctermfg=8   ctermbg=NONE
+hi ColorColumn     ctermfg=NONE ctermbg=240  cterm=NONE
+hi Cursor          ctermfg=1    ctermbg=2    cterm=NONE
+hi CursorLine      ctermfg=NONE ctermbg=235  cterm=NONE
+hi CursorLineNR    ctermfg=250  ctermbg=NONE cterm=NONE
+hi VertSplit       ctermfg=235  ctermbg=235  cterm=NONE
+hi SignColumn      ctermfg=235  ctermbg=235  cterm=NONE
+hi IncSearch       ctermfg=255  ctermbg=235  cterm=NONE
+hi Search          ctermfg=250  ctermbg=235  cterm=underline
+hi NERDTreeFile    ctermfg=245  ctermbg=NONE cterm=NONE
 
-hi Error           ctermfg=1   ctermbg=NONE
-hi TODO            ctermfg=10  ctermbg=NONE cterm=italic
-hi Operator        ctermfg=255 ctermbg=NONE
+hi Comment         ctermfg=10   ctermbg=NONE cterm=bold
+hi Statement       ctermfg=250  ctermbg=NONE cterm=NONE
+hi String          ctermfg=4    ctermbg=NONE cterm=NONE
+hi Number          ctermfg=6    ctermbg=NONE cterm=NONE
 
-hi PreProc         ctermfg=243 ctermbg=NONE
+hi Error           ctermfg=1    ctermbg=NONE cterm=NONE
+hi TODO            ctermfg=10   ctermbg=NONE cterm=italic
+hi Operator        ctermfg=255  ctermbg=NONE cterm=NONE
 
+
+" Autocomplete menu
+hi Pmenu           ctermfg=250 ctermbg=235   cterm=NONE
+hi PmenuSel        ctermfg=235 ctermbg=4   cterm=NONE
+
+hi PreProc         ctermfg=245 ctermbg=NONE cterm=NONE
+
+" # PYTHON SPECIFIC "
 " False None True
-hi pythonStatement   ctermfg=255
+hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
 " as assert break continue del exec global
-hi pythonStatement   ctermfg=255
+hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
 " lambda nonlocal pass print return with yield
-hi pythonStatement   ctermfg=255
+hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
 " class def nextgroup=pythonFunction skipwhite
-hi pythonStatement   ctermfg=255
+hi pythonStatement   ctermfg=255 ctermbg=NONE cterm=NONE
 " elif else if
-hi pythonConditional ctermfg=255
+hi pythonConditional ctermfg=255 ctermbg=NONE cterm=NONE
 " for while
-hi pythonRepeat      ctermfg=255
+hi pythonRepeat      ctermfg=255 ctermbg=NONE cterm=NONE
 " and in is not or
-hi pythonOperator    ctermfg=255
+hi pythonOperator    ctermfg=255 ctermbg=NONE cterm=NONE
 " except finally raise try
-hi pythonException   ctermfg=255
+hi pythonException   ctermfg=255 ctermbg=NONE cterm=NONE
 " from import
-hi pythonInclude     ctermfg=255
+hi pythonInclude     ctermfg=255 ctermbg=NONE cterm=NONE
 " async await
-hi pythonAsync       ctermfg=255
+hi pythonAsync       ctermfg=255 ctermbg=NONE cterm=NONE
+
+" # Git Commit specific
+hi diffAdded   ctermfg=10
+hi diffRemoved ctermfg=1
 
 
 hi link character       constant
