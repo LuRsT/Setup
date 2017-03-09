@@ -28,28 +28,26 @@ call plug#begin('~/.vim/plugged')
 Plug 'L9'
 Plug 'taglist.vim'
 
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'akiomik/git-gutter-vim'
-Plug 'alfredodeza/pytest.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'chase/vim-ansible-yaml'
+Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gabesoft/vim-ags'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'majutsushi/tagbar'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/syntastic'
+Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-vinegar'
-Plug 'tweekmonster/braceless.vim'
+Plug 'tweekmonster/braceless.vim', { 'for': 'python' }
 
 call plug#end()
 
@@ -107,17 +105,8 @@ set clipboard=unnamedplus
 " Highlight column
 set colorcolumn=81
 
-" Make it faster to edit python files
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
-
-" Python Mode
-let g:pymode_folding = 0
-let g:pymode_lint = 1
-let g:pymode_lint_ignore = "W391,E501"
-let g:pymode_options_colorcolumn = 0
-
-" Disable rope
-let g:pymode_rope = 0
+" Braceless
+autocmd FileType python BracelessEnable +indent
 
 " Configure Ctrlp
 let g:ctrlp_working_path_mode = 'ra'
@@ -139,27 +128,11 @@ set fileformats=unix,mac,dos
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" NERDTree git plugin
-let g:NERDTreeIndicatorMapCustom = {
-\ "Modified"  : "✹",
-\ "Staged"    : "✚",
-\ "Untracked" : "u",
-\ "Renamed"   : "➜",
-\ "Unmerged"  : "═",
-\ "Deleted"   : "✖",
-\ "Dirty"     : "✗",
-\ "Clean"     : "✔︎",
-\ 'Ignored'   : '☒',
-\ "Unknown"   : "?"
-\ }
-
-
 " Lighline
 set laststatus=2
 set ttimeoutlen=1
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
       \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
@@ -288,7 +261,6 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -298,7 +270,8 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
