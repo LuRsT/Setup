@@ -54,7 +54,7 @@ hi String          ctermfg=231  ctermbg=NONE cterm=NONE
 hi Number          ctermfg=255  ctermbg=NONE cterm=NONE
 
 hi Error           ctermfg=1    ctermbg=NONE cterm=NONE
-hi TODO            ctermfg=10   ctermbg=NONE cterm=italic
+hi TODO            ctermfg=255  ctermbg=NONE cterm=italic
 hi Operator        ctermfg=255  ctermbg=NONE cterm=NONE
 
 
@@ -64,7 +64,7 @@ hi PmenuSel        ctermfg=235 ctermbg=250   cterm=NONE
 
 hi PreProc         ctermfg=245 ctermbg=NONE cterm=NONE
 
-" # PYTHON SPECIFIC "
+" # Python Specific "
 " False None True
 " lambda nonlocal pass print return with yield
 " class def nextgroup=pythonFunction skipwhite
@@ -84,10 +84,30 @@ hi pythonInclude     ctermfg=255 ctermbg=NONE cterm=bold
 hi pythonAsync       ctermfg=255 ctermbg=NONE cterm=bold
 
 " # Git Commit specific
-hi diffAdded   ctermfg=10
-hi diffRemoved ctermfg=1
+hi diffAdded         ctermfg=10  ctermbg=NONE cterm=bold
+hi diffRemoved       ctermfg=1   ctermbg=NONE cterm=bold
+
+" New ones
+hi Title             ctermfg=255 ctermbg=NONE cterm=bold
+hi WildMenu          ctermfg=255 ctermbg=NONE cterm=NONE
+hi Underlined        ctermfg=255 ctermbg=NONE cterm=underline
+hi Directory         ctermfg=255 ctermbg=NONE cterm=underline
+hi ErrorMsg          ctermfg=1   ctermbg=NONE cterm=underline
+hi mkdCode           ctermfg=255 ctermbg=NONE cterm=italic
+hi mkdSnippetSH      ctermfg=255 ctermbg=NONE cterm=italic
+" TODO Add lightline colors
 
 
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('py',  'green', 'none', 'green', '#151515')
+
+
+" Non-color stuff
 hi link character       constant
 hi link number          constant
 hi link boolean         constant
@@ -110,28 +130,3 @@ hi link Delimiter       Special
 hi link SpecialComment  Special
 hi link Debug           Special
 hi link NERDTreeDir     Special
-
-
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('py',  'green', 'none', 'green', '#151515')
-
-
-" New ones
-hi Title         ctermfg=255   ctermbg=NONE cterm=bold
-hi WildMenu      ctermfg=255   ctermbg=NONE cterm=NONE
-hi Underlined    ctermfg=255   ctermbg=NONE cterm=underline
-hi Directory     ctermfg=255   ctermbg=NONE cterm=underline
-hi ErrorMsg      ctermfg=1     ctermbg=NONE cterm=underline
-hi mkdCode                                  cterm=italic
-hi mkdSnippetSH                             cterm=italic
-" TODO Add lightline colors
-
-
-" Custom
-syn match equalsign "="
-hi equalsign ctermfg=3  ctermbg=NONE cterm=italic
