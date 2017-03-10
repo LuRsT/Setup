@@ -18,7 +18,7 @@ export PATH="${PATH}:$GOPATH/bin"
 alias vim="vim +normal\\'\\\""
 alias v='vim'
 alias vi='vim'
-alias nv='nvim -u $XDG_CONFIG_HOME/vimrc_neovim'
+alias nv='nvim'
 alias :q='exit'
 alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'

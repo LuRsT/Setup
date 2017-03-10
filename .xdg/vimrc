@@ -7,7 +7,6 @@ let s:cpo_save=&cpo
 "<F9> :TagbarToggle<CR>
 "<F11> :call ToggleContrast()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""
-
 set t_Co=256 " 256 Colors
 syntax on
 
@@ -55,7 +54,6 @@ filetype plugin indent on
 let &cpo=s:cpo_save
 unlet s:cpo_save
 
-set cpo&vim
 set background=dark
 
 colorscheme gil
@@ -272,17 +270,20 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
+
+" Set correct syntax to files
+au BufNewFile,BufRead *.j2 set filetype=html
+au BufNewFile,BufRead *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.py let python_highlight_all=1
+
+" SHORTCUTS
+"
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
 
 " Re-tag
 nnoremap T :Start pytags<CR>
 
-" Set correct syntax to files
-au BufNewFile,BufRead *.j2 set filetype=html
-au BufNewFile,BufRead *.md set filetype=markdown
-
-" SHORTCUTS
 map S :Gstatus<CR>
 
 " Open/Close folds with space button
@@ -400,3 +401,4 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 " Get name of vim identifier (for changing colors)
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+

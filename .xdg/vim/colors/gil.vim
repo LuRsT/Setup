@@ -31,7 +31,7 @@ hi Type            ctermfg=250 ctermbg=NONE  cterm=NONE
 hi Function        ctermfg=255 ctermbg=NONE  cterm=NONE
 hi Repeat          ctermfg=245 ctermbg=NONE  cterm=NONE
 hi linenr          ctermfg=240 ctermbg=235   cterm=NONE
-hi Visual          ctermfg=250 ctermbg=235   cterm=italic
+hi Visual          ctermfg=235 ctermbg=250   cterm=NONE
 hi SpecialKey      ctermfg=235 ctermbg=NONE  cterm=NONE
 hi MatchParen      ctermfg=250 ctermbg=245   cterm=NONE
 
@@ -82,6 +82,7 @@ hi pythonException   ctermfg=255 ctermbg=NONE cterm=bold
 hi pythonInclude     ctermfg=255 ctermbg=NONE cterm=bold
 " async await
 hi pythonAsync       ctermfg=255 ctermbg=NONE cterm=bold
+hi pythonAttribute   ctermfg=255 ctermbg=NONE cterm=bold
 
 " # Git Commit specific
 hi diffAdded         ctermfg=10  ctermbg=NONE cterm=bold
@@ -96,7 +97,6 @@ hi ErrorMsg          ctermfg=1   ctermbg=NONE cterm=underline
 hi mkdCode           ctermfg=255 ctermbg=NONE cterm=italic
 hi mkdSnippetSH      ctermfg=255 ctermbg=NONE cterm=italic
 " TODO Add lightline colors
-
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)

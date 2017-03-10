@@ -1,6 +1,4 @@
-Xcursor.theme: redglass
-Xcursor.size:  16
-
+! Remove scrollbar
 URxvt*scrollBar_right: false
 URxvt*scrollBar:       false
 URxvt*borderLess:      false
@@ -9,7 +7,6 @@ URxvt*.transparent: false
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
 URxvt*.shading: 10
 
-!URxvt*font: xft:SouceCodePro:pixelsize=11
 URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=12
 
 ! Scrollback buffer lines - 65535 is max on most machines (64 is default)
@@ -24,7 +21,7 @@ Xft.hintstyle: hintfull
 
 ! tangoesque scheme
 ! from http://wiki.archlinux.org/index.php/Xdefaults
-*background: #111111
+*background: #222222
 *foreground: #babdb6
 *color0:     #000000
 *color8:     #555753
@@ -42,48 +39,6 @@ Xft.hintstyle: hintfull
 *color14:    #46a4ff
 *color7:     #cccccc
 *color15:    #ffffff
-
-
-! Base16 Eighties
-! Scheme: Chris Kempson (http://chriskempson.com)
-
-!#define base00 #2a2a2a
-!#define base01 #393939
-!#define base02 #515151
-!#define base03 #747369
-!#define base04 #a09f93
-!#define base05 #d3d0c8
-!#define base06 #e8e6df
-!#define base07 #f2f0ec
-!#define base08 #f2777a
-!#define base09 #f99157
-!#define base0A #ffcc66
-!#define base0B #99cc99
-!#define base0C #66cccc
-!#define base0D #6699cc
-!#define base0E #cc99cc
-!#define base0F #d27b53
-!
-!*.foreground: base05
-!*.background: base00
-!*.cursorColor: base05
-!*.color0: base03
-!*.color1: base08
-!*.color2: base0B
-!*.color3: base0A
-!*.color4: base0D
-!*.color5: base0E
-!*.color6: base0C
-!*.color7: base05
-!*.color8: base03
-!*.color9: base09
-!*.color10: base03
-!*.color11: base03
-!*.color12: base04
-!*.color13: base06
-!*.color14: base0F
-!*.color15: base07
-
 
 
 ! For some combo keys to work
