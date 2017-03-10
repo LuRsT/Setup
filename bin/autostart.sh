@@ -17,4 +17,6 @@ dropbox start &
 
 redshift -l 51.5073:0.12755 &
 
+xrandr --output eDP-1 --brightness 0.7 &
+
 start-pulseaudio-X11 &
