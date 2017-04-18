@@ -9,6 +9,7 @@ let g:colors_name = "gil"
 " Colors
 " 1     Red
 " 10    Green
+" 214   Yellow
 "
 " 235   Black
 " 235   Super Dark Grey
@@ -20,49 +21,51 @@ let g:colors_name = "gil"
 
 
 " Greys
-hi Normal          ctermfg=250 ctermbg=235   cterm=NONE
-hi NonText         ctermfg=235 ctermbg=NONE  cterm=NONE
-hi Special         ctermfg=250 ctermbg=NONE  cterm=NONE
-hi Constant        ctermfg=250 ctermbg=NONE  cterm=NONE
-hi htmlTagName     ctermfg=250 ctermbg=NONE  cterm=NONE
-hi Identifier      ctermfg=240 ctermbg=NONE  cterm=NONE
-hi Boolean         ctermfg=245 ctermbg=NONE  cterm=bold
-hi Type            ctermfg=250 ctermbg=NONE  cterm=NONE
-hi Function        ctermfg=255 ctermbg=NONE  cterm=NONE
-hi Repeat          ctermfg=245 ctermbg=NONE  cterm=NONE
-hi linenr          ctermfg=240 ctermbg=235   cterm=NONE
-hi Visual          ctermfg=235 ctermbg=250   cterm=NONE
-hi SpecialKey      ctermfg=235 ctermbg=NONE  cterm=NONE
-hi MatchParen      ctermfg=250 ctermbg=245   cterm=NONE
+hi Normal           ctermfg=250 ctermbg=235   cterm=NONE
+hi NonText          ctermfg=235 ctermbg=NONE  cterm=NONE
+hi Special          ctermfg=250 ctermbg=NONE  cterm=NONE
+hi Constant         ctermfg=250 ctermbg=NONE  cterm=NONE
+hi htmlTagName      ctermfg=250 ctermbg=NONE  cterm=NONE
+hi Identifier       ctermfg=240 ctermbg=NONE  cterm=NONE
+hi Boolean          ctermfg=245 ctermbg=NONE  cterm=bold
+hi Type             ctermfg=250 ctermbg=NONE  cterm=NONE
+hi Function         ctermfg=255 ctermbg=NONE  cterm=NONE
+hi Repeat           ctermfg=245 ctermbg=NONE  cterm=NONE
+hi linenr           ctermfg=240 ctermbg=235   cterm=NONE
+hi Visual           ctermfg=235 ctermbg=250   cterm=NONE
+hi SpecialKey       ctermfg=235 ctermbg=NONE  cterm=NONE
+hi MatchParen       ctermfg=250 ctermbg=245   cterm=NONE
 
-hi ColorColumn     ctermfg=NONE ctermbg=236  cterm=NONE
-hi Cursor          ctermfg=NONE ctermbg=NONE cterm=NONE
-hi CursorLine      ctermfg=NONE ctermbg=235  cterm=NONE
-hi CursorLineNR    ctermfg=250  ctermbg=NONE cterm=NONE
-hi VertSplit       ctermfg=235  ctermbg=235  cterm=NONE
-hi SignColumn      ctermfg=235  ctermbg=235  cterm=NONE
+hi ColorColumn      ctermfg=NONE ctermbg=236  cterm=NONE
+hi Cursor           ctermfg=NONE ctermbg=NONE cterm=NONE
+hi CursorLine       ctermfg=NONE ctermbg=235  cterm=NONE
+hi CursorLineNR     ctermfg=250  ctermbg=NONE cterm=NONE
+hi VertSplit        ctermfg=235  ctermbg=235  cterm=NONE
+hi SignColumn       ctermfg=235  ctermbg=235  cterm=NONE
 
 " Search when cursor is on word
-hi IncSearch       ctermfg=245  ctermbg=NONE cterm=NONE
+hi IncSearch        ctermfg=NONE ctermbg=NONE cterm=bold
 
-hi Search          ctermfg=250  ctermbg=235  cterm=underline
-hi NERDTreeFile    ctermfg=245  ctermbg=NONE cterm=NONE
+hi Search           ctermfg=214  ctermbg=NONE cterm=NONE
 
-hi Comment         ctermfg=240  ctermbg=NONE cterm=bold
-hi Statement       ctermfg=255  ctermbg=NONE cterm=NONE
-hi String          ctermfg=231  ctermbg=NONE cterm=NONE
-hi Number          ctermfg=255  ctermbg=NONE cterm=NONE
+hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
+hi NERDTreeExecFile ctermfg=245  ctermbg=NONE cterm=NONE
 
-hi Error           ctermfg=1    ctermbg=NONE cterm=NONE
-hi TODO            ctermfg=255  ctermbg=NONE cterm=italic
-hi Operator        ctermfg=255  ctermbg=NONE cterm=NONE
+hi Comment          ctermfg=240  ctermbg=NONE cterm=bold
+hi Statement        ctermfg=255  ctermbg=NONE cterm=NONE
+hi String           ctermfg=231  ctermbg=NONE cterm=NONE
+hi Number           ctermfg=255  ctermbg=NONE cterm=NONE
 
+hi TODO             ctermfg=255  ctermbg=NONE cterm=italic
+hi Operator         ctermfg=255  ctermbg=NONE cterm=NONE
+
+hi Error            ctermfg=1    ctermbg=NONE cterm=NONE
 
 " Autocomplete menu
-hi Pmenu           ctermfg=250 ctermbg=235   cterm=NONE
-hi PmenuSel        ctermfg=235 ctermbg=250   cterm=NONE
+hi Pmenu            ctermfg=250 ctermbg=235   cterm=NONE
+hi PmenuSel         ctermfg=235 ctermbg=250   cterm=NONE
 
-hi PreProc         ctermfg=245 ctermbg=NONE cterm=NONE
+hi PreProc          ctermfg=245 ctermbg=NONE cterm=NONE
 
 " # Python Specific "
 " False None True
@@ -82,7 +85,11 @@ hi pythonException   ctermfg=255 ctermbg=NONE cterm=bold
 hi pythonInclude     ctermfg=255 ctermbg=NONE cterm=bold
 " async await
 hi pythonAsync       ctermfg=255 ctermbg=NONE cterm=bold
-hi pythonAttribute   ctermfg=255 ctermbg=NONE cterm=bold
+" \
+hi pythonEscape      ctermfg=255 ctermbg=NONE cterm=bold
+" bool str
+hi pythonBuiltin     ctermfg=255 ctermbg=NONE cterm=bold
+hi pythonFunction    ctermfg=255 ctermbg=NONE cterm=bold
 
 " # Git Commit specific
 hi diffAdded         ctermfg=10  ctermbg=NONE cterm=bold
@@ -99,12 +106,12 @@ hi mkdSnippetSH      ctermfg=255 ctermbg=NONE cterm=italic
 " TODO Add lightline colors
 
 " NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+function! NERDTreeHighlightFile(extension, fg, bg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('py',  'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('py',  10, 'none')
 
 
 " Non-color stuff
