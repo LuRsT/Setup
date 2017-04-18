@@ -5,7 +5,6 @@ let s:cpo_save=&cpo
 "<F5> Refresh File
 "<F7> :NERDTreeToggle<CR>
 "<F9> :TagbarToggle<CR>
-"<F11> :call ToggleContrast()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256 " 256 Colors
 syntax on
@@ -45,7 +44,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-vinegar'
-Plug 'tweekmonster/braceless.vim', { 'for': 'python' }
 
 call plug#end()
 
@@ -101,9 +99,6 @@ set clipboard=unnamedplus
 
 " Highlight column
 set colorcolumn=81
-
-" Braceless
-autocmd FileType python BracelessEnable +indent
 
 " Configure Ctrlp
 let g:ctrlp_working_path_mode = 'ra'
