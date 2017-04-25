@@ -46,7 +46,8 @@ hi SignColumn       ctermfg=235  ctermbg=235  cterm=NONE
 " Search when cursor is on word
 hi IncSearch        ctermfg=NONE ctermbg=NONE cterm=bold
 
-hi Search           ctermfg=214  ctermbg=NONE cterm=NONE
+hi Search           ctermfg=10   ctermbg=NONE cterm=NONE
+hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
 
 hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
 hi NERDTreeExecFile ctermfg=245  ctermbg=NONE cterm=NONE
