@@ -52,9 +52,9 @@ hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
 hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
 hi NERDTreeExecFile ctermfg=245  ctermbg=NONE cterm=NONE
 
-hi Comment          ctermfg=240  ctermbg=NONE cterm=bold
+hi Comment          ctermfg=240  ctermbg=NONE cterm=italic
 hi Statement        ctermfg=255  ctermbg=NONE cterm=NONE
-hi String           ctermfg=231  ctermbg=NONE cterm=NONE
+hi String           ctermfg=231  ctermbg=NONE cterm=italic
 hi Number           ctermfg=255  ctermbg=NONE cterm=NONE
 
 hi TODO             ctermfg=255  ctermbg=NONE cterm=italic
@@ -65,6 +65,8 @@ hi Error            ctermfg=1    ctermbg=NONE cterm=NONE
 " Autocomplete menu
 hi Pmenu            ctermfg=250 ctermbg=235   cterm=NONE
 hi PmenuSel         ctermfg=235 ctermbg=250   cterm=NONE
+
+
 
 hi PreProc          ctermfg=245 ctermbg=NONE cterm=NONE
 
@@ -138,3 +140,15 @@ hi link Delimiter       Special
 hi link SpecialComment  Special
 hi link Debug           Special
 hi link NERDTreeDir     Special
+
+
+" Ctrl-p specific
+hi CtrlPPrtText     ctermfg=10 ctermbg=NONE cterm=NONE
+hi CtrlPMatch       ctermfg=10  ctermbg=NONE cterm=NONE
+
+" Input box
+hi CtrlPPrtBase ctermfg=2 ctermbg=NONE cterm=italic
+
+
+hi CtrlPLinePre     ctermfg=2 ctermbg=NONE cterm=italic
+hi CtrlPPrtCursor   ctermfg=2  ctermbg=NONE cterm=italic
