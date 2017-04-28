@@ -16,8 +16,8 @@ export PATH="${PATH}:$GOPATH/bin"
 
 # Alias
 alias vim="vim +normal\\'\\\""
-alias v='vim'
-alias vi='vim'
+alias v='nvim'
+alias vi='nvim'
 alias nv='nvim'
 alias :q='exit'
 alias ls='ls --color=auto'
