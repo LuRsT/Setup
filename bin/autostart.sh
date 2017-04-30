@@ -13,10 +13,10 @@ xfce4-clipman &
 
 nm-applet &
 
-dropbox start &
+xrandr --output eDP-1 --brightness 0.7 &
 
 redshift -l 51.5073:0.12755 &
 
-xrandr --output eDP-1 --brightness 0.7 &
-
 start-pulseaudio-X11 &
+
+dropbox start &
