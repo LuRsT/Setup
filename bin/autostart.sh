@@ -16,3 +16,5 @@ nm-applet &
 dropbox start &
 
 redshift -l 51.5073:0.12755 &
+
+start-pulseaudio-X11 &
