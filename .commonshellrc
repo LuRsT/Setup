@@ -1,4 +1,5 @@
 # Change XDG dir
+# This should be in /etc/profile!!!
 export XDG_CONFIG_HOME="${HOME}/.xdg"
 
 # Source alias

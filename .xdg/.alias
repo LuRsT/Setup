@@ -2,7 +2,7 @@
 export MYVIMRC="$XDG_CONFIG_HOME/vimrc"
 export VIMINIT='source $MYVIMRC'
 
-export EDITOR=vim
+export EDITOR=nvim
 export PYTHONDONTWRITEBYTECODE=1
 export HISTCONTROL=ignoredups
 export HISTFILESIZE=10000 # Record last 10,000 commands
