@@ -397,3 +397,9 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " Get name of vim identifier (for changing colors)
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+
+" This is for changing split inside a :terminal in neovim
+tnoremap <C-h> <c-\><c-n><c-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
