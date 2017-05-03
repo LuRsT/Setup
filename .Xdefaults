@@ -3,11 +3,11 @@ URxvt*scrollBar_right: false
 URxvt*scrollBar:       false
 URxvt*borderLess:      false
 
-URxvt*.transparent: false
+URxvt*.transparent: true
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-URxvt*.shading: 10
+URxvt*.shading: 30
 
-URxvt*font: xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=12
+URxvt*font: xft:OperatorMono Nerd Font::size=11
 
 ! Scrollback buffer lines - 65535 is max on most machines (64 is default)
 URxvt*saveLines: 12000
@@ -21,7 +21,7 @@ Xft.hintstyle: hintfull
 
 ! tangoesque scheme
 ! from http://wiki.archlinux.org/index.php/Xdefaults
-*background: #222222
+*background: #999999
 *foreground: #babdb6
 *color0:     #000000
 *color8:     #555753
@@ -69,3 +69,5 @@ URxvt*keysym.End:  \033[4~
 *URxvt*keysym.F3:  \033OR
 *URxvt*keysym.F4:  \033OS
 *URxvt*keysym.F5:  \033OS
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
