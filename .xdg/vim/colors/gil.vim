@@ -104,8 +104,6 @@ hi WildMenu          ctermfg=255 ctermbg=NONE cterm=NONE
 hi Underlined        ctermfg=255 ctermbg=NONE cterm=underline
 hi Directory         ctermfg=255 ctermbg=NONE cterm=underline
 hi ErrorMsg          ctermfg=1   ctermbg=NONE cterm=underline
-hi mkdCode           ctermfg=255 ctermbg=NONE cterm=italic
-hi mkdSnippetSH      ctermfg=255 ctermbg=NONE cterm=italic
 " TODO Add lightline colors
 
 " NERDTress File highlighting
@@ -116,6 +114,18 @@ endfunction
 
 call NERDTreeHighlightFile('py',  10, 'none')
 
+
+" Ctrl-p specific
+hi CtrlPPrtText      ctermfg=10  ctermbg=NONE cterm=NONE
+hi CtrlPMatch        ctermfg=10  ctermbg=NONE cterm=NONE
+hi CtrlPPrtBase      ctermfg=2   ctermbg=NONE cterm=italic
+hi CtrlPLinePre      ctermfg=5 ctermbg=245 cterm=NONE
+hi CtrlPPrtCursor    ctermfg=5 ctermbg=NONE cterm=NONE
+
+" Markdown specific
+hi mkdItalic         ctermfg=255 ctermbg=NONE cterm=italic
+hi mkdCode           ctermfg=255 ctermbg=NONE cterm=NONE
+hi mkdSnippetSH      ctermfg=255 ctermbg=NONE cterm=italic
 
 " Non-color stuff
 hi link character       constant
@@ -140,15 +150,3 @@ hi link Delimiter       Special
 hi link SpecialComment  Special
 hi link Debug           Special
 hi link NERDTreeDir     Special
-
-
-" Ctrl-p specific
-hi CtrlPPrtText     ctermfg=10 ctermbg=NONE cterm=NONE
-hi CtrlPMatch       ctermfg=10  ctermbg=NONE cterm=NONE
-
-" Input box
-hi CtrlPPrtBase ctermfg=2 ctermbg=NONE cterm=italic
-
-
-hi CtrlPLinePre     ctermfg=2 ctermbg=NONE cterm=italic
-hi CtrlPPrtCursor   ctermfg=2  ctermbg=NONE cterm=italic
