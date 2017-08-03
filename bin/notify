@@ -2,3 +2,5 @@
 
 eval "$@"
 notify-send "Done ($@)"
+
+espeak "Done ($@)"
