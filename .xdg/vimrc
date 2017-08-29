@@ -38,6 +38,7 @@ Plug 'majutsushi/tagbar'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
