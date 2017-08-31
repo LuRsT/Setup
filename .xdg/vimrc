@@ -23,9 +23,6 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 
-Plug 'L9'
-Plug 'taglist.vim'
-
 Plug 'akiomik/git-gutter-vim'
 Plug 'benekastah/neomake'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
@@ -45,6 +42,8 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-vinegar'
+Plug 'vim-scripts/L9'
+Plug 'vim-scripts/taglist.vim'
 
 call plug#end()
 
