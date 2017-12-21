@@ -33,11 +33,11 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'w0rp/ale'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
@@ -46,6 +46,7 @@ Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/taglist.vim'
+Plug 'w0rp/ale'
 
 call plug#end()
 

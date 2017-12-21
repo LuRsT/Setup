@@ -19,6 +19,9 @@ let g:colors_name = "gil"
 " 255   Light Grey
 """""
 
+function! MyFunction(someArg)
+    execute "hi Normal ctermfg=". ." ctermbg=" . . "cterm=" .
+endfunction
 
 " Greys
 hi Normal           ctermfg=250 ctermbg=235   cterm=NONE
