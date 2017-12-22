@@ -23,10 +23,11 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 
-Plug 'akiomik/git-gutter-vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'gabesoft/vim-ags'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
@@ -47,6 +48,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
+Plug 'wincent/terminus'
 
 call plug#end()
 
@@ -97,8 +99,8 @@ set shiftround
 set mouse=a
 set clipboard=unnamedplus
 
-" Change vertical bars char
-"set fillchars+=vert:█
+" Makes joins better (J)
+set formatoptions+=j
 
 " Highlight column
 set colorcolumn=81
@@ -278,6 +280,11 @@ nnoremap <C-H> <C-W><C-H>
 " Display filename in statusbar
 nnoremap <C-x> :set statusline=%f<CR>
 
+" Git Stuff
+nnoremap <c-N> :GitGutterNextHunk<CR>
+nnoremap <c-M> :GitGutterPrevHunk<CR>
+nnoremap <c-U> :GitGutterUndoHunk<CR>
+
 "==============[ F-KEYS ]==================================
 
 "Refresh current file
@@ -297,6 +304,19 @@ nmap <tab> v>
 nmap <s-tab> v<
 vmap <tab> >gv
 vmap <s-tab> <gv
+
+
+" Better file-navigation with Enter and Backspace
+nnoremap <BS> {
+onoremap <BS> {
+vnoremap <BS> {
+
+nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
+onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
+vnoremap <CR> }
+
+" Use F to move to places easily
+nmap F <Plug>(easymotion-prefix)s
 
 " MACROS
 
