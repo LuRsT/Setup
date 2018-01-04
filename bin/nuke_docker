@@ -16,4 +16,4 @@ docker volume rm $(docker volume ls -q)
 
 hr '-'
 echo "Cleaning Docker images..."
-docker images | grep '<none>' | awk '{print $3}' | xargs --no-run-if-empty docker rmi
+docker rmi $(docker images -q)
