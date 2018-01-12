@@ -22,6 +22,7 @@
 
     ss = !hr && git status --short -b
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
+    wat = blame
 
     g = grep --break --heading --line-number
     ups = reset --soft HEAD^
