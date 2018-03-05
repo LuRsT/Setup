@@ -3,3 +3,4 @@
 *.so
 *.pyc
 bin/*
+.fonts/
