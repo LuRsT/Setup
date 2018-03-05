@@ -30,6 +30,6 @@ if (( $+commands[tag] )); then
     alias ag=tag
 fi
 
-mkdviewer () {
+mdviewer () {
     pandoc $* | lynx -stdin
 }

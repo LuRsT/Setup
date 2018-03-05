@@ -19,6 +19,7 @@
     f = fetch
     r = reset
     p = pull
+    wat = blame
 
     ss = !hr && git status --short -b
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
@@ -63,3 +64,5 @@
 # To do: git clone gh:lurst/hr
 [url "git@github.com:"]
     insteadOf = gh:
+[cola]
+	spellcheck = false

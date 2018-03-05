@@ -385,6 +385,12 @@ cabbrev shell Shell
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
 
+" Alt Shortcuts
+map <A-t> :Tags<CR>
+map <A-f> :Files<CR>
+map <A-a> :Ag<CR>
+map <A-h> :History<CR>
+
 " Highlight word under cursor
 autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
 

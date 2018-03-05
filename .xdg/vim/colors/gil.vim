@@ -8,7 +8,8 @@ let g:colors_name = "gil"
 
 " Colors
 " 1     Red
-" 10    Green
+" 2     Green
+" 4     Blue
 " 214   Yellow
 "
 " 235   Black
@@ -17,6 +18,7 @@ let g:colors_name = "gil"
 " 245   Dark Grey
 " 250   Grey
 " 255   Light Grey
+" 260   White
 """""
 
 function! MyFunction(someArg)
@@ -24,20 +26,20 @@ function! MyFunction(someArg)
 endfunction
 
 " Greys
-hi Normal           ctermfg=250 ctermbg=235   cterm=NONE
-hi NonText          ctermfg=235 ctermbg=NONE  cterm=NONE
-hi Special          ctermfg=250 ctermbg=NONE  cterm=NONE
-hi Constant         ctermfg=250 ctermbg=NONE  cterm=NONE
-hi htmlTagName      ctermfg=250 ctermbg=NONE  cterm=NONE
-hi Identifier       ctermfg=240 ctermbg=NONE  cterm=NONE
-hi Boolean          ctermfg=245 ctermbg=NONE  cterm=bold
-hi Type             ctermfg=250 ctermbg=NONE  cterm=NONE
-hi Function         ctermfg=255 ctermbg=NONE  cterm=NONE
-hi Repeat           ctermfg=245 ctermbg=NONE  cterm=NONE
-hi linenr           ctermfg=240 ctermbg=235   cterm=NONE
-hi Visual           ctermfg=235 ctermbg=250   cterm=NONE
-hi SpecialKey       ctermfg=235 ctermbg=NONE  cterm=NONE
-hi MatchParen       ctermfg=250 ctermbg=245   cterm=NONE
+hi Normal           ctermfg=250  ctermbg=235   cterm=NONE
+hi NonText          ctermfg=235  ctermbg=NONE  cterm=NONE
+hi Special          ctermfg=250  ctermbg=NONE  cterm=NONE
+hi Constant         ctermfg=250  ctermbg=NONE  cterm=NONE
+hi htmlTagName      ctermfg=250  ctermbg=NONE  cterm=NONE
+hi Identifier       ctermfg=240  ctermbg=NONE  cterm=NONE
+hi Boolean          ctermfg=245  ctermbg=NONE  cterm=bold
+hi Type             ctermfg=250  ctermbg=NONE  cterm=NONE
+hi Function         ctermfg=255  ctermbg=NONE  cterm=NONE
+hi Repeat           ctermfg=245  ctermbg=NONE  cterm=NONE
+hi linenr           ctermfg=240  ctermbg=235   cterm=NONE
+hi Visual           ctermfg=235  ctermbg=250   cterm=NONE
+hi SpecialKey       ctermfg=235  ctermbg=NONE  cterm=NONE
+hi MatchParen       ctermfg=250  ctermbg=245   cterm=NONE
 
 hi ColorColumn      ctermfg=NONE ctermbg=236  cterm=NONE
 hi Cursor           ctermfg=NONE ctermbg=NONE cterm=NONE
@@ -47,9 +49,9 @@ hi VertSplit        ctermfg=235  ctermbg=235  cterm=NONE
 hi SignColumn       ctermfg=235  ctermbg=235  cterm=NONE
 
 " Search when cursor is on word
-hi IncSearch        ctermfg=NONE ctermbg=NONE cterm=bold
+hi IncSearch        ctermfg=250 ctermbg=NONE cterm=NONE
 
-hi Search           ctermfg=10   ctermbg=NONE cterm=NONE
+hi Search           ctermfg=2    ctermbg=NONE cterm=NONE
 hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
 
 hi NERDTreeFile     ctermfg=245  ctermbg=NONE cterm=NONE
@@ -98,7 +100,7 @@ hi pythonBuiltin     ctermfg=255 ctermbg=NONE cterm=bold
 hi pythonFunction    ctermfg=255 ctermbg=NONE cterm=bold
 
 " # Git Commit specific
-hi diffAdded         ctermfg=10  ctermbg=NONE cterm=bold
+hi diffAdded         ctermfg=2   ctermbg=NONE cterm=bold
 hi diffRemoved       ctermfg=1   ctermbg=NONE cterm=bold
 
 " New ones
@@ -115,12 +117,12 @@ function! NERDTreeHighlightFile(extension, fg, bg)
     exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('py',  10, 'none')
+call NERDTreeHighlightFile('py',  2, 'none')
 
 
 " Ctrl-p specific
-hi CtrlPPrtText      ctermfg=10  ctermbg=NONE cterm=NONE
-hi CtrlPMatch        ctermfg=10  ctermbg=NONE cterm=NONE
+hi CtrlPPrtText      ctermfg=2  ctermbg=NONE cterm=NONE
+hi CtrlPMatch        ctermfg=2  ctermbg=NONE cterm=NONE
 hi CtrlPPrtBase      ctermfg=2   ctermbg=NONE cterm=italic
 hi CtrlPLinePre      ctermfg=5 ctermbg=245 cterm=NONE
 hi CtrlPPrtCursor    ctermfg=5 ctermbg=NONE cterm=NONE
