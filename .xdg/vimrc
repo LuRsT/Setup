@@ -24,6 +24,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 
 Plug 'airblade/vim-gitgutter'
+Plug 'lurst/austere.vim'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -51,6 +52,8 @@ Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 
+let b:ale_linters = ['flake8', 'pylint']
+
 call plug#end()
 
 filetype plugin indent on
@@ -60,7 +63,7 @@ unlet s:cpo_save
 
 set background=dark
 
-colorscheme gil
+colorscheme austere
 
 "BS past autoindents, line boundaries, and even the start of insertion
 set backspace=indent,eol,start
