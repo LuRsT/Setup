@@ -22,7 +22,10 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins
-
+"
+Plug 'kablamo/vim-git-log'
+Plug 'tpope/vim-surround'
+Plug 'junegunn/goyo.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'lurst/austere.vim'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
@@ -40,6 +43,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'shougo/deoplete.nvim'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
@@ -47,7 +51,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/L9'
-Plug 'vim-scripts/SearchComplete'
 Plug 'vim-scripts/taglist.vim'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
@@ -89,8 +92,6 @@ set gdefault
 set nobackup
 set directory=.
 set noswapfile
-set foldlevel=99
-set foldmethod=indent
 
 set nocompatible
 set autoindent
@@ -107,7 +108,10 @@ set clipboard=unnamedplus
 set formatoptions+=j
 
 " Highlight column
-set colorcolumn=81
+"set colorcolumn=81
+
+" Folds
+set foldmethod=manual
 
 " Configure Ctrlp
 let g:ctrlp_working_path_mode = 'ra'
@@ -253,12 +257,28 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
+
 " Set correct syntax to files
 au BufNewFile,BufRead *.j2 set filetype=html
 au BufNewFile,BufRead *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.py let python_highlight_all=1
 
-" SHORTCUTS
+
+" Plugin Config
+
+" Vim-Markdown
+let g:vim_markdown_folding_disabled = 1
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+
+
+" Ale
+let g:ale_linters = {
+\   'python': ['flake8'],
+\}
+let g:ale_sign_error = '>'
+let g:ale_sign_warning = '-'
 "
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
@@ -417,3 +437,6 @@ if has("nvim")
   tnoremap <C-k> <C-\><C-N><C-w>k
   tnoremap <C-l> <C-\><C-N><C-w>l
 endif
+
+" Since the key to start a macro is q, you can quickly tap qq to record a macro to the q register (end it by pressing q again.) Then by whacking the space bar you can execute the q macro as many times as you'd like.
+noremap <Space> @q

@@ -7,6 +7,8 @@ client.unfocused        $gray2 $gray2 #FFFFFF #000000
 
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 for_window [window_role="pop-up"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="pavucontrol"] floating enable
 
 new_window pixel 1
 
@@ -17,7 +19,7 @@ font pango:Source\ Code\ Pro\ Regular 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Return exec st
+bindsym $mod+Return exec /usr/local/bin/st
 bindsym $mod+e exec thunar
 
 # locks screen
