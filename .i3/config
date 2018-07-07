@@ -10,20 +10,24 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="pavucontrol"] floating enable
 
+
+# Background for sway
+output "*" background /home/lurst/.xdg/background.jpg fill
+
 new_window pixel 1
 
 set $mod Mod4
 
-font pango:Source\ Code\ Pro\ Regular 8
+font pango:Monospace 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Return exec /usr/local/bin/st
-bindsym $mod+e exec thunar
+bindsym $mod+Return exec st
+bindsym $mod+e exec pcmanfm
 
 # locks screen
-bindsym $mod+Shift+x exec lock_screen.sh
+bindsym $mod+Shift+x exec /home/lurst/bin/lock_screen.sh
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -141,8 +145,8 @@ bindsym $mod+r mode "resize"
 bar {
     position          top
     workspace_buttons yes
-    status_command    i3status -c ~/.i3/status
-    font pango:Source\ Code\ Pro\ Regular 8
+    status_command    /home/lurst/bin/status
+    font pango:Monospace 9
 
     colors {
         statusline #AAAAAA

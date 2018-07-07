@@ -1,9 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ -a /tmp/screenshotblur.png ]; then
-    i3lock -i /tmp/screenshotblur.png
-else
-    scrot /tmp/screen_locked.png
-    convert /tmp/screen_locked.png -blur 0x5 /tmp/screenshotblur.png
-    i3lock -i /tmp/screenshotblur.png
+# handle being called from systemd service
+if [ -z "$XDG_RUNTIME_DIR" ] && [ -z "$SWAYSOCK"]; then
+	uid=$(id -u $USER)
+	export XDG_RUNTIME_DIR="/run/user/"$uid"/"
+	export SWAYSOCK=$(find $XDG_RUNTIME_DIR -iname sway*sock)
 fi
+
+swaygrab /home/$USER/lockscreen.png
+convert -blur 0x6 /home/$USER/lockscreen.png /home/$USER/lockscreen.png
+
+swaylock -i /home/$USER/lockscreen.png

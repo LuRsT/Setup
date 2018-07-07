@@ -329,6 +329,9 @@ nnoremap <silent> <F9> :TagbarToggle<CR>
 
 "==================================================================
 
+" Ale
+let g:ale_set_highlights = 0
+
 " Use tab and shift tab to indent region
 nmap <tab> v>
 nmap <s-tab> v<

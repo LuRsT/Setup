@@ -17,6 +17,8 @@ antigen apply
 
 ## END ANTIGEN
 
+alias sway="export XKB_DEFAULT_LAYOUT=gb; export XKB_DEFAULT_OPTIONS=ctrl:nocaps; export XKB_DEFAULT_MODEL=pc101; sway"
+
 # Options for geometry theme
 export PROMPT_VIRTUALENV_ENABLED=true
 export PROMPT_GEOMETRY_GIT_CONFLICTS=true
