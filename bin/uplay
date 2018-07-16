@@ -1,15 +1,15 @@
 #!/bin/bash
 
-"""
-Taken from
-https://github.com/FreedomSka/dotfiles/blob/master/.local/bin/uplay
-"""
+#####
+# Taken from
+# https://github.com/FreedomSka/dotfiles/blob/master/.local/bin/uplay
+#####
 
 search='results?search_query='
 entries=0
 ROFI="rofi -config ~/.xdg/rofi.conf "
 
-input=`$ROFI -dmenu -p "Youtube Search " | sed 's/ /+/g'`
+input=`$ROFI -dmenu -p "Youtube Search: " | sed 's/ /+/g'`
 
 result=$(curl -s "https://www.youtube.com/$search$input" 2>/dev/null) <<< $result
 
@@ -26,7 +26,7 @@ while IFS= read -r line
         fi
     fi
 done <<< "$result"
-) | sed 's/<RETURN>/\n/g' | sed 's/^[ ]//' | $ROFI -dmenu -p "Youtube Results "`
+) | sed 's/<RETURN>/\n/g' | sed 's/^[ ]//' | $ROFI -dmenu -p "Youtube Results: "`
 
 while IFS= read -r line
   do
