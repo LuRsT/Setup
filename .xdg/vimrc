@@ -23,6 +23,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 "
+Plug 'mxw/vim-jsx'
+Plug 'vimwiki/vimwiki'
 Plug 'kablamo/vim-git-log'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
@@ -308,6 +310,10 @@ nnoremap <C-x> :set statusline=%f<CR>
 nnoremap <c-N> :GitGutterNextHunk<CR>
 nnoremap <c-M> :GitGutterPrevHunk<CR>
 nnoremap <c-U> :GitGutterUndoHunk<CR>
+
+
+" Mark TODO as done
+nnoremap X :s/\[\ \]/[X]/<CR>:nohl<CR>
 
 "==============[ F-KEYS ]==================================
 
