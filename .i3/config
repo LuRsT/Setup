@@ -10,10 +10,6 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="pavucontrol"] floating enable
 
-
-# Background for sway
-output "*" background /home/lurst/.xdg/background.jpg fill
-
 new_window pixel 1
 
 set $mod Mod4
@@ -23,7 +19,7 @@ font pango:Monospace 9
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-bindsym $mod+Return exec st
+bindsym $mod+Return exec termite
 bindsym $mod+e exec pcmanfm
 
 # locks screen
