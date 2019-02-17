@@ -59,6 +59,7 @@ while :; do
     text "$RAM%" $WHITE
     text ' | ' $GRAY
     text "$DATE" $WHITE
+    text ' ' $GRAY
     echo -e "[${output%??}],"
     sleep 1
 done
