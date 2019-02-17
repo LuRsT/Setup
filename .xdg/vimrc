@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
 "
 Plug 'mxw/vim-jsx'
 Plug 'vimwiki/vimwiki'
+Plug 'timothycrosley/isort'
 Plug 'kablamo/vim-git-log'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
