@@ -1,4 +1,4 @@
-.xdg/*
+.config/*
 .wmii/history*
 *.so
 *.pyc
