@@ -23,9 +23,6 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
-export XDG_CONFIG_HOME="${HOME}/.xdg"
-
-
 alias g=git
 alias v=nvim
 alias vi=nvim
@@ -45,5 +42,3 @@ export GOPATH="$HOME/.gospace"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
-
-. $HOME/.commonshellrc

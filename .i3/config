@@ -30,7 +30,7 @@ bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+p exec dmenu_run -sb "#DDDDDD" -sb "#555555" -nb "#333333"
-bindsym $mod+p exec rofi -show run -config ~/.xdg/rofi.conf
+bindsym $mod+p exec rofi -show run -config ~/.config/rofi.conf
 
 
 # change focus
