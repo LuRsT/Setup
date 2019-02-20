@@ -42,3 +42,5 @@ export GOPATH="$HOME/.gospace"
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
+
+. .config/.alias

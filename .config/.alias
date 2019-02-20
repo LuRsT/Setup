@@ -11,9 +11,9 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 export BROWSER="firefox"
 export GOPATH="$HOME/.gospace"
 
-export PATH="${PATH}:$GOPATH/bin"
-export PATH="${PATH}:$HOME/.local/bin"
-export PATH="${PATH}:$HOME/bin"
+export PATH="$PATH:$GOPATH/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/bin"
 
 # Alias
 alias vim="vim +normal\\'\\\""
@@ -32,7 +32,6 @@ alias halt='halt -p'
 alias ducks='du -cms * | sort -rn | head'
 alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
-alias work='workon `pwd | egrep -o "[^//]+$"`'
 alias webserver='python2 -m SimpleHTTPServer'
 alias c='cheat'
 alias n='numbrs'
