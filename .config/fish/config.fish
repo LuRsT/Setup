@@ -23,24 +23,4 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
-alias g=git
-alias v=nvim
-alias vi=nvim
-alias vim=nvim
-
-export VIMINIT='source $MYVIMRC'
-
-export EDITOR=nvim
-export PYTHONDONTWRITEBYTECODE=1
-export HISTCONTROL=ignoredups
-export HISTFILESIZE=10000 # Record last 10,000 commands
-export HISTSIZE=10000 # Record last 10,000 commands per session
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
-export BROWSER="firefox"
-export GOPATH="$HOME/.gospace"
-
-export PATH="$PATH:$GOPATH/bin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/bin"
-
 . .config/.alias
