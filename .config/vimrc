@@ -29,18 +29,25 @@ Plug 'timothycrosley/isort'
 Plug 'kablamo/vim-git-log'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/goyo.vim'
+Plug 'AndrewRadev/switch.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'lurst/austere.vim'
+Plug 'ambv/black'
+Plug 'ap/vim-css-color'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'gabesoft/vim-ags'
 Plug 'itchyny/lightline.vim'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'kablamo/vim-git-log'
+Plug 'lurst/austere.vim'
 Plug 'majutsushi/tagbar'
+Plug 'mxw/vim-jsx'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'ryanoasis/vim-devicons'
@@ -48,13 +55,16 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim'
 Plug 'sjl/gundo.vim'
+Plug 'tadaa/vimade'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/taglist.vim'
+Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 
@@ -131,6 +141,9 @@ set autowrite
 
 " Handle Mac and DOS line-endings but prefer Unix endings
 set fileformats=unix,mac,dos
+
+" Switch
+let g:switch_mapping = "-"
 
 " NERDTree
 let NERDTreeMinimalUI = 1
@@ -297,7 +310,7 @@ nnoremap <space> za
 vnoremap <space> zf
 
 " Silver Searcher
-nnoremap <leader>a :Ags
+nnoremap <leader>a :Ags --py
 
 " Easier Split navigation
 nnoremap <C-J> <C-W><C-J>

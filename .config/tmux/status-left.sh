@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-echo `hostname`
+TIME=$(date +"%H:%M")
+HOSTNAME=$(hostname)
+
+BATTERY=$(battery_level.sh)
+
+echo $HOSTNAME [$TIME] $BATTERY

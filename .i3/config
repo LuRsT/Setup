@@ -10,6 +10,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="pavucontrol"] floating enable
 
+
 new_window pixel 1
 
 set $mod Mod4
@@ -105,6 +106,10 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Moving browsers automaticaly to workspace 2
 assign [class="Firefox"] 2
 assign [class="Chromium"] 2
+
+
+# Moving slack automaticaly to workspace 3
+assign [class="Slack"] 3
 
 # reload the configuration file
 bindsym $mod+Shift+r restart

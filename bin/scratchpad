@@ -1,5 +1,5 @@
 #!/bin/bash
 
 file_path="/dev/shm/scratch.${RANDOM}.txt"
-sakura -x "vim $file_path"
+termite -e "vim $file_path"
 cat $file_path | xclip -selection clipboard

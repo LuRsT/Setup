@@ -3,6 +3,6 @@
 source /usr/bin/virtualenvwrapper.sh
 
 project_name=${PWD##*/}
-mkvirtualenv -p $(which python3.7) $project_name
+mkvirtualenv -p $(which python3.6) $project_name
 
 echo "cd $(pwd)" >> $VIRTUAL_ENV/bin/postactivate

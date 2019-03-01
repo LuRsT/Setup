@@ -1,1 +1,1 @@
-vim `find .  -maxdepth 5 -iname $1`
+nvim `find .  -maxdepth 5 -iname $1`
