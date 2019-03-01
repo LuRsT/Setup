@@ -1,6 +1,6 @@
 # Exports
 export MYVIMRC="$HOME/.config/vimrc"
-export VIMINIT='. $MYVIMRC'
+export VIMINIT="source $MYVIMRC"
 
 export EDITOR=nvim
 export PYTHONDONTWRITEBYTECODE=1
@@ -26,7 +26,7 @@ alias gcc='gcc -Werror -Wall -pedantic'
 alias ll='exa --header --long --git'
 alias g='git'
 alias dropboxd='~/.dropbox-dist/dropboxd'
-alias tmux="TERM=xterm-256color-italic tmux"
+alias tmux="env TERM=xterm-256color-italic tmux"
 alias mocp='mocp -A'
 alias halt='halt -p'
 alias ducks='du -cms * | sort -rn | head'

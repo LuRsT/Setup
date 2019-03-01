@@ -3,6 +3,6 @@
 TIME=$(date +"%H:%M")
 HOSTNAME=$(hostname)
 
-BATTERY=$(battery_level.sh)
+#BATTERY=$(battery_level.sh)
 
-echo $HOSTNAME [$TIME] $BATTERY
+echo $HOSTNAME [$TIME]
