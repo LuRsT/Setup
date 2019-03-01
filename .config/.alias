@@ -1,6 +1,6 @@
 # Exports
-export MYVIMRC="$XDG_CONFIG_HOME/vimrc"
-export VIMINIT='source $MYVIMRC'
+export MYVIMRC="$HOME/.config/vimrc"
+export VIMINIT='. $MYVIMRC'
 
 export EDITOR=nvim
 export PYTHONDONTWRITEBYTECODE=1

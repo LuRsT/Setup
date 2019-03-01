@@ -9,12 +9,12 @@ let s:cpo_save=&cpo
 set t_Co=256 " 256 Colors
 syntax on
 
-set runtimepath=$XDG_CONFIG_HOME/vim,$VIM,$VIMRUNTIME
+set runtimepath=$HOME/.config/vim,$VIM,$VIMRUNTIME
 
 """ BEGIN Plugins
 
-if empty(glob('$XDG_CONFIG_HOME/vim/autoload/plug.vim'))
-    silent !curl -fLo $XDG_CONFIG_HOME/vim/autoload/plug.vim --create-dirs
+if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
+    silent !curl -fLo $HOME/.config/vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
@@ -141,28 +141,29 @@ set laststatus=2
 set ttimeoutlen=1
 
 let g:lightline = {
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-            \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'component_function': {
-            \   'fugitive': 'LightlineFugitive',
-            \   'filename': 'LightlineFilename',
-            \   'fileformat': 'LightlineFileformat',
-            \   'filetype': 'LightlineFiletype',
-            \   'fileencoding': 'LightlineFileencoding',
-            \   'mode': 'LightlineMode',
-            \   'ctrlpmark': 'CtrlPMark',
-            \ },
-            \ 'component_expand': {
-            \   'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \   'syntastic': 'error',
-            \ },
-            \ 'separator': { 'left': '', 'right': '' },
-            \ 'subseparator': { 'left': '', 'right': '' }
-            \ }
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \ },
+    \ 'component_function': {
+    \   'fugitive': 'LightlineFugitive',
+    \   'filename': 'LightlineFilename',
+    \   'fileformat': 'LightlineFileformat',
+    \   'filetype': 'LightlineFiletype',
+    \   'fileencoding': 'LightlineFileencoding',
+    \   'mode': 'LightlineMode',
+    \   'ctrlpmark': 'CtrlPMark',
+    \ },
+    \ 'component_expand': {
+    \   'syntastic': 'SyntasticStatuslineFlag',
+    \ },
+    \ 'component_type': {
+    \   'syntastic': 'error',
+    \ },
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
+    \ }
 
 function! LightlineModified()
     return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
