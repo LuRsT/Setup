@@ -10,7 +10,7 @@ let g:lightline = {
     \ 'colorscheme': 'wombat',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+    \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
     \ },
     \ 'component_function': {
     \   'fugitive': 'LightlineFugitive',
@@ -20,12 +20,6 @@ let g:lightline = {
     \   'fileencoding': 'LightlineFileencoding',
     \   'mode': 'LightlineMode',
     \   'ctrlpmark': 'CtrlPMark',
-    \ },
-    \ 'component_expand': {
-    \   'syntastic': 'SyntasticStatuslineFlag',
-    \ },
-    \ 'component_type': {
-    \   'syntastic': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
     \ 'subseparator': { 'left': ':', 'right': '' }

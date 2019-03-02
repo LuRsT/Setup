@@ -1,4 +1,3 @@
-
 "BS past autoindents, line boundaries, and even the start of insertion
 set backspace=indent,eol,start
 set cmdheight=2
@@ -50,7 +49,6 @@ set autowrite
 " Handle Mac and DOS line-endings but prefer Unix endings
 set fileformats=unix,mac,dos
 
-
 " Set correct syntax to files
 au BufNewFile,BufRead *.j2 set filetype=html
 au BufNewFile,BufRead *.md set filetype=markdown
@@ -69,3 +67,7 @@ autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<c
 autocmd BufWritePre * :%s/\s\+$//e
 
 set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
+
+"Make tabs, trailing whitespace, and non-breaking spaces visible
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set list
