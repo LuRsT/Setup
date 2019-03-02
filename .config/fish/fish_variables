@@ -5,7 +5,7 @@ SETUVAR fish_color_autosuggestion:969896
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:c5c8c6
 SETUVAR fish_color_comment:969896
-SETUVAR fish_color_cwd:green
+SETUVAR fish_color_cwd:grey
 SETUVAR fish_color_cwd_root:red
 SETUVAR fish_color_end:81a2be
 SETUVAR fish_color_error:f0c674
