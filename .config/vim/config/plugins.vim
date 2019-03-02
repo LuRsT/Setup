@@ -27,8 +27,8 @@ let g:lightline = {
     \ 'component_type': {
     \   'syntastic': 'error',
     \ },
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': ':', 'right': '' }
     \ }
 
 function! LightlineModified()
@@ -98,9 +98,9 @@ function! CtrlPMark()
 endfunction
 
 let g:ctrlp_status_func = {
-            \ 'main': 'CtrlPStatusFunc_1',
-            \ 'prog': 'CtrlPStatusFunc_2',
-            \ }
+    \ 'main': 'CtrlPStatusFunc_1',
+    \ 'prog': 'CtrlPStatusFunc_2',
+    \ }
 
 function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
     let g:lightline.ctrlp_regex = a:regex
@@ -130,37 +130,22 @@ let g:vim_markdown_folding_disabled = 1
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 
-
 " Ale
 let b:ale_linters = ['flake8', 'pylint'] " TODO Don't knkow if this can be here
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 
-
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
 
-" Re-tag
-nnoremap T :Start pytags<CR>
-
+" Fugitive
 map S :Gstatus<CR>
 
-" Open/Close folds with space button
-nnoremap <space> za
-vnoremap <space> zf
-
-" Silver Searcher
+" Ags
 nnoremap <leader>a :Ags --py
 
-
-" Git Gutter
-nnoremap <c-N> :GitGutterNextHunk<CR>
-nnoremap <c-M> :GitGutterPrevHunk<CR>
-nnoremap <c-U> :GitGutterUndoHunk<CR>
-
-
-" Configure Ctrlp
+" Ctrlp
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = 'depends'
 
@@ -172,4 +157,3 @@ endif
 
 " Switch
 let g:switch_mapping = "-"
-
