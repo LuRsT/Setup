@@ -1,11 +1,6 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
 
-""" Function keys INDEX """"""""""""""""""""""
-"<F5> Refresh File
-"<F7> :NERDTreeToggle<CR>
-"<F9> :TagbarToggle<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""
 set t_Co=256 " 256 Colors
 syntax on
 
@@ -23,15 +18,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 "
-Plug 'mxw/vim-jsx'
-Plug 'vimwiki/vimwiki'
-Plug 'timothycrosley/isort'
-Plug 'kablamo/vim-git-log'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/goyo.vim'
 Plug 'AndrewRadev/switch.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'ambv/black'
 Plug 'ap/vim-css-color'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
@@ -45,6 +33,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kablamo/vim-git-log'
+Plug 'lilydjwg/colorizer'
 Plug 'lurst/austere.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mxw/vim-jsx'
@@ -54,8 +43,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim'
-Plug 'sjl/gundo.vim'
 Plug 'tadaa/vimade'
+Plug 'timothycrosley/isort'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -68,8 +57,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
 
-let b:ale_linters = ['flake8', 'pylint']
-
 call plug#end()
 
 filetype plugin indent on
@@ -78,389 +65,19 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 
 set background=dark
-
 colorscheme austere
 
-"BS past autoindents, line boundaries, and even the start of insertion
-set backspace=indent,eol,start
-set cmdheight=2
-set fileencodings=ucs-bom,utf-8,default,latin1
-set helplang=en
-set history=500
-set hlsearch
-set incsearch
-set ruler
-set shiftwidth=4
-set showcmd
-set tabstop=4
-set termencoding=utf-8
-set encoding=utf-8
-set updatetime=500
-set wildmenu
-set number
-set smartindent
-set cursorline
-set scrolloff=5
-set gdefault
-set nobackup
-set directory=.
-set noswapfile
+" Commong Configuration
+source $HOME/.config/vim/config/config.vim
 
-set nocompatible
-set autoindent
-set showmatch
-set ignorecase
-set smartcase
+" Plugins
+source $HOME/.config/vim/config/plugins.vim
 
-set expandtab
-set shiftround
-set mouse=a
-set clipboard=unnamedplus
+" Shortcuts
+source $HOME/.config/vim/config/shortcuts.vim
 
-" Makes joins better (J)
-set formatoptions+=j
+" Macros
+source $HOME/.config/vim/config/macros.vim
 
-" Highlight column
-"set colorcolumn=81
-
-" Folds
-set foldmethod=manual
-
-" Configure Ctrlp
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = 'depends'
-
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ctrlp_use_caching = 0
-endif
-
-" Save buffer automatically when changing files
-set autowrite
-
-" Handle Mac and DOS line-endings but prefer Unix endings
-set fileformats=unix,mac,dos
-
-" Switch
-let g:switch_mapping = "-"
-
-" NERDTree
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-
-" Lighline
-set laststatus=2
-set ttimeoutlen=1
-
-let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-    \ },
-    \ 'component_function': {
-    \   'fugitive': 'LightlineFugitive',
-    \   'filename': 'LightlineFilename',
-    \   'fileformat': 'LightlineFileformat',
-    \   'filetype': 'LightlineFiletype',
-    \   'fileencoding': 'LightlineFileencoding',
-    \   'mode': 'LightlineMode',
-    \   'ctrlpmark': 'CtrlPMark',
-    \ },
-    \ 'component_expand': {
-    \   'syntastic': 'SyntasticStatuslineFlag',
-    \ },
-    \ 'component_type': {
-    \   'syntastic': 'error',
-    \ },
-    \ 'separator': { 'left': '', 'right': '' },
-    \ 'subseparator': { 'left': '', 'right': '' }
-    \ }
-
-function! LightlineModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineReadonly()
-    return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! LightlineFilename()
-    let fname = expand('%:t')
-    return fname == 'ControlP' && has_key(g:lightline, 'ctrlp_item') ? g:lightline.ctrlp_item :
-                \ fname == '__Tagbar__' ? g:lightline.fname :
-                \ fname =~ '__Gundo\|NERD_tree' ? '' :
-                \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \ &ft == 'unite' ? unite#get_status_string() :
-                \ &ft == 'vimshell' ? vimshell#get_status_string() :
-                \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-                \ ('' != fname ? fname : '[No Name]') .
-                \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-    try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = ''  " edit here for cool mark
-            let branch = fugitive#head()
-            return branch !=# '' ? mark.branch : ''
-        endif
-    catch
-    endtry
-    return ''
-endfunction
-
-function! LightlineFileformat()
-    return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightlineFiletype()
-    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightlineFileencoding()
-    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineMode()
-    let fname = expand('%:t')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-                \ fname == 'ControlP' ? 'CtrlP' :
-                \ fname == '__Gundo__' ? 'Gundo' :
-                \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-                \ fname =~ 'NERD_tree' ? 'NERDTree' :
-                \ &ft == 'unite' ? 'Unite' :
-                \ &ft == 'vimfiler' ? 'VimFiler' :
-                \ &ft == 'vimshell' ? 'VimShell' :
-                \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! CtrlPMark()
-    if expand('%:t') =~ 'ControlP' && has_key(g:lightline, 'ctrlp_item')
-        call lightline#link('iR'[g:lightline.ctrlp_regex])
-        return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-                    \ , g:lightline.ctrlp_next], 0)
-    else
-        return ''
-    endif
-endfunction
-
-let g:ctrlp_status_func = {
-            \ 'main': 'CtrlPStatusFunc_1',
-            \ 'prog': 'CtrlPStatusFunc_2',
-            \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-    let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
-    return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-    return lightline#statusline(0)
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-    return lightline#statusline(0)
-endfunction
-
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
-
-
-" Set correct syntax to files
-au BufNewFile,BufRead *.j2 set filetype=html
-au BufNewFile,BufRead *.md set filetype=markdown
-autocmd BufRead,BufNewFile *.py let python_highlight_all=1
-
-
-" Plugin Config
-
-" Vim-Markdown
-let g:vim_markdown_folding_disabled = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-
-
-" Ale
-let g:ale_linters = {
-\   'python': ['flake8'],
-\}
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
-"
-" Dispatch
-nnoremap <C-d> :Dispatch<CR>
-
-" Re-tag
-nnoremap T :Start pytags<CR>
-
-map S :Gstatus<CR>
-
-" Open/Close folds with space button
-nnoremap <space> za
-vnoremap <space> zf
-
-" Silver Searcher
-nnoremap <leader>a :Ags --py
-
-" Easier Split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Display filename in statusbar
-nnoremap <C-x> :set statusline=%f<CR>
-
-" Git Stuff
-nnoremap <c-N> :GitGutterNextHunk<CR>
-nnoremap <c-M> :GitGutterPrevHunk<CR>
-nnoremap <c-U> :GitGutterUndoHunk<CR>
-
-
-" Mark TODO as done
-nnoremap X :s/\[\ \]/[X]/<CR>:nohl<CR>
-
-"==============[ F-KEYS ]==================================
-
-"Refresh current file
-nmap <silent> <F5> :e %<CR>
-
-"Activate NERDTREE
-nmap <silent> <F7> :NERDTreeToggle<CR>
-let NERDTreeDirArrows = 1
-
-" Tagbar toggle
-nnoremap <silent> <F9> :TagbarToggle<CR>
-
-"==================================================================
-
-" Ale
-let g:ale_set_highlights = 0
-
-" Use tab and shift tab to indent region
-nmap <tab> v>
-nmap <s-tab> v<
-vmap <tab> >gv
-vmap <s-tab> <gv
-
-
-" Better file-navigation with Enter and Backspace
-nnoremap <BS> {
-onoremap <BS> {
-vnoremap <BS> {
-
-nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
-onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
-vnoremap <CR> }
-
-" Use F to move to places easily
-nmap F <Plug>(easymotion-prefix)s
-
-" MACROS
-
-" Python
-
-iab pdb import pdb; pdb.set_trace()
-iab pudb import pudb; pu.db
-
-" some common typos
-command! QA qa
-command! Qa qa
-command! Q  q
-command! W  w
-command! Wq wq
-command! WQ wq
-command! Vs vs
-
-
-if has('persistent_undo')
-    set undofile
-    set undodir=$XDG_CONFIG_HOME/vim/undo_files/
-endif
-
-" Make naughty characters visible...
-" (uBB is right double angle, uB7 is middle dot)
-exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-
-augroup VisibleNaughtiness
-    autocmd!
-    autocmd BufEnter  *       set list
-    autocmd BufEnter  *.txt   set nolist
-    autocmd BufEnter  *.vp*   set nolist
-    autocmd BufEnter  *       if !&modifiable
-    autocmd BufEnter  *           set nolist
-    autocmd BufEnter  *       endif
-augroup END
-
-" From https://opensource.conformal.com/wiki/vim
-function! s:ExecuteInShell(command, bang)
-    let _ = a:bang != '' ? s:_ : a:command == '' ? '' : join(map(split(a:command), 'expand(v:val)'))
-
-    if (_ != '')
-        let s:_ = _
-        let bufnr = bufnr('%')
-        let winnr = bufwinnr('^' . _ . '$')
-        silent! execute  winnr < 0 ? 'new ' . fnameescape(_) : winnr . 'wincmd w'
-        setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap
-        silent! :%d
-        let message = 'Execute ' . _ . '...'
-        call append(0, message)
-        echo message
-        silent! 2d | resize 1 | redraw
-        silent! execute 'silent! %!'. _
-        silent! execute 'resize ' . line('$')
-        silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
-        silent! execute 'autocmd BufEnter <buffer> execute ''resize '' .  line(''$'')'
-        silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . _ . ''', '''')<CR>'
-        silent! execute 'nnoremap <silent> <buffer> <LocalLeader>g :execute bufwinnr(' . bufnr . ') . ''wincmd w''<CR>'
-    endif
-endfunction
-
-command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
-cabbrev shell Shell
-
-map <ESC>[8~    <End>
-map <ESC>[7~    <Home>
-
-" Alt Shortcuts
-map <A-t> :Tags<CR>
-map <A-f> :Files<CR>
-map <A-a> :Ag<CR>
-map <A-h> :History<CR>
-
-" Highlight word under cursor
-autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
-" Delete trailing whitespaces on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
-
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-
-
-" Get name of vim identifier (for changing colors)
-map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-
-if has("nvim")
-  tnoremap <Esc> <C-\><C-n>
-
-  tnoremap <C-h> <C-\><C-N><C-w>h
-  tnoremap <C-j> <C-\><C-N><C-w>j
-  tnoremap <C-k> <C-\><C-N><C-w>k
-  tnoremap <C-l> <C-\><C-N><C-w>l
-endif
-
-" Since the key to start a macro is q, you can quickly tap qq to record a macro to the q register (end it by pressing q again.) Then by whacking the space bar you can execute the q macro as many times as you'd like.
-noremap <Space> @q
+" Functions
+source $HOME/.config/vim/config/functions.vim
