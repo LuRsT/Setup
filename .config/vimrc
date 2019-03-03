@@ -17,7 +17,7 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins
-"
+
 Plug 'AndrewRadev/switch.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
@@ -32,12 +32,14 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'kablamo/vim-git-log'
+Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
 Plug 'lurst/austere.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mxw/vim-jsx'
 Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
+Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
