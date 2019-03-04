@@ -125,7 +125,7 @@ let g:vim_markdown_folding_disabled = 1
 let g:deoplete#enable_at_startup = 1
 
 " Ale
-let b:ale_linters = ['flake8', 'pylint'] " TODO Don't knkow if this can be here
+let b:ale_linters = ['flake8', 'pylint']
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
