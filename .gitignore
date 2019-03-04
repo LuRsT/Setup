@@ -1,4 +1,7 @@
 .config/*
+!.config/fish
+!.config/vim
+
 .wmii/history*
 *.so
 *.pyc
