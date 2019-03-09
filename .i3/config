@@ -1,21 +1,23 @@
-set $gray1 #484848
-set $gray2 #333333
+set $darkgrey #686868
+set $vdarkgrey #464646
+set $lightgrey #8e8e8e
+set $white #f7f7f7
+set $black #101010
 
-client.focused          $gray1 $gray1 #FFFFFF #333333
-client.focused_inactive $gray2 $gray2 #FFFFFF #000000
-client.unfocused        $gray2 $gray2 #FFFFFF #000000
+client.focused          $darkgrey $darkgrey $white #lightgrey
+client.focused_inactive $vdarkgrey $vdarkgrey $white #black
+client.unfocused        $vdarkgrey $vdarkgrey $white #black
 
 for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
 for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
-for_window [class="pavucontrol"] floating enable
-
+for_window [class="Pavucontrol"] floating enable
 
 new_window pixel 1
 
 set $mod Mod4
 
-font pango:Monospace 9
+font pango:BlexMono Nerd Font 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -147,13 +149,13 @@ bar {
     position          top
     workspace_buttons yes
     status_command    /home/lurst/bin/status
-    font pango:Monospace 9
+    font pango:BlexMono Nerd Font 9
 
     colors {
-        statusline #AAAAAA
-        background #333333
-        focused_workspace $gray2 $gray2 #FFFFFF
-        inactive_workspace $gray1 $gray1 #AAAAAA
+        statusline $white
+        background #101010
+        focused_workspace $lightgrey $lightgrey $white
+        inactive_workspace $darkgrey $darkgrey #white
     }
 }
 
