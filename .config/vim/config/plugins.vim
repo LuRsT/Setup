@@ -141,11 +141,10 @@ nnoremap <leader>a :Ags --py
 
 " Ctrlp
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = 'depends'
 
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+if executable('rg')
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
     let g:ctrlp_use_caching = 0
 endif
 
