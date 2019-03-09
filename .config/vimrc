@@ -68,7 +68,7 @@ unlet s:cpo_save
 set background=dark
 colorscheme austere
 
-" Commong Configuration
+" Common Configuration
 source $HOME/.config/vim/config/config.vim
 
 " Plugins
