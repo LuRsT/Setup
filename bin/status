@@ -4,10 +4,10 @@
 # https://www.reddit.com/r/archlinux/comments/37da4o/i3_users_which_status_bar_are_you_using_and_why/
 
 # Colour names
-WHITE=ffffff
+WHITE=dcdccc
 LIME=00ff00
-RED=ff0000
-GRAY=666666
+RED=ce5252
+GRAY=a0a0a0
 YELLOW=ffff00
 MAROON=cc3300
 
