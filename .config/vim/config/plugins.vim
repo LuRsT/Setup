@@ -7,7 +7,7 @@ set laststatus=2
 set ttimeoutlen=1
 
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'nord',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
     \   'right': [ [ 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
