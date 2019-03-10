@@ -57,6 +57,7 @@ Plug 'vim-scripts/taglist.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'
+Plug 'zchee/deoplete-jedi'
 
 call plug#end()
 
