@@ -45,6 +45,7 @@ alias shut='sudo halt -p'
 alias ed='ed -p:'
 alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 alias cls="clear"
+alias ca="cargo"
 
 # Ultimate search alias
 alias s='ag'
