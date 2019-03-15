@@ -4,11 +4,9 @@
     cm = commit -m
     cma = commit -a -m
     ca = commit --amend
-    cl = clean -fd
     cp = cherry-pick
     s = status --short -b
     d = diff
-    dr = diff -R
     ds = diff --stat
     dc = diff --cached
     dcs = diff --stat --cached
@@ -19,7 +17,6 @@
     f = fetch
     r = reset
     p = pull
-    wat = blame
 
     ss = !hr && git status --short -b
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
@@ -32,11 +29,9 @@
     show-tags = "log --no-walk --tags --pretty='%h %d %s' --decorate=full"
 
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
-    curses = "!git log --pretty=format:'%s' | tr '[:upper:]' '[:lower:]' | tr '[:space:]' '\n' | sort | uniq -c | sort -nr | grep -iE '(fuck|shit|bitch|damn|piss)'"
     find = "!git --no-pager log --pretty='format:%H %s %N' | grep '$1'"
     plush = "!git pull && git push"
     remove-deleted-files = "!git ls-files --deleted -z | xargs -0 git rm"
-
     clean-all = "!git remote prune origin && git prune"
 [apply]
     whitespace = nowarn
@@ -66,5 +61,3 @@
 # To do: git clone gh:lurst/hr
 [url "git@github.com:"]
     insteadOf = gh:
-[cola]
-	spellcheck = false
