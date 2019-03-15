@@ -12,6 +12,7 @@ for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_togg
 for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Volume Control"] floating enable
 
 new_window pixel 1
 
