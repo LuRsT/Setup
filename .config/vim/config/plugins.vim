@@ -148,5 +148,16 @@ if executable('rg')
     let g:ctrlp_use_caching = 0
 endif
 
-" Switch
-let g:switch_mapping = "-"
+
+" Easymotion
+nmap s <Plug>(easymotion-s2) " One char
+nmap t <Plug>(easymotion-t2) " Two chars
+
+map  / <Plug>(easymotion-sn) " Improved search
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
