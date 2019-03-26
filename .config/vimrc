@@ -18,6 +18,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 
+Plug 'machakann/vim-highlightedyank' " From vimcasts 72 ( I think)
+Plug 'tpope/vim-vinegar'
 Plug 'airblade/vim-gitgutter'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
@@ -39,7 +41,7 @@ Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
 Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
-Plug 'shougo/deoplete.nvim'
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tadaa/vimade'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
