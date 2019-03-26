@@ -129,15 +129,13 @@ let b:ale_linters = ['flake8', 'pylint']
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
+let g:ale_virtualtext_cursor = 1
 
 " Dispatch
 nnoremap <C-d> :Dispatch<CR>
 
-" Fugitive
-map S :Gstatus<CR>
-
 " Ags
-nnoremap <leader>a :Ags --py
+nnoremap <leader>a :Ags
 
 " Ctrlp
 let g:ctrlp_working_path_mode = 'ra'
@@ -150,10 +148,11 @@ endif
 
 
 " Easymotion
-nmap s <Plug>(easymotion-s2) " One char
-nmap t <Plug>(easymotion-t2) " Two chars
+" <Leader>f{char} to move to {char}
+map  s <Plug>(easymotion-bd-f)
+nmap s <Plug>(easymotion-overwin-f)
 
-map  / <Plug>(easymotion-sn) " Improved search
+map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
 " These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
