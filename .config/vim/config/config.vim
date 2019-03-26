@@ -4,8 +4,8 @@ set cmdheight=2
 set fileencodings=ucs-bom,utf-8,default,latin1
 set helplang=en
 set history=500
-set hlsearch
 set incsearch
+set inccommand=split
 set ruler
 set shiftwidth=4
 set showcmd
