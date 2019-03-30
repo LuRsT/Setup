@@ -11,6 +11,8 @@ elif [ "$extension" == "bz2" ]; then
     tar jxf $filename
 elif [ "$extension" == "tbz2" ]; then
     tar xf $filename
+elif [ "$extension" == "tgz" ]; then
+    tar -zxvf $filename
 else
     cat `which untar`
 fi
