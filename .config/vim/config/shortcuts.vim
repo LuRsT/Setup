@@ -67,9 +67,6 @@ nnoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
 onoremap <expr> <CR> empty(&buftype) ? '}' : '<CR>'
 vnoremap <CR> }
 
-" Use F to move to places easily
-nmap F <Plug>(easymotion-prefix)s
-
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
 

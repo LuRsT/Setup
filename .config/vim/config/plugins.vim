@@ -152,11 +152,6 @@ endif
 map  s <Plug>(easymotion-bd-f)
 nmap s <Plug>(easymotion-overwin-f)
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
+" Vim-highlightedyank
 
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
+let g:highlightedyank_highlight_duration = 200

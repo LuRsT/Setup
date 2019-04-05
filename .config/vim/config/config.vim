@@ -62,9 +62,6 @@ if has('persistent_undo')
     set undodir=$HOME/.config/vim/undo_files/
 endif
 
-" Highlight word under cursor
-autocmd CursorMoved * exe printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\'))
-
 " Delete trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 

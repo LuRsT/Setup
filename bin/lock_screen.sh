@@ -14,8 +14,8 @@ function datamosh() {
     printf $byteStr | dd of="$file" bs=1 seek=$skip count=$count conv=notrunc >/dev/null 2>&1
 }
 
-if [ -a /tmp/screenshotblur.png ]; then
-    i3lock -i "$file"
+if [ -a /tmp/lock.png ]; then
+    i3lock -i /tmp/lock.png
 else
     scrot "$locked"
     convert "$locked" -blur 0x5 "$file"
