@@ -18,9 +18,9 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 
-Plug 'machakann/vim-highlightedyank' " From vimcasts 72 ( I think)
-Plug 'tpope/vim-vinegar'
+Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -34,11 +34,12 @@ Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
 Plug 'lurst/austere.vim'
+Plug 'machakann/vim-highlightedyank' " From vimcasts 72 ( I think)
 Plug 'majutsushi/tagbar'
 Plug 'mxw/vim-jsx'
 Plug 'mzlogin/vim-markdown-toc', {'for': 'markdown'}
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -47,6 +48,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/L9'
 Plug 'vim-scripts/taglist.vim'
