@@ -155,3 +155,11 @@ nmap s <Plug>(easymotion-overwin-f)
 " Vim-highlightedyank
 
 let g:highlightedyank_highlight_duration = 200
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'python': ['/usr/bin/python'],
+    \ }
