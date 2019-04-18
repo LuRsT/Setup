@@ -43,6 +43,7 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'skywind3000/asyncrun.vim'
 Plug 'tadaa/vimade'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'

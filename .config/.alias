@@ -43,9 +43,10 @@ alias hr="hr '─'"
 alias k="setxkbmap gb && sh ~/.xmodmap"
 alias shut='sudo halt -p'
 alias ed='ed -p:'
-alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 alias cls="clear"
 alias ca="cargo"
+alias d="docker"
+alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 
 # Ultimate search alias
 alias s='ag'
