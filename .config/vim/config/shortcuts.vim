@@ -76,3 +76,6 @@ vnoremap <space> zf
 
 " Re-tag
 nnoremap T :Start pytags<CR>
+
+" Search using AsyncRun
+map <Leader>f :AsyncRun -strip rg --vimgrep --glob '*.py'
