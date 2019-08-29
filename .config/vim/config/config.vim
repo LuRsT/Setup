@@ -70,3 +70,21 @@ set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
 "Make tabs, trailing whitespace, and non-breaking spaces visible
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 set list
+
+" Open quickfix window when using quickfix commands like :make
+autocmd QuickFixCmdPost [^l]* cwindow
+autocmd QuickFixCmdPost l* lwindow
+
+" When using `dd` in the quickfix list, remove the item from the quickfix list.
+" From: https://stackoverflow.com/questions/42905008/quickfix-list-how-to-add-and-remove-entries
+function! RemoveQFItem()
+  let curqfidx = line('.') - 1
+  let qfall = getqflist()
+  call remove(qfall, curqfidx)
+  call setqflist(qfall, 'r')
+  execute curqfidx + 1 . "cfirst"
+  :copen
+endfunction
+:command! RemoveQFItem :call RemoveQFItem()
+" Use map <buffer> to only map dd in the quickfix window. Requires +localmap
+autocmd FileType qf map <buffer> dd :RemoveQFItem<cr>

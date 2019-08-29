@@ -79,3 +79,6 @@ nnoremap T :Start pytags<CR>
 
 " Search using AsyncRun
 map <Leader>f :AsyncRun -strip rg --vimgrep --glob '*.py'
+
+" Add github link
+vnoremap <leader>gb :Gbrowse! master:%<cr>

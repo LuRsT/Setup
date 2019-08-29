@@ -10,3 +10,5 @@ setup_background &
 
 # Setup Caps Lock to Ctrl
 setxkbmap gb && sh ~/.xmodmap &
+
+xfce4-clipman &

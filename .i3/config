@@ -107,8 +107,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 
 # Moving browsers automaticaly to workspace 2
-assign [class="Firefox"] 2
-assign [class="Chromium"] 2
+assign [class=".*Firefox.*"] 2
+assign [class=".*Chromium.*"] 2
 
 
 # Moving slack automaticaly to workspace 3
