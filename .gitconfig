@@ -17,6 +17,7 @@
     f = fetch
     r = reset
     p = pull
+    nb = checkout -b
 
     ss = !hr && git status --short -b
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
