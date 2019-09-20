@@ -32,7 +32,7 @@ alias halt='halt -p'
 alias ducks='du -cms * | sort -rn | head'
 alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
-alias webserver='python2 -m SimpleHTTPServer'
+alias webserver='python3 -m http.server'
 alias r='ranger'
 alias c='cheat'
 alias n='numbrs'
@@ -48,6 +48,12 @@ alias cls="clear"
 alias ca="cargo"
 alias d="docker"
 alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
+alias cat="bat"
+# From https://twitter.com/rixxtr/status/1174968619131752448
+alias rsync-copy="rsync -avz --info=progress2 -h"
+alias rsync-move="rsync -avz --info=progress2 -h --remove-source-files"
+alias rsync-synchronize="rsync -avzu --delete --info=progress2 -h"
+alias rsync-update="rsync -avzu --info=progress2 -h"
 
 # Ultimate search alias
 alias s='ag'
