@@ -42,8 +42,12 @@ while :; do
     RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
     DATE=$(date "+%d/%m/%y %H:%M")
     CHAR=$(chargin)
+    NETWORK=$(current_network.py)
 
     output=''
+    text 'ﯱ ' $GRAY
+    text " $NETWORK"
+    text ' | ' $GRAY
     text '⚡ ' $CHAR
     text "$BATTERY" $WHITE
     text ' | ' $GRAY
