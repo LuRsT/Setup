@@ -18,7 +18,7 @@ new_window pixel 1
 
 set $mod Mod4
 
-font pango:BlexMono Nerd Font 9
+font pango:Operator Mono Lig 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -150,7 +150,7 @@ bar {
     position          top
     workspace_buttons yes
     status_command    /home/lurst/bin/status
-    font pango:BlexMono Nerd Font 9
+    font pango:Operator Mono Lig 9
 
     colors {
         statusline $white

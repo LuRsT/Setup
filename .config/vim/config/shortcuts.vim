@@ -21,7 +21,8 @@ map <A-h> :History<CR>
 
 " nvim Terminal mode
 if has("nvim")
-  tnoremap <Esc> <C-\><C-n>
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
 
   tnoremap <C-h> <C-\><C-N><C-w>h
   tnoremap <C-j> <C-\><C-N><C-w>j
