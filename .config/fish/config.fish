@@ -25,6 +25,8 @@ set __fish_git_prompt_char_upstream_behind '-'
 
 . $HOME/.config/.alias
 
+eval (python3.5 -m virtualfish)
+
 setenv SSH_ENV $HOME/.ssh/environment
 
 function start_agent
@@ -69,4 +71,9 @@ function fish_title
     else
         echo $_
     end
+end
+
+
+if status --is-interactive
+    keychain --eval --quiet -Q id_rsa | source
 end

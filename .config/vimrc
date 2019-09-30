@@ -17,8 +17,9 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Plugins
-Plug 'ludovicchabant/vim-gutentags'
+
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'ambv/black'
 Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }

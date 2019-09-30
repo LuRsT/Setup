@@ -3,7 +3,7 @@
 #audible_bell = false
 #clickable_url = true
 #dynamic_title = true
-font = BlexMono Nerd Font 11
+font = BlexMono Nerd Font 10
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
