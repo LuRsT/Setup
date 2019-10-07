@@ -19,7 +19,6 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 
 Plug 'airblade/vim-gitgutter'
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
