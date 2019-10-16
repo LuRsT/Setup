@@ -14,6 +14,7 @@
     ch = checkout
     b = branch
     l = log --stat
+    ll = log --oneline --decorate
     f = fetch
     r = reset
     p = pull
@@ -62,3 +63,5 @@
 # To do: git clone gh:lurst/hr
 [url "git@github.com:"]
     insteadOf = gh:
+[rebase]
+    autosquash = true
