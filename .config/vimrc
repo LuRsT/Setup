@@ -18,8 +18,8 @@ call plug#begin('~/.vim/plugged')
 
 " Plugins
 
-Plug 'ambv/black'
 Plug 'airblade/vim-gitgutter'
+Plug 'ambv/black'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
@@ -60,7 +60,7 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 
 set background=dark
-colorscheme hybrid_material
+colorscheme austere
 
 " Common Configuration
 source $HOME/.config/vim/config/config.vim
