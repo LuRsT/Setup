@@ -46,3 +46,5 @@ build/
 #
 tags
 scratch
+
+geckodriver.log

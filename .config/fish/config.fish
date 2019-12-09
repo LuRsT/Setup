@@ -24,6 +24,7 @@ set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
 . $HOME/.config/.alias
+. $HOME/.config/.alias_extra
 
 setenv SSH_ENV $HOME/.ssh/environment
 

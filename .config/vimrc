@@ -25,6 +25,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gabesoft/vim-ags'
+Plug 'hotwatermorning/auto-git-diff'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -60,7 +61,8 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 
 set background=dark
-colorscheme austere
+colorscheme hybrid_material
+" colorscheme austere
 
 " Common Configuration
 source $HOME/.config/vim/config/config.vim

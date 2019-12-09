@@ -2,7 +2,6 @@
     ai = add --interactive
     c = commit -v
     cm = commit -m
-    cma = commit -a -m
     ca = commit --amend
     cp = cherry-pick
     s = status --short -b
