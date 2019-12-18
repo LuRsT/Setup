@@ -32,7 +32,10 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(python
+   '(rust
+     yaml
+     markdown
+     python
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -46,6 +49,7 @@ This function should only modify configuration layer settings."
      ;; lsp
      ;; markdown
      multiple-cursors
+     magit
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -205,8 +209,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
 
    ;; Default font or prioritized list of fonts.
-   dotspacemacs-default-font '("Operator Mono Lig Book"
-                               :size 10.0
+   dotspacemacs-default-font '("Operator Mono Lig"
+                               :size 11.0
                                :weight normal
                                :width normal)
 
@@ -358,7 +362,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers 'visual
+   dotspacemacs-line-numbers nil
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -451,6 +455,8 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (defun dotspacemacs/user-init ()
+    (setq-default git-magit-status-fullscreen t))
   )
 
 (defun dotspacemacs/user-load ()
@@ -482,7 +488,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify stickyfunc-enhance smartparens pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags evil-matchit dap-mode bui tree-mode lsp-mode markdown-mode spinner dash-functional cython-mode counsel-gtags counsel swiper ivy company-anaconda company blacken anaconda-mode pythonic which-key use-package treemacs-projectile treemacs-evil pcre2el overseer nameless macrostep hybrid-mode helm-xref helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag flycheck-package evil-mc elisp-slime-nav dotenv-mode diminish bind-map auto-compile ace-jump-helm-line))))
+    (toml-mode flycheck-rust rust-mode yaml-mode vmd-mode mmm-mode markdown-toc gh-md emoji-cheat-sheet-plus company-emoji yapfify stickyfunc-enhance smartparens pytest pyenv-mode py-isort pippel pipenv pyvenv pip-requirements lsp-python-ms live-py-mode importmagic epc ctable concurrent deferred helm-pydoc helm-gtags helm-cscope xcscope ggtags evil-matchit dap-mode bui tree-mode lsp-mode markdown-mode spinner dash-functional cython-mode counsel-gtags counsel swiper ivy company-anaconda company blacken anaconda-mode pythonic which-key use-package treemacs-projectile treemacs-evil pcre2el overseer nameless macrostep hybrid-mode helm-xref helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-ls-git helm-flx helm-descbinds helm-ag flycheck-package evil-mc elisp-slime-nav dotenv-mode diminish bind-map auto-compile ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -492,3 +498,16 @@ This function is called at the very end of Spacemacs initialization."
 )
 
 (setq x-select-enable-clipboard-manager nil)
+
+(setq evil-emacs-state-cursor '("red" box))
+(setq evil-normal-state-cursor '("green" box))
+(setq evil-visual-state-cursor '("orange" box))
+(setq evil-insert-state-cursor '("red" bar))
+(setq evil-replace-state-cursor '("red" bar))
+(setq evil-operator-state-cursor '("red" hollow))
+
+;; save bookmarks
+(setq bookmark-default-file "~/.emacs.d/bookmarks"
+      bookmark-save-flag 1) ;; save after every change
+
+(setq magit-repository-directories '("~/dev/"))
