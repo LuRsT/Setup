@@ -1,3 +1,7 @@
+# Vi mode
+#fish_vi_key_bindings
+fish_default_key_bindings
+
 # https://www.martinklepsch.org/posts/git-prompt-for-fish-shell.html
 set normal (set_color normal)
 set magenta (set_color magenta)
