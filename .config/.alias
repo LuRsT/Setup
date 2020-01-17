@@ -34,7 +34,6 @@ alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
 alias webserver='python3 -m http.server'
 alias r='ranger'
-alias c='cheat'
 alias n='numbrs'
 alias m='make'
 alias ggrep='git grep'
@@ -56,6 +55,7 @@ alias rsync-synchronize="rsync -avzu --delete --info=progress2 -h"
 alias rsync-update="rsync -avzu --info=progress2 -h"
 alias f="nvim (fd | fzf)"
 alias the='dict -d moby-thesaurus'
+alias c="cd ~/dev/(ls ~/dev | fzf)"
 
 # Ultimate search alias
 alias s='ag'

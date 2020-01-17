@@ -39,7 +39,6 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'vimwiki/vimwiki'
@@ -61,8 +60,8 @@ let &cpo=s:cpo_save
 unlet s:cpo_save
 
 set background=dark
-colorscheme hybrid_material
-" colorscheme austere
+" colorscheme hybrid_material
+colorscheme austere
 
 " Common Configuration
 source $HOME/.config/vim/config/config.vim

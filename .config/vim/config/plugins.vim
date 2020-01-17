@@ -102,9 +102,6 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 let g:ale_virtualtext_cursor = 1
 
-" Dispatch
-nnoremap <C-d> :Dispatch<CR>
-
 " Ags
 nnoremap <leader>a :Ags
 
