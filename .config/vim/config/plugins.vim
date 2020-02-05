@@ -1,6 +1,7 @@
 " NERDTree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeShowHidden=1
 
 " Lighline
 set laststatus=2

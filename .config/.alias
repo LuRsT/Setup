@@ -55,7 +55,7 @@ alias rsync-synchronize="rsync -avzu --delete --info=progress2 -h"
 alias rsync-update="rsync -avzu --info=progress2 -h"
 alias f="nvim (fd | fzf)"
 alias the='dict -d moby-thesaurus'
-alias c="cd ~/dev/(ls ~/dev | fzf)"
+alias c="cd ~/dev/(ls ~/dev | fzf --reverse --height 40%)"
 
 # Ultimate search alias
 alias s='ag'
