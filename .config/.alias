@@ -25,6 +25,7 @@ alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'
 alias ll='exa --header --long --git'
 alias g='git'
+alias ga='git annex'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias tmux="env TERM=xterm-256color-italic tmux"
 alias mocp='mocp -A'

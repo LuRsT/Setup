@@ -64,3 +64,5 @@
     insteadOf = gh:
 [rebase]
     autosquash = true
+[remote "origin"]
+	prune = true
