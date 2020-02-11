@@ -33,7 +33,8 @@
     find = "!git --no-pager log --pretty='format:%H %s %N' | grep '$1'"
     plush = "!git pull && git push"
     remove-deleted-files = "!git ls-files --deleted -z | xargs -0 git rm"
-    clean-all = "!git remote prune origin && git prune"
+    clean-merged = !git branch --merged master | egrep -v \"(^\\*|^  master$)\" | xargs git branch --delete
+    clean-gone = !git fetch --prune && git branch --verbose | awk '/\\[gone]/{print $1}' |  xargs git branch --delete --force
 [apply]
     whitespace = nowarn
 [github]
