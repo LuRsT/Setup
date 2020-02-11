@@ -117,3 +117,7 @@ nmap s <Plug>(easymotion-overwin-f)
 " Vim-highlightedyank
 
 let g:highlightedyank_highlight_duration = 200
+
+
+" Notational fzf vim
+let g:nv_search_paths = ['~/vimwiki']

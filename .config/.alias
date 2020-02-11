@@ -20,6 +20,7 @@ alias vim="vim +normal\\'\\\""
 alias v='nvim'
 alias vi='nvim'
 alias nv='nvim'
+alias vim='nvim' # No need for vim, also, it breaks with my currrent config
 alias :q='exit'
 alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'
@@ -57,6 +58,8 @@ alias rsync-update="rsync -avzu --info=progress2 -h"
 alias f="nvim (fd | fzf)"
 alias the='dict -d moby-thesaurus'
 alias c="cd ~/dev/(ls ~/dev | fzf --reverse --height 40%)"
+alias e="nvim -c ':NV'"
+alias dc="docker-compose"
 
 # Ultimate search alias
 alias s='ag'

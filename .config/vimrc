@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 
 Plug 'airblade/vim-gitgutter'
+Plug 'alok/notational-fzf-vim'
 Plug 'ambv/black'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'

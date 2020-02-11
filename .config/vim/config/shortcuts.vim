@@ -85,4 +85,4 @@ map <Leader>f :AsyncRun -strip rg --vimgrep --glob '*.py'
 vnoremap <leader>gb :Gbrowse! master:%<cr>
 
 " Search
-:nmap gr :vimgrep '' **/* \| copen 20<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nmap gr :vimgrep '' **/* \| copen 20<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
