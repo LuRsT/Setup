@@ -16,11 +16,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
 
 # Alias
-alias vim="vim +normal\\'\\\""
 alias v='nvim'
 alias vi='nvim'
 alias nv='nvim'
-alias vim='nvim' # No need for vim, also, it breaks with my currrent config
 alias :q='exit'
 alias ls='ls --color=auto'
 alias gcc='gcc -Werror -Wall -pedantic'
