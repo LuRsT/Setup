@@ -6,6 +6,10 @@ syntax on
 
 set runtimepath=$HOME/.config/vim,$VIM,$VIMRUNTIME
 
+" Options for hybrid_material
+let g:enable_bold_font = 1
+let g:enable_italic_font = 1
+
 """ BEGIN Plugins
 
 if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
