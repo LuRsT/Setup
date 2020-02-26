@@ -86,3 +86,6 @@ vnoremap <leader>gb :Gbrowse! master:%<cr>
 
 " Search
 nmap gr :vimgrep '' **/* \| copen 20<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
+" Execute a command from the current line and past results below
+nmap <leader>E yyp:.!bash<CR>
