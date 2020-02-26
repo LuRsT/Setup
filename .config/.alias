@@ -7,9 +7,11 @@ export PYTHONDONTWRITEBYTECODE=1
 export HISTCONTROL=ignoredups
 export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export BROWSER="firefox"
 export GOPATH="$HOME/.gospace"
+
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_OPTS='--reverse --height 40%'
 
 export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -55,9 +57,11 @@ alias rsync-synchronize="rsync -avzu --delete --info=progress2 -h"
 alias rsync-update="rsync -avzu --info=progress2 -h"
 alias f="nvim (fd | fzf)"
 alias the='dict -d moby-thesaurus'
-alias c="cd ~/dev/(ls ~/dev | fzf --reverse --height 40%)"
+alias c="cd ~/dev/(ls ~/dev | fzf)"
 alias e="nvim -c ':NV'"
 alias dc="docker-compose"
+# Fzf search arch wiki
+alias aw="firefox (fd . /usr/share/doc/arch-wiki/html/en | fzf)"
 
 # Ultimate search alias
 alias s='ag'
