@@ -32,7 +32,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'gabesoft/vim-ags'
 Plug 'hotwatermorning/auto-git-diff'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
