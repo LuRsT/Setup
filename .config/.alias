@@ -18,7 +18,9 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/bin"
 
 # Alias
+alias a='cd (fd --max-depth 1 -t d | fzf)'
 alias v='nvim'
+alias vf='nvim (fd | fzf)'
 alias vi='nvim'
 alias nv='nvim'
 alias :q='exit'
@@ -56,6 +58,7 @@ alias rsync-move="rsync -avz --info=progress2 -h --remove-source-files"
 alias rsync-synchronize="rsync -avzu --delete --info=progress2 -h"
 alias rsync-update="rsync -avzu --info=progress2 -h"
 alias f="nvim (fd | fzf)"
+alias ff="fd | fzf"
 alias the='dict -d moby-thesaurus'
 alias c="cd ~/dev/(ls ~/dev | fzf)"
 alias e="nvim -c ':NV'"
