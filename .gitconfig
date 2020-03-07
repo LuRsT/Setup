@@ -9,15 +9,15 @@
     ds = diff --stat
     dc = diff --cached
     dcs = diff --stat --cached
-    a = add
-    ch = checkout
+    a = "!git add       $(git status --short | fzf | awk '{print $2}')"
+    ch = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
     b = branch
     l = log --stat
     ll = log --oneline --decorate
     f = fetch
-    r = reset
     p = pull
     nb = checkout -b
+    r = "!git restore $(git status --short | fzf | awk '{print $2}')"
 
     ss = !hr && git status --short -b
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
