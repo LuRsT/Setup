@@ -121,3 +121,10 @@ let g:highlightedyank_highlight_duration = 200
 
 " Notational fzf vim
 let g:nv_search_paths = ['~/vimwiki']
+
+" WhichKey
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+set timeoutlen=500
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>

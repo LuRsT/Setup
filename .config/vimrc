@@ -37,6 +37,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
+Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'
 Plug 'mxw/vim-jsx'
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}

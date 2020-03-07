@@ -36,6 +36,7 @@ set clipboard=unnamedplus
 
 set wildignore+=*/.git/*,*/tmp/*,*.swp
 
+
 " Makes joins better (J)
 set formatoptions+=j
 
