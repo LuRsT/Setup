@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'alok/notational-fzf-vim'
 Plug 'ambv/black'
+Plug 'bogado/file-line'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
@@ -48,6 +49,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
+Plug 'tyru/caw.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 Plug 'wincent/terminus'

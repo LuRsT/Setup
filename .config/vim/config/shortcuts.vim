@@ -79,6 +79,9 @@ map <leader>sh :History<CR>
 
 map <leader>ft :NERDTreeToggle<CR>
 
+" Comment
+nmap <leader>c <Plug>(caw:zeropos:toggle)
+xmap <leader>c <Plug>(caw:zeropos:toggle)
 
 " Execute a command from the current line and past results below
 nmap <leader>E yyp:.!bash<CR>
