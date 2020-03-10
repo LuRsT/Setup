@@ -1,5 +1,5 @@
 [alias]
-    ai = add --interactive
+    a = add
     c = commit -v
     cm = commit -m
     ca = commit --amend
@@ -9,7 +9,7 @@
     ds = diff --stat
     dc = diff --cached
     dcs = diff --stat --cached
-    a = "!git add       $(git status --short | fzf | awk '{print $2}')"
+    ai = "!git add       $(git status --short | fzf | awk '{print $2}')"
     ch = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
     b = branch
     l = log --stat
