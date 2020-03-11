@@ -1,0 +1,15 @@
+#!/bin/fish
+
+# This is a script to connect into an EC2 instance from the cluster -> task definition -> instance
+# Requirements:
+# - fzf
+# - jq
+
+set CLUSTER (aws ecs list-clusters | jq '.clusterArns[]' | fzf --height 40% --reverse --header CLUSTER | awk -F/ '{print $2}' | sed 's/"//')
+set service (aws ecs list-services --cluster $CLUSTER | jq '.serviceArns[]' | fzf --height 40% --reverse --header SERVICE | awk -F/ '{print $2}' | sed 's/"//')
+set task (aws ecs list-tasks --cluster $CLUSTER --desired-status "RUNNING" --service $service | jq '.taskArns[]' | awk -F/ '{print $2}' | sed 's/"//')
+set instance (aws ecs describe-tasks --cluster $CLUSTER --tasks $task | jq '.tasks[0].containerInstanceArn' | awk -F/ '{print $2}' | sed 's/"//')
+set instance_id (aws ecs describe-container-instances --cluster $CLUSTER --container-instances $instance | jq '.containerInstances[0].ec2InstanceId' | sed 's/"//g')
+set ip (aws ec2 describe-instances --instance-ids $instance_id | jq '.Reservations[0].Instances[0].PrivateDnsName' | sed 's/"//g')
+
+ssh $ip
