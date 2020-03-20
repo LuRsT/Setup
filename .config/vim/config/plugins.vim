@@ -98,6 +98,7 @@ let g:deoplete#enable_at_startup = 1
 
 " Ale
 let b:ale_linters = ['flake8', 'pylint']
+let b:ale_fixers = ['black']
 let g:ale_set_highlights = 0
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
@@ -109,43 +110,13 @@ nnoremap <leader>a :Ags
 " Fzf
 nnoremap <C-p> :Files<CR>
 
-" FZF Jump to tags
-function! s:tags_sink(line)
-  let parts = split(a:line, '\t\zs')
-  let excmd = matchstr(parts[2:], '^.*\ze;"\t')
-  execute 'silent e' parts[1][:-2]
-  let [magic, &magic] = [&magic, 0]
-  execute excmd
-  let &magic = magic
-endfunction
-
-function! s:tags()
-  if empty(tagfiles())
-    echohl WarningMsg
-    echom 'Preparing tags'
-    echohl None
-    call system('ctags -R')
-  endif
-
-  call fzf#run({
-  \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
-  \            '| grep -v -a ^!',
-  \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index',
-  \ 'down':    '40%',
-  \ 'sink':    function('s:tags_sink')})
-endfunction
-
-command! Tags call s:tags()
-
 " Easymotion
-" <Leader>f{char} to move to {char}
+" <Leader>s{char} to move to {char}
 map  s <Plug>(easymotion-bd-f)
 nmap s <Plug>(easymotion-overwin-f)
 
 " Vim-highlightedyank
-
 let g:highlightedyank_highlight_duration = 200
-
 
 " Notational fzf vim
 let g:nv_search_paths = ['~/vimwiki']

@@ -24,7 +24,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'alok/notational-fzf-vim'
-Plug 'ambv/black'
 Plug 'bogado/file-line'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
@@ -40,9 +39,8 @@ Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
-Plug 'rbong/vim-flog'
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
@@ -51,8 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'tyru/caw.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
-Plug 'wincent/terminus'
+Plug 'dense-analysis/ale'
 Plug 'zchee/deoplete-jedi'
 
 " Coloschemes
