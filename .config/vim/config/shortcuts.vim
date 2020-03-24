@@ -22,8 +22,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Display filename in statusbar
-nnoremap <C-x> :set statusline=%f<CR>
+" Display filename
+nnoremap <C-x> :echo @%<CR>
 
 " Use tab and shift tab to indent region
 nmap <tab> v>
