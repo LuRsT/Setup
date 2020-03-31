@@ -3,8 +3,10 @@
 filename=$1
 extension="${filename##*.}"
 
-if [ "$extension" == "gz" ]; then
+if [ "$extension" == "tar.gz" ]; then
     tar -zxvf $filename
+elif [ "$extension" == "gz" ]; then
+    gzip -d $filename
 elif [ "$extension" == "tar" ]; then
     tar -xvf $filename
 elif [ "$extension" == "bz2" ]; then
@@ -16,4 +18,5 @@ elif [ "$extension" == "tgz" ]; then
 else
     cat `which untar`
 fi
+
 
