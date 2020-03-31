@@ -55,10 +55,14 @@ map <leader>v :e ~/.config/vimrc<CR>
 map <leader>vs :e ~/.config/vim/config/shortcuts.vim<CR>
 
 " Fzf stuff
-map <leader>sf :Files<CR>
-map <leader>ss :Rg<CR>
-map <leader>st :Tags<CR>
-map <leader>sh :History<CR>
+map <leader>zb :Buffers<CR>
+map <leader>zbc :BCommits<CR>
+map <leader>zc :Commits<CR>
+map <leader>zf :Files<CR>
+map <leader>zh :History<CR>
+map <leader>zm :Marks<CR>
+map <leader>zs :Rg<CR>
+map <leader>zt :Tags<CR>
 
 map <leader>ft :NERDTreeToggle<CR>
 

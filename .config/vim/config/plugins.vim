@@ -104,11 +104,14 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 let g:ale_virtualtext_cursor = 1
 
-" Ags
+""""" Ags
 nnoremap <leader>a :Ags
 
-" Fzf
+""""" Fzf
 nnoremap <C-p> :Files<CR>
+
+" Set up Pop up
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Easymotion
 " <Leader>s{char} to move to {char}
@@ -129,3 +132,6 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 xnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 xnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+" Rust
+let g:rustfmt_autosave = 1
