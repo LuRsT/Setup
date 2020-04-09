@@ -9,18 +9,18 @@
     ds = diff --stat
     dc = diff --cached
     dcs = diff --stat --cached
-    ai = "!git add      $(git status --short | fzf --preview \"git diff $(echo {} | awk '{print $2}')\" | awk '{print $2}')"
-    ch = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
+    ai = "!git add      $(git status --short | fzf --multi --preview \"git diff $(echo {} | awk '{print $2}')\" | awk '{print $2}')"
+    chi = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
+    ch = checkout
     b = branch
     l = log --stat
-    l = "!git show $(git log --oneline | fzf --preview \"git show (echo {} | cut -d ' ' -f 1)\" | cut -d ' ' -f 1)"
+    l = "!git show $(git log --date=short --format=\"%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)\" --graph --color=always | fzf --ansi --preview \"git show (cut -d ' ' -f 1 < echo {})\" | cut -d ' ' -f 1)"
     ll = log --oneline --decorate
     f = fetch
     p = pull
     nb = checkout -b
-    r = "!git restore $(git status --short | fzf | awk '{print $2}')"
+    r = "!git restore $(git status --short | fzf --multi | awk '{print $2}')"
 
-    ss = !hr && git status --short -b
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
     wat = blame
 
