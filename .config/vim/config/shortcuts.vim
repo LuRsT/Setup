@@ -2,7 +2,6 @@
 
 "Activate NERDTREE
 nmap <silent> <F7> :NERDTreeToggle<CR>
-let NERDTreeDirArrows = 1
 
 " Get name of vim identifier (for changing colors)
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -15,15 +14,6 @@ command! W  w
 command! Wq wq
 command! WQ wq
 command! Vs vs
-
-" Easier Split navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Display filename
-nnoremap <C-x> :echo @%<CR>
 
 " Use tab and shift tab to indent region
 nmap <tab> v>
@@ -44,6 +34,20 @@ map <ESC>[7~    <Home>
 
 " Search
 nmap gr :vimgrep '' **/* \| copen 20<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
+""" Control keys
+
+" Easier Split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Display filename
+nnoremap <C-x> :echo @%<CR>
+
+nnoremap <C-p> :GFiles<CR>
+nnoremap <C-g> :Buffers<CR>
 
 " """""" LEADER KEYS
 

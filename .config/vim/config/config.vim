@@ -36,12 +36,6 @@ set clipboard=unnamedplus
 
 set wildignore+=*/.git/*,*/tmp/*,*.swp
 
-" Makes joins better (J)
-set formatoptions+=j
-
-" Highlight column
-"set colorcolumn=81
-
 " Folds
 set foldmethod=manual
 
@@ -63,12 +57,6 @@ endif
 
 " Delete trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
-
-set grepprg=fzz\ ag\ --nogroup\ --nocolor\ \{\{\$*}\}
-
-"Make tabs, trailing whitespace, and non-breaking spaces visible
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-set list
 
 " Open quickfix window when using quickfix commands like :make
 autocmd QuickFixCmdPost [^l]* cwindow

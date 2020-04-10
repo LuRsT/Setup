@@ -1,7 +1,7 @@
 " NERDTree
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 
 " Lighline
 set laststatus=2
@@ -104,17 +104,17 @@ let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 let g:ale_virtualtext_cursor = 1
 
-""""" Ags
+" Ags
 nnoremap <leader>a :Ags
 
-""""" Fzf
-nnoremap <C-p> :Files<CR>
+" Fzf
 
-" Set up Pop up
+" Set up Pop up window
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
-" Easymotion
-" <Leader>s{char} to move to {char}
+""""" Easymotion
+
+" s{char} to move to {char}
 map  s <Plug>(easymotion-bd-f)
 nmap s <Plug>(easymotion-overwin-f)
 

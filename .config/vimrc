@@ -6,10 +6,6 @@ syntax on
 
 set runtimepath=$HOME/.config/vim,$VIM,$VIMRUNTIME
 
-" Options for hybrid_material
-let g:enable_bold_font = 1
-let g:enable_italic_font = 1
-
 """ BEGIN Plugins
 
 if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
@@ -52,6 +48,7 @@ Plug 'tyru/caw.vim'
 Plug 'vimwiki/vimwiki'
 Plug 'dense-analysis/ale'
 Plug 'zchee/deoplete-jedi'
+Plug 'majutsushi/tagbar'
 
 " Coloschemes
 
@@ -65,9 +62,9 @@ filetype plugin indent on
 let &cpo=s:cpo_save
 unlet s:cpo_save
 
-set background=dark
-colorscheme hybrid_material
-" colorscheme austere
+
+" Colorscheme
+source $HOME/.config/vim/config/colors.vim
 
 " Common Configuration
 source $HOME/.config/vim/config/config.vim
