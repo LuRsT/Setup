@@ -72,6 +72,10 @@ map <leader>zt :Tags<CR>
 
 map <leader>ft :NERDTreeToggle<CR>
 
+" VimPlug
+map <leader>pu :PlugUpdate<CR>
+map <leader>pc :PlugClean<CR>
+
 " Notational
 map <leader>n :NV<CR>
 
