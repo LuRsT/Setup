@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'alok/notational-fzf-vim'
 Plug 'bogado/file-line'
+Plug 'cespare/vim-toml'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
@@ -53,8 +54,9 @@ Plug 'zchee/deoplete-jedi'
 
 " Coloschemes
 
-Plug 'lurst/austere.vim'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'lurst/austere.vim'
+Plug 'sainnhe/gruvbox-material'
 
 call plug#end()
 

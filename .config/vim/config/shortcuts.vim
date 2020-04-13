@@ -55,8 +55,10 @@ nnoremap <C-g> :Buffers<CR>
 map <leader>tx :s/\[\ \]/[X]/<CR>:nohl<CR>
 
 " Open .vim config stuff
-map <leader>v :e ~/.config/vimrc<CR>
+map <leader>vv :e ~/.config/vimrc<CR>
 map <leader>vs :e ~/.config/vim/config/shortcuts.vim<CR>
+map <leader>vp :e ~/.config/vim/config/plugins.vim<CR>
+map <leader>vc :e ~/.config/vim/config/config.vim<CR>
 
 " Fzf stuff
 map <leader>zb :Buffers<CR>
