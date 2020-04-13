@@ -73,9 +73,5 @@ map <leader>ft :NERDTreeToggle<CR>
 " Notational
 map <leader>n :NV<CR>
 
-" Comment
-nmap <leader>c <Plug>(caw:zeropos:toggle)
-xmap <leader>c <Plug>(caw:zeropos:toggle)
-
 " Execute a command from the current line and past results below
 nmap <leader>E yyp:.!bash<CR>

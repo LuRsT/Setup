@@ -23,6 +23,7 @@ Plug 'alok/notational-fzf-vim'
 Plug 'bogado/file-line'
 Plug 'chase/vim-ansible-yaml', { 'for': 'yaml' }
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'gabesoft/vim-ags'
@@ -36,19 +37,19 @@ Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'
+Plug 'majutsushi/tagbar'
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
-Plug 'tyru/caw.vim'
 Plug 'vimwiki/vimwiki'
-Plug 'dense-analysis/ale'
 Plug 'zchee/deoplete-jedi'
-Plug 'majutsushi/tagbar'
 
 " Coloschemes
 

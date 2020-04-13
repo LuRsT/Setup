@@ -14,7 +14,7 @@
     ch = checkout
     b = branch
     l = log --stat
-    l = "!git show $(git log --date=short --format=\"%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)\" --graph --color=always | fzf --ansi --preview \"git show (cut -d ' ' -f 1 < echo {})\" | cut -d ' ' -f 1)"
+    l = "!git show $(git log --oneline | fzf --color --preview \"git show (echo {} | cut -d ' ' -f 1)\" | cut -d ' ' -f 1)"
     ll = log --oneline --decorate
     f = fetch
     p = pull
