@@ -51,6 +51,10 @@ nnoremap <C-g> :Buffers<CR>
 
 " """""" LEADER KEYS
 
+" Ags
+nnoremap <Leader>a :Ags<Space>
+nnoremap <Leader>aa :Ags<Space><C-R>=expand('<cword>')<CR><CR>
+
 " Mark a todo item with an x [X]
 map <leader>tx :s/\[\ \]/[X]/<CR>:nohl<CR>
 

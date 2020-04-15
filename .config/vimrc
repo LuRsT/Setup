@@ -39,6 +39,7 @@ Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
