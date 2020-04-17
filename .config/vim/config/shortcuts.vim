@@ -55,6 +55,12 @@ nnoremap <C-g> :Buffers<CR>
 nnoremap <Leader>a :Ags<Space>
 nnoremap <Leader>aa :Ags<Space><C-R>=expand('<cword>')<CR><CR>
 
+" grep for word under cursor
+" From: https://github.com/tomnomnom/dotfiles/blob/master/.vimrc
+map <Leader>g :tabnew\|read !grep -Hnr '<C-R><C-W>'<CR>
+" Go to file under cursor respecting line number
+map <Leader>gf <C-W>gF<CR>:tabm<CR>
+
 " Mark a todo item with an x [X]
 map <leader>tx :s/\[\ \]/[X]/<CR>:nohl<CR>
 
