@@ -68,6 +68,7 @@ alias dc="docker-compose"
 # Fzf search arch wiki
 alias aw="firefox (fd . /usr/share/doc/arch-wiki/html/en | fzf)"
 alias ca="cargo"
+alias notify="notify-send"
 
 # Ultimate search alias
 alias s='ag'
