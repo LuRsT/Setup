@@ -54,8 +54,6 @@ Plug 'zchee/deoplete-jedi'
 
 " Coloschemes
 
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'lurst/austere.vim'
 Plug 'sainnhe/gruvbox-material'
 
 call plug#end()
