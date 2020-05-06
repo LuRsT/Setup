@@ -17,6 +17,7 @@ export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # Alias
 alias a='cd (fd --max-depth 1 -t d | fzf)'

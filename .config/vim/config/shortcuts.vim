@@ -89,5 +89,8 @@ map <leader>pc :PlugClean<CR>
 " Notational
 map <leader>n :NV<CR>
 
+" Searching
+map <leader>s :Rg<CR>
+
 " Execute a command from the current line and past results below
 nmap <leader>E yyp:.!bash<CR>
