@@ -21,6 +21,13 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
 (setq doom-font (font-spec :family "Hasklig" :size 13))
+(if (string-match-p (regexp-quote "Hasklig")
+    (aref (query-font (face-attribute 'default :font)) 0))
+        (setq haskell-font-lock-symbols nil)
+        (setq haskell-font-lock-symbols 'unicode))
+
+
+;; (setq doom-font (font-spec :family "monospace" :size 14))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -55,3 +62,49 @@
 
 ;; Remove the "Saving clipboard..." when closing emacs
 (setq x-select-enable-clipboard-manager nil)
+
+;; Keymappings for windows
+; (map! :o "j" #'evilem-motion-next-visual-line
+;       :o "k" #'evilem-motion-previous-visual-line)
+
+;     windmove-up
+;     windmove-down
+;     windmove-left
+;     windmove-right
+
+; (map! :map global-map
+;  "C-h" `,(+use-key-message doom-leader-key "h")
+;  "C-s" `,(+use-key-message "/"))
+
+
+
+(evil-snipe-mode -1)
+(map! :nm "s" #'avy-goto-word-1
+      :nm "S" #'avy-goto-char-timer)
+
+
+; (after! pdf-tools
+;   ;; open pdfs scaled to fit page
+;   (setq-default pdf-view-display-size 'fit-width)
+;   ;; automatically annotate highlights
+;   (setq pdf-annot-activate-created-annotations t
+;         pdf-view-resize-factor 1.1)
+;    ;; faster motion
+;   (map!
+;    :map pdf-view-mode-map
+;    (
+;    :n "g g"          #'pdf-view-first-page
+;    :n "G"            #'pdf-view-last-page
+;    :n "E"            #'pdf-view-next-page-command
+;    :n "N"            #'pdf-view-previous-page-command
+;    :n "n"            #'evil-collection-pdf-view-previous-line-or-previous-page
+;    :n "e"            #'evil-collection-pdf-view-next-line-or-next-page
+;    :localleader
+;       :prefix "o"
+;         (:prefix "n"
+;           :desc "Insert" "i" 'org-noter-insert-note
+;           )
+;    ))
+
+
+(evil-set-initial-state 'term-mode 'emacs)

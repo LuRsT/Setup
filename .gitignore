@@ -1,5 +1,6 @@
 .config/*
 !.config/fish
+!.config/doom
 !.config/vim
 .config/vim/.netrwhist
 
