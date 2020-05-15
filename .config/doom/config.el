@@ -108,3 +108,60 @@
 
 
 (evil-set-initial-state 'term-mode 'emacs)
+
+;; Org-Roam config
+(use-package! org-roam
+  :commands (org-roam-insert org-roam-find-file org-roam)
+  :init
+  (setq org-roam-directory "/home/lurst/vimwiki/org-files/")
+  (map! :leader
+        :prefix "n"
+        :desc "Org-Roam-Insert" "i" #'org-roam-insert
+        :desc "Org-Roam-Find"   "/" #'org-roam-find-file
+        :desc "Org-Roam-Buffer" "r" #'org-roam)
+  :config
+  (org-roam-mode +1))
+
+;; From: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
+(after! org-roam
+        (map! :leader
+            :prefix "n"
+            :desc "org-roam" "l" #'org-roam
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+            :desc "org-roam-find-file" "f" #'org-roam-find-file
+            :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-capture" "c" #'org-roam-capture))
+
+
+;; ;; Font exceptions
+;; (plist-delete! +pretty-code-symbols :def)
+;; (plist-delete! +pretty-code-symbols :in)
+;; (plist-delete! +pretty-code-symbols :for)
+;; (plist-delete! +pretty-code-symbols :lambda)
+;; (plist-delete! +pretty-code-symbols :yield)
+;; (plist-delete! +pretty-code-symbols :not-in)
+;; (plist-delete! +pretty-code-symbols :and)
+;; (plist-delete! +pretty-code-symbols :or)
+;; (plist-put +pretty-code-symbols :|> #Xe142)
+;; (plist-put +pretty-code-symbols :-> #Xe149)
+;; (plist-put +pretty-code-symbols :=> #Xe161)
+;; (plist-put +pretty-code-symbols :<- #Xe179)
+;; (plist-put +pretty-code-symbols :<> #Xe1c9)
+;; (plist-put +pretty-code-symbols :<!-- #Xe10e)
+;; (plist-put +pretty-code-symbols :<!--- #Xe10f)
+
+
+;; Shortcuts
+;; SPC g g c a -> Git ammend
+;; SPC f p     -> Edit config files
+;;
+;; Fix a problem with doom update
+;; rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
+
+; (map! :nm "C-p" #'projectile-find-file)
+
+;; While I'm learning emacs...
+(after! which-key
+  (setq which-key-idle-delay 0.5))
