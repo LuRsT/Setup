@@ -104,8 +104,11 @@ assign [class=".*Firefox.*"] 2
 assign [class=".*Chromium.*"] 2
 
 
-# Moving slack automaticaly to workspace 3
-assign [class="Slack"] 3
+# Moving slack automaticaly to workspace 4
+assign [class="Slack"] 4
+
+# Moving emacs automaticaly to workspace 3
+assign [class="emacs"] 3
 
 # reload the configuration file
 bindsym $mod+Shift+r restart
