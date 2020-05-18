@@ -165,3 +165,8 @@
 ;; While I'm learning emacs...
 (after! which-key
   (setq which-key-idle-delay 0.5))
+
+(map! :n "C-h"   #'evil-window-left
+      :n "C-j"   #'evil-window-down
+      :n "C-k"   #'evil-window-up
+      :n "C-l"   #'evil-window-right)
