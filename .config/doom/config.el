@@ -170,3 +170,8 @@
       :n "C-j"   #'evil-window-down
       :n "C-k"   #'evil-window-up
       :n "C-l"   #'evil-window-right)
+
+(after! evil-ex
+  (evil-ex-define-cmd "W" #'evil-write)
+  (evil-ex-define-cmd "Wq" #'evil-quit-all)
+  )
