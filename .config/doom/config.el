@@ -20,11 +20,13 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
-(setq doom-font (font-spec :family "Hasklig" :size 13))
-(if (string-match-p (regexp-quote "Hasklig")
-    (aref (query-font (face-attribute 'default :font)) 0))
-        (setq haskell-font-lock-symbols nil)
-        (setq haskell-font-lock-symbols 'unicode))
+;;
+;; (setq doom-font (font-spec :family "Hasklig" :size 13))
+
+;; (if (string-match-p (regexp-quote "Hasklig")
+;;     (aref (query-font (face-attribute 'default :font)) 0))
+;;         (setq haskell-font-lock-symbols nil)
+;;         (setq haskell-font-lock-symbols 'unicode))
 
 
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
@@ -113,7 +115,7 @@
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
-  (setq org-roam-directory "/home/lurst/vimwiki/org-files/")
+  (setq org-roam-directory "/home/lurst/vimwiki/org-roam/")
   (map! :leader
         :prefix "n"
         :desc "Org-Roam-Insert" "i" #'org-roam-insert
@@ -130,32 +132,16 @@
             :desc "org-roam-insert" "i" #'org-roam-insert
             :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
             :desc "org-roam-find-file" "f" #'org-roam-find-file
-            :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+            :desc "org-roam-graph-show" "g" #'org-roam-graph-show
             :desc "org-roam-insert" "i" #'org-roam-insert
             :desc "org-roam-capture" "c" #'org-roam-capture))
-
-
-;; ;; Font exceptions
-;; (plist-delete! +pretty-code-symbols :def)
-;; (plist-delete! +pretty-code-symbols :in)
-;; (plist-delete! +pretty-code-symbols :for)
-;; (plist-delete! +pretty-code-symbols :lambda)
-;; (plist-delete! +pretty-code-symbols :yield)
-;; (plist-delete! +pretty-code-symbols :not-in)
-;; (plist-delete! +pretty-code-symbols :and)
-;; (plist-delete! +pretty-code-symbols :or)
-;; (plist-put +pretty-code-symbols :|> #Xe142)
-;; (plist-put +pretty-code-symbols :-> #Xe149)
-;; (plist-put +pretty-code-symbols :=> #Xe161)
-;; (plist-put +pretty-code-symbols :<- #Xe179)
-;; (plist-put +pretty-code-symbols :<> #Xe1c9)
-;; (plist-put +pretty-code-symbols :<!-- #Xe10e)
-;; (plist-put +pretty-code-symbols :<!--- #Xe10f)
-
 
 ;; Shortcuts
 ;; SPC g g c a -> Git ammend
 ;; SPC f p     -> Edit config files
+;; SPC g g p   -> Git Push
+;; SPC s i     -> imenu
+;; SPC ,       -> Buffers
 ;;
 ;; Fix a problem with doom update
 ;; rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
@@ -169,9 +155,33 @@
 (map! :n "C-h"   #'evil-window-left
       :n "C-j"   #'evil-window-down
       :n "C-k"   #'evil-window-up
-      :n "C-l"   #'evil-window-right)
+      :n "C-l"   #'evil-window-right
+
+      :n "C-p"   #'projectile-find-file
+      )
 
 (after! evil-ex
   (evil-ex-define-cmd "W" #'evil-write)
   (evil-ex-define-cmd "Wq" #'evil-quit-all)
+  (evil-ex-define-cmd "Vs" #'evil-window-vsplit)
+  (evil-ex-define-cmd "Ss" #'evil-window-split)
   )
+
+(use-package org-journal
+      :bind
+      ("C-c n j" . org-journal-new-entry)
+      :custom
+      (org-journal-dir "~/vimwiki/org-roam/")
+      (org-journal-date-prefix "#+TITLE: ")
+      (org-journal-file-format "%Y-%m-%d.org")
+      (org-journal-date-format "%A, %d %B %Y"))
+    (setq org-journal-enable-agenda-integration t)
+
+(require 'company-org-roam)
+    (use-package company-org-roam
+      :when (featurep! :completion company)
+      :after org-roam
+      :config
+      (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
+
+(setq deft-directory "~/vimwiki")
