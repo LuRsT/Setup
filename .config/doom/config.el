@@ -21,7 +21,7 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 14))
 ;;
-;; (setq doom-font (font-spec :family "Hasklig" :size 13))
+(setq doom-font (font-spec :family "Operator Mono Lig Book" :size 14))
 
 ;; (if (string-match-p (regexp-quote "Hasklig")
 ;;     (aref (query-font (face-attribute 'default :font)) 0))
@@ -29,12 +29,10 @@
 ;;         (setq haskell-font-lock-symbols 'unicode))
 
 
-;; (setq doom-font (font-spec :family "monospace" :size 14))
-
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-gruvbox)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -142,6 +140,8 @@
 ;; SPC g g p   -> Git Push
 ;; SPC s i     -> imenu
 ;; SPC ,       -> Buffers
+;; SPC .       -> All files (even those not on git)
+;; SPC h t     -> Themes selection
 ;;
 ;; Fix a problem with doom update
 ;; rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
@@ -185,3 +185,13 @@
       (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
 
 (setq deft-directory "~/vimwiki")
+
+(map! :map evil-window-map
+      "w" #'ace-window)
+
+;; Enable bold and italics in themes
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+
+;; Make comments italics on every theme
+(add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
