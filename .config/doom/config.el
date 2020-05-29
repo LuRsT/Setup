@@ -142,11 +142,13 @@
 ;; SPC ,       -> Buffers
 ;; SPC .       -> All files (even those not on git)
 ;; SPC h t     -> Themes selection
+;; SPC *       -> Search under cursor
+;; r e master  -> git rebase master
+;;
+;; if you use ivy you can also use M-n to fill the current input field with the symbol at point
 ;;
 ;; Fix a problem with doom update
 ;; rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
-
-; (map! :nm "C-p" #'projectile-find-file)
 
 ;; While I'm learning emacs...
 (after! which-key
@@ -195,3 +197,6 @@
 
 ;; Make comments italics on every theme
 (add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
+
+(map! :leader :prefix "c" (:prefix ("g" . "gtags")
+                    :desc "Goto definition" "d" 'counsel-gtags-find-definition)

@@ -98,3 +98,5 @@ nmap <leader>E yyp:.!bash<CR>
 " Windows (clashes with vimwiki)
 " nmap <leader>wv :vs<CR>
 " nmap <leader>ws :sp<CR>
+
+nmap <leader>, :Buffers<CR>
