@@ -199,4 +199,4 @@
 (add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
 
 (map! :leader :prefix "c" (:prefix ("g" . "gtags")
-                    :desc "Goto definition" "d" 'counsel-gtags-find-definition)
+                    :desc "Goto definition" "d" 'counsel-gtags-find-definition))
