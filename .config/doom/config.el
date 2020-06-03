@@ -75,75 +75,13 @@
 ;  "C-h" `,(+use-key-message doom-leader-key "h")
 ;  "C-s" `,(+use-key-message "/"))
 
-
-
 (evil-snipe-mode -1)
 (map! :nm "s" #'avy-goto-word-1
       :nm "S" #'avy-goto-char-timer)
 
-
-; (after! pdf-tools
-;   ;; open pdfs scaled to fit page
-;   (setq-default pdf-view-display-size 'fit-width)
-;   ;; automatically annotate highlights
-;   (setq pdf-annot-activate-created-annotations t
-;         pdf-view-resize-factor 1.1)
-;    ;; faster motion
-;   (map!
-;    :map pdf-view-mode-map
-;    (
-;    :n "g g"          #'pdf-view-first-page
-;    :n "G"            #'pdf-view-last-page
-;    :n "E"            #'pdf-view-next-page-command
-;    :n "N"            #'pdf-view-previous-page-command
-;    :n "n"            #'evil-collection-pdf-view-previous-line-or-previous-page
-;    :n "e"            #'evil-collection-pdf-view-next-line-or-next-page
-;    :localleader
-;       :prefix "o"
-;         (:prefix "n"
-;           :desc "Insert" "i" 'org-noter-insert-note
-;           )
-;    ))
-
-
 (evil-set-initial-state 'term-mode 'emacs)
 
-;; Org-Roam config
-(use-package! org-roam
-  :commands (org-roam-insert org-roam-find-file org-roam)
-  :init
-  (setq org-roam-directory "/home/lurst/vimwiki/org-roam/")
-  (map! :leader
-        :prefix "n"
-        :desc "Org-Roam-Insert" "i" #'org-roam-insert
-        :desc "Org-Roam-Find"   "/" #'org-roam-find-file
-        :desc "Org-Roam-Buffer" "r" #'org-roam)
-  :config
-  (org-roam-mode +1))
 
-;; From: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
-(after! org-roam
-        (map! :leader
-            :prefix "n"
-            :desc "org-roam" "l" #'org-roam
-            :desc "org-roam-insert" "i" #'org-roam-insert
-            :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
-            :desc "org-roam-find-file" "f" #'org-roam-find-file
-            :desc "org-roam-graph-show" "g" #'org-roam-graph-show
-            :desc "org-roam-insert" "i" #'org-roam-insert
-            :desc "org-roam-capture" "c" #'org-roam-capture))
-
-;; Shortcuts
-;; SPC g g c a -> Git ammend
-;; SPC f p     -> Edit config files
-;; SPC g g p   -> Git Push
-;; SPC s i     -> imenu
-;; SPC ,       -> Buffers
-;; SPC .       -> All files (even those not on git)
-;; SPC h t     -> Themes selection
-;; SPC *       -> Search under cursor
-;; r e master  -> git rebase master
-;;
 ;; if you use ivy you can also use M-n to fill the current input field with the symbol at point
 ;;
 ;; Fix a problem with doom update
@@ -162,6 +100,24 @@
       :n "C-p"   #'projectile-find-file
       )
 
+(after! evil-ex
+  (evil-ex-define-cmd "W" #'evil-write)
+  (evil-ex-define-cmd "Wq" #'evil-quit-all)
+  (evil-ex-define-cmd "Vs" #'evil-window-vsplit)
+  (evil-ex-define-cmd "Ss" #'evil-window-split)
+  )
+
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+
+(add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
+
+(map! :leader :prefix "c" (:prefix ("g" . "gtags")
+                    :desc "Goto definition" "d" 'counsel-gtags-find-definition))
+
+(map! :map evil-window-map
+      "w" #'ace-window)
+
 (use-package org-journal
       :bind
       ("C-c n j" . org-journal-new-entry)
@@ -172,6 +128,30 @@
       (org-journal-date-format "%A, %d %B %Y"))
     (setq org-journal-enable-agenda-integration t)
 
+(use-package! org-roam
+  :commands (org-roam-insert org-roam-find-file org-roam)
+  :init
+  (setq org-roam-directory "/home/lurst/vimwiki/org-roam/")
+  (map! :leader
+        :prefix "n"
+        :desc "Org-Roam-Insert" "i" #'org-roam-insert
+        :desc "Org-Roam-Find"   "/" #'org-roam-find-file
+        :desc "Org-Roam-Buffer" "r" #'org-roam)
+  :config
+  (org-roam-mode +1))
+
+
+(after! org-roam
+        (map! :leader
+            :prefix "n"
+            :desc "org-roam" "l" #'org-roam
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+            :desc "org-roam-find-file" "f" #'org-roam-find-file
+            :desc "org-roam-graph-show" "g" #'org-roam-graph-show
+            :desc "org-roam-insert" "i" #'org-roam-insert
+            :desc "org-roam-capture" "c" #'org-roam-capture))
+
 (require 'company-org-roam)
     (use-package company-org-roam
       :when (featurep! :completion company)
@@ -180,23 +160,3 @@
       (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
 
 (setq deft-directory "~/vimwiki")
-
-(map! :map evil-window-map
-      "w" #'ace-window)
-
-;; Enable bold and italics in themes
-(setq doom-themes-enable-bold t
-      doom-themes-enable-italic t)
-
-;; Make comments italics on every theme
-(add-hook! 'doom-load-theme-hook (custom-set-faces! '(font-lock-comment-face :slant italic)))
-
-(map! :leader :prefix "c" (:prefix ("g" . "gtags")
-                    :desc "Goto definition" "d" 'counsel-gtags-find-definition))
-
-(after! evil-ex
-  (evil-ex-define-cmd "W" #'evil-write)
-  (evil-ex-define-cmd "Wq" #'evil-quit-all)
-  (evil-ex-define-cmd "Vs" #'evil-window-vsplit)
-  (evil-ex-define-cmd "Ss" #'evil-window-split)
-  )
