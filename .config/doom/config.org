@@ -1,3 +1,7 @@
+* Old stuff
+
+#+BEGIN_SRC emacs-lisp
+
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
@@ -193,10 +197,20 @@
 
 (map! :leader :prefix "c" (:prefix ("g" . "gtags")
                     :desc "Goto definition" "d" 'counsel-gtags-find-definition))
+#+END_SRC
 
+* New stuff
+
+Using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
+
+
+A few shortcuts I have on my vimrc for a while, and I quickly realise how badly I need them every time I use vi or another vi-compatible editor.
+
+#+BEGIN_SRC emacs-lisp
 (after! evil-ex
   (evil-ex-define-cmd "W" #'evil-write)
   (evil-ex-define-cmd "Wq" #'evil-quit-all)
   (evil-ex-define-cmd "Vs" #'evil-window-vsplit)
   (evil-ex-define-cmd "Ss" #'evil-window-split)
   )
+#+END_SRC
