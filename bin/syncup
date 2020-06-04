@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd ~/vimwiki && make
+
+cd ~/dev/Setup  && git pull
+
+cd ~/dev/setup_dotfiles  && git pull
