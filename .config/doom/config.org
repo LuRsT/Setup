@@ -218,3 +218,16 @@ Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
 
 #+END_SRC
+
+
+*** Python stuff
+
+Enable elpy which has lots of good stuff.
+
+#+BEGIN_SRC emacs-lisp
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
+
+#+END_SRC

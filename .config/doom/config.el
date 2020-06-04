@@ -160,3 +160,8 @@
       (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
 
 (setq deft-directory "~/vimwiki")
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable))
