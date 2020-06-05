@@ -4,15 +4,14 @@ import os
 
 def main():
     output = os.popen("netctl list").read().split("\n")
+    active_networks = []
     for line in output:
         if line.startswith("*"):
-            active_network = line[2:]
+            active_networks.append(line[2:])
 
-    assert active_network
-
-    output = os.popen(f"netctl status {active_network}").read().split("\n")
-    for line in output:
-        if "Status" in line and "online" in line:
-            return f"{active_network}"
+    if len(active_networks) > 1:
+        return " + ".join(active_networks)
+    else:
+        return active_networks[0]
 
 print(main())
