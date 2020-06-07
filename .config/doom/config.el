@@ -33,9 +33,6 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-gruvbox)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/vimwiki")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -59,25 +56,6 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Remove the "Saving clipboard..." when closing emacs
-(setq x-select-enable-clipboard-manager nil)
-
-;; Keymappings for windows
-; (map! :o "j" #'evilem-motion-next-visual-line
-;       :o "k" #'evilem-motion-previous-visual-line)
-
-;     windmove-up
-;     windmove-down
-;     windmove-left
-;     windmove-right
-
-; (map! :map global-map
-;  "C-h" `,(+use-key-message doom-leader-key "h")
-;  "C-s" `,(+use-key-message "/"))
-
-(evil-snipe-mode -1)
-(map! :nm "s" #'avy-goto-word-1
-      :nm "S" #'avy-goto-char-timer)
 
 (evil-set-initial-state 'term-mode 'emacs)
 
@@ -99,6 +77,12 @@
 
       :n "C-p"   #'projectile-find-file
       )
+
+(setq x-select-enable-clipboard-manager nil)
+
+(evil-snipe-mode -1)
+(map! :nm "s" #'avy-goto-word-1
+      :nm "S" #'avy-goto-char-timer)
 
 (after! evil-ex
   (evil-ex-define-cmd "W" #'evil-write)
@@ -127,6 +111,8 @@
       (org-journal-file-format "%Y-%m-%d.org")
       (org-journal-date-format "%A, %d %B %Y"))
     (setq org-journal-enable-agenda-integration t)
+
+(setq org-directory "~/vimwiki")
 
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)

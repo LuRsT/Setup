@@ -35,7 +35,7 @@ function chargin {
 echo -e '{ "version": 1 }\n['
 while :; do
     BATTERY=$(acpi | egrep -o "[0-9]{1,3}\%")
-    CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage "%"}')
+    CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END { printf("%.2f %\n",usage) }')
     TEMP=$(sensor acpitz-virtual-0 temp1_input)
     TEMP2=$(sensor coretemp-isa-0000 temp1_input)
     FAN=$(sensor thinkpad-isa-0000 fan1_input)
@@ -45,7 +45,7 @@ while :; do
     NETWORK=$(current_network.py)
 
     output=''
-    text 'ﯱ ' $GRAY
+    text 'N' $GRAY
     text " $NETWORK"
     text ' | ' $GRAY
     text '⚡ ' $CHAR

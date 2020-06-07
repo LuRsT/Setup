@@ -37,9 +37,6 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-gruvbox)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/vimwiki")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -63,25 +60,6 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Remove the "Saving clipboard..." when closing emacs
-(setq x-select-enable-clipboard-manager nil)
-
-;; Keymappings for windows
-; (map! :o "j" #'evilem-motion-next-visual-line
-;       :o "k" #'evilem-motion-previous-visual-line)
-
-;     windmove-up
-;     windmove-down
-;     windmove-left
-;     windmove-right
-
-; (map! :map global-map
-;  "C-h" `,(+use-key-message doom-leader-key "h")
-;  "C-s" `,(+use-key-message "/"))
-
-(evil-snipe-mode -1)
-(map! :nm "s" #'avy-goto-word-1
-      :nm "S" #'avy-goto-char-timer)
 
 (evil-set-initial-state 'term-mode 'emacs)
 
@@ -103,8 +81,6 @@
 
       :n "C-p"   #'projectile-find-file
       )
-
-
 #+END_SRC
 
 * Cool Shortcuts
@@ -122,6 +98,22 @@ r e master  -> git rebase master
 * Configuration
 
 Using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
+
+
+Remove the "Saving clipboard..." when closing emacs.
+
+#+BEGIN_SRC emacs-lisp
+(setq x-select-enable-clipboard-manager nil)
+#+END_SRC
+
+Using `s` takes me to the place I want much quicker than other motions, I just need to train myself to use it more.
+
+#+BEGIN_SRC emacs-lisp
+(evil-snipe-mode -1)
+(map! :nm "s" #'avy-goto-word-1
+      :nm "S" #'avy-goto-char-timer)
+#+END_SRC
+
 
 A few shortcuts I have on my vimrc for a while, and I quickly realise how badly I need them every time I use vi or another vi-compatible editor.
 
@@ -182,7 +174,11 @@ All the org stuff, because this is why I started using emacs
 
 Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
+If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
+
 #+BEGIN_SRC emacs-lisp
+(setq org-directory "~/vimwiki")
+
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
