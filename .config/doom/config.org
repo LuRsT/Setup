@@ -238,6 +238,8 @@ If you use `org' and don't want your org files in the default location below, ch
 
 Enable elpy which has lots of good stuff.
 
+TODO Doesn't work :(
+
 #+BEGIN_SRC emacs-lisp
 ;; (use-package elpy
 ;;   :ensure t
@@ -276,4 +278,44 @@ Rotate layout with `SPC w SPC`
 #+BEGIN_SRC emacs-lisp
 (map! :map evil-window-map
       "SPC" #'rotate-layout)
+#+END_SRC
+
+*** Company
+
+Bettter autocomplete
+
+#+BEGIN_SRC emacs-lisp
+(after! company
+  (setq company-idle-delay 0.5
+        company-minimum-prefix-length 2)
+  (setq company-show-numbers t)
+(add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+
+(setq-default history-length 1000)
+(setq-default prescient-history-length 1000)
+#+END_SRC
+
+Spelling backends
+
+#+BEGIN_SRC emacs-lisp
+(set-company-backend! '(text-mode
+                        markdown-mode
+                        gfm-mode)
+  '(:seperate company-ispell
+              company-files
+              company-yasnippet))
+#+END_SRC
+
+Lazy load spelling
+
+#+BEGIN_SRC emacs-lisp
+(after! flyspell (require 'flyspell-lazy) (flyspell-lazy-mode 1))
+#+END_SRC
+
+
+*** Better tables
+
+#+BEGIN_SRC emacs-lisp
+ (package! org-pretty-table-mode
+  :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "88380f865a...")
 #+END_SRC
