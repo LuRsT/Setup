@@ -99,12 +99,31 @@ r e master  -> git rebase master
 
 Using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
 
+** Basic configuration
+
+#+BEGIN_SRC emacs-lisp
+(setq-default
+ tab-width 4                                      ; Set width for tabs
+ uniquify-buffer-name-style 'forward              ; Uniquify buffer names
+ window-combination-resize t                      ; take new window space from all other windows (not just current)
+ x-stretch-cursor t)                              ; Stretch cursor to the glyph width
+
+(setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
+      evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
+      inhibit-compacting-font-caches t            ; When there are lots of glyphs, keep them in memory
+      )
+
+(display-time-mode 1)                             ; Enable time in the mode-line
+(display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
+#+END_SRC
 
 Remove the "Saving clipboard..." when closing emacs.
 
 #+BEGIN_SRC emacs-lisp
 (setq x-select-enable-clipboard-manager nil)
 #+END_SRC
+
+** More config
 
 Using `s` takes me to the place I want much quicker than other motions, I just need to train myself to use it more.
 
@@ -154,7 +173,7 @@ Space w w opens a selection for the window I want to go to. Probably useless, si
 #+END_SRC
 
 
-*** Org-Journal
+** Org-Journal
 
 All the org stuff, because this is why I started using emacs
 
@@ -215,15 +234,46 @@ If you use `org' and don't want your org files in the default location below, ch
 
 #+END_SRC
 
-
-*** Python stuff
+** Python stuff
 
 Enable elpy which has lots of good stuff.
 
 #+BEGIN_SRC emacs-lisp
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+;; (use-package elpy
+;;   :ensure t
+;;   :init
+;;   (elpy-enable)
+;;   )
+#+END_SRC
 
+** Searching
+
+I use ivy, a cool shortcut I could use more is `C-Space` to view the file from the search buffer.
+
+This config shows options by pressing `C-o` inside the search buffer.
+
+#+BEGIN_SRC emacs-lisp
+(setq ivy-read-action-function #'ivy-hydra-read-action)
+#+END_SRC
+
+** Windows
+
+Select a new file when splitting.
+
+#+BEGIN_SRC emacs-lisp
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+
+(setq +ivy-buffer-preview t)
+#+END_SRC
+
+Rotate layout with `SPC w SPC`
+
+#+BEGIN_SRC emacs-lisp
+(map! :map evil-window-map
+      "SPC" #'rotate-layout)
 #+END_SRC

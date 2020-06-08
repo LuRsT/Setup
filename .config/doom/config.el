@@ -78,6 +78,20 @@
       :n "C-p"   #'projectile-find-file
       )
 
+(setq-default
+ tab-width 4                                      ; Set width for tabs
+ uniquify-buffer-name-style 'forward              ; Uniquify buffer names
+ window-combination-resize t                      ; take new window space from all other windows (not just current)
+ x-stretch-cursor t)                              ; Stretch cursor to the glyph width
+
+(setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
+      evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
+      inhibit-compacting-font-caches t            ; When there are lots of glyphs, keep them in memory
+      )
+
+(display-time-mode 1)                             ; Enable time in the mode-line
+(display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
+
 (setq x-select-enable-clipboard-manager nil)
 
 (evil-snipe-mode -1)
@@ -147,7 +161,22 @@
 
 (setq deft-directory "~/vimwiki")
 
-(use-package elpy
-  :ensure t
-  :init
-  (elpy-enable))
+;; (use-package elpy
+;;   :ensure t
+;;   :init
+;;   (elpy-enable)
+;;   )
+
+(setq ivy-read-action-function #'ivy-hydra-read-action)
+
+(setq evil-vsplit-window-right t
+      evil-split-window-below t)
+
+(defadvice! prompt-for-buffer (&rest _)
+  :after '(evil-window-split evil-window-vsplit)
+  (+ivy/switch-buffer))
+
+(setq +ivy-buffer-preview t)
+
+(map! :map evil-window-map
+      "SPC" #'rotate-layout)
