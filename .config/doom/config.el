@@ -57,7 +57,7 @@
 ;; they are implemented.
 
 
-(evil-set-initial-state 'term-mode 'emacs)
+(evil-set-initial-state 'vterm-mode 'emacs)
 
 
 ;; if you use ivy you can also use M-n to fill the current input field with the symbol at point
@@ -89,8 +89,8 @@
       inhibit-compacting-font-caches t            ; When there are lots of glyphs, keep them in memory
       )
 
-(display-time-mode 1)                             ; Enable time in the mode-line
-(display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
+;; (display-time-mode 1)                             ; Enable time in the mode-line
+;; (display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
 
 (setq x-select-enable-clipboard-manager nil)
 
@@ -112,9 +112,6 @@
 
 (map! :leader :prefix "c" (:prefix ("g" . "gtags")
                     :desc "Goto definition" "d" 'counsel-gtags-find-definition))
-
-(map! :map evil-window-map
-      "w" #'ace-window)
 
 (use-package org-journal
       :bind
@@ -174,7 +171,7 @@
 
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
+  (projectile/find-file))
 
 (setq +ivy-buffer-preview t)
 

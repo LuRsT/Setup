@@ -61,7 +61,7 @@
 ;; they are implemented.
 
 
-(evil-set-initial-state 'term-mode 'emacs)
+(evil-set-initial-state 'vterm-mode 'emacs)
 
 
 ;; if you use ivy you can also use M-n to fill the current input field with the symbol at point
@@ -83,7 +83,7 @@
       )
 #+END_SRC
 
-* Cool Shortcuts
+* How to do things
 
 SPC g g c a -> Git ammend
 SPC f p     -> Edit config files
@@ -94,6 +94,15 @@ SPC .       -> All files (even those not on git)
 SPC h t     -> Themes selection
 SPC *       -> Search under cursor
 r e master  -> git rebase master
+SPC :       -> Same as M-x
+
+To find out what a mapping is for a combo key, for example, M-x:
+
+"spc h k" then hit "M x"
+
+To edit a piece of code inside an org documnet:
+
+`SPC m '`
 
 * Configuration
 
@@ -113,8 +122,8 @@ Using a literate config was inspired by: https://tecosaur.github.io/emacs-config
       inhibit-compacting-font-caches t            ; When there are lots of glyphs, keep them in memory
       )
 
-(display-time-mode 1)                             ; Enable time in the mode-line
-(display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
+;; (display-time-mode 1)                             ; Enable time in the mode-line
+;; (display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
 #+END_SRC
 
 Remove the "Saving clipboard..." when closing emacs.
@@ -132,7 +141,6 @@ Using `s` takes me to the place I want much quicker than other motions, I just n
 (map! :nm "s" #'avy-goto-word-1
       :nm "S" #'avy-goto-char-timer)
 #+END_SRC
-
 
 A few shortcuts I have on my vimrc for a while, and I quickly realise how badly I need them every time I use vi or another vi-compatible editor.
 
@@ -165,14 +173,6 @@ I'm looking for a way to be able to search for tags in a project, this was one f
                     :desc "Goto definition" "d" 'counsel-gtags-find-definition))
 #+END_SRC
 
-Space w w opens a selection for the window I want to go to. Probably useless, since I tend to do `SPC w hjkl` or `C-hjkl`.
-
-#+BEGIN_SRC emacs-lisp
-(map! :map evil-window-map
-      "w" #'ace-window)
-#+END_SRC
-
-
 ** Org-Journal
 
 All the org stuff, because this is why I started using emacs
@@ -189,7 +189,7 @@ All the org stuff, because this is why I started using emacs
     (setq org-journal-enable-agenda-integration t)
 #+END_SRC
 
-*** Org Roam stuff
+** Org Roam stuff
 
 Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
@@ -268,7 +268,7 @@ Select a new file when splitting.
 
 (defadvice! prompt-for-buffer (&rest _)
   :after '(evil-window-split evil-window-vsplit)
-  (+ivy/switch-buffer))
+  (projectile/find-file))
 
 (setq +ivy-buffer-preview t)
 #+END_SRC
@@ -280,7 +280,7 @@ Rotate layout with `SPC w SPC`
       "SPC" #'rotate-layout)
 #+END_SRC
 
-*** Company
+** Company
 
 Bettter autocomplete
 
@@ -312,8 +312,7 @@ Lazy load spelling
 (after! flyspell (require 'flyspell-lazy) (flyspell-lazy-mode 1))
 #+END_SRC
 
-
-*** Better tables
+** Better tables
 
 #+BEGIN_SRC emacs-lisp
  (package! org-pretty-table-mode
