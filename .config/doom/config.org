@@ -1,89 +1,6 @@
-* Old stuff
-
-#+BEGIN_SRC emacs-lisp
-
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 14))
-;;
-(setq doom-font (font-spec :family "Operator Mono Lig Book" :size 14))
-
-;; (if (string-match-p (regexp-quote "Hasklig")
-;;     (aref (query-font (face-attribute 'default :font)) 0))
-;;         (setq haskell-font-lock-symbols nil)
-;;         (setq haskell-font-lock-symbols 'unicode))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-gruvbox)
-
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
-;; they are implemented.
-
-
-(evil-set-initial-state 'vterm-mode 'emacs)
-
-
-;; if you use ivy you can also use M-n to fill the current input field with the symbol at point
-;;
-;; Fix a problem with doom update
-;; rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
-
-;; While I'm learning emacs...
-(after! which-key
-  (setq which-key-idle-delay 0.5))
-
-(map!
-      :n "C-h"   #'evil-window-left
-      :n "C-j"   #'evil-window-down
-      :n "C-k"   #'evil-window-up
-      :n "C-l"   #'evil-window-right
-
-      :n "C-p"   #'projectile-find-file
-      )
-#+END_SRC
-
 * How to do things
+
+I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
 
 SPC g g c a -> Git ammend
 SPC f p     -> Edit config files
@@ -104,11 +21,71 @@ To edit a piece of code inside an org documnet:
 
 `SPC m '`
 
-* Configuration
+Here are some additional functions/macros that could help you configure Doom:
 
-Using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
+- `load!' for loading external *.el files relative to this one
+- `use-package' for configuring packages
+- `after!' for running code after a package has loaded
+- `add-load-path!' for adding directories to the `load-path', relative to
+  this file. Emacs searches the `load-path' when you load packages with
+  `require' or `use-package'.
+- `map!' for binding new keys
 
-** Basic configuration
+To get information about any of these functions/macros, move the cursor over
+the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
+This will open documentation for it, including demos of how they are used.
+
+You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
+they are implemented.
+
+* Original config
+
+Some functionality uses this to identify you, e.g. GPG configuration, email
+clients, file templates and snippets.
+
+Althought I don't use any of this yet...
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Gil Goncalves"
+      user-mail-address "lursty@gmail.com")
+#+END_SRC
+
+Doom exposes five (optional) variables for controlling fonts in Doom. Here
+are the three important ones:
+
++ `doom-font'
++ `doom-variable-pitch-font'
++ `doom-big-font' -- used for `doom-big-font-mode'; use this for
+  presentations or streaming.
+
+They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+font string. You generally only need these two:
+(setq doom-font (font-spec :family "monospace" :size 14))
+
+#+BEGIN_SRC emacs-lisp
+(setq doom-font (font-spec :family "Operator Mono Lig Book" :size 14))
+;; (if (string-match-p (regexp-quote "Hasklig")
+;;     (aref (query-font (face-attribute 'default :font)) 0))
+;;         (setq haskell-font-lock-symbols nil)
+;;         (setq haskell-font-lock-symbols 'unicode))
+#+END_SRC
+
+There are two ways to load a theme. Both assume the theme is installed and
+available. You can either set `doom-theme' or manually load a theme with the
+`load-theme' function. This is the default:
+#+BEGIN_SRC emacs-lisp
+(setq doom-theme 'doom-gruvbox)
+#+END_SRC
+
+This determines the style of line numbers in effect. If set to `nil', line
+numbers are disabled. For relative line numbers, set this to `relative'.
+#+BEGIN_SRC emacs-lisp
+(setq display-line-numbers-type t)
+#+END_SRC
+
+* Basic configuration
+
+Just a few configs
 
 #+BEGIN_SRC emacs-lisp
 (setq-default
@@ -132,7 +109,20 @@ Remove the "Saving clipboard..." when closing emacs.
 (setq x-select-enable-clipboard-manager nil)
 #+END_SRC
 
-** More config
+
+Keep the time for which-key to open up short, because I need to read it 80% of the time.
+
+#+BEGIN_SRC emacs-lisp
+(after! which-key
+  (setq which-key-idle-delay 0.5))
+#+END_SRC
+
+
+Turn the terminal into emacs mode because having modal is confusing and unlike the environment I had on tmux. THIS DOESN'T WORK
+
+#+BEGIN_SRC emacs-lisp
+(evil-set-initial-state 'vterm-mode 'emacs)
+#+END_SRC
 
 Using `s` takes me to the place I want much quicker than other motions, I just need to train myself to use it more.
 
@@ -173,7 +163,7 @@ I'm looking for a way to be able to search for tags in a project, this was one f
                     :desc "Goto definition" "d" 'counsel-gtags-find-definition))
 #+END_SRC
 
-** Org-Journal
+* Org-Journal
 
 All the org stuff, because this is why I started using emacs
 
@@ -189,7 +179,7 @@ All the org stuff, because this is why I started using emacs
     (setq org-journal-enable-agenda-integration t)
 #+END_SRC
 
-** Org Roam stuff
+* Org Roam stuff
 
 Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
@@ -234,7 +224,7 @@ If you use `org' and don't want your org files in the default location below, ch
 
 #+END_SRC
 
-** Python stuff
+* Python stuff
 
 Enable elpy which has lots of good stuff.
 
@@ -248,7 +238,7 @@ TODO Doesn't work :(
 ;;   )
 #+END_SRC
 
-** Searching
+* Searching
 
 I use ivy, a cool shortcut I could use more is `C-Space` to view the file from the search buffer.
 
@@ -258,7 +248,7 @@ This config shows options by pressing `C-o` inside the search buffer.
 (setq ivy-read-action-function #'ivy-hydra-read-action)
 #+END_SRC
 
-** Windows
+* Windows
 
 Select a new file when splitting.
 
@@ -280,7 +270,7 @@ Rotate layout with `SPC w SPC`
       "SPC" #'rotate-layout)
 #+END_SRC
 
-** Company
+* Company
 
 Bettter autocomplete
 
@@ -312,9 +302,29 @@ Lazy load spelling
 (after! flyspell (require 'flyspell-lazy) (flyspell-lazy-mode 1))
 #+END_SRC
 
-** Better tables
+* Better tables
 
 #+BEGIN_SRC emacs-lisp
  (package! org-pretty-table-mode
   :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "88380f865a...")
+#+END_SRC
+
+* Window shortcuts
+
+if you use ivy you can also use M-n to fill the current input field with the symbol at point
+
+Fix a problem with doom update
+rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
+
+Shortcuts for moving from window to window jsut like in vim and tmux. Ctrl+hjkl
+
+#+BEGIN_SRC emacs-lisp
+(map!
+      :n "C-h"   #'evil-window-left
+      :n "C-j"   #'evil-window-down
+      :n "C-k"   #'evil-window-up
+      :n "C-l"   #'evil-window-right
+
+      :n "C-p"   #'projectile-find-file
+      )
 #+END_SRC

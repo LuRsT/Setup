@@ -4,6 +4,7 @@
 !.config/vim
 .config/vim/.netrwhist
 .config/fish/fish_variables
+.config/doom/config.el
 
 .wmii/history*
 *.so
