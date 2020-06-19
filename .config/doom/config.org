@@ -12,6 +12,7 @@ SPC h t     -> Themes selection
 SPC *       -> Search under cursor
 r e master  -> git rebase master
 SPC :       -> Same as M-x
+SPC m l l   -> Insert link to a file or anything else on an org-mode file
 
 To find out what a mapping is for a combo key, for example, M-x:
 
@@ -248,6 +249,12 @@ This config shows options by pressing `C-o` inside the search buffer.
 (setq ivy-read-action-function #'ivy-hydra-read-action)
 #+END_SRC
 
+* Projectile
+
+#+BEGIN_SRC emacs-lisp
+(setq projectile-project-search-path '("~/dev/"))
+#+END_SRC
+
 * Windows
 
 Select a new file when splitting.
@@ -327,4 +334,14 @@ Shortcuts for moving from window to window jsut like in vim and tmux. Ctrl+hjkl
 
       :n "C-p"   #'projectile-find-file
       )
+#+END_SRC
+
+* Packages
+
+Org rifle, apparently this is cool...
+
+https://github.com/alphapapa/org-rifle
+
+#+BEGIN_SRC emacs-lisp
+;; (!use-package 'helm-org-rifle)
 #+END_SRC

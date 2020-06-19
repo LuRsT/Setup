@@ -48,3 +48,6 @@
 
 (package! company-org-roam
    :recipe (:host github :repo "jethrokuan/company-org-roam"))
+
+(package! helm-org-rifle
+   :recipe (:host github :repo "alphapapa/org-rifle"))
