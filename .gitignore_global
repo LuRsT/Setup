@@ -48,4 +48,5 @@ tags
 scratch
 
 geckodriver.log
-node_modules
+*node_modules*
+*.env*

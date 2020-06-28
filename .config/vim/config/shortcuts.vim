@@ -95,8 +95,8 @@ map <leader>s :Rg<CR>
 " Execute a command from the current line and past results below
 nmap <leader>E yyp:.!bash<CR>
 
-" Windows (clashes with vimwiki)
-" nmap <leader>wv :vs<CR>
-" nmap <leader>ws :sp<CR>
+" Windows
+nmap <leader>wv :vs<CR>
+nmap <leader>ws :sp<CR>
 
 nmap <leader>, :Buffers<CR>
