@@ -13,6 +13,7 @@ SPC *       -> Search under cursor
 r e master  -> git rebase master
 SPC :       -> Same as M-x
 SPC m l l   -> Insert link to a file or anything else on an org-mode file
+SPC q r     -> Quits and restores emacs
 
 To find out what a mapping is for a combo key, for example, M-x:
 
@@ -38,6 +39,8 @@ This will open documentation for it, including demos of how they are used.
 
 You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 they are implemented.
+
+Modules code is located here: https://github.com/hlissner/doom-emacs/tree/develop/modules
 
 * Original config
 
@@ -65,6 +68,7 @@ font string. You generally only need these two:
 
 #+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "Operator Mono Lig Book" :size 14))
+(setq doom-variable-pitch-font (font-spec :family "Operator Mono Lig Book" :size 16))
 ;; (if (string-match-p (regexp-quote "Hasklig")
 ;;     (aref (query-font (face-attribute 'default :font)) 0))
 ;;         (setq haskell-font-lock-symbols nil)
@@ -344,4 +348,12 @@ https://github.com/alphapapa/org-rifle
 
 #+BEGIN_SRC emacs-lisp
 ;; (!use-package 'helm-org-rifle)
+#+END_SRC
+
+* Writeroom
+
+COnfiguration of my zen writting mode
+
+#+BEGIN_SRC emacs-lisp
+(setq writeroom-fullscreen-effect t)
 #+END_SRC
