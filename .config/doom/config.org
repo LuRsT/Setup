@@ -42,6 +42,8 @@ they are implemented.
 
 Modules code is located here: https://github.com/hlissner/doom-emacs/tree/develop/modules
 
+Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
+
 * Original config
 
 Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -356,4 +358,28 @@ COnfiguration of my zen writting mode
 
 #+BEGIN_SRC emacs-lisp
 (setq writeroom-fullscreen-effect t)
+#+END_SRC
+
+* Deno
+
+The instructions here on how to configure emacs to understand Deno: https://deno.land/manual/getting_started/setup_your_environment#emacs
+
+Run this line on your project:
+
+npm install --save-dev typescript-deno-plugin typescript in your project (
+
+And add a `tsconfig.json` file on the root of the project [[https://howtodoinjava.com/typescript/tsconfig-json/][more info on tsconfig.json]]:
+
+#+BEGIN_SRC json
+{
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-deno-plugin",
+        "enable": true, // default is `true`
+        "importmap": "import_map.json"
+      }
+    ]
+  }
+}
 #+END_SRC
