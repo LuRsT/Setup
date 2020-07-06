@@ -38,7 +38,7 @@ while :; do
     CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END { printf("%.2f %\n",usage) }')
     TEMP=$(sensor acpitz-virtual-0 temp1_input)
     TEMP2=$(sensor coretemp-isa-0000 temp1_input)
-    FAN=$(sensor thinkpad-isa-0000 fan1_input)
+    FAN=$(sensor thinkpad-isa-0000 fan1_input | awk '// {printf("% 4d \n", $1)}')
     RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
     DATE=$(date "+%d/%m/%y %H:%M")
     CHAR=$(chargin)

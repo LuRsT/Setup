@@ -71,21 +71,19 @@ font string. You generally only need these two:
 #+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family "Operator Mono Lig Book" :size 14))
 (setq doom-variable-pitch-font (font-spec :family "Operator Mono Lig Book" :size 16))
-;; (if (string-match-p (regexp-quote "Hasklig")
-;;     (aref (query-font (face-attribute 'default :font)) 0))
-;;         (setq haskell-font-lock-symbols nil)
-;;         (setq haskell-font-lock-symbols 'unicode))
 #+END_SRC
 
 There are two ways to load a theme. Both assume the theme is installed and
 available. You can either set `doom-theme' or manually load a theme with the
 `load-theme' function. This is the default:
+
 #+BEGIN_SRC emacs-lisp
 (setq doom-theme 'doom-gruvbox)
 #+END_SRC
 
 This determines the style of line numbers in effect. If set to `nil', line
 numbers are disabled. For relative line numbers, set this to `relative'.
+
 #+BEGIN_SRC emacs-lisp
 (setq display-line-numbers-type t)
 #+END_SRC
@@ -105,9 +103,6 @@ Just a few configs
       evil-want-fine-undo t                       ; By default while in insert all changes are one big blob. Be more granular
       inhibit-compacting-font-caches t            ; When there are lots of glyphs, keep them in memory
       )
-
-;; (display-time-mode 1)                             ; Enable time in the mode-line
-;; (display-battery-mode 1)                          ; On laptops it's nice to know how much power you have
 #+END_SRC
 
 Remove the "Saving clipboard..." when closing emacs.
@@ -123,7 +118,6 @@ Keep the time for which-key to open up short, because I need to read it 80% of t
 (after! which-key
   (setq which-key-idle-delay 0.5))
 #+END_SRC
-
 
 Turn the terminal into emacs mode because having modal is confusing and unlike the environment I had on tmux. THIS DOESN'T WORK
 
@@ -227,23 +221,11 @@ If you use `org' and don't want your org files in the default location below, ch
       (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
 
 (setq deft-directory "~/vimwiki")
-
-
 #+END_SRC
 
 * Python stuff
 
-Enable elpy which has lots of good stuff.
-
-TODO Doesn't work :(
-
-#+BEGIN_SRC emacs-lisp
-;; (use-package elpy
-;;   :ensure t
-;;   :init
-;;   (elpy-enable)
-;;   )
-#+END_SRC
+Nothing yet
 
 * Searching
 
@@ -301,9 +283,7 @@ Bettter autocomplete
 Spelling backends
 
 #+BEGIN_SRC emacs-lisp
-(set-company-backend! '(text-mode
-                        markdown-mode
-                        gfm-mode)
+(set-company-backend! '(text-mode markdown-mode gfm-mode)
   '(:seperate company-ispell
               company-files
               company-yasnippet))
@@ -369,17 +349,3 @@ Run this line on your project:
 npm install --save-dev typescript-deno-plugin typescript in your project (
 
 And add a `tsconfig.json` file on the root of the project [[https://howtodoinjava.com/typescript/tsconfig-json/][more info on tsconfig.json]]:
-
-#+BEGIN_SRC json
-{
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "typescript-deno-plugin",
-        "enable": true, // default is `true`
-        "importmap": "import_map.json"
-      }
-    ]
-  }
-}
-#+END_SRC
