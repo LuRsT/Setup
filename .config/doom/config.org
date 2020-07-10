@@ -289,12 +289,6 @@ Spelling backends
               company-yasnippet))
 #+END_SRC
 
-Lazy load spelling
-
-#+BEGIN_SRC emacs-lisp
-(after! flyspell (require 'flyspell-lazy) (flyspell-lazy-mode 1))
-#+END_SRC
-
 * Better tables
 
 #+BEGIN_SRC emacs-lisp
