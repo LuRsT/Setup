@@ -224,8 +224,18 @@ If you use `org' and don't want your org files in the default location below, ch
 #+END_SRC
 
 * Python stuff
+https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/python
 
-Nothing yet
+** Pyls
+I'm going to try to use pyls first, which requires me to ~pip install python-language-server[all]~. If that doesnt work, I can enable mspyls:
+
+** mspyls
+To use mspyls, install it with M-x lsp-install-server and add this to your private config.el:
+
+#+BEGIN_SRC emacs-lisp
+;; (after! lsp-python-ms
+;;   (set-lsp-priority! 'mspyls 1))
+#+END_SRC
 
 * Searching
 
