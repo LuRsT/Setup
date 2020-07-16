@@ -121,8 +121,22 @@ Keep the time for which-key to open up short, because I need to read it 80% of t
 
 Turn the terminal into emacs mode because having modal is confusing and unlike the environment I had on tmux. THIS DOESN'T WORK
 
+Vterm-toggle
+
 #+BEGIN_SRC emacs-lisp
-(evil-set-initial-state 'vterm-mode 'emacs)
+(global-set-key [f2] 'vterm-toggle)
+#+END_SRC
+
+Fix an issue with vterm where the cursor doesn't go back to the right place when going for normal mode.
+
+#+BEGIN_SRC emacs-lisp
+(defun evil-collection-vterm-escape-stay ()
+  "Go back to normal state but don't move cursor backwards.
+Moving cursor backwards is the default vim behavior but
+it is not appropriate in some cases like terminals."
+  (setq-local evil-move-cursor-back nil))
+
+(add-hook 'vterm-mode-hook #'evil-collection-vterm-escape-stay)
 #+END_SRC
 
 Using `s` takes me to the place I want much quicker than other motions, I just need to train myself to use it more.

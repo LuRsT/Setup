@@ -51,3 +51,6 @@
 
 (package! helm-org-rifle
    :recipe (:host github :repo "alphapapa/org-rifle"))
+
+(package! vterm-toggle
+   :recipe (:host github :repo "jixiuf/vterm-toggle"))
