@@ -2,18 +2,18 @@
 
 I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
 
-SPC g g c a -> Git ammend
-SPC f p     -> Edit config files
-SPC g g p   -> Git Push
-SPC s i     -> imenu
-SPC ,       -> Buffers
-SPC .       -> All files (even those not on git)
-SPC h t     -> Themes selection
-SPC *       -> Search under cursor
-r e master  -> git rebase master
-SPC :       -> Same as M-x
-SPC m l l   -> Insert link to a file or anything else on an org-mode file
-SPC q r     -> Quits and restores emacs
+- SPC g g c a -> Git ammend
+- SPC f p     -> Edit config files
+- SPC g g p   -> Git Push
+- SPC s i     -> imenu
+- SPC ,       -> Buffers
+- SPC .       -> All files (even those not on git)
+- SPC h t     -> Themes selection
+- SPC *       -> Search under cursor
+- r e master  -> git rebase master
+- SPC :       -> Same as M-x
+- SPC m l l   -> Insert link to a file or anything else on an org-mode file
+- SPC q r     -> Quits and restores emacs
 
 To find out what a mapping is for a combo key, for example, M-x:
 
@@ -176,6 +176,15 @@ I'm looking for a way to be able to search for tags in a project, this was one f
 #+BEGIN_SRC emacs-lisp
 (map! :leader :prefix "c" (:prefix ("g" . "gtags")
                     :desc "Goto definition" "d" 'counsel-gtags-find-definition))
+#+END_SRC
+
+* Org-mode
+
+Change the color for links (from: https://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/)
+
+#+BEGIN_SRC emacs-lisp
+;; (org-link-set-parameters "http" :face '(:foreground "orange"))
+;; (org-link-set-parameters "https" :face '(:foreground "green"))
 #+END_SRC
 
 * Org-Journal
