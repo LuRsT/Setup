@@ -2,6 +2,7 @@
 
 I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
 
+
 - SPC g g c a -> Git ammend
 - SPC f p     -> Edit config files
 - SPC g g p   -> Git Push
@@ -14,6 +15,8 @@ I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-co
 - SPC :       -> Same as M-x
 - SPC m l l   -> Insert link to a file or anything else on an org-mode file
 - SPC q r     -> Quits and restores emacs
+
+- M-x org-hide-block-all ->  Collapses all #+BEGIN_SRC blocks
 
 To find out what a mapping is for a combo key, for example, M-x:
 
@@ -43,6 +46,17 @@ they are implemented.
 Modules code is located here: https://github.com/hlissner/doom-emacs/tree/develop/modules
 
 Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
+
+To change the splash image:
+Set `fancy-splash-image`` to a path to an image
+
+* Frontpage
+
+Changing the default: https://github.com/hlissner/doom-emacs/blob/develop/modules/ui/doom-dashboard/config.el#L44-L88
+
+#+BEGIN_SRC emacs-lisp
+;; (delete "Open private configuration" +doom-dashboard-menu-title)
+#+END_SRC
 
 * Original config
 
@@ -152,10 +166,21 @@ A few shortcuts I have on my vimrc for a while, and I quickly realise how badly 
 #+BEGIN_SRC emacs-lisp
 (after! evil-ex
   (evil-ex-define-cmd "W" #'evil-write)
-  (evil-ex-define-cmd "Wq" #'evil-quit-all)
+  (evil-ex-define-cmd "Wq" #'evil-quit)
+  (evil-ex-define-cmd "Wqa" #'evil-quit-all)
+  (evil-ex-define-cmd "WQa" #'evil-quit-all)
   (evil-ex-define-cmd "Vs" #'evil-window-vsplit)
-  (evil-ex-define-cmd "Ss" #'evil-window-split)
+  (evil-ex-define-cmd "Sp" #'evil-window-split)
   )
+#+END_SRC
+
+A function to make sure :Wq means to quit magit instead of emacs
+#+BEGIN_SRC emacs-lisp
+(defun my-evil-write ()
+  (if (derived-mode-p 'magit-mode)
+      (magit-specific-quit)
+    (evil-quit-all)))
+(evil-ex-define-cmd "Wqa" #'evil-quit-all)
 #+END_SRC
 
 Enable bold and italics on every team. I'm unsure if I really need this tho
@@ -186,6 +211,20 @@ Change the color for links (from: https://kitchingroup.cheme.cmu.edu/blog/2016/1
 ;; (org-link-set-parameters "http" :face '(:foreground "orange"))
 ;; (org-link-set-parameters "https" :face '(:foreground "green"))
 #+END_SRC
+
+
+* Org-mode templates
+
+#+BEGIN_SRC emacs-lisp
+;; (!after org
+;;         (setq org-capture-templates
+;;               '(("t" "Todo" entry (file+headline "~/.config/doom/templates/gtd.org" "Tasks")
+;;                  "* TODO %?\n  %i\n  %a")
+;;                 ("j" "Journal" entry (file+datetree "~/.config/doom/templates/journal.org")
+;;                  "* %?\nEntered on %U\n  %i\n  %a")))
+;;         )
+#+END_SRC
+
 
 * Org-Journal
 
@@ -376,3 +415,41 @@ Run this line on your project:
 npm install --save-dev typescript-deno-plugin typescript in your project (
 
 And add a `tsconfig.json` file on the root of the project [[https://howtodoinjava.com/typescript/tsconfig-json/][more info on tsconfig.json]]:
+
+* Rest
+#+BEGIN_SRC emacs-lisp
+;; (set-popup-rule "^\\*HTTP Response"  :side 'right)
+#+END_SRC
+
+
+* Experiment with eval
+BY Henrik
+
+This makes the operator `gr` show the output on a little popup
+
+#+BEGIN_SRC emacs-lisp
+(after! org
+(defun +org-eval-handler (beg end)
+    "TODO"
+    (save-excursion
+    (if (not (cl-loop for pos in (list beg (point) end)
+                        if (save-excursion (goto-char pos) (org-in-src-block-p t))
+                        return (goto-char pos)))
+        (message "Nothing to evaluate at point")
+        (org-babel-where-is-src-block-head)
+        (let ((beg (max beg (match-beginning 5)))
+            (end (min end (match-end 5)))
+            (major-mode
+                (org-src-get-lang-mode (or (org-eldoc-get-src-lang)
+                                        (user-error "No lang specified for this src block")))))
+        (+eval/region beg end)))))
+(set-eval-handler! 'org-mode #'+org-eval-handler))
+#+END_SRC
+
+This enables this function on org-mode
+
+#+BEGIN_SRC emacs-lisp
+(map! :after evil-org
+      :map evil-org-mode-map
+      :n "gr" nil)
+#+END_SRC
