@@ -50,6 +50,7 @@ Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
 To change the splash image:
 Set `fancy-splash-image`` to a path to an image
 
+
 * Frontpage
 
 Changing the default: https://github.com/hlissner/doom-emacs/blob/develop/modules/ui/doom-dashboard/config.el#L44-L88
@@ -287,6 +288,8 @@ If you use `org' and don't want your org files in the default location below, ch
 
 * Python stuff
 https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/python
+
+I can check which python you're accessing inside emacs by doing M-x run-python and then import sys; print(sys.path)
 
 ** Pyls
 I'm going to try to use pyls first, which requires me to ~pip install python-language-server[all]~. If that doesnt work, I can enable mspyls:
