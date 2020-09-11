@@ -50,6 +50,7 @@ Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
 To change the splash image:
 Set `fancy-splash-image`` to a path to an image
 
+`M-p` on the Magit commit message buffer allows me to scroll through previous commit messages. Useful when the commit is aborted for some reason.
 
 * Frontpage
 
@@ -167,6 +168,7 @@ A few shortcuts I have on my vimrc for a while, and I quickly realise how badly 
 #+BEGIN_SRC emacs-lisp
 (after! evil-ex
   (evil-ex-define-cmd "W" #'evil-write)
+  (evil-ex-define-cmd "Q" #'evil-quit)
   (evil-ex-define-cmd "Wq" #'evil-quit)
   (evil-ex-define-cmd "Wqa" #'evil-quit-all)
   (evil-ex-define-cmd "WQa" #'evil-quit-all)
