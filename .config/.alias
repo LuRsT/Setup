@@ -70,6 +70,8 @@ alias dc="docker-compose"
 alias aw="firefox (fd . /usr/share/doc/arch-wiki/html/en | fzf)"
 alias ca="cargo"
 alias notify="notify-send"
+alias em="emacsclient -ct" #Terminal emacs
+alias emg="emacsclient -c" #GUI emacs
 
 # Ultimate search alias
 alias s='ag'
