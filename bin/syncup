@@ -3,5 +3,3 @@
 cd ~/vimwiki && git pull origin master
 
 cd ~/dev/Setup  && git pull origin master
-
-cd ~/dev/setup_dotfiles  && git pull origin master
