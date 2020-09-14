@@ -1,0 +1,49 @@
+---
+- hosts: localhost
+  vars:
+     home_dir: /home/{{ ansible_user_id }}
+     repo_dir: "{{ home_dir }}/dev/Setup"
+     repo_url: git@github.com:LuRsT/Setup.git
+     key_file: "{{ home_dir }}/.ssh/id_rsa"
+  tasks:
+      #   - name: Git clone dotfiles repo
+      #     git:
+      #         repo={{ repo_url }}
+      #         dest={{ repo_dir }}
+      #         key_file={{ key_file }}
+      #         recursive=no
+   - name: Link dotfiles
+     file:
+         src={{ repo_dir }}/{{ item.name }}
+         dest={{ home_dir }}/{{ item.name }}
+         state=link
+     with_items:
+        - { name: '.nethackrc' }
+        - { name: '.bashrc' }
+        - { name: '.fonts' }
+        - { name: '.gitconfig' }
+        - { name: '.gitignore_global' }
+        - { name: '.inputrc' }
+        - { name: '.psqlrc' }
+        - { name: '.tmux.conf' }
+        - { name: '.tmate.conf' }
+        - { name: '.Xdefaults' }
+        - { name: '.config' }
+        - { name: '.xmodmap' }
+        - { name: '.zshrc' }
+        - { name: '.i3' }
+        - { name: '.commonshellrc' }
+        - { name: 'bin' }
+        - { name: '.pylintrc' }
+
+   - name: Install pip dependencies
+     pip:
+        name: python-language-server[all]
+        extra_args: --user --upgrade
+
+   - name: Setup emacs as a daemon
+     systemd:
+        name: emacs
+        enabled: yes
+        scope: user
+

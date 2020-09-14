@@ -1,0 +1,123 @@
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  tasks:
+   - name: Install packages for my dev setup
+     pacman:
+       state: installed
+       update_cache: true
+       name:
+        - neovim
+        - entr
+        - openssh
+        - fish
+        - tmux
+        - viewnior
+        - ctags
+        - imagemagick
+        - python-virtualenvwrapper
+        - python-neovim
+        - python-isort
+        - python-pyflakes
+        - python-poetry
+        - the_silver_searcher
+        - bat
+        - exa
+        - xsel
+        - xclip
+        - ripgrep
+        - xfce4-clipman-plugin
+        - fzf
+        - base-devel
+        - libpng
+        - zlib
+        - make
+   - name: Install packages for the OS
+     pacman:
+       state: installed
+       update_cache: true
+       name:
+        - base
+        - time
+        - keychain
+        - termite
+        - pkg-config
+        - intel-ucode
+        - tlp
+        - tp_smapi
+        - x86_energy_perf_policy
+        - acpi_call
+        - ttf-liberation
+        - ttf-dejavu
+        - wpa_supplicant
+        - acpi
+        - xorg-fonts-misc
+        - xorg-xrandr
+        - wireless_tools
+        - mplayer
+        - youtube-dl
+        - scrot
+        - lxappearance
+        - i3-wm
+        - i3lock
+        - xorg-server
+        - xf86-video-intel
+        - xf86-video-intel
+        - xorg-xinit
+        - htop
+        - lsof
+        - zip
+        - p7zip
+        - unzip
+        - unrar
+        - feh
+        - vlc
+        - redshift
+        - unclutter
+        - arc-gtk-theme
+        - arc-icon-theme
+        - dialog # For wifi-menu
+
+   - name: Install extra packages
+     pacman:
+       state: installed
+       update_cache: true
+       name:
+        - screenfetch
+        - cmatrix
+        - firefox
+        - rofi
+        - powertop
+        - udisks2
+        - pcmanfm
+        - pavucontrol
+        - pulseaudio
+        - ranger
+        - mtpfs  # For connecting with androi
+        - gvfs-mtp
+        - fd
+        - time
+        - ffmpegthumbnailer # For thumbnails in video
+        - peek  # Makeing gif
+        - cmake  # For vterm in emac
+        - gcc  # suckless tool
+        - git-annex # suckless tool
+        - strace
+        - highlight # For ranger
+        - w3m # For ranger
+        - gvfs-smb # For samba share
+        - simplescreenrecorder
+        - calibre
+        - discord
+        - chromium
+        - wget
+        - rust
+        - arch-wiki-docs
+        - smartmontools # tlp-stat recomendation
+        - ethtool  # tlp-stat recomendation
+
+   - name: Setup TLP
+     systemd:
+        name: tlp
+        enabled: yes
