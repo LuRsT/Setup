@@ -11,3 +11,4 @@
 *.pyc
 bin/*
 .fonts/
+.config/doom/custom.el
