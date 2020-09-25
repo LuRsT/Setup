@@ -52,6 +52,8 @@ Set `fancy-splash-image`` to a path to an image
 
 `M-p` on the Magit commit message buffer allows me to scroll through previous commit messages. Useful when the commit is aborted for some reason.
 
+`SPC p i` Refresh project files (to remove files from cache in `SPC SPC`)
+
 * Frontpage
 
 Changing the default: https://github.com/hlissner/doom-emacs/blob/develop/modules/ui/doom-dashboard/config.el#L44-L88
