@@ -27,7 +27,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias nv='nvim'
 alias :q='exit'
-alias ls='ls --color=auto'
+alias ls='exa --icons'
 alias gcc='gcc -Werror -Wall -pedantic'
 alias ll='exa --header --long --git'
 alias g='git'
@@ -63,7 +63,7 @@ alias rsync-update="rsync -avzu --info=progress2 -h"
 alias f="nvim (fd | fzf)"
 alias ff="fd | fzf"
 alias the='dict -d moby-thesaurus'
-alias c="cd ~/dev/(ls ~/dev | fzf)"
+alias c="cd ~/dev/(/usr/bin/ls ~/dev | fzf)"
 alias e="nvim -c ':NV'"
 alias dc="docker-compose"
 # Fzf search arch wiki

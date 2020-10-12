@@ -46,8 +46,8 @@ nnoremap <C-H> <C-W><C-H>
 " Display filename
 nnoremap <C-x> :echo @%<CR>
 
-nnoremap <C-p> :GFiles<CR>
-nnoremap <C-g> :Buffers<CR>
+nnoremap <C-p> :Clap files<CR>
+nnoremap <C-g> :Clap buffers<CR>
 
 " """""" LEADER KEYS
 

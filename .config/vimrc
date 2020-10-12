@@ -19,7 +19,6 @@ call plug#begin('~/.vim/plugged')
 " Plugins
 
 Plug 'airblade/vim-gitgutter'
-Plug 'alok/notational-fzf-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
@@ -27,12 +26,11 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'gabesoft/vim-ags'
 Plug 'hotwatermorning/auto-git-diff'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
