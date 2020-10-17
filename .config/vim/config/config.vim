@@ -61,3 +61,12 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Open quickfix window when using quickfix commands like :make
 autocmd QuickFixCmdPost [^l]* cwindow
 autocmd QuickFixCmdPost l* lwindow
+
+" some common typos
+command! QA qa
+command! Qa qa
+command! Q  q
+command! W  w
+command! Wq wq
+command! WQ wq
+command! Vs vs

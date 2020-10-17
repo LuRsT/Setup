@@ -40,9 +40,6 @@ endfunction
 command! -complete=shellcmd -nargs=* -bang Shell call s:ExecuteInShell(<q-args>, '<bang>')
 cabbrev shell Shell
 
-" Find
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
-
 " When using `dd` in the quickfix list, remove the item from the quickfix list.
 " From: https://stackoverflow.com/questions/42905008/quickfix-list-how-to-add-and-remove-entries
 function! RemoveQFItem()

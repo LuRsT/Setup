@@ -1,19 +1,5 @@
-" FKEYS
-
-"Activate NERDTREE
-nmap <silent> <F7> :NERDTreeToggle<CR>
-
 " Get name of vim identifier (for changing colors)
 map <F3> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" some common typos
-command! QA qa
-command! Qa qa
-command! Q  q
-command! W  w
-command! Wq wq
-command! WQ wq
-command! Vs vs
 
 " Use tab and shift tab to indent region
 nmap <tab> v>
@@ -32,9 +18,6 @@ vnoremap <CR> }
 map <ESC>[8~    <End>
 map <ESC>[7~    <Home>
 
-" Search
-nmap gr :vimgrep '' **/* \| copen 20<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
-
 """ Control keys
 
 " Easier Split navigation
@@ -46,6 +29,13 @@ nnoremap <C-H> <C-W><C-H>
 " Display filename
 nnoremap <C-x> :echo @%<CR>
 
+" Use ; as ;
+nnoremap ; :
+
+" Remove Q because who needs ex mode?
+nnoremap Q <nop>
+
+" Search for files
 nnoremap <C-p> :Clap files<CR>
 nnoremap <C-g> :Clap buffers<CR>
 
@@ -54,12 +44,6 @@ nnoremap <C-g> :Clap buffers<CR>
 " Ags
 nnoremap <Leader>a :Ags<Space>
 nnoremap <Leader>aa :Ags<Space><C-R>=expand('<cword>')<CR><CR>
-
-" grep for word under cursor
-" From: https://github.com/tomnomnom/dotfiles/blob/master/.vimrc
-map <Leader>g :tabnew\|read !grep -Hnr '<C-R><C-W>'<CR>
-" Go to file under cursor respecting line number
-map <Leader>gf <C-W>gF<CR>:tabm<CR>
 
 " Mark a todo item with an x [X]
 map <leader>tx :s/\[\ \]/[X]/<CR>:nohl<CR>
@@ -99,4 +83,10 @@ nmap <leader>E yyp:.!bash<CR>
 nmap <leader>wv :vs<CR>
 nmap <leader>ws :sp<CR>
 
-nmap <leader>, :Buffers<CR>
+nmap <leader>wh <C-W><C-H>
+nmap <leader>wl <C-W><C-L>
+nmap <leader>wj <C-W><C-J>
+nmap <leader>wk <C-W><C-K>
+
+" Open dir drawer
+nmap <leader>op :NERDTreeToggle<CR>

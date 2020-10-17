@@ -27,8 +27,6 @@ Plug 'gabesoft/vim-ags'
 Plug 'hotwatermorning/auto-git-diff'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'lifepillar/vim-colortemplate', { 'for': 'vim' }
 Plug 'lilydjwg/colorizer'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'liuchengxu/vim-which-key'
@@ -41,7 +39,6 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tommcdo/vim-lion'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -71,11 +68,5 @@ source $HOME/.config/vim/config/plugins.vim
 " Shortcuts
 source $HOME/.config/vim/config/shortcuts.vim
 
-" Macros
-source $HOME/.config/vim/config/macros.vim
-
 " Functions
 source $HOME/.config/vim/config/functions.vim
-
-" Plugin by Damian Conway
-source $HOME/.config/vim/config/dragvisuals.vim
