@@ -14,3 +14,5 @@ setxkbmap gb && sh ~/.xmodmap &
 xfce4-clipman &
 
 dunst -conf ~/.config/.dunstrc &
+
+emacs --daemon &
