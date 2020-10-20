@@ -70,3 +70,16 @@ command! W  w
 command! Wq wq
 command! WQ wq
 command! Vs vs
+
+
+" make <a-j>, <a-k>, <a-l>, and <a-h> resize windows.
+nnoremap <a-j> <c-w>+
+nnoremap <a-k> <c-w>-
+nnoremap <a-l> <c-w><
+nnoremap <a-h> <c-w>>
+
+" make <a-J>, <a-K>, <a-L>, and <a-H> create windows.
+nnoremap <a-J> <c-w>s<c-w>k
+nnoremap <a-K> <c-w>s
+nnoremap <a-H> <c-w>v
+nnoremap <a-L> <c-w>v<c-w>h
