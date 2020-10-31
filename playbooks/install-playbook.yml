@@ -91,6 +91,7 @@
         - powertop
         - udisks2
         - pcmanfm
+        - file-roller # for handling zip files with pcmanfm
         - pavucontrol
         - pulseaudio
         - ranger
