@@ -117,6 +117,7 @@
         - arch-wiki-docs
         - smartmontools # tlp-stat recomendation
         - ethtool  # tlp-stat recomendation
+        - xournalpp # for reading pdfs
 
    - name: Setup TLP
      systemd:
