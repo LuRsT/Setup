@@ -78,6 +78,7 @@
         - arc-gtk-theme
         - arc-icon-theme
         - dialog # For wifi-menu
+        - reflector # for pacman mirrors
 
    - name: Install extra packages
      pacman:
@@ -122,4 +123,9 @@
    - name: Setup TLP
      systemd:
         name: tlp
+        enabled: yes
+
+   - name: Setup Reflector
+     systemd:
+        name: reflector
         enabled: yes
