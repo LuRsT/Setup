@@ -41,7 +41,7 @@
         - base
         - time
         - keychain
-        - termite
+        - kitty
         - pkg-config
         - intel-ucode
         - tlp

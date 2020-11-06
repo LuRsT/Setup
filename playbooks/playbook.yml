@@ -20,7 +20,6 @@
      with_items:
         - { name: '.nethackrc' }
         - { name: '.bashrc' }
-        - { name: '.fonts' }
         - { name: '.gitconfig' }
         - { name: '.gitignore_global' }
         - { name: '.inputrc' }
