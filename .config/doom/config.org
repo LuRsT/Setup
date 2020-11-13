@@ -221,6 +221,10 @@ Change the color for links (from: https://kitchingroup.cheme.cmu.edu/blog/2016/1
 ;; (org-link-set-parameters "https" :face '(:foreground "green"))
 #+END_SRC
 
+#+begin_src emacs-lisp
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "firefox")
+#+end_src
 
 * Org-mode templates
 

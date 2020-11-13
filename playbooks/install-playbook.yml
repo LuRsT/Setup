@@ -9,6 +9,8 @@
        update_cache: true
        name:
         - neovim
+        - emacs
+        - jq
         - entr
         - openssh
         - fish
@@ -116,6 +118,7 @@
         - wget
         - rust
         - arch-wiki-docs
+        - dunst
         - smartmontools # tlp-stat recomendation
         - ethtool  # tlp-stat recomendation
         - xournalpp # for reading pdfs
