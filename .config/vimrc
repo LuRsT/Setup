@@ -27,7 +27,7 @@ Plug 'gabesoft/vim-ags'
 Plug 'hotwatermorning/auto-git-diff'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/goyo.vim'
-Plug 'lilydjwg/colorizer'
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'

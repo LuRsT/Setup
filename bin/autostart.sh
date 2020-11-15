@@ -3,7 +3,7 @@
 # Hide mouse cursor while typing
 unclutter -idle 2 &
 
-redshift -P -O 5000K &
+redshift -O 5000 &
 
 # Setup background
 setup_background &
