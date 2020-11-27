@@ -1,3 +1,7 @@
+-- Hide output from these commands while psql is loading.
+-- Will unset this at the end of the file.
+\set QUIET 1
+
 -- From: http://robots.thoughtbot.com/improving-the-command-line-postgres-experience/
 -- By default, NULL displays as an empty space. Is it actually an empty
 -- string, or is it null? This makes that distinction visible.
@@ -25,3 +29,9 @@
 -- Setting prompts
 \set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
 \set PROMPT2 '[more] %R > '
+
+-- To have all queries display query times.
+\timing
+
+-- Enable output from \-commands again.
+\unset QUIET
