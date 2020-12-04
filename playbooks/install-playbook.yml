@@ -55,6 +55,7 @@
         - wpa_supplicant
         - acpi
         - xorg-fonts-misc
+        - noto-fonts-emoji # For emoji on chromium
         - xorg-xrandr
         - wireless_tools
         - mplayer
