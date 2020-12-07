@@ -41,6 +41,8 @@
        update_cache: true
        name:
         - base
+        - man-db
+        - man-pages
         - time
         - keychain
         - kitty

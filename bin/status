@@ -34,8 +34,8 @@ function chargin {
 
 echo -e '{ "version": 1 }\n['
 while :; do
-    BATTERY=$(acpi | egrep -o "[0-9]{1,3}\%")
-    CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END { printf("%.2f %\n",usage) }')
+    BATTERY=$(acpi | grep -v "rate information" | egrep -o "[0-9]{1,3}\%")
+    CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END { printf("%.0f %\n",usage) }')
     TEMP=$(sensor acpitz-virtual-0 temp1_input)
     TEMP2=$(sensor coretemp-isa-0000 temp1_input)
     FAN=$(sensor thinkpad-isa-0000 fan1_input | awk '// {printf("% 4d \n", $1)}')
@@ -43,23 +43,27 @@ while :; do
     DATE=$(date "+%d/%m/%y %H:%M")
     CHAR=$(chargin)
     NETWORK=$(current_network.py)
+    DOCKER_CONTAINERS_RUNNING=$(expr "$(docker ps | wc -l)" - 1)
 
     output=''
-    text 'N' $GRAY
+    text '🌍' $GRAY
     text " $NETWORK"
+    text ' | ' $GRAY
+    text '🐋' $GRAY
+    text " $DOCKER_CONTAINERS_RUNNING"
     text ' | ' $GRAY
     text '⚡ ' $CHAR
     text "$BATTERY" $WHITE
     text ' | ' $GRAY
-    text "$FAN RPM" $WHITE
+    text "🌀 $FAN RPM" $WHITE
     text ' | ' $GRAY
-    text "CPU $CPU" $WHITE
+    text "🤖 $CPU" $WHITE
     text ' | ' $GRAY
-    text 'TEMP ' $WHITE
+    text '🌡️' $WHITE
     text "$TEMP°C " $WHITE
     text "$TEMP2°C" $WHITE
     text ' | ' $GRAY
-    text 'RAM ' $WHITE
+    text '🐏 ' $WHITE
     text "$RAM%" $WHITE
     text ' | ' $GRAY
     text "$DATE" $WHITE
