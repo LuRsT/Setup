@@ -25,10 +25,11 @@ function chargin {
     # Picks color depending on the battery status
     # TODO: the values may change, right now it's saying unknown when
     # the battery is charging :(
-    if [[ $(acpi | awk "/Disch/ {print \"D\"} /Unk/ {print \"U\"}") == "D" ]]; then
-        echo $RED;
-    elif [[ $(acpi | awk "/Disch/ {print \"D\"} /Unk/ {print \"U\"}") == "U" ]]; then
-        echo $YELLOW;
+    status=$(acpi | awk "/Char/ {print \"C\"} /Disch/ {print \"D\"} /Unk/ {print \"U\"}")
+    if [[ $status == "U" ]] || [[ $status == "D" ]]; then
+        echo "🔋";
+    elif [[ $status == "C" ]]; then
+        echo "🔌";
     fi
 }
 
@@ -41,7 +42,7 @@ while :; do
     FAN=$(sensor thinkpad-isa-0000 fan1_input | awk '// {printf("% 4d \n", $1)}')
     RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
     DATE=$(date "+%d/%m/%y %H:%M")
-    CHAR=$(chargin)
+    BAT_SYMBOL=$(chargin)
     NETWORK=$(current_network.py)
     DOCKER_CONTAINERS_RUNNING=$(expr "$(docker ps | wc -l)" - 1)
 
@@ -52,7 +53,7 @@ while :; do
     text '🐋' $GRAY
     text " $DOCKER_CONTAINERS_RUNNING"
     text ' | ' $GRAY
-    text '⚡ ' $CHAR
+    text "$BAT_SYMBOL " $GRAY
     text "$BATTERY" $WHITE
     text ' | ' $GRAY
     text "🌀 $FAN RPM" $WHITE
