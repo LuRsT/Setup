@@ -51,3 +51,6 @@
 
 (package! helm-org-rifle
    :recipe (:host github :repo "alphapapa/org-rifle"))
+
+(package! org-sidebar
+  :recipe (:host github :repo "alphapapa/org-sidebar"))

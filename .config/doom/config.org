@@ -468,3 +468,13 @@ This enables this function on org-mode
       :map evil-org-mode-map
       :n "gr" nil)
 #+END_SRC
+
+* Jira
+
+#+begin_src emacs-lisp
+(defun tp-insert-jira-link ()
+  "this function creates a jira link"
+  (interactive)
+  (let ((issue (read-string "issue: ")))
+    (insert (concat "[[jira-server.org/project-" issue "][project-" issue "]]"))))
+#+end_src
