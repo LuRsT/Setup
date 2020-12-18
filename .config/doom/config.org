@@ -1,3 +1,6 @@
+#+TITLE: Personal emacs config
+#+STARTUP: overview
+
 * How to do things
 
 I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
@@ -100,7 +103,7 @@ available. You can either set `doom-theme' or manually load a theme with the
 `load-theme' function. This is the default:
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-gruvbox)
+(setq load-theme 'gruvbox-dark-medium)
 #+END_SRC
 
 This determines the style of line numbers in effect. If set to `nil', line
@@ -108,6 +111,10 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 
 #+BEGIN_SRC emacs-lisp
 (setq display-line-numbers-type t)
+
+(dolist (mode '(org-mode-hook
+                vterm-mode-hook))
+  (add-hook mode (lambda() (display-line-numbers-mode 0))))
 #+END_SRC
 
 * Basic configuration
@@ -115,6 +122,9 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 Just a few configs
 
 #+BEGIN_SRC emacs-lisp
+
+(add-hook 'text-mode-hook 'visual-line-mode) ; Wrap lines
+
 (setq-default
  tab-width 4                                      ; Set width for tabs
  uniquify-buffer-name-style 'forward              ; Uniquify buffer names

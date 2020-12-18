@@ -54,3 +54,5 @@
 
 (package! org-sidebar
   :recipe (:host github :repo "alphapapa/org-sidebar"))
+
+(package! gruvbox-theme)
