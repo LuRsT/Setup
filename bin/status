@@ -25,7 +25,7 @@ function chargin {
     # Picks color depending on the battery status
     # TODO: the values may change, right now it's saying unknown when
     # the battery is charging :(
-    status=$(acpi | awk "/Char/ {print \"C\"} /Disch/ {print \"D\"} /Unk/ {print \"U\"}")
+    status=$(acpi | grep -v "rate information" | awk "/Char/ {print \"C\"} /Disch/ {print \"D\"} /Unk/ {print \"U\"}")
     if [[ $status == "U" ]] || [[ $status == "D" ]]; then
         echo "🔋";
     elif [[ $status == "C" ]]; then
