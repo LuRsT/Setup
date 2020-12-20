@@ -125,6 +125,8 @@ Just a few configs
 
 (add-hook 'text-mode-hook 'visual-line-mode) ; Wrap lines
 
+(pixel-scroll-mode t)
+
 (setq-default
  tab-width 4                                      ; Set width for tabs
  uniquify-buffer-name-style 'forward              ; Uniquify buffer names
