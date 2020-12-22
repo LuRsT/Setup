@@ -103,7 +103,7 @@ available. You can either set `doom-theme' or manually load a theme with the
 `load-theme' function. This is the default:
 
 #+BEGIN_SRC emacs-lisp
-(setq load-theme 'gruvbox-dark-medium)
+(load-theme 'gruvbox-dark-hard)
 #+END_SRC
 
 This determines the style of line numbers in effect. If set to `nil', line
@@ -122,6 +122,8 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 Just a few configs
 
 #+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
 
 (add-hook 'text-mode-hook 'visual-line-mode) ; Wrap lines
 
@@ -479,6 +481,13 @@ This enables this function on org-mode
 (map! :after evil-org
       :map evil-org-mode-map
       :n "gr" nil)
+#+END_SRC
+
+Run elisp by selecting a line and pressing ENTER
+
+#+BEGIN_SRC emacs-lisp
+(after! elisp-mode
+  (map! :map elisp-mode-map :v "RET" #'eros-eval-last-sexp))
 #+END_SRC
 
 * Jira
