@@ -13,7 +13,6 @@ export GOPATH="$HOME/.gospace"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--reverse --height 40%'
 
-export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/bin"
@@ -72,6 +71,7 @@ alias ca="cargo"
 alias notify="notify-send"
 alias em="emacsclient -ct" #Terminal emacs
 alias emg="emacsclient -c" #GUI emacs
+alias xclip="xclip -selection c"
 
 # Ultimate search alias
 alias s='ag'
