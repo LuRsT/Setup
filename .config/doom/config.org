@@ -122,6 +122,8 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 Just a few configs
 
 #+BEGIN_SRC emacs-lisp
+(remove-hook 'doom-first-buffer-hook #'smartparens-global-mode) ;; Disable smart parens
+
 (add-hook 'before-save-hook
           'delete-trailing-whitespace)
 
@@ -227,8 +229,16 @@ I'm looking for a way to be able to search for tags in a project, this was one f
 #+END_SRC
 
 * Org-mode
-
 Change the color for links (from: https://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/)
+
+If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
+
+#+BEGIN_SRC emacs-lisp
+(setq org-directory "~/vimwiki")
+
+;; Make the collapsed headers better and avoid the confusion with actual ellipsis
+(setq org-ellipsis " ▼ ")
+#+END_SRC
 
 #+BEGIN_SRC emacs-lisp
 ;; (org-link-set-parameters "http" :face '(:foreground "orange"))
@@ -273,11 +283,7 @@ All the org stuff, because this is why I started using emacs
 
 Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
-If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
-
 #+BEGIN_SRC emacs-lisp
-(setq org-directory "~/vimwiki")
-
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
@@ -292,25 +298,32 @@ If you use `org' and don't want your org files in the default location below, ch
 
 
 (after! org-roam
-        (map! :leader
-            :prefix "n"
-            :desc "org-roam" "l" #'org-roam
-            :desc "org-roam-insert" "i" #'org-roam-insert
-            :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
-            :desc "org-roam-find-file" "f" #'org-roam-find-file
-            :desc "org-roam-graph-show" "g" #'org-roam-graph-show
-            :desc "org-roam-insert" "i" #'org-roam-insert
-            :desc "org-roam-capture" "c" #'org-roam-capture))
+  (map! :leader
+        :prefix "n"
+        :desc "org-roam" "l" #'org-roam
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+        :desc "org-roam-find-file" "f" #'org-roam-find-file
+        :desc "org-roam-graph-show" "g" #'org-roam-graph-show
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-capture" "c" #'org-roam-capture))
 
 (require 'company-org-roam)
-    (use-package company-org-roam
-      :when (featurep! :completion company)
-      :after org-roam
-      :config
-      (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
+(use-package company-org-roam
+  :when (featurep! :completion company)
+  :after org-roam
+  :config
+  (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
 
 (setq deft-directory "~/vimwiki")
+
+;; Make roam links different
+(after! org-roam
+  (set-face-attribute 'org-roam-link nil :foreground "#FF8860"))
 #+END_SRC
+
+#+RESULTS:
+
 
 * Python stuff
 https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/python
@@ -327,6 +340,15 @@ To use mspyls, install it with M-x lsp-install-server and add this to your priva
 ;; (after! lsp-python-ms
 ;;   (set-lsp-priority! 'mspyls 1))
 #+END_SRC
+
+** Set a column for python code
+
+#+BEGIN_SRC emacs-lisp
+(add-hook! python-mode
+  (set-fill-column 120))
+#+END_SRC
+
+
 
 * Searching
 
@@ -445,7 +467,16 @@ npm install --save-dev typescript-deno-plugin typescript in your project (
 
 And add a `tsconfig.json` file on the root of the project [[https://howtodoinjava.com/typescript/tsconfig-json/][more info on tsconfig.json]]:
 
+* Rust
+
+Show me clippy
+
+#+BEGIN_SRC emacs-lisp
+(setq lsp-rust-analyzer-cargo-watch-command "clippy")
+#+END_SRC
+
 * Rest
+
 #+BEGIN_SRC emacs-lisp
 ;; (set-popup-rule "^\\*HTTP Response"  :side 'right)
 #+END_SRC
@@ -498,4 +529,19 @@ Run elisp by selecting a line and pressing ENTER
   (interactive)
   (let ((issue (read-string "issue: ")))
     (insert (concat "[[jira-server.org/project-" issue "][project-" issue "]]"))))
+#+end_src
+
+* Taking SVG screenshots
+
+#+begin_src emacs-lisp
+(defun screenshot-svg ()
+  "Save a screenshot of the current frame as an SVG image.
+Saves to a temp file and puts the filename in the kill ring."
+  (interactive)
+  (let* ((filename (make-temp-file "Emacs" nil ".svg"))
+         (data (x-export-frames nil 'svg)))
+    (with-temp-file filename
+      (insert data))
+    (kill-new filename)
+    (message filename)))
 #+end_src
