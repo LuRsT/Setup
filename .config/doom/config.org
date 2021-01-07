@@ -149,7 +149,6 @@ Remove the "Saving clipboard..." when closing emacs.
 (setq x-select-enable-clipboard-manager nil)
 #+END_SRC
 
-
 Keep the time for which-key to open up short, because I need to read it 80% of the time.
 
 #+BEGIN_SRC emacs-lisp
@@ -158,24 +157,6 @@ Keep the time for which-key to open up short, because I need to read it 80% of t
 #+END_SRC
 
 Turn the terminal into emacs mode because having modal is confusing and unlike the environment I had on tmux. THIS DOESN'T WORK
-
-Vterm-toggle
-
-#+BEGIN_SRC emacs-lisp
-(global-set-key [f2] 'vterm-toggle)
-#+END_SRC
-
-Fix an issue with vterm where the cursor doesn't go back to the right place when going for normal mode.
-
-#+BEGIN_SRC emacs-lisp
-(defun evil-collection-vterm-escape-stay ()
-  "Go back to normal state but don't move cursor backwards.
-Moving cursor backwards is the default vim behavior but
-it is not appropriate in some cases like terminals."
-  (setq-local evil-move-cursor-back nil))
-
-(add-hook 'vterm-mode-hook #'evil-collection-vterm-escape-stay)
-#+END_SRC
 
 Using `s` takes me to the place I want much quicker than other motions, I just need to train myself to use it more.
 
@@ -238,30 +219,13 @@ If you use `org' and don't want your org files in the default location below, ch
 
 ;; Make the collapsed headers better and avoid the confusion with actual ellipsis
 (setq org-ellipsis " ▼ ")
-#+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-;; (org-link-set-parameters "http" :face '(:foreground "orange"))
-;; (org-link-set-parameters "https" :face '(:foreground "green"))
-#+END_SRC
+(org-link-set-parameters "http" :face '(:foreground "orange"))
+(org-link-set-parameters "https" :face '(:foreground "green"))
 
-#+begin_src emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
 #+end_src
-
-* Org-mode templates
-
-#+BEGIN_SRC emacs-lisp
-;; (!after org
-;;         (setq org-capture-templates
-;;               '(("t" "Todo" entry (file+headline "~/.config/doom/templates/gtd.org" "Tasks")
-;;                  "* TODO %?\n  %i\n  %a")
-;;                 ("j" "Journal" entry (file+datetree "~/.config/doom/templates/journal.org")
-;;                  "* %?\nEntered on %U\n  %i\n  %a")))
-;;         )
-#+END_SRC
-
 
 * Org-Journal
 
@@ -324,7 +288,6 @@ Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
 #+RESULTS:
 
-
 * Python stuff
 https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/python
 
@@ -332,7 +295,6 @@ I can check which python you're accessing inside emacs by doing M-x run-python a
 
 ** Pyls
 I'm going to try to use pyls first, which requires me to ~pip install python-language-server[all]~. If that doesnt work, I can enable mspyls:
-
 ** mspyls
 To use mspyls, install it with M-x lsp-install-server and add this to your private config.el:
 
@@ -348,8 +310,6 @@ To use mspyls, install it with M-x lsp-install-server and add this to your priva
   (set-fill-column 120))
 #+END_SRC
 
-
-
 * Searching
 
 I use ivy, a cool shortcut I could use more is `C-Space` to view the file from the search buffer.
@@ -361,6 +321,8 @@ This config shows options by pressing `C-o` inside the search buffer.
 #+END_SRC
 
 * Projectile
+
+Set directory where projects are:
 
 #+BEGIN_SRC emacs-lisp
 (setq projectile-project-search-path '("~/dev/"))
@@ -439,16 +401,6 @@ Shortcuts for moving from window to window jsut like in vim and tmux. Ctrl+hjkl
       )
 #+END_SRC
 
-* Packages
-
-Org rifle, apparently this is cool...
-
-https://github.com/alphapapa/org-rifle
-
-#+BEGIN_SRC emacs-lisp
-;; (!use-package 'helm-org-rifle)
-#+END_SRC
-
 * Writeroom
 
 COnfiguration of my zen writting mode
@@ -458,7 +410,6 @@ COnfiguration of my zen writting mode
 #+END_SRC
 
 * Deno
-
 The instructions here on how to configure emacs to understand Deno: https://deno.land/manual/getting_started/setup_your_environment#emacs
 
 Run this line on your project:
@@ -466,7 +417,6 @@ Run this line on your project:
 npm install --save-dev typescript-deno-plugin typescript in your project (
 
 And add a `tsconfig.json` file on the root of the project [[https://howtodoinjava.com/typescript/tsconfig-json/][more info on tsconfig.json]]:
-
 * Rust
 
 Show me clippy
@@ -480,7 +430,6 @@ Show me clippy
 #+BEGIN_SRC emacs-lisp
 ;; (set-popup-rule "^\\*HTTP Response"  :side 'right)
 #+END_SRC
-
 
 * Experiment with eval
 BY Henrik
@@ -545,3 +494,21 @@ Saves to a temp file and puts the filename in the kill ring."
     (kill-new filename)
     (message filename)))
 #+end_src
+
+* Vterm
+
+#+BEGIN_SRC emacs-lisp
+(global-set-key [f2] 'vterm-toggle)
+#+END_SRC
+
+Fix an issue with vterm where the cursor doesn't go back to the right place when going for normal mode.
+
+#+BEGIN_SRC emacs-lisp
+(defun evil-collection-vterm-escape-stay ()
+  "Go back to normal state but don't move cursor backwards.
+Moving cursor backwards is the default vim behavior but
+it is not appropriate in some cases like terminals."
+  (setq-local evil-move-cursor-back nil))
+
+(add-hook 'vterm-mode-hook #'evil-collection-vterm-escape-stay)
+#+END_SRC
