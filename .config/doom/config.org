@@ -19,6 +19,8 @@ I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-co
 - SPC m l l   -> Insert link to a file or anything else on an org-mode file
 - SPC q r     -> Quits and restores emacs
 
+- M-x buffer-menu to see "*messages*"
+
 - M-x org-hide-block-all ->  Collapses all #+BEGIN_SRC blocks
 
 To find out what a mapping is for a combo key, for example, M-x:
@@ -223,6 +225,13 @@ If you use `org' and don't want your org files in the default location below, ch
 (org-link-set-parameters "http" :face '(:foreground "orange"))
 (org-link-set-parameters "https" :face '(:foreground "green"))
 
+Define the location of the file to hold tasks
+
+#+BEGIN_SRC emacs-lisp
+(setq org-default-notes-file "~/vimwiki/Tasks.org")
+#+END_SRC
+
+#+begin_src emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
 #+end_src
@@ -248,6 +257,8 @@ All the org stuff, because this is why I started using emacs
 Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
 
 #+BEGIN_SRC emacs-lisp
+(setq org-roam-directory "~/vimwiki/org-roam")
+
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam)
   :init
@@ -388,7 +399,7 @@ if you use ivy you can also use M-n to fill the current input field with the sym
 Fix a problem with doom update
 rm -rf ~/.emacs.d/.local/straight/repos/org-roam/
 
-Shortcuts for moving from window to window jsut like in vim and tmux. Ctrl+hjkl
+Shortcuts for moving from window to window just like in vim and tmux. Ctrl+hjkl
 
 #+BEGIN_SRC emacs-lisp
 (map!
