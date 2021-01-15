@@ -234,6 +234,17 @@ Define the location of the file to hold tasks
 #+begin_src emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "firefox")
+
+(after! org
+  (setq org-capture-templates
+        '(("t" "New entry" entry (file "Tasks.org")
+           "* TODO %?")
+          ("T" "Task" entry (file+headline "Tasks.org" "Misc")
+           "* TODO %?")
+          )))
+
+(map! :leader
+      :desc "Org Capture" "k" #'org-capture)
 #+end_src
 
 * Org-Journal
@@ -439,7 +450,7 @@ Show me clippy
 * Rest
 
 #+BEGIN_SRC emacs-lisp
-;; (set-popup-rule "^\\*HTTP Response"  :side 'right)
+(set-popup-rule "^\\*HTTP Response"  :side 'right)
 #+END_SRC
 
 * Experiment with eval
