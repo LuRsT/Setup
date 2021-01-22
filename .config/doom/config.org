@@ -105,7 +105,7 @@ available. You can either set `doom-theme' or manually load a theme with the
 `load-theme' function. This is the default:
 
 #+BEGIN_SRC emacs-lisp
-(load-theme 'gruvbox-dark-hard)
+;;(doom-theme 'gruvbox-dark-hard)
 #+END_SRC
 
 This determines the style of line numbers in effect. If set to `nil', line
@@ -222,8 +222,9 @@ If you use `org' and don't want your org files in the default location below, ch
 ;; Make the collapsed headers better and avoid the confusion with actual ellipsis
 (setq org-ellipsis " ▼ ")
 
-(org-link-set-parameters "http" :face '(:foreground "orange"))
-(org-link-set-parameters "https" :face '(:foreground "green"))
+;; (org-link-set-parameters "http" :face '(:foreground "orange"))
+;; (org-link-set-parameters "https" :face '(:foreground "green"))
+#+END_SRC
 
 Define the location of the file to hold tasks
 
@@ -414,13 +415,14 @@ Shortcuts for moving from window to window just like in vim and tmux. Ctrl+hjkl
 
 #+BEGIN_SRC emacs-lisp
 (map!
-      :n "C-h"   #'evil-window-left
-      :n "C-j"   #'evil-window-down
-      :n "C-k"   #'evil-window-up
-      :n "C-l"   #'evil-window-right
+ :n "C-h"   #'evil-window-left
+ :n "C-j"   #'evil-window-down
+ :n "C-k"   #'evil-window-up
+ :n "C-l"   #'evil-window-right
 
-      :n "C-p"   #'projectile-find-file
-      )
+ :n "C-p"   #'projectile-find-file
+ :n "C-]"   #'evil-goto-definition
+ )
 #+END_SRC
 
 * Writeroom
@@ -450,7 +452,7 @@ Show me clippy
 * Rest
 
 #+BEGIN_SRC emacs-lisp
-(set-popup-rule "^\\*HTTP Response"  :side 'right)
+;; (set-popup-rule "^\\*HTTP Response"  :side 'right)
 #+END_SRC
 
 * Experiment with eval
