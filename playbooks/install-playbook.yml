@@ -66,6 +66,7 @@
         - lxappearance
         - i3-wm
         - i3lock
+        - xautolock
         - xorg-server
         - xf86-video-intel
         - xf86-video-intel

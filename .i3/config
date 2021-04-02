@@ -29,6 +29,7 @@ bindsym $mod+o exec emacsclient -c
 
 # locks screen
 bindsym $mod+Shift+x exec /home/lurst/bin/lock_screen.sh
+exec xautolock -time 15 -locker '/home/lurst/bin/lock_screen.sh' &
 
 # kill focused window
 bindsym $mod+Shift+c kill
