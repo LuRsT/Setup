@@ -1,0 +1,4 @@
+#!/bin/fish
+set FILE (fzf)
+
+git log --oneline --follow -- $FILE | fzf --color --preview "git show (echo {} | cut -d ' ' -f 1):$FILE"
