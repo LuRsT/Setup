@@ -2,7 +2,6 @@
 
 My dotfiles and ~/bin
 
-Screenshot as of April 2017
+Screenshot as of May 2021
 
-![](https://i.imgur.com/HGk23Ut.png)
-
+![2021-05-15-110759_1483x918_scrot](https://user-images.githubusercontent.com/263583/118356582-78539500-b565-11eb-9dbd-98830dadb1f9.png)
