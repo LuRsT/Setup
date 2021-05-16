@@ -1,0 +1,536 @@
+#+TITLE: Literate dotfiles
+#+PROPERTY: header-args :tangle-mode (identity #o444)
+#+AUTO_TANGLE: t
+
+My Literate dotfiles. They get written here and then tangled into this same directory (dotfiles) so that stow can link them to my home directory.
+
+This is the only file I manually change in this directory.
+
+* Nethack
+:PROPERTIES:
+:header-args+: :tangle ".nethackrc"
+:END:
+
+This is my default config for playing nethack.
+
+#+begin_src fortran
+OPTIONS=boulder:0, color, autodig, !cmdassist, norest_on_space, !autopickup
+#+end_src
+
+* Inputrc
+:PROPERTIES:
+:header-args+: :tangle ".inputrc"
+:END:
+
+I honestly forgot what this file is for, I think I needed it for a specific keyboard or a specific terminal.
+
+#+begin_src fortran
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+"\e[1": beginning-of-line
+"\e[4": end-of-line
+#+end_src
+
+* PSQL
+:PROPERTIES:
+:header-args+: :tangle ".psqlrc"
+:END:
+
+Configuration for using psql.
+
+#+begin_src fortran
+-- Hide output from these commands while psql is loading.
+-- Will unset this at the end of the file.
+\set QUIET 1
+
+-- From: http://robots.thoughtbot.com/improving-the-command-line-postgres-experience/
+-- By default, NULL displays as an empty space. Is it actually an empty
+-- string, or is it null? This makes that distinction visible.
+\pset null '[NULL]'
+
+-- Use table format (with headers across the top) by default, but switch to
+-- expanded table format when there's a lot of data, which makes it much
+-- easier to read.
+\x on
+
+-- Verbose error reports.
+\set VERBOSITY verbose
+
+-- Use a separate history file per-database.
+\set HISTFILE ~/.psql_history- :DBNAME
+
+-- If a command is run more than once in a row, only store it once in the
+-- history.
+\set HISTCONTROL ignoredups
+
+-- Autocomplete keywords (like SELECT) in upper-case, even if you started
+-- typing them in lower case.
+\set COMP_KEYWORD_CASE upper
+
+-- Setting prompts
+\set PROMPT1 '%[%033[1m%]%M %n@%/%R%[%033[0m%]%# '
+\set PROMPT2 '[more] %R > '
+
+-- To have all queries display query times.
+\timing
+
+-- Enable output from \-commands again.
+\unset QUIET
+#+end_src
+
+* Zsh
+:PROPERTIES:
+:header-args+: :tangle ".zshrc"
+:END:
+
+Configuration for using zsh. I no longer use it, so this is really more for archive.
+
+#+begin_src fortran
+## START ANTIGEN
+
+source $HOME/bin/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen bundle pip
+antigen bundle command-not-found
+antigen bundle ssh-agent
+
+antigen bundle andrewferrier/fzf-z
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+antigen bundle lurst/geometry
+
+antigen apply
+
+## END ANTIGEN
+
+alias sway="export XKB_DEFAULT_LAYOUT=gb; export XKB_DEFAULT_OPTIONS=ctrl:nocaps; export XKB_DEFAULT_MODEL=pc101; sway"
+
+# Options for geometry theme
+export PROMPT_VIRTUALENV_ENABLED=true
+export PROMPT_GEOMETRY_GIT_CONFLICTS=true
+
+source ${HOME}/.commonshellrc
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if (( $+commands[tag] )); then
+    tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
+    alias ag=tag
+fi
+
+mdviewer () {
+    pandoc $* | lynx -stdin
+}
+
+man() {
+    env \
+        LESS_TERMCAP_md=$'\e[1;36m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[1;40;92m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[1;32m' \
+        man "$@"
+}
+#+end_src
+* Bash
+:PROPERTIES:
+:header-args+: :tangle ".bashrc"
+:END:
+
+Configuration for using bash.
+
+#+begin_src fortran
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+source ${HOME}/.commonshellrc
+
+# Check for an interactive session
+[ -z "$PS1" ] && return
+
+PS1='[\u@\[\e\][0;31m\h\e[m \W]\[$(tput setaf 7)\] \j$ '
+PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#+end_src
+* Common shell
+:PROPERTIES:
+:header-args+: :tangle ".commonshellrc"
+:END:
+
+This is a file that's loaded by all my shell configs, it has configuration that is common across them all.
+
+#+begin_src fortran
+# Source alias
+if [ -f ${XDG_CONFIG_HOME}/.alias ]; then
+    source ${XDG_CONFIG_HOME}/.alias
+fi
+
+# Source extra alias
+if [ -f ${XDG_CONFIG_HOME}/.alias_extra ]; then
+    source ${XDG_CONFIG_HOME}/.alias_extra
+fi
+
+export WORKON_HOME=$HOME/.virtualenvs
+# source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
+
+# for tmux: export 256color
+[ -n "$TMUX" ] && export TERM=screen-256color
+#+end_src
+
+* Xdefaults
+:PROPERTIES:
+:header-args+: :tangle ".Xdefaults"
+:END:
+
+Configuration for terminals. There's a few things here that I don't need anymore since I'm not using these editors.
+
+#+begin_src fortran
+! Remove scrollbar
+URxvt*scrollBar_right: false
+URxvt*scrollBar:       false
+URxvt*borderLess:      false
+
+URxvt*.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*.shading: 30
+
+URxvt*font: xft:OperatorMono Nerd Font::size=11
+
+! Scrollback buffer lines - 65535 is max on most machines (64 is default)
+URxvt*saveLines: 12000
+
+Xft.rgba:      rgb
+Xft.hinting:   1
+Xft.autohint:  0
+Xft.antialias: 1
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+
+! tangoesque scheme
+! from http://wiki.archlinux.org/index.php/Xdefaults
+*background: #999999
+*foreground: #babdb6
+*color0:     #000000
+*color8:     #555753
+*color1:     #ff6565
+*color9:     #ff8d8d
+*color2:     #93d44f
+*color10:    #c8e7a8
+*color3:     #eab93d
+*color11:    #ffc123
+*color4:     #204a87
+*color12:    #3465a4
+*color5:     #ce5c00
+*color13:    #f57900
+*color6:     #89b6e2
+*color14:    #46a4ff
+*color7:     #cccccc
+*color15:    #ffffff
+
+
+! For some combo keys to work
+URxvt.keysym.M-Up:      \033[1;3A
+URxvt.keysym.M-Down:    \033[1;3B
+URxvt.keysym.M-Right:   \033[1;3C
+URxvt.keysym.M-Left:    \033[1;3D
+URxvt.keysym.M-Prior:   \033[5;3~
+URxvt.keysym.M-Next:    \033[6;3~
+URxvt.keysym.M-End:     \033[1;3F
+URxvt.keysym.M-Home:    \033[1;3H
+
+URxvt.keysym.C-Up:      \033[1;5A
+URxvt.keysym.C-Down:    \033[1;5B
+URxvt.keysym.C-Right:   \033[1;5C
+URxvt.keysym.C-Left:    \033[1;5D
+URxvt.keysym.C-Prior:   \033[5;5~
+URxvt.keysym.C-Next:    \033[6;5~
+URxvt.keysym.C-End:     \033[1;5F
+URxvt.keysym.C-Home:    \033[1;5H
+
+! For normal keys to work
+! http://www.netswarm.net/misc/urxvt-xtermcompat.txt has more if needed
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End:  \033[4~
+*URxvt*keysym.F1:  \033OP
+*URxvt*keysym.F2:  \033OQ
+*URxvt*keysym.F3:  \033OR
+*URxvt*keysym.F4:  \033OS
+*URxvt*keysym.F5:  \033OS
+URxvt.keysym.KP_Home: \033[1~
+URxvt.keysym.KP_End:  \033[4~
+#+end_src
+
+* Tmux
+:PROPERTIES:
+:header-args+: :tangle ".tmux.conf"
+:END:
+
+Configuration for using tmux
+
+#+begin_src fortran
+set -g default-terminal "tmux-256color"
+
+set -g mouse off
+
+# Command prefix (like screen)
+set -g prefix C-a
+bind C-a send-prefix
+
+# Basic settings
+set-window-option -g mode-keys vi # vi key
+
+# To make ctrl-arrow, etc. work
+set-window-option -g xterm-keys on
+
+# Clock
+set-window-option -g clock-mode-colour cyan
+set-window-option -g clock-mode-style 24
+
+set-option -g status-keys vi
+
+# Window title
+set-option -g set-titles on
+set-option -g set-titles-string '#S:#I.#P #W' # window number,program name,active (or not)
+set-window-option -g automatic-rename off # auto name
+
+# No visual activity
+set -g visual-activity off
+set -g visual-bell off
+
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+
+# From: https://github.com/gpakosz/.tmux/blob/master/.tmux.conf
+wg_is_zoomed="#[fg=$color_dark,bg=$color_secondary]#{?window_zoomed_flag,🔍,}#[default]"
+
+# Status bar
+set-option -g status on
+set-option -g status-position top
+set-option -g status-bg "colour235"
+set-option -g status-fg "colour252"
+set-option -g status-justify "centre"
+set-option -g status-left-length 60
+set-option -g status-right-length 90
+set-option -g status-left  "#(~/.config/tmux/status-left.sh) $wg_is_zoomed"
+set-option -g status-right "#(~/.config/tmux/status-right.sh)"
+set-option -g visual-activity on
+
+# Bar
+set-window-option -g window-status-separator " "
+
+## Change name to pwd
+set-window-option -g window-status-current-format '#[bold][#{pane_current_command} #(echo "#{pane_current_path}]" | rev | cut -d'/' -f-3 | rev)'
+set-window-option -g window-status-format ' #{pane_current_command} #(echo "#{pane_current_path}" | rev | cut -d'/' -f-3 | rev) '
+
+### SHORTCUTS
+
+bind + split-window -h # horizontal split
+
+# Tabs control
+bind -n C-t prev
+bind -n C-y next
+
+# Vim style pane selection
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+
+
+# Copy mode to / key
+unbind [
+bind / copy-mode
+
+# Move tmux copy buffer into x clipboard
+bind-key C-y save-buffer /tmp/tmux-buffer \; run-shell "cat /tmp/tmux-buffer | xclip"
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-pain-control'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @resurrect-strategy-nvim 'session'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.config/tmux/plugins/tpm/tpm'
+#+end_src
+
+* Xmodmap
+:PROPERTIES:
+:header-args+: :tangle ".xmodmap"
+:END:
+
+This is a small config to switch caps lock with control.
+
+#+begin_src fortran
+#!/bin/bash
+
+xmodmap -e 'remove Lock = Caps_Lock' &&
+xmodmap -e 'keysym Caps_Lock = Control_L' &&
+xmodmap -e 'add Control = Control_L'
+#+end_src
+* Tmate
+:PROPERTIES:
+:header-args+: :tangle ".tmate.conf"
+:END:
+
+Configuration for using tmate. This isn't working well, I'd love to be able to use tmate like I use tmux.
+
+#+begin_src fortran
+source-file ~/.tmux.conf
+
+set -g status-right '#[fg=black]#[bg=yellow][tmate] ssh session'
+#+end_src
+
+* Git ignore global
+:PROPERTIES:
+:header-args+: :tangle ".gitignore_global"
+:END:
+
+A global gitignore, because my philosophy is to keep the .gitignore of projects clean of anything relating to peoples setup.
+
+#+begin_src fortran
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Python Stuff
+####################
+.ropeproject*
+dist/
+build/
+*.pyc
+.idea
+.pydevproject
+*.egg-info
+.coverage
+*.egg
+
+# Others
+#
+tags
+scratch
+
+geckodriver.log
+*node_modules*
+*.env*
+#+end_src
+
+* Git
+:PROPERTIES:
+:header-args+: :tangle ".gitconfig"
+:END:
+
+Git config, I have a lot of aliases here
+
+#+begin_src fortran
+[alias]
+    a = add
+    c = commit -v
+    cm = commit -m
+    ca = commit --amend
+    cp = cherry-pick
+    s = status --short -b
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+    up = fetch origin master:master
+    dcs = diff --stat --cached
+    ai = "!git add      $(git status --short | fzf --multi --preview \"git diff $(echo {} | awk '{print $2}')\" | awk '{print $2}')"
+    chi = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
+    ch = checkout
+    b = branch
+    l = "!git show $(git log --oneline | fzf --multi --color --preview \"git show (echo {} | cut -d ' ' -f 1)\" | cut -d ' ' -f 1)"
+    ll = log --oneline --decorate
+    f = fetch
+    p = pull
+    nb = checkout -b
+    r = "!git restore $(git status --short | fzf --multi | awk '{print $2}')"
+    di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
+    wat = blame
+
+    g = grep --break --heading --line-number
+    ups = reset --soft HEAD^
+    show-graph = log --graph --abbrev-commit --pretty=oneline
+    show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
+    show-tags = "log --no-walk --tags --pretty='%h %d %s' --decorate=full"
+
+    verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
+    find = "!git --no-pager log --pretty='format:%H %s %N' | grep '$1'"
+    plush = "!git pull && git push"
+    remove-deleted-files = "!git ls-files --deleted -z | xargs -0 git rm"
+    clean-merged = !git branch --merged master | egrep -v \"(^\\*|^  master$)\" | xargs git branch --delete
+    clean-gone = !git fetch --prune && git branch --verbose | awk '/\\[gone]/{print $1}' |  xargs git branch --delete --force
+[apply]
+    whitespace = nowarn
+[github]
+    user = lurst
+[user]
+    name = Gil Gonçalves
+    email = lursty@gmail.com
+[color]
+    ui = auto
+[push]
+    default = current
+[diff]
+    tool = vimdiff
+[merge]
+    tool = meld
+[difftool]
+    prompt = false
+[core]
+    excludesfile = /home/lurst/.gitignore_global
+[grep]
+    extendRegexp = true
+    lineNumber = true
+[gui]
+    diffcontext = 99
+
+# To do: git clone gh:lurst/hr
+[url "git@github.com:"]
+    insteadOf = gh:
+[rebase]
+    autosquash = true
+[remote "origin"]
+	prune = true
+[pull]
+	rebase = false
+#+end_src

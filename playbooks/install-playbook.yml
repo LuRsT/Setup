@@ -35,6 +35,7 @@
         - libpng
         - zlib
         - make
+        - stow
    - name: Install packages for the OS
      pacman:
        state: installed
