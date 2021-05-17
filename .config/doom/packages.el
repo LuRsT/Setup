@@ -52,7 +52,5 @@
 (package! helm-org-rifle
    :recipe (:host github :repo "alphapapa/org-rifle"))
 
-(package! org-sidebar
-  :recipe (:host github :repo "alphapapa/org-sidebar"))
-
-(package! gruvbox-theme)
+(package! org-auto-tangle
+  :recipe (:host github :repo "yilkalargaw/org-auto-tangle"))
