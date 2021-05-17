@@ -1,6 +1,8 @@
 # Exports
 export MYVIMRC="$HOME/.config/vimrc"
 export VIMINIT="source $MYVIMRC"
+export GIT_NAME="Gil Gonçalves"
+export GIT_EMAIL_ADDRESS="lursty@gmail.com"
 
 export EDITOR=nvim
 export PYTHONDONTWRITEBYTECODE=1
@@ -72,7 +74,4 @@ alias notify="notify-send"
 alias em="emacsclient -ct" #Terminal emacs
 alias emg="emacsclient -c" #GUI emacs
 alias xclip="xclip -selection c"
-
-# Ultimate search alias
-alias s='ag'
 alias weather="curl wttr.in"

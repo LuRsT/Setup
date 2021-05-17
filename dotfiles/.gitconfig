@@ -40,8 +40,8 @@
 [github]
     user = lurst
 [user]
-    name = Gil Gonçalves
-    email = lursty@gmail.com
+    name = $GIT_NAME
+    email = $GIT_EMAIL_ADDRESS
 [color]
     ui = auto
 [push]
