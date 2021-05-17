@@ -80,6 +80,11 @@ Configuration for using psql.
 
 -- Enable output from \-commands again.
 \unset QUIET
+
+-- For pspg
+\pset linestyle unicode
+\pset border 2
+\pset pager always
 #+end_src
 
 * Zsh
