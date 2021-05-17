@@ -222,28 +222,6 @@ Xft.antialias: 1
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
 
-! tangoesque scheme
-! from http://wiki.archlinux.org/index.php/Xdefaults
-*background: #999999
-*foreground: #babdb6
-*color0:     #000000
-*color8:     #555753
-*color1:     #ff6565
-*color9:     #ff8d8d
-*color2:     #93d44f
-*color10:    #c8e7a8
-*color3:     #eab93d
-*color11:    #ffc123
-*color4:     #204a87
-*color12:    #3465a4
-*color5:     #ce5c00
-*color13:    #f57900
-*color6:     #89b6e2
-*color14:    #46a4ff
-*color7:     #cccccc
-*color15:    #ffffff
-
-
 ! For some combo keys to work
 URxvt.keysym.M-Up:      \033[1;3A
 URxvt.keysym.M-Down:    \033[1;3B
@@ -465,7 +443,9 @@ geckodriver.log
 :header-args+: :tangle ".gitconfig"
 :END:
 
-Git config, I have a lot of aliases here
+Git config, I have a lot of aliases here.
+
+In order to set the name and email, I'm using variables that I can override on `.alias_extra` for different computers, while leaving the default on `.alias`.
 
 #+begin_src fortran
 [alias]
