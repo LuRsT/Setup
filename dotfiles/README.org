@@ -1,6 +1,7 @@
 #+TITLE: Literate dotfiles
 #+PROPERTY: header-args :tangle-mode (identity #o444)
 #+AUTO_TANGLE: t
+#+STARTUP: overview
 
 My Literate dotfiles. They get written here and then tangled into this same directory (dotfiles) so that stow can link them to my home directory.
 
@@ -533,4 +534,180 @@ Git config, I have a lot of aliases here
 	prune = true
 [pull]
 	rebase = false
+#+end_src
+
+* i3
+:PROPERTIES:
+:header-args+: :tangle ".i3/config" :mkdirp yes
+:END:
+
+#+begin_src fortran
+set $darkgrey #686868
+set $vdarkgrey #464646
+set $lightgrey #8e8e8e
+set $white #f7f7f7
+set $black #101010
+
+client.focused          $darkgrey $darkgrey $white #lightgrey
+client.focused_inactive $vdarkgrey $vdarkgrey $white #black
+client.unfocused        $vdarkgrey $vdarkgrey $white #black
+
+for_window [class="Xfce4-notifyd"] floating enable; border none; focus mode_toggle
+for_window [window_role="pop-up"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Volume Control"] floating enable
+
+new_window pixel 1
+
+set $mod Mod4
+
+font pango:Operator Mono Lig 9
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+bindsym $mod+Return exec kitty
+bindsym $mod+e exec pcmanfm
+bindsym $mod+o exec emacsclient -c
+
+# locks screen
+bindsym $mod+Shift+x exec /home/lurst/bin/lock_screen.sh
+exec xautolock -time 15 -locker '/home/lurst/bin/lock_screen.sh' &
+
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# start dmenu (a program launcher)
+# bindsym $mod+p exec dmenu_run -sb "#DDDDDD" -sb "#555555" -nb "#333333"
+bindsym $mod+p exec rofi -show run -config ~/.config/rofi.conf
+
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+Shift+s split h
+
+# split in vertical orientation
+bindsym $mod+Shift+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+x layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Switch with arrows
+bindsym $mod+Right workspace next
+bindsym $mod+Left workspace prev
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+
+# Moving browsers automaticaly to workspace 2
+assign [class=".*Firefox.*"] 2
+assign [class=".*Chromium.*"] 2
+
+
+# Moving slack automaticaly to workspace 4
+assign [class="Slack"] 4
+
+# Moving emacs automaticaly to workspace 3
+assign [class="emacs"] 3
+
+# reload the configuration file
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym ccedilla resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bar {
+    position          top
+    workspace_buttons yes
+    status_command    /home/lurst/bin/status
+    font pango:Operator Mono Lig 9
+
+    colors {
+        statusline $white
+        background #101010
+        focused_workspace $vdarkgrey $vdarkgrey $white
+        inactive_workspace $darkgrey $darkgrey #white
+    }
+}
+
+exec autostart.sh
+
+# Sound control for multimedia keyboards
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   0 toggle
+
+bindsym $mod+v exec ~/bin/scratchpad
 #+end_src
