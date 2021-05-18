@@ -1,8 +1,6 @@
 # Exports
 export MYVIMRC="$HOME/.config/vimrc"
 export VIMINIT="source $MYVIMRC"
-export GIT_NAME="Gil Gonçalves"
-export GIT_EMAIL_ADDRESS="lursty@gmail.com"
 
 export EDITOR=nvim
 export PYTHONDONTWRITEBYTECODE=1
