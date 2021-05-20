@@ -63,6 +63,8 @@ map <leader>zf :Files<CR>
 map <leader>zh :History<CR>
 map <leader>zm :Marks<CR>
 map <leader>zs :Rg<CR>
+map <leader>. :Files<CR>
+map <leader><Space> :Files<CR>
 map <leader>zt :Tags<CR>
 
 map <leader>ft :NERDTreeToggle<CR>
