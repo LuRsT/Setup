@@ -1,3 +1,0 @@
-#!/bin/sh
-# Generates tags for the virtualenv and for the actual project
-ctags --exclude="*.js" --exclude=node_modules --exclude=test --extras=+f -R .
