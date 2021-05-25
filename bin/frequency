@@ -1,7 +1,4 @@
 #!/usr/bin/perl
-# From http://matt.might.net/articles/console-hacks-exploiting-frequency/
-# Example: cat ~/.bash_history | frequency | sort -rn | head
-
 my %counts = () ;
 
 while ( my $cmd = <STDIN> ) {

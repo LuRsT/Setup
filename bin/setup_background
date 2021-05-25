@@ -1,3 +1,2 @@
 #!/bin/bash
-
 feh --bg-center ~/.config/background_mono.jpg

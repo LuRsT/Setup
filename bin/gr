@@ -1,5 +1,4 @@
 #!/bin/bash
-
 SEARCH_TERM=$1
 CONTEXT=$2
 PROGRAM="ag"

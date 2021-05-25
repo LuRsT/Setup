@@ -1,5 +1,3 @@
 #!/bin/bash
-
 cd ~/vimwiki && git pull origin master
-
 cd ~/dev/Setup  && git pull origin master

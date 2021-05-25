@@ -1,8 +1,4 @@
 #!/bin/bash
-#
-# This script toggles the extended monitor outputs if something is connected
-#
-
 DEFAULT_OUTPUT='eDP1'
 
 # Outputs to toggle if connected

@@ -1,11 +1,4 @@
 #!/bin/bash
-# Watch for modification of a file and execute something
-#
-# e.g.
-# watch_do arena.result "cat arena.result"
-# watch_do dev "cat arena.result"
-#
-
 while true; do
     inotifywait -e modify -r "$1" && `$2`
 done

@@ -1,0 +1,584 @@
+#+TITLE: Literate scripts
+#+PROPERTY: header-args :tangle-mode (identity #o444)
+#+AUTO_TANGLE: t
+#+STARTUP: overview
+
+My Literate scripts. They get written here and then tangled into this same directory.
+
+This is the only file I manually change in this directory.
+
+* Autostart.sh
+:PROPERTIES:
+:header-args+: :tangle "autostart.sh" :shebang #!/bin/bash
+:END:
+
+This runs right after i3 is loaded, as part of i3 config. It loads a bunch of useful things for my desktop.
+
+#+begin_src bash
+# Hide mouse cursor while typing
+unclutter -idle 2 &
+
+redshift -O 5000 &
+
+# Setup background
+setup_background &
+
+# Setup Caps Lock to Ctrl
+setxkbmap gb && sh ~/.xmodmap &
+
+xfce4-clipman &
+
+dunst -conf ~/.config/.dunstrc &
+
+emacs --daemon &
+#+end_src
+
+* Bar
+:PROPERTIES:
+:header-args+: :tangle "bar" :shebang #!/usr/bin/perl
+:END:
+
+#+begin_src perl
+use strict;
+use warnings;
+
+use Term::ANSIColor;
+use Getopt::Long;
+
+my ( $cmd, $regex ) = q{};
+my ( $tmux, $mini, $help, $reverse, $no_color ) = 0;
+
+GetOptions('command=s' => \$cmd,
+           'regex=s'   => \$regex,
+           'tmux'      => \$tmux,
+           'mini'      => \$mini,
+           'reverse'   => \$reverse,
+           'no-color'  => \$no_color,
+           'help'      => \$help);
+
+if ( $help ) { print help(); exit; }
+
+if ( !defined $cmd   or $cmd   eq q{} or
+     !defined $regex or $regex eq q{} ) {
+    die "Use --command and --regex to add a command and regex.\n";
+}
+
+# Some commands may need treatment
+my $command = join("\n", qx{$cmd} );
+show_bar( $command, $regex, );
+print "\n";
+
+sub help {
+    return <<HELP;
+    Usage: bar --command <cmd> --regex <regex>
+    Displays a bar depending on your regex and your command
+    'command' and 'regex' are mandatory
+
+    --command <command>, the command that will be run from which we'll extract the info
+    --regex <regex>,     regex to extract the number ( from 0-100 ) from the info, note that we're expecting \$1, so use ()
+    --mini,              flag to show only the bar
+    --reverse,           return the reverse percentage
+    --tmux,              flag to appear on tmux ( we need to treat color differently )
+    --help               display this help and exit
+HELP
+}
+
+sub show_bar {
+    my $cmd   = shift;
+    my $regex = shift;
+
+    while ( $cmd =~ /$regex/g ) {
+        if ( $reverse ){
+            if ( $1 > 50 ){ print show($1 - 100); return; }
+            if ( $1 < 50 ){ print show(100 - $1); return; }
+        }
+        print show( $1 );
+    }
+}
+
+sub show {
+    my $num = shift;
+
+    my @graph  = qw{ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █};
+    my @colors = qw{ green yellow red };
+
+    my $c;
+    my $index = ( $num * ( scalar( @graph ) - 1 ) ) / 100;
+    my $g = $graph[ $index ];
+
+    if    ( $num > 75 ) { $c = $colors[0]; }
+    elsif ( $num > 25 ) { $c = $colors[1]; }
+    else                { $c = $colors[2]; }
+
+    my $string = sprintf ( "[%s] %s", $num . '%', $g );
+
+    if ( $mini ) {
+        $string = sprintf ( "%s", $g );
+    }
+    if ( $tmux ) {
+        return '#[fg=' . $c . ']' . $string . "#[default]\n";
+    }
+    if ( $no_color ) {
+        return $string;
+    }
+
+    return colored [ $c ], $string;
+}
+#+end_src
+
+* Barchart
+:PROPERTIES:
+:header-args+: :tangle "barchart" :shebang #!/usr/bin/perl
+:END:
+
+An old perl script I wrote, it displays a "barchart" for a text with duplicated string in it.
+
+    barchart sample_data.txt
+      00000000| Miniac
+             0| Bossy
+    0000000000| EPICAC
+            00| The Prime Radiant
+          0000| Multivac
+            00| MARAX
+      00000000| Mark V
+         00000| Mima
+
+#+begin_src perl
+use strict;
+use warnings;
+
+# Prints a barchart of a file made out of duplicated strings,
+# displaying their relative size to each other.
+
+if ( !scalar @ARGV ) {
+    die <<MSG;
+Missing Argument.
+    usage: barchart file.txt
+MSG
+}
+
+my $file = open(FILE, '<', $ARGV[0]);
+
+my $max    = 0;
+my %struct = ();
+
+# Generate structure
+while( <FILE> ) {
+    my $word = $_;
+
+    $struct{$word} += 1;
+    if ($max < $struct{ $word }) {
+        $max = $struct{ $word };
+    }
+}
+
+for my $key ( keys %struct ) {
+    my $stars = ( $struct{$key} / $max ) * 10;
+    printf( "%10s| %s", '0' x $stars, $key );
+}
+#+end_src
+
+* Browser
+:PROPERTIES:
+:header-args+: :tangle "browser" :shebang #!/bin/bash
+:END:
+
+#+begin_src bash
+if [ -t 0 ]; then
+    if [ -n "$1" ]; then
+        $BROWSER $1
+    else
+        cat <<usage
+Usage: browser
+       pipe html to a browser
+
+$ echo '<h1>hi mom!</h1>' | browser
+$ ron -5 man/rip.5.ron | browser
+usage
+    fi
+else
+    file_path="/dev/shm/browser.${RANDOM}.html"
+    cat /dev/stdin > $file_path
+    $BROWSER $file_path
+fi
+#+end_src
+* Cleaner
+:PROPERTIES:
+:header-args+: :tangle "cleaner" :shebang #!/bin/bash
+:END:
+
+Deletes trailing whitespaces from files.
+
+Example use:
+
+    # Removes trailing whitespace from python files
+    # Also removes extra whitelines if there are more
+    # than 3 whitelines
+    find . -iname "*.py" | xargs -l cleaner
+
+    # Is is known to corrupt git repos, so, NEVER do this:
+    # find | xargs -l cleaner
+
+#+begin_src bash
+sed -i 's/[ \t]\+$//' $1
+sed -i ':a;N;$!ba;s/\n\n\n\n/\n\n\n/g' $1
+#+end_src
+
+* Connector
+:PROPERTIES:
+:header-args+: :tangle "connector" :shebang #!/bin/fish
+:END:
+
+This is a script to connect into an EC2 instance from the cluster -> task definition -> instance
+
+Requirements:
+- fish
+- fzf
+- jq
+
+#+begin_src fish
+set CLUSTER (aws ecs list-clusters | jq '.clusterArns[]' | fzf --height 40% --reverse --header CLUSTER | awk -F/ '{print $2}' | sed 's/"//')
+set service (aws ecs list-services --cluster $CLUSTER | jq '.serviceArns[]' | fzf --height 40% --reverse --header SERVICE | awk -F/ '{print $2}' | sed 's/"//')
+set task (aws ecs list-tasks --cluster $CLUSTER --desired-status "RUNNING" --service $service | jq '.taskArns[]' | awk -F/ '{print $2}' | sed 's/"//')
+set instance (aws ecs describe-tasks --cluster $CLUSTER --tasks $task | jq '.tasks[0].containerInstanceArn' | awk -F/ '{print $2}' | sed 's/"//')
+set instance_id (aws ecs describe-container-instances --cluster $CLUSTER --container-instances $instance | jq '.containerInstances[0].ec2InstanceId' | sed 's/"//g')
+set ip (aws ec2 describe-instances --instance-ids $instance_id | jq '.Reservations[0].Instances[0].PrivateDnsName' | sed 's/"//g')
+
+ssh $ip
+#+end_src
+
+* Current Network
+:PROPERTIES:
+:header-args+: :tangle "current_network.py" :shebang #!/usr/bin/python
+:END:
+
+A script I use on i3 status bar to get the name of my current network (using `netctl`).
+
+#+begin_src python
+import os
+
+def main():
+    output = os.popen("netctl list").read().split("\n")
+    active_networks = []
+    for line in output:
+        if line.startswith("*"):
+            active_networks.append(line[2:])
+
+    if len(active_networks) > 1:
+        return " + ".join(active_networks)
+    else:
+        return active_networks[0]
+
+print(main())
+#+end_src
+
+* Dive
+:PROPERTIES:
+:header-args+: :tangle "dive" :shebang #!/bin/bash
+:END:
+
+A script to run `dive` from a container. [[https://github.com/wagoodman/dive][Dive]] is a tool to explore docker container layers.
+
+TODO: Double check whether I still need that environment variable
+
+#+begin_src bash
+docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_API_VERSION=1.37 wagoodman/dive:latest $1
+#+end_src
+
+* Frequency
+:PROPERTIES:
+:header-args+: :tangle "frequency" :shebang #!/usr/bin/perl
+:END:
+
+A script to check the frequency of values.
+
+From: http://matt.might.net/articles/console-hacks-exploiting-frequency/
+Example: cat ~/.bash_history | frequency | sort -rn | head
+
+#+begin_src perl
+my %counts = () ;
+
+while ( my $cmd = <STDIN> ) {
+    chomp $cmd ;
+    if ( !$counts{ $cmd } ) { $counts{ $cmd }  = 1; }
+    else                    { $counts{ $cmd } += 1; }
+}
+
+foreach $k ( keys %counts ) {
+    my $count = $counts{ $k } ;
+    print "$count $k\n" ;
+}
+#+end_src
+
+* Universal Search (gr)
+:PROPERTIES:
+:header-args+: :tangle "gr" :shebang #!/bin/bash
+:END:
+
+This was meant to be my unified search script so I could use it the same way for grep, ag, ack, ripgrep. I don't think I ever used it much tho.
+
+#+begin_src bash
+SEARCH_TERM=$1
+CONTEXT=$2
+PROGRAM="ag"
+
+if [[ -n ${CONTEXT} ]]; then
+    ${PROGRAM} ${SEARCH_TERM} -C ${CONTEXT}
+else
+    ${PROGRAM} ${SEARCH_TERM}
+fi
+#+end_src
+
+* Lock Screen
+:PROPERTIES:
+:header-args+: :tangle "lock_screen.sh" :shebang #!/bin/bash
+:END:
+
+The script used by i3 to lock the screen, it created a blurried screenshot of my workspace and caches it.
+
+#+begin_src
+file=/tmp/screenshotblur.jpg
+
+if [ -a /tmp/lock.png ]; then
+    i3lock -i /tmp/lock.png
+else
+    scrot "$file"
+    convert $file -scale 5% -scale 2000% /tmp/lock.png
+    i3lock -i /tmp/lock.png
+fi
+#+end_src
+
+* Necro
+:PROPERTIES:
+:header-args+: :tangle "necro" :shebang #!/bin/fish
+:END:
+
+Shows every commit for a single file in an interactive way (fzf).
+
+#+begin_src fish
+set FILE (fzf)
+git log --oneline --follow -- $FILE | fzf --color --preview "git show (echo {} | cut -d ' ' -f 1):$FILE"
+#+end_src
+
+* Status
+:PROPERTIES:
+:header-args+: :tangle "status" :shebang #!/bin/bash
+:END:
+
+Status bar for i3
+
+Inspired by: https://www.reddit.com/r/archlinux/comments/37da4o/i3_users_which_status_bar_are_you_using_and_why/
+
+#+begin_src bash
+# Colour names
+WHITE=dcdccc
+LIME=00ff00
+RED=ce5252
+GRAY=a0a0a0
+YELLOW=ffff00
+MAROON=cc3300
+
+# Set delimiter to just newlines, instead of any white space
+IFS=$'\n'
+
+# text <string> <colour_name>
+function text { output+=$(echo -n '{"full_text": "'${1//\"/\\\"}'", "color": "#'${2-$WHITE}'", "separator": false, "separator_block_width": 1}, ') ;}
+
+# sensor <device> <sensor>
+function sensor { sensors -Au | awk '/^'${1}'/' RS='\n\n' | awk -F '[:. ]' '/'${2}':/{print$5}' ;}
+
+function chargin {
+    # Picks color depending on the battery status
+    # TODO: the values may change, right now it's saying unknown when
+    # the battery is charging :(
+    status=$(acpi | grep -v "rate information" | awk "/Char/ {print \"C\"} /Disch/ {print \"D\"} /Unk/ {print \"U\"}")
+    if [[ $status == "U" ]] || [[ $status == "D" ]]; then
+        echo "🔋";
+    elif [[ $status == "C" ]]; then
+        echo "🔌";
+    fi
+}
+
+echo -e '{ "version": 1 }\n['
+while :; do
+    BATTERY=$(acpi | grep -v "rate information" | egrep -o "[0-9]{1,3}\%")
+    CPU=$(grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END { printf("%.0f %\n",usage) }')
+    TEMP=$(sensor coretemp-isa-0000 temp1_input)
+    FAN=$(sensor thinkpad-isa-0000 fan1_input | awk '// {printf("% 4d \n", $1)}')
+    RAM=$(awk '/MemTotal:/{total=$2}/MemAvailable:/{free=$2;print int(100-100/(total/free))}' /proc/meminfo)
+    DATE=$(date "+%d/%m/%y %H:%M")
+    BAT_SYMBOL=$(chargin)
+    NETWORK=$(current_network.py)
+    DOCKER_CONTAINERS_RUNNING=$(expr "$(docker ps | wc -l)" - 1)
+
+    output=''
+    text '🌍' $GRAY
+    text " $NETWORK"
+    text ' | ' $GRAY
+    text '🐋' $GRAY
+    text " $DOCKER_CONTAINERS_RUNNING"
+    text ' | ' $GRAY
+    text "$BAT_SYMBOL" $GRAY
+    text "$BATTERY" $WHITE
+    text ' | ' $GRAY
+    text "🌀 $FAN RPM" $WHITE
+    text ' | ' $GRAY
+    text "🤖 $CPU" $WHITE
+    text ' | ' $GRAY
+    text '🌡️' $WHITE
+    text " $TEMP°C" $WHITE
+    text ' | ' $GRAY
+    text '🐏' $WHITE
+    text " $RAM%" $WHITE
+    text ' | ' $GRAY
+    text "$DATE" $WHITE
+    text ' ' $GRAY
+    echo -e "[${output%??}],"
+    sleep 1
+done
+#+end_src
+
+* Set up background
+:PROPERTIES:
+:header-args+: :tangle "setup_background" :shebang #!/bin/bash
+:END:
+
+Sets the background for i3
+
+#+begin_src bash
+feh --bg-center ~/.config/background_mono.jpg
+#+end_src
+
+* Stop Docker
+:PROPERTIES:
+:header-args+: :tangle "stop_docker" :shebang #!/bin/bash
+:END:
+
+Stops all docker containers.
+
+#+begin_src bash
+echo "Stopping Docker containers..."
+docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker stop
+#+end_src
+* Nuke Docker
+:PROPERTIES:
+:header-args+: :tangle "nuke_docker" :shebang #!/bin/bash
+:END:
+
+Removes all containers and volumes from the system. Requires `stop_docker` to work and `hr` for the pretty lines.
+
+#+begin_src bash
+hr '-'
+stop_docker
+
+hr '-'
+echo "Cleaning Docker containers..."
+docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker rm
+
+
+hr '-'
+echo "Cleaning Docker volumes..."
+docker volume rm $(docker volume ls -q)
+
+
+hr '-'
+echo "Cleaning Docker images..."
+docker rmi $(docker images -q)
+#+end_src
+
+* Switch
+:PROPERTIES:
+:header-args+: :tangle "switch" :shebang #!/bin/bash
+:END:
+
+This script toggles the extended monitor outputs if something is connected.
+TODO: The outputs are hardcoded which isn't great.
+
+#+begin_src bash
+DEFAULT_OUTPUT='eDP1'
+
+# Outputs to toggle if connected
+OUTPUTS='HDMI1'
+
+XRANDR=$(xrandr)
+
+EXECUTE=''
+
+for CURRENT in $OUTPUTS
+do
+    if [[ $XRANDR == *$CURRENT\ connected*  ]] # is connected
+    then
+        if [[ $XRANDR == *$CURRENT\ connected\ \(* ]] # is disabled
+        then
+            EXECUTE+="--off --output $CURRENT --auto"
+        else
+            EXECUTE+="--auto --output $CURRENT --off "
+        fi
+    fi
+done
+
+xrandr --output $DEFAULT_OUTPUT $EXECUTE
+echo xrandr --output $DEFAULT_OUTPUT $EXECUTE
+#+end_src
+
+* Sync up
+:PROPERTIES:
+:header-args+: :tangle "syncup" :shebang #!/bin/bash
+:END:
+
+A script to refresh my wiki and this repo from anywhere.
+
+#+begin_src bash
+cd ~/vimwiki && git pull origin master
+cd ~/dev/Setup  && git pull origin master
+#+end_src
+
+* Untar
+:PROPERTIES:
+:header-args+: :tangle "untar" :shebang #!/bin/bash
+:END:
+
+My oldest script, it un-tars tar files, I never rememeber the right tar flags and with this script, I can continue not knowing.
+
+[[https://xkcd.com/1168/][Related XKCD comic]]
+
+#+begin_src bash
+filename=$1
+extension="${filename##*.}"
+
+if [ "$extension" == "tar.gz" ]; then
+    tar -zxvf $filename
+elif [ "$extension" == "gz" ]; then
+    gzip -d $filename
+elif [ "$extension" == "tar" ]; then
+    tar -xvf $filename
+elif [ "$extension" == "bz2" ]; then
+    tar jxf $filename
+elif [ "$extension" == "tbz2" ]; then
+    tar xf $filename
+elif [ "$extension" == "tgz" ]; then
+    tar -zxvf $filename
+else
+    cat `which untar`
+fi
+
+
+
+#+end_src
+
+* Watch Do
+:PROPERTIES:
+:header-args+: :tangle "watch_do" :shebang #!/bin/bash
+:END:
+
+Watch for modification of a file and execute something
+
+e.g.
+ watch_do arena.result "cat arena.result"
+ watch_do dev "cat arena.result"
+
+#+begin_src bash
+while true; do
+    inotifywait -e modify -r "$1" && `$2`
+done
+#+end_src

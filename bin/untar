@@ -1,5 +1,4 @@
 #!/bin/bash
-
 filename=$1
 extension="${filename##*.}"
 
@@ -18,5 +17,3 @@ elif [ "$extension" == "tgz" ]; then
 else
     cat `which untar`
 fi
-
-

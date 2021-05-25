@@ -1,4 +1,3 @@
-#!/bin/sh
-
+#!/bin/bash
 sed -i 's/[ \t]\+$//' $1
 sed -i ':a;N;$!ba;s/\n\n\n\n/\n\n\n/g' $1

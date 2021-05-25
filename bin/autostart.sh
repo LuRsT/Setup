@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Hide mouse cursor while typing
 unclutter -idle 2 &
 

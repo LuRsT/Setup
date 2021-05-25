@@ -1,8 +1,4 @@
-#!/usr/bin/env bash
-
-# FROM:
-# https://www.reddit.com/r/archlinux/comments/37da4o/i3_users_which_status_bar_are_you_using_and_why/
-
+#!/bin/bash
 # Colour names
 WHITE=dcdccc
 LIME=00ff00
@@ -19,7 +15,6 @@ function text { output+=$(echo -n '{"full_text": "'${1//\"/\\\"}'", "color": "#'
 
 # sensor <device> <sensor>
 function sensor { sensors -Au | awk '/^'${1}'/' RS='\n\n' | awk -F '[:. ]' '/'${2}':/{print$5}' ;}
-
 
 function chargin {
     # Picks color depending on the battery status
