@@ -222,6 +222,9 @@ If you use `org' and don't want your org files in the default location below, ch
 ;; Make the collapsed headers better and avoid the confusion with actual ellipsis
 (setq org-ellipsis " ▼ ")
 
+;; Configure deft
+(setq deft-directory "~/vimwiki")
+
 ;; (org-link-set-parameters "http" :face '(:foreground "orange"))
 ;; (org-link-set-parameters "https" :face '(:foreground "green"))
 #+END_SRC
@@ -248,6 +251,28 @@ Define the location of the file to hold tasks
       :desc "Org Capture" "k" #'org-capture)
 #+end_src
 
+* Org agenda
+
+#+begin_src emacs-lisp
+(use-package! org-agenda
+  :defer
+  :init
+  (setq org-agenda-files (list
+                          (concat org-file-path "someday.org")
+                          work-path
+                          org-journal-dir))
+
+  :config
+
+  ;; org agenda
+  (setq org-agenda-time-grid
+        (quote
+         ((daily today remove-match)
+          (700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300)
+          "......" "----------------")))
+  )
+#+end_src
+
 * Org-Journal
 
 All the org stuff, because this is why I started using emacs
@@ -257,7 +282,7 @@ All the org stuff, because this is why I started using emacs
       :bind
       ("C-c n j" . org-journal-new-entry)
       :custom
-      (org-journal-dir "~/vimwiki/org-roam/")
+      (org-journal-dir "~/vimwiki")
       (org-journal-date-prefix "#+TITLE: ")
       (org-journal-file-format "%Y-%m-%d.org")
       (org-journal-date-format "%A, %d %B %Y"))
@@ -301,8 +326,6 @@ Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
   :after org-roam
   :config
   (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
-
-(setq deft-directory "~/vimwiki")
 
 ;; Make roam links different
 (after! org-roam
