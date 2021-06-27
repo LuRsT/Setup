@@ -251,28 +251,6 @@ Define the location of the file to hold tasks
       :desc "Org Capture" "k" #'org-capture)
 #+end_src
 
-* Org agenda
-
-#+begin_src emacs-lisp
-(use-package! org-agenda
-  :defer
-  :init
-  (setq org-agenda-files (list
-                          (concat org-file-path "someday.org")
-                          work-path
-                          org-journal-dir))
-
-  :config
-
-  ;; org agenda
-  (setq org-agenda-time-grid
-        (quote
-         ((daily today remove-match)
-          (700 800 900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300)
-          "......" "----------------")))
-  )
-#+end_src
-
 * Org-Journal
 
 All the org stuff, because this is why I started using emacs
