@@ -19,7 +19,7 @@
     f = fetch
     p = pull
     nb = checkout -b
-    r = "!git restore $(git status --short | fzf --multi | awk '{print $2}')"
+    r = "!git restore $(git status --short | fzf --multi --preview \"echo {} | awk '{print $2}' | xargs git diff --\" | awk '{print $2}')"
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
     wat = blame
 
@@ -28,6 +28,9 @@
     show-graph = log --graph --abbrev-commit --pretty=oneline
     show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
     show-tags = "log --no-walk --tags --pretty='%h %d %s' --decorate=full"
+
+	  sa = "!git stash apply $(git stash list | fzf --preview \"git stash show (echo {} | cut -f1 -d ':')\" | cut -f1 -d ':')"
+	  sp = "!git stash pop   $(git stash list | fzf --preview \"git stash show (echo {} | cut -f1 -d ':')\" | cut -f1 -d ':')"
 
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     find = "!git --no-pager log --pretty='format:%H %s %N' | grep '$1'"
