@@ -13,7 +13,6 @@
          state=link
      with_items:
         - { name: '.config' }
-        - { name: '.i3' }
         - { name: 'bin' }
         - { name: '.stowrc' }
 
