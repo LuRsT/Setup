@@ -23,6 +23,7 @@
         - python-isort
         - python-pyflakes
         - python-poetry
+        - python-pip
         - the_silver_searcher
         - bat
         - exa
@@ -127,6 +128,7 @@
         - smartmontools # tlp-stat recomendation
         - ethtool  # tlp-stat recomendation
         - xournalpp # for reading pdfs
+        - inetutils # For telnet and stuff
 
    - name: Setup TLP
      systemd:
