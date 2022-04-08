@@ -20,6 +20,7 @@ export PATH="$PATH:$HOME/.emacs.d/bin"
 
 # Alias
 alias a='cd (fd --max-depth 1 -t d | fzf)'
+alias j='just'
 alias v='nvim'
 alias vf='nvim (fd | fzf)'
 alias vi='nvim'
@@ -33,14 +34,12 @@ alias g='git'
 alias ga='git annex'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias tmux="env TERM=xterm-256color-italic tmux"
-alias mocp='mocp -A'
 alias halt='halt -p'
 alias ducks='du -cms * | sort -rn | head'
 alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
 alias webserver='python3 -m http.server'
 alias r='ranger'
-alias n='numbrs'
 alias m='make'
 alias ggrep='git grep'
 alias less='less -S'
@@ -54,19 +53,19 @@ alias ca="cargo"
 alias d="docker"
 alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 alias cat="bat"
+
 # From https://twitter.com/rixxtr/status/1174968619131752448
 alias rsync-copy="rsync -avz --info=progress2 -h"
 alias rsync-move="rsync -avz --info=progress2 -h --remove-source-files"
 alias rsync-synchronize="rsync -avzu --delete --info=progress2 -h"
 alias rsync-update="rsync -avzu --info=progress2 -h"
+
 alias f="nvim (fd | fzf)"
 alias ff="fd | fzf"
 alias the='dict -d moby-thesaurus'
 alias c="cd ~/dev/(/usr/bin/ls ~/dev | fzf)"
 alias e="nvim -c ':NV'"
 alias dc="docker-compose"
-# Fzf search arch wiki
-alias aw="firefox (fd . /usr/share/doc/arch-wiki/html/en | fzf)"
 alias ca="cargo"
 alias notify="notify-send"
 alias em="emacsclient -ct" #Terminal emacs
@@ -76,3 +75,4 @@ alias weather="curl wttr.in"
 
 # Get the status code of a site quickly
 alias hstat="curl -o /dev/null --silent --head --write-out '%{http_code}\n'" $1
+alias mkvenv="python -m venv ~/.virtualenvs/(basename (pwd))"

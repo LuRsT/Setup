@@ -10,7 +10,7 @@
     dc = diff --cached
     up = fetch origin master:master
     dcs = diff --stat --cached
-    ai = "!git add      $(git status --short | fzf --multi --preview \"git diff $(echo {} | awk '{print $2}')\" | awk '{print $2}')"
+    ai = "!git add $(git status --short | fzf --multi --preview \"git diff $(show_git_files)\" | awk '{print $2}')"
     chi = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
     ch = checkout
     b = branch
@@ -19,7 +19,7 @@
     f = fetch
     p = pull
     nb = checkout -b
-    r = "!git restore $(git status --short | fzf --multi --preview \"echo {} | awk '{print $2}' | xargs git diff --\" | awk '{print $2}')"
+    r = "!git restore $(git status --short | fzf --multi --preview \"git diff $(show_git_files)\" | awk '{print $2}')"
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
     wat = blame
 

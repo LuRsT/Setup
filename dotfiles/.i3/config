@@ -13,6 +13,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Volume Control"] floating enable
+for_window [class="zoom"] floating enable
 
 new_window pixel 1
 
@@ -25,7 +26,6 @@ floating_modifier $mod
 
 bindsym $mod+Return exec kitty
 bindsym $mod+e exec pcmanfm
-bindsym $mod+o exec emacsclient -c
 
 # locks screen
 bindsym $mod+Shift+x exec /home/lurst/bin/lock_screen.sh

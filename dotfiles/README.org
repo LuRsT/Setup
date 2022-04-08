@@ -14,7 +14,7 @@ This is the only file I manually change in this directory.
 
 This is my default config for playing nethack.
 
-#+begin_src fortran
+#+begin_src conf
 OPTIONS=boulder:0, color, autodig, !cmdassist, norest_on_space, !autopickup
 #+end_src
 
@@ -25,7 +25,7 @@ OPTIONS=boulder:0, color, autodig, !cmdassist, norest_on_space, !autopickup
 
 I honestly forgot what this file is for, I think I needed it for a specific keyboard or a specific terminal.
 
-#+begin_src fortran
+#+begin_src conf
 "\e[A":history-search-backward
 "\e[B":history-search-forward
 set show-all-if-ambiguous on
@@ -42,7 +42,7 @@ set completion-ignore-case on
 
 Configuration for using psql.
 
-#+begin_src fortran
+#+begin_src conf
 -- Hide output from these commands while psql is loading.
 -- Will unset this at the end of the file.
 \set QUIET 1
@@ -94,7 +94,7 @@ Configuration for using psql.
 
 Configuration for using zsh. I no longer use it, so this is really more for archive.
 
-#+begin_src fortran
+#+begin_src conf
 ## START ANTIGEN
 
 source $HOME/bin/antigen.zsh
@@ -151,7 +151,7 @@ man() {
 
 Configuration for using bash.
 
-#+begin_src fortran
+#+begin_src conf
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -174,7 +174,7 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$
 
 This is a file that's loaded by all my shell configs, it has configuration that is common across them all.
 
-#+begin_src fortran
+#+begin_src conf
 # Source alias
 if [ -f ${XDG_CONFIG_HOME}/.alias ]; then
     source ${XDG_CONFIG_HOME}/.alias
@@ -200,7 +200,7 @@ source /usr/bin/virtualenvwrapper.sh
 
 Configuration for terminals. There's a few things here that I don't need anymore since I'm not using these editors.
 
-#+begin_src fortran
+#+begin_src conf
 ! Remove scrollbar
 URxvt*scrollBar_right: false
 URxvt*scrollBar:       false
@@ -261,7 +261,7 @@ URxvt.keysym.KP_End:  \033[4~
 
 Configuration for using tmux
 
-#+begin_src fortran
+#+begin_src conf
 set -g default-terminal "tmux-256color"
 
 set -g mouse off
@@ -356,7 +356,7 @@ run -b '~/.config/tmux/plugins/tpm/tpm'
 
 This is a small config to switch caps lock with control.
 
-#+begin_src fortran
+#+begin_src conf
 #!/bin/bash
 
 xmodmap -e 'remove Lock = Caps_Lock' &&
@@ -370,7 +370,7 @@ xmodmap -e 'add Control = Control_L'
 
 Configuration for using tmate. This isn't working well, I'd love to be able to use tmate like I use tmux.
 
-#+begin_src fortran
+#+begin_src conf
 source-file ~/.tmux.conf
 
 set -g status-right '#[fg=black]#[bg=yellow][tmate] ssh session'
@@ -383,7 +383,7 @@ set -g status-right '#[fg=black]#[bg=yellow][tmate] ssh session'
 
 A global gitignore, because my philosophy is to keep the .gitignore of projects clean of anything relating to peoples setup.
 
-#+begin_src fortran
+#+begin_src conf
 # Compiled source #
 ###################
 *.com
@@ -447,7 +447,7 @@ Git config, I have a lot of aliases here.
 
 In order to set the name and email, I'm using variables that I can override on `.alias_extra` for different computers, while leaving the default on `.alias`.
 
-#+begin_src fortran
+#+begin_src conf
 [alias]
     a = add
     c = commit -v
@@ -460,7 +460,7 @@ In order to set the name and email, I'm using variables that I can override on `
     dc = diff --cached
     up = fetch origin master:master
     dcs = diff --stat --cached
-    ai = "!git add      $(git status --short | fzf --multi --preview \"git diff $(echo {} | awk '{print $2}')\" | awk '{print $2}')"
+    ai = "!git add $(git status --short | fzf --multi --preview \"git diff $(show_git_files)\" | awk '{print $2}')"
     chi = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
     ch = checkout
     b = branch
@@ -469,7 +469,7 @@ In order to set the name and email, I'm using variables that I can override on `
     f = fetch
     p = pull
     nb = checkout -b
-    r = "!git restore $(git status --short | fzf --multi --preview \"echo {} | awk '{print $2}' | xargs git diff --\" | awk '{print $2}')"
+    r = "!git restore $(git status --short | fzf --multi --preview \"git diff $(show_git_files)\" | awk '{print $2}')"
     di = "!git diff --color | sed -E \"s/^([^-+ ]*)[-+ ]/\\1/\" | less -r"
     wat = blame
 
@@ -529,7 +529,7 @@ In order to set the name and email, I'm using variables that I can override on `
 :header-args+: :tangle ".i3/config" :mkdirp yes
 :END:
 
-#+begin_src fortran
+#+begin_src conf
 set $darkgrey #686868
 set $vdarkgrey #464646
 set $lightgrey #8e8e8e
@@ -545,6 +545,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Volume Control"] floating enable
+for_window [class="zoom"] floating enable
 
 new_window pixel 1
 
@@ -557,7 +558,6 @@ floating_modifier $mod
 
 bindsym $mod+Return exec kitty
 bindsym $mod+e exec pcmanfm
-bindsym $mod+o exec emacsclient -c
 
 # locks screen
 bindsym $mod+Shift+x exec /home/lurst/bin/lock_screen.sh
