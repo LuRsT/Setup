@@ -63,14 +63,6 @@ Set `fancy-splash-image`` to a path to an image
 
 C-k and C-j to move between changes in Git timemachine
 
-* Frontpage
-
-Changing the default: https://github.com/hlissner/doom-emacs/blob/develop/modules/ui/doom-dashboard/config.el#L44-L88
-
-#+BEGIN_SRC emacs-lisp
-;; (delete "Open private configuration" +doom-dashboard-menu-title)
-#+END_SRC
-
 * Original config
 
 Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -222,9 +214,6 @@ If you use `org' and don't want your org files in the default location below, ch
 ;; Make the collapsed headers better and avoid the confusion with actual ellipsis
 (setq org-ellipsis " ▼ ")
 
-;; Configure deft
-(setq deft-directory "~/vimwiki")
-
 ;; (org-link-set-parameters "http" :face '(:foreground "orange"))
 ;; (org-link-set-parameters "https" :face '(:foreground "green"))
 #+END_SRC
@@ -266,51 +255,6 @@ All the org stuff, because this is why I started using emacs
       (org-journal-date-format "%A, %d %B %Y"))
     (setq org-journal-enable-agenda-integration t)
 #+END_SRC
-
-* Org Roam stuff
-
-Big inspiration from: https://www.ianjones.us/blog/2020-05-05-doom-emacs/
-
-#+BEGIN_SRC emacs-lisp
-(setq org-roam-directory "~/vimwiki/org-roam")
-
-(use-package! org-roam
-  :commands (org-roam-insert org-roam-find-file org-roam)
-  :init
-  (setq org-roam-directory "/home/lurst/vimwiki/org-roam/")
-  (map! :leader
-        :prefix "n"
-        :desc "Org-Roam-Insert" "i" #'org-roam-insert
-        :desc "Org-Roam-Find"   "/" #'org-roam-find-file
-        :desc "Org-Roam-Buffer" "r" #'org-roam)
-  :config
-  (org-roam-mode +1))
-
-
-(after! org-roam
-  (map! :leader
-        :prefix "n"
-        :desc "org-roam" "l" #'org-roam
-        :desc "org-roam-insert" "i" #'org-roam-insert
-        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
-        :desc "org-roam-find-file" "f" #'org-roam-find-file
-        :desc "org-roam-graph-show" "g" #'org-roam-graph-show
-        :desc "org-roam-insert" "i" #'org-roam-insert
-        :desc "org-roam-capture" "c" #'org-roam-capture))
-
-(require 'company-org-roam)
-(use-package company-org-roam
-  :when (featurep! :completion company)
-  :after org-roam
-  :config
-  (set-company-backend! 'org-mode '(company-org-roam company-yasnippet company-dabbrev)))
-
-;; Make roam links different
-(after! org-roam
-  (set-face-attribute 'org-roam-link nil :foreground "#FF8860"))
-#+END_SRC
-
-#+RESULTS:
 
 * Python stuff
 https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/python
@@ -396,13 +340,6 @@ Spelling backends
   '(:seperate company-ispell
               company-files
               company-yasnippet))
-#+END_SRC
-
-* Better tables
-
-#+BEGIN_SRC emacs-lisp
- (package! org-pretty-table-mode
-  :recipe (:host github :repo "Fuco1/org-pretty-table") :pin "88380f865a...")
 #+END_SRC
 
 * Window shortcuts
