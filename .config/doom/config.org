@@ -5,7 +5,29 @@
 
 I'm using a literate config was inspired by: https://tecosaur.github.io/emacs-config/config.html source: https://github.com/tecosaur/emacs-config/blob/master/config.org
 
+** Additional functions/macros to help configure doom
+- `load!' for loading external *.el files relative to this one
+- `use-package' for configuring packages
+- `after!' for running code after a package has loaded
+- `add-load-path!' for adding directories to the `load-path', relative to
+  this file. Emacs searches the `load-path' when you load packages with
+  `require' or `use-package'.
+- `map!' for binding new keys
 
+To get information about any of these functions/macros, move the cursor over
+the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
+This will open documentation for it, including demos of how they are used.
+
+You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
+they are implemented.
+
+Modules code is located here: https://github.com/hlissner/doom-emacs/tree/develop/modules
+
+Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
+
+** To change the splash image:
+Set `fancy-splash-image`` to a path to an image
+** Key mapping
 - SPC g g c a -> Git ammend
 - SPC f p     -> Edit config files
 - SPC g g p   -> Git Push
@@ -31,30 +53,6 @@ To edit a piece of code inside an org documnet:
 
 `SPC m '`
 
-Here are some additional functions/macros that could help you configure Doom:
-
-- `load!' for loading external *.el files relative to this one
-- `use-package' for configuring packages
-- `after!' for running code after a package has loaded
-- `add-load-path!' for adding directories to the `load-path', relative to
-  this file. Emacs searches the `load-path' when you load packages with
-  `require' or `use-package'.
-- `map!' for binding new keys
-
-To get information about any of these functions/macros, move the cursor over
-the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
-This will open documentation for it, including demos of how they are used.
-
-You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
-they are implemented.
-
-Modules code is located here: https://github.com/hlissner/doom-emacs/tree/develop/modules
-
-Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
-
-To change the splash image:
-Set `fancy-splash-image`` to a path to an image
-
 `M-p` on the Magit commit message buffer allows me to scroll through previous commit messages. Useful when the commit is aborted for some reason.
 
 `SPC p i` Refresh project files (to remove files from cache in `SPC SPC`)
@@ -62,6 +60,11 @@ Set `fancy-splash-image`` to a path to an image
 `Alt \` delete whitepsace under cursor
 
 C-k and C-j to move between changes in Git timemachine
+
+** Profiler
+Use:
+
+`profiler-start`
 
 * Original config
 
@@ -113,7 +116,7 @@ numbers are disabled. For relative line numbers, set this to `relative'.
 
 * Basic configuration
 
-Just a few configs
+Just a few configs:
 
 #+BEGIN_SRC emacs-lisp
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode) ;; Disable smart parens
@@ -149,8 +152,6 @@ Keep the time for which-key to open up short, because I need to read it 80% of t
 (after! which-key
   (setq which-key-idle-delay 0.5))
 #+END_SRC
-
-Turn the terminal into emacs mode because having modal is confusing and unlike the environment I had on tmux. THIS DOESN'T WORK
 
 Using `s` takes me to the place I want much quicker than other motions, I just need to train myself to use it more.
 
