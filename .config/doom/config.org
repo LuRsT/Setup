@@ -24,6 +24,12 @@ they are implemented.
 Modules code is located here: https://github.com/hlissner/doom-emacs/tree/develop/modules
 
 Org-mode visibility: https://orgmode.org/manual/Initial-visibility.html
+** Documentation for modules
+SPC h d m rest (doom/help-modules)
+
+** Learning more about org-mode
+Ctrl+c Ctrl+d to set a deadline to a task
+Spc+n a to see the agenda
 
 ** To change the splash image:
 Set `fancy-splash-image`` to a path to an image
@@ -176,6 +182,7 @@ A few shortcuts I have on my vimrc for a while, and I quickly realise how badly 
 #+END_SRC
 
 A function to make sure :Wq means to quit magit instead of emacs
+
 #+BEGIN_SRC emacs-lisp
 (defun my-evil-write ()
   (if (derived-mode-p 'magit-mode)
@@ -184,7 +191,7 @@ A function to make sure :Wq means to quit magit instead of emacs
 (evil-ex-define-cmd "Wqa" #'evil-quit-all)
 #+END_SRC
 
-Enable bold and italics on every team. I'm unsure if I really need this tho
+Enable bold and italics on every theme. I'm unsure if I really need this tho
 
 #+BEGIN_SRC emacs-lisp
 (setq doom-themes-enable-bold t
@@ -241,22 +248,6 @@ Define the location of the file to hold tasks
       :desc "Org Capture" "k" #'org-capture)
 #+end_src
 
-* Org-Journal
-
-All the org stuff, because this is why I started using emacs
-
-#+BEGIN_SRC emacs-lisp
-(use-package org-journal
-      :bind
-      ("C-c n j" . org-journal-new-entry)
-      :custom
-      (org-journal-dir "~/vimwiki")
-      (org-journal-date-prefix "#+TITLE: ")
-      (org-journal-file-format "%Y-%m-%d.org")
-      (org-journal-date-format "%A, %d %B %Y"))
-    (setq org-journal-enable-agenda-integration t)
-#+END_SRC
-
 * Python stuff
 https://github.com/hlissner/doom-emacs/tree/develop/modules/lang/python
 
@@ -293,24 +284,15 @@ This config shows options by pressing `C-o` inside the search buffer.
 
 Set directory where projects are:
 
-#+BEGIN_SRC emacs-lisp
-(setq projectile-project-search-path '("~/dev/"))
-#+END_SRC
-
-* Windows
-
-Select a new file when splitting.
+When installing doom, with the config below, to get the projects you just need to run:
+M-x projectile-discover-projects-in-search-path
 
 #+BEGIN_SRC emacs-lisp
-(setq evil-vsplit-window-right t
-      evil-split-window-below t)
-
-(defadvice! prompt-for-buffer (&rest _)
-  :after '(evil-window-split evil-window-vsplit)
-  (projectile/find-file))
-
-(setq +ivy-buffer-preview t)
+(setq projectile-project-search-path '("/home/lurst/dev/"))
 #+END_SRC
+
+#+RESULTS:
+| /home/* Windows
 
 Rotate layout with `SPC w SPC`
 
@@ -364,14 +346,6 @@ Shortcuts for moving from window to window just like in vim and tmux. Ctrl+hjkl
  )
 #+END_SRC
 
-* Writeroom
-
-COnfiguration of my zen writting mode
-
-#+BEGIN_SRC emacs-lisp
-(setq writeroom-fullscreen-effect t)
-#+END_SRC
-
 * Deno
 The instructions here on how to configure emacs to understand Deno: https://deno.land/manual/getting_started/setup_your_environment#emacs
 
@@ -386,12 +360,6 @@ Show me clippy
 
 #+BEGIN_SRC emacs-lisp
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
-#+END_SRC
-
-* Rest
-
-#+BEGIN_SRC emacs-lisp
-;; (set-popup-rule "^\\*HTTP Response"  :side 'right)
 #+END_SRC
 
 * Experiment with eval
@@ -432,16 +400,6 @@ Run elisp by selecting a line and pressing ENTER
 (after! elisp-mode
   (map! :map elisp-mode-map :v "RET" #'eros-eval-last-sexp))
 #+END_SRC
-
-* Jira
-
-#+begin_src emacs-lisp
-(defun tp-insert-jira-link ()
-  "this function creates a jira link"
-  (interactive)
-  (let ((issue (read-string "issue: ")))
-    (insert (concat "[[jira-server.org/project-" issue "][project-" issue "]]"))))
-#+end_src
 
 * Taking SVG screenshots
 
