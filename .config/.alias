@@ -9,6 +9,7 @@ export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
 export BROWSER="firefox"
 export GOPATH="$HOME/.gospace"
+export PAGER="most"
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--reverse --height 40%'

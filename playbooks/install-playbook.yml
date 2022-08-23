@@ -38,6 +38,7 @@
         - make
         - stow
         - net-tools
+        - most
    - name: Install packages for the OS
      pacman:
        state: installed
