@@ -37,6 +37,7 @@
         - zlib
         - make
         - stow
+        - net-tools
    - name: Install packages for the OS
      pacman:
        state: installed
