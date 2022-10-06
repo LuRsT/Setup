@@ -68,6 +68,7 @@
     insteadOf = gh:
 [rebase]
     autosquash = true
+    updateRefs = true
 [remote "origin"]
 	prune = true
 [pull]

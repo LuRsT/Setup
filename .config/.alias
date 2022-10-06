@@ -9,7 +9,6 @@ export HISTFILESIZE=10000 # Record last 10,000 commands
 export HISTSIZE=10000 # Record last 10,000 commands per session
 export BROWSER="firefox"
 export GOPATH="$HOME/.gospace"
-export PAGER="most"
 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_DEFAULT_OPTS='--reverse --height 40%'
@@ -73,6 +72,7 @@ alias em="emacsclient -ct" #Terminal emacs
 alias emg="emacsclient -c" #GUI emacs
 alias xclip="xclip -selection c"
 alias weather="curl wttr.in"
+alias hn="curl hkkr.in"
 
 # Get the status code of a site quickly
 alias hstat="curl -o /dev/null --silent --head --write-out '%{http_code}\n'" $1

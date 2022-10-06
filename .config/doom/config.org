@@ -70,7 +70,22 @@ C-k and C-j to move between changes in Git timemachine
 ** Profiler
 Use:
 
-`profiler-start`
+#+begin_src
+profiler-start
+#+end_src
+
+** Compile
+
+M-x compile or SPC c c
+
+And then, to run make in a specific folder, sometimes the default-directory is the basepath of the current file which is probably the test file.
+The following command can be used to run compile on different default-directory
+
+#+begin_src
+sh -s "(cd /dir/ && make)
+#+end_src
+
+To move between files / errors: [e and ]e
 
 * Original config
 
@@ -269,6 +284,12 @@ To use mspyls, install it with M-x lsp-install-server and add this to your priva
 (add-hook! python-mode
   (set-fill-column 120))
 #+END_SRC
+
+** Underscore search
+
+#+begin_src emacs-lisp
+(add-hook 'python-mode-hook #' (lambda () (modify-syntax-entry ?_ "w")))
+#+end_src
 
 * Searching
 

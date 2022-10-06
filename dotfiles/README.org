@@ -518,6 +518,7 @@ In order to set the name and email, I'm using variables that I can override on `
     insteadOf = gh:
 [rebase]
     autosquash = true
+    updateRefs = true
 [remote "origin"]
 	prune = true
 [pull]
