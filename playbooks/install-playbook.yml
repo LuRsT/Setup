@@ -72,9 +72,8 @@
         - i3lock
         - xautolock
         - xorg-server
-        - xf86-video-intel
-        - xf86-video-intel
         - xorg-xinit
+        - mesa
         - htop
         - lsof
         - zip
