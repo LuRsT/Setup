@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mplayer ~/bin/beep.wav > /dev/null 2>&1
+notify-send "beep"

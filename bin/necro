@@ -1,3 +1,5 @@
 #!/bin/fish
+
+# Check out git logs for a specific file
 set FILE (fzf)
 git log --oneline --follow -- $FILE | fzf --color --preview "git show (echo {} | cut -d ' ' -f 1):$FILE"
