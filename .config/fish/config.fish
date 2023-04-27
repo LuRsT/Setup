@@ -79,4 +79,5 @@ end
 
 if status --is-interactive
     keychain --eval --quiet -Q id_rsa | source
+    keychain --eval --quiet -Q id_ed25519 | source
 end

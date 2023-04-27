@@ -49,7 +49,7 @@
         - man-pages
         - time
         - keychain
-        - kitty
+        - alacritty
         - pkg-config
         - intel-ucode
         - tlp
