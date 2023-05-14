@@ -88,6 +88,11 @@
         - arc-icon-theme
         - dialog # For wifi-menu
         - reflector # for pacman mirrors
+        # For openbox setup
+        - lxpanel
+        - lxappearance-obconf
+        - obconf
+        - openbox
 
    - name: Install extra packages
      pacman:
