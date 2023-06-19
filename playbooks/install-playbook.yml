@@ -65,7 +65,6 @@
         - xorg-xrandr
         - wireless_tools
         - mplayer
-        - youtube-dl
         - scrot
         - lxappearance
         - i3-wm
