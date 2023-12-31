@@ -113,13 +113,13 @@
         - fd
         - time
         - ffmpegthumbnailer # For thumbnails in video
-        - cmake  # For vterm in emac
-        - gcc  # suckless tool
-        - git-annex # suckless tool
+        - cmake         # For vterm in emac
+        - gcc           # suckless tool
+        - git-annex     # suckless tool
         - strace
-        - highlight # For ranger
-        - w3m # For ranger
-        - gvfs-smb # For samba share
+        - highlight     # For ranger
+        - w3m           # For ranger
+        - gvfs-smb      # For samba share
         - calibre
         - discord
         - chromium
@@ -128,9 +128,11 @@
         - arch-wiki-docs
         - dunst
         - smartmontools # tlp-stat recomendation
-        - ethtool  # tlp-stat recomendation
-        - xournalpp # for reading pdfs
-        - inetutils # For telnet and stuff
+        - ethtool       # tlp-stat recomendation
+        - xournalpp     # for reading pdfs
+        - inetutils     # For telnet and stuff
+        - ugrep         # Super fast search
+        - perl-image-exiftool # extra for ugrep and for checking exif stuff
 
    - name: Setup TLP
      systemd:
