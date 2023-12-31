@@ -113,7 +113,6 @@
         - fd
         - time
         - ffmpegthumbnailer # For thumbnails in video
-        - peek  # Makeing gif
         - cmake  # For vterm in emac
         - gcc  # suckless tool
         - git-annex # suckless tool
