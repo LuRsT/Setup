@@ -134,6 +134,9 @@
         - ugrep         # Super fast search
         - perl-image-exiftool # extra for ugrep and for checking exif stuff
 
+          #- docker
+          #- docker-buildx
+
    - name: Setup TLP
      systemd:
         name: tlp
