@@ -12,6 +12,11 @@ setxkbmap gb && sh ~/.xmodmap &
 
 xfce4-clipman &
 
+solaar &
+
 dunst -conf ~/.config/.dunstrc &
 
-emacs --daemon &
+ssh-add ~/.ssh/id_ed25519
+
+conky &
+

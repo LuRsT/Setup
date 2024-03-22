@@ -36,7 +36,7 @@ nnoremap ; :
 nnoremap Q <nop>
 
 " Search for files
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <C-g> :Buffers<CR>
 
 " """""" LEADER KEYS
@@ -55,6 +55,7 @@ map <leader>vs :e ~/.config/vim/config/shortcuts.vim<CR>
 map <leader>vp :e ~/.config/vim/config/plugins.vim<CR>
 map <leader>vc :e ~/.config/vim/config/config.vim<CR>
 
+
 " Fzf stuff
 map <leader>zb :Buffers<CR>
 map <leader>zbc :BCommits<CR>
@@ -66,6 +67,7 @@ map <leader>zs :Rg<CR>
 map <leader>. :Files<CR>
 map <leader><Space> :Files<CR>
 map <leader>zt :Tags<CR>
+map <leader>f :Files<CR>
 
 map <leader>ft :NERDTreeToggle<CR>
 
@@ -93,3 +95,7 @@ nmap <leader>wk <C-W><C-K>
 
 " Open dir drawer
 nmap <leader>op :NERDTreeToggle<CR>
+
+" Abreviations
+
+:iabbrev <buffer> for@ for _ in x:

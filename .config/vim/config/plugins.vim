@@ -94,8 +94,8 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 """"" Easymotion
 
 " s{char} to move to {char}
-map  s <Plug>(easymotion-bd-f)
-nmap s <Plug>(easymotion-overwin-f)
+map  f <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-overwin-f)
 
 " Vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200

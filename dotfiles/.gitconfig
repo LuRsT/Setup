@@ -11,6 +11,8 @@
     up = fetch origin master:master
     dcs = diff --stat --cached
     ai = "!git add $(git status --short | fzf --multi --preview \"git diff $(show_git_files)\" | awk '{print $2}')"
+    restorei = "!git restore $(git ls-files --modified | fzf --multi --preview \"git diff {}\")"
+    reseti = "!git reset $(git diff --name-only | fzf --multi --preview \"git diff {}\")"
     chi = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
     ch = checkout
     b = branch
@@ -29,14 +31,14 @@
     show-all = log --color=auto --abbrev-commit --graph --pretty=format:\"%h %an @%ar %s\" --all
     show-tags = "log --no-walk --tags --pretty='%h %d %s' --decorate=full"
 
-	  sa = "!git stash apply $(git stash list | fzf --preview \"git stash show (echo {} | cut -f1 -d ':')\" | cut -f1 -d ':')"
-	  sp = "!git stash pop   $(git stash list | fzf --preview \"git stash show (echo {} | cut -f1 -d ':')\" | cut -f1 -d ':')"
+    sa = "!git stash apply $(git stash list | fzf --preview \"git stash show (echo {} | cut -f1 -d ':')\" | cut -f1 -d ':')"
+    sp = "!git stash pop   $(git stash list | fzf --preview \"git stash show (echo {} | cut -f1 -d ':')\" | cut -f1 -d ':')"
 
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     find = "!git --no-pager log --pretty='format:%H %s %N' | grep '$1'"
     plush = "!git pull && git push"
     remove-deleted-files = "!git ls-files --deleted -z | xargs -0 git rm"
-    clean-merged = !git branch --merged master | egrep -v \"(^\\*|^  master$)\" | xargs git branch --delete
+    clean-merged = !git branch --merged master | grep -Ev \"(^\\*|^  master$)\" | xargs git branch --delete
     clean-gone = !git fetch --prune && git branch --verbose | awk '/\\[gone]/{print $1}' |  xargs git branch --delete --force
 [apply]
     whitespace = nowarn

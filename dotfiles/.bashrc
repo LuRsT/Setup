@@ -8,7 +8,8 @@ source ${HOME}/.commonshellrc
 # Check for an interactive session
 [ -z "$PS1" ] && return
 
-PS1='[\u@\[\e\][0;31m\h\e[m \W]\[$(tput setaf 7)\] \j$ '
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
+# Make it visible I'm in bash,
+# I don't expect to stay here long
+PS1='bash$ '
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
