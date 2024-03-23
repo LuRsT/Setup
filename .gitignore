@@ -12,3 +12,4 @@
 bin/*
 .fonts/
 .config/doom/custom.el
+dotfiles/.emacs.d/*
