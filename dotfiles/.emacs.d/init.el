@@ -23,6 +23,8 @@
 
 (provide 'nano)
 
+(setq auto-save-file-name-transforms `((".", "~/.emacs-saves" t)))
+
 (use-package treemacs
   :ensure t
   :defer t
@@ -124,8 +126,8 @@
   :after (treemacs magit)
   :ensure t)
 
-(setq nano-font-family-monospaced "OperatorMono Nerd Font")
-(setq nano-font-family-proportional "OperatorMono Nerd Font")
+(setq nano-font-family-monospaced "JetBrains Mono")
+(setq nano-font-family-proportional "JetBrains Mono")
 (setq nano-font-size 14)
 
 (setq ivy-height 8)   ;; number of lines in e.g. file-selector

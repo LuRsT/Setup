@@ -8,6 +8,7 @@ My pick and mix from N A N O's config
 #+begin_src emacs-lisp
   ;; NOTE: This file is created from config.org, edit that file,
   ;; not this one.
+
 #+end_src
 
 ** NANO Stuff
@@ -68,6 +69,14 @@ My pick and mix from N A N O's config
 #+end_src
 
 ** My custom config
+*** Backup files
+
+Move backup files elsewhere so they don't clutter my dirs.
+
+#+begin_src emacs-lisp
+  (setq auto-save-file-name-transforms `((".", "~/.emacs-saves" t)))
+#+end_src
+
 *** TODO Tree
 
 This is directly from the treemacs example config with everything, I removed some stuff.
@@ -182,8 +191,8 @@ TODO: This doesn't work yet
 *** TODO Organize
 
 #+begin_src emacs-lisp
-  (setq nano-font-family-monospaced "OperatorMono Nerd Font")
-  (setq nano-font-family-proportional "OperatorMono Nerd Font")
+  (setq nano-font-family-monospaced "JetBrains Mono")
+  (setq nano-font-family-proportional "JetBrains Mono")
   (setq nano-font-size 14)
 
   (setq ivy-height 8)   ;; number of lines in e.g. file-selector
