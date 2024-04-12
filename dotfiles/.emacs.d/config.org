@@ -1,9 +1,14 @@
 #+title Emacs config
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el :mkdirp yes
 
+* NOT BEING USED ATM, use init.el until you're confident with elisp enough to use this literate file
+
+
 My pick and mix from N A N O's config
 
 ** The start of the init.el file
+
+Update if you're worried that tangling isn't working.
 
 #+begin_src emacs-lisp
   ;; NOTE: This file is created from config.org, edit that file,
@@ -11,12 +16,38 @@ My pick and mix from N A N O's config
 
 #+end_src
 
+** Font
+#+begin_src emacs-lisp
+  (setq nano-font-family-monospaced "JetBrains Mono")
+  (setq nano-font-family-proportional "JetBrains Mono")
+  (setq nano-font-size 14)
+  
+  (use-package ligature
+  :load-path "path-to-ligature-repo"
+  :config
+  ;; Enable all JetBrains Mono ligatures in programming modes
+  (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
+				      "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
+				      "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
+				      "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
+				      "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
+				      "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
+				      ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
+				      "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
+				      "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
+				      "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
+				      "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
+  ;; Enables ligature checks globally in all buffers. You can also do it
+  ;; per mode with `ligature-mode'.
+  (global-ligature-mode t))
+#+end_src
+
 ** NANO Stuff
 *** Path to nano emacs modules (mandatory)
 
 #+begin_src emacs-lisp
-(add-to-list 'load-path "~/.emacs.d/nano")
-(add-to-list 'load-path "~/.emacs.d/custom") ; My own downloaded plugins
+  (add-to-list 'load-path "~/.emacs.d/nano")
+  (add-to-list 'load-path "~/.emacs.d/custom") ; My own downloaded plugins
 #+end_src
 
 *** Default layout (optional)
@@ -40,12 +71,6 @@ My pick and mix from N A N O's config
 (call-interactively 'nano-refresh-theme)
 #+end_src
 
-*** Nano default settings (optional)
-
-#+begin_src emacs-lisp
-(require 'nano-defaults)
-#+end_src
-
 *** Nano session saving (optional)
 
 #+begin_src emacs-lisp
@@ -64,6 +89,7 @@ My pick and mix from N A N O's config
 #+end_src
 
 *** Provide Nano
+
 #+begin_src emacs-lisp
 (provide 'nano)
 #+end_src
@@ -191,10 +217,6 @@ TODO: This doesn't work yet
 *** TODO Organize
 
 #+begin_src emacs-lisp
-  (setq nano-font-family-monospaced "JetBrains Mono")
-  (setq nano-font-family-proportional "JetBrains Mono")
-  (setq nano-font-size 14)
-
   (setq ivy-height 8)   ;; number of lines in e.g. file-selector
   (setq mini-frame-default-height 12)
 
@@ -213,8 +235,8 @@ TODO: This doesn't work yet
   (require 'package)
 
   (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                           ("org" . "https://orgmode.org/elpa/")
-                           ("elpa" . "https://elpa.gnu.org/packages/")))
+			   ("org" . "https://orgmode.org/elpa/")
+			   ("elpa" . "https://elpa.gnu.org/packages/")))
 
   (package-initialize)
   (unless package-archive-contents
@@ -229,18 +251,18 @@ TODO: This doesn't work yet
   (use-package ivy
     :diminish
     :bind (("C-s" . swiper)
-           :map ivy-minibuffer-map
-           ("TAB" . ivy-alt-done)
-           ("C-l" . ivy-alt-done)
-           ("C-j" . ivy-next-line)
-           ("C-k" . ivy-previous-line)
-           :map ivy-switch-buffer-map
-           ("C-k" . ivy-previous-line)
-           ("C-l" . ivy-done)
-           ("C-d" . ivy-switch-buffer-kill)
-           :map ivy-reverse-i-search-map
-           ("C-k" . ivy-previous-line)
-           ("C-d" . ivy-reverse-i-search-kill))
+	   :map ivy-minibuffer-map
+	   ("TAB" . ivy-alt-done)
+	   ("C-l" . ivy-alt-done)
+	   ("C-j" . ivy-next-line)
+	   ("C-k" . ivy-previous-line)
+	   :map ivy-switch-buffer-map
+	   ("C-k" . ivy-previous-line)
+	   ("C-l" . ivy-done)
+	   ("C-d" . ivy-switch-buffer-kill)
+	   :map ivy-reverse-i-search-map
+	   ("C-k" . ivy-previous-line)
+	   ("C-d" . ivy-reverse-i-search-kill))
     :config
     (ivy-mode 1))
 
@@ -249,16 +271,21 @@ TODO: This doesn't work yet
 
   ; Make Ivy Fuzzy
   (setq ivy-re-builders-alist
-        '((t . ivy--regex-fuzzy)))
+	'((t . ivy--regex-fuzzy)))
 
   ;; Counsel
   (use-package counsel
     :bind (("M-x" . counsel-M-x)
-           ("C-x b" . counsel-ibuffer)
-           ("C-x C-f" . counsel-find-file)
-           :map minibuffer-local-map
-           ("C-r" . 'counsel-minibuffer-history)))
+	   ("C-x b" . counsel-ibuffer)
+	   ("C-x C-f" . counsel-find-file)
+	   :map minibuffer-local-map
+	   ("C-r" . 'counsel-minibuffer-history)))
+  (setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")
 
+  (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+  (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
   ;;;;;; Evil stuff
   ;; Configure evil
@@ -327,19 +354,6 @@ TODO: This doesn't work yet
     (when (file-directory-p "~/dev")
       (setq projectile-project-search-path '("~/dev")))
     (setq projectile-switch-project-action #'projectile-dired))
-  (custom-set-variables
-   ;; custom-set-variables was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   '(package-selected-packages
-     '(doom-modeline which-key counsel-projectile projectile magit evil-collection command-log-mode)))
-  (custom-set-faces
-   ;; custom-set-faces was added by Custom.
-   ;; If you edit it by hand, you could mess it up, so be careful.
-   ;; Your init file should contain only one such instance.
-   ;; If there is more than one, they won't work right.
-   )
 #+end_src
 
 ** Org Mode
