@@ -45,8 +45,8 @@
 (use-package counsel :ensure t)
 
 ;; Load paths
-(add-to-list 'load-path "~/.emacs.d/nano")
-(add-to-list 'load-path "~/.emacs.d/custom") ; My own downloaded plugins
+(add-to-list 'load-path "~/.config/emacs/nano")
+(add-to-list 'load-path "~/.config/emacs/custom") ; My own downloaded plugins
 
 (require 'nano-layout)
 (require 'nano-faces)
