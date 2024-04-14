@@ -5,6 +5,17 @@
 (setq nano-font-family-proportional "JetBrains Mono")
 (setq nano-font-size 14)
 
+(setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
+  backup-by-copying t    ; Don't delink hardlinks
+  version-control t      ; Use version numbers on backups
+  delete-old-versions t  ; Automatically delete excess backups
+  kept-new-versions 20   ; how many of the newest versions to keep
+  kept-old-versions 5    ; and how many of the old
+  )
+
+; Delete trailing whitespaces
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
 
 (setq org-directory "~/vimwiki")
 (setq org-ellipsis " ▼ ")
@@ -225,10 +236,6 @@
   ;; :prefix my-leader
   :prefix "SPC")
 
-(general-create-definer my-local-leader-def
-  ;; :prefix my-local-leader
-  :prefix "SPC m")
-
 ;; ** Global Keybindings
 (my-leader-def
   :keymaps 'normal
@@ -238,9 +245,24 @@
   "g" 'magit-status
   "b" 'ibuffer
   ;"p Menu
+  "p" '(:ignore p :which-key "Projectile")
   "pp" 'projectile-switch-project
   "pf" 'projectile-find-file
   "pg" 'grep-find
+  ;"h Help
+  "h" '(:ignore h :which-key "Help")
+  ;; Help-describe
+  "hd" '(:ignore hd :which-key "Help/Describe")
+  "hdk"  'describe-key
+  "hdv"  'describe-variable
+  "hdf"  'describe-function
+  "hdm"  'describe-mode
+  ;; Help-apropos
+  "ha" '(:ignore ha :which-key "Help/Apropos")
+  "hal" 'apropos-library
+  "had" 'apropos-documentation
+  "hac" 'apropos-command
+  "hav" 'apropos-value
 )
 
 ;; * Settings
