@@ -1,5 +1,18 @@
+;; TODO: CHeck whether I need all these bellow
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                    ("org" . "https://orgmode.org/elpa/")
+                    ("elpa" . "https://elpa.gnu.org/packages/")))
+
 ; (setq user-full-name "Gil")
 ; (setq user-mail-address "")
+
+
+;(unless package-archive-contents
+;  (package-refresh-contents))
+
+
+; Disable backup
+(setq make-backup-files nil)
 
 (setq nano-font-family-monospaced "JetBrains Mono")
 (setq nano-font-family-proportional "JetBrains Mono")
@@ -34,24 +47,6 @@
       inhibit-compacting-font-caches t            ; When there are lots of glyphs, keep them in memory
       )
 
-;; Enable all JetBrains Mono ligatures in programming modes
-(use-package ligature
-:load-path "path-to-ligature-repo"
-:config
-(ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
-				    "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
-				    "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
-				    "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
-				    "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
-				    "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
-				    ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
-				    "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
-				    "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
-				    "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
-				    "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
-;; Enables ligature checks globally in all buffers. You can also do it
-;; per mode with `ligature-mode'.
-(global-ligature-mode t))
 
 (use-package counsel :ensure t)
 
@@ -93,13 +88,26 @@
 ;; Initialize package sources
 (require 'package)
 
-;; TODO: CHeck whether I need all these bellow
-(setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                    ("org" . "https://orgmode.org/elpa/")
-                    ("elpa" . "https://elpa.gnu.org/packages/")))
 
-;(unless package-archive-contents
-;  (package-refresh-contents))
+;; Enable all JetBrains Mono ligatures in programming modes
+(use-package ligature :ensure t)
+(use-package ligature
+  :load-path "path-to-ligature-repo"
+  :config
+  (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
+				    "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
+				    "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
+				    "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
+				    "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
+				    "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
+				    ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
+				    "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
+				    "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
+				    "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
+				    "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
+	;; Enables ligature checks globally in all buffers. You can also do it
+	;; per mode with `ligature-mode'.
+	(global-ligature-mode t))
 
 (use-package command-log-mode :ensure t)
 
@@ -244,6 +252,7 @@
   "oc" 'org-capture
   "g" 'magit-status
   "b" 'ibuffer
+  "SPC" 'projectile-find-file
   ;"p Menu
   "p" '(:ignore p :which-key "Projectile")
   "pp" 'projectile-switch-project
@@ -269,6 +278,19 @@
 ;; change evil's search module after evil has been loaded (`setq' will not work)
 (general-setq evil-search-module 'evil-search)
 
+;;;; Org-Mode configuration
+;; Proportional Font Size
+(add-hook 'org-mode-hook 'variable-pitch-mode)
+
+
+
+;; Org-bullets
+(use-package org-bullets
+	:ensure t
+	:config
+	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+
 ;; Evil-org-mode
 (use-package evil-org :ensure t)
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
@@ -293,6 +315,7 @@
 (evil-org-agenda-set-keys)
 
 (use-package evil-collection
+  :ensure t
   :after evil
   :config
   (evil-collection-init))
@@ -303,11 +326,13 @@
 
 ;; Magit stuff
 (use-package magit
+  :ensure t
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 ;; Projectile
 (use-package projectile
+  :ensure t
   :diminish projectile-mode
   :config (projectile-mode)
   :custom ((projectile-completion-system 'ivy))
@@ -326,6 +351,9 @@
   (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
   (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
   (add-to-list 'org-structure-template-alist '("py" . "src python")))
+
+
+;;;; Org-Mode
 
 (defun efs/org-font-setup ()
   ;; Replace list hyphen with dot
@@ -413,7 +441,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
+   '(org-bullets svg-lib yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
