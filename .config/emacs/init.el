@@ -78,6 +78,10 @@
 (require 'which-key)
 (which-key-mode)
 
+
+;; Harpoon (file in 'custom' folder)
+(require 'harpoon)
+
 ; Keep the time for which-key to open up short, because I need to
 ; read it 80% of the time.
 (setq which-key-idle-delay 0.5)
@@ -272,6 +276,19 @@
   "had" 'apropos-documentation
   "hac" 'apropos-command
   "hav" 'apropos-value
+  ;; File stuff
+  "f" '(:ignore f :which-key "File operations")
+  "fa" 'harpoon-add-file
+  "ft" 'harpoon-toggle-file
+  "f1" 'harpoon-go-to-1
+  "f2" 'harpoon-go-to-2
+  "f3" 'harpoon-go-to-3
+  "f4" 'harpoon-go-to-4
+  "f5" 'harpoon-go-to-5
+  "f6" 'harpoon-go-to-6
+  "f7" 'harpoon-go-to-7
+  "f8" 'harpoon-go-to-8
+  "f9" 'harpoon-go-to-9
 )
 
 ;; * Settings
