@@ -7,6 +7,9 @@
 ; (setq user-mail-address "")
 
 
+; Makes dired not open so many buffers
+(setq dired-kill-when-opening-new-dired-buffer t)
+
 ;(unless package-archive-contents
 ;  (package-refresh-contents))
 
@@ -348,6 +351,7 @@
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 ;; Projectile
+;; TODO Try out project.el (comes built-in)
 (use-package projectile
   :ensure t
   :diminish projectile-mode
