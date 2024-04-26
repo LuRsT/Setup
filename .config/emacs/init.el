@@ -73,7 +73,7 @@
 ; Increase mini-frame size
 (setq mini-frame-default-height 12)
 
-(setq auto-save-file-name-transforms `((".", "~/.emacs-saves" t)))
+(setq auto-save-visited-mode 0)
 
 (setq mini-frame-default-height 12)
 
@@ -175,6 +175,9 @@
 ;;;;;; Evil stuff
 ;; Configure evil
 
+;; Comment by pressing `c` in visual mode
+(evil-define-key 'visual 'global "c" 'comment-region)
+
 ; Highlight search (this needs to be before require 'evil
 (setq evil-search-module 'evil-search)
 
@@ -202,6 +205,16 @@
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+;; Evil snipe
+(use-package evil-snipe
+  :ensure t)
+(require 'evil-snipe)
+(setq evil-snipe-mode 1)
+(setq evil-snipe-override-mode 1)
+(setq evil-snipe-scope 'buffer)
+(setq evil-snipe-enable-highlight t)
+(setq evil-snipe-enable-incremental-highlight t)
 
 ;; General
 (use-package general
@@ -257,9 +270,13 @@
   ;; bind "SPC a"
   "oa" 'org-agenda
   "oc" 'org-capture
-  "g" 'magit-status
   "b" 'ibuffer
   "SPC" 'projectile-find-file
+  ;"g Menu
+  "g" '(:ignore g :which-key "Magit stuff")
+  "gb" 'magit-status
+  "gb" 'magit-blame
+  "gl" 'magit-log
   ;"p Menu
   "p" '(:ignore p :which-key "Projectile")
   "pp" 'projectile-switch-project
@@ -301,8 +318,6 @@
 ;;;; Org-Mode configuration
 ;; Proportional Font Size
 (add-hook 'org-mode-hook 'variable-pitch-mode)
-
-
 
 ;; Org-bullets
 (use-package org-bullets
@@ -485,7 +500,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(lsp-ui lsp-mode org-bullets svg-lib yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
+   '(evil-snipe lsp-ui lsp-mode org-bullets svg-lib yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
