@@ -23,25 +23,19 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'gabesoft/vim-ags'
 Plug 'hotwatermorning/auto-git-diff'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'liuchengxu/vim-which-key'
 Plug 'machakann/vim-highlightedyank'
-Plug 'majutsushi/tagbar'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'mxw/vim-jsx', { 'for': 'jsx' }
 Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
