@@ -176,7 +176,7 @@
 ;; Configure evil
 
 ;; Comment by pressing `c` in visual mode
-(evil-define-key 'visual 'global "c" 'comment-region)
+; (evil-define-key 'visual 'global "c" 'comment-region)
 
 ; Highlight search (this needs to be before require 'evil
 (setq evil-search-module 'evil-search)
@@ -267,16 +267,20 @@
 ;; ** Global Keybindings
 (my-leader-def
   :keymaps 'normal
-  ;; bind "SPC a"
-  "oa" 'org-agenda
-  "oc" 'org-capture
   "b" 'ibuffer
   "SPC" 'projectile-find-file
+  "o" '(:ignore o :which-key "Org-mode stuff")
+  "oo" '(lambda() (interactive)(find-file org-default-notes-file))
+  "oa" 'org-agenda
+  "oc" 'org-capture
   ;"g Menu
   "g" '(:ignore g :which-key "Magit stuff")
   "gb" 'magit-status
   "gb" 'magit-blame
   "gl" 'magit-log
+  ;"e Emacs stuff
+  "e" '(:ignore e :which-key "Emacs stuff")
+  "ee" '(lambda() (interactive)(find-file "~/.config/emacs/init.el"))
   ;"p Menu
   "p" '(:ignore p :which-key "Projectile")
   "pp" 'projectile-switch-project
