@@ -273,9 +273,12 @@
   "oo" '(lambda() (interactive)(find-file org-default-notes-file))
   "oa" 'org-agenda
   "oc" 'org-capture
+  ;"s  Search Menu
+  "s" '(:ignore s :which-key "Search")
+  "sp" 'projectile-grep
   ;"g Menu
   "g" '(:ignore g :which-key "Magit stuff")
-  "gb" 'magit-status
+  "gg" 'magit-status
   "gb" 'magit-blame
   "gl" 'magit-log
   ;"e Emacs stuff
