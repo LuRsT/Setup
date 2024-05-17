@@ -275,7 +275,7 @@
   "oc" 'org-capture
   ;"s  Search Menu
   "s" '(:ignore s :which-key "Search")
-  "sp" 'projectile-grep
+  "sp" 'rg
   ;"g Menu
   "g" '(:ignore g :which-key "Magit stuff")
   "gg" 'magit-status
@@ -507,7 +507,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-snipe lsp-ui lsp-mode org-bullets svg-lib yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
+   '(rg evil-snipe lsp-ui lsp-mode org-bullets svg-lib yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
