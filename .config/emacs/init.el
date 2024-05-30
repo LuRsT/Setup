@@ -178,6 +178,8 @@
 ;; Comment by pressing `c` in visual mode
 ; (evil-define-key 'visual 'global "c" 'comment-region)
 
+(evil-set-undo-system 'undo-redo)
+
 ; Highlight search (this needs to be before require 'evil
 (setq evil-search-module 'evil-search)
 
