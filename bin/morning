@@ -3,5 +3,4 @@
 LOCATION="$HOME/vimwiki/750"
 TODAY=$(date "+%d-%m-%y")
 FILE_LOCATION="$LOCATION/$TODAY.md"
-echo $FILE_LOCATION
-# vim
+vim $FILE_LOCATION
