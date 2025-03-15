@@ -24,7 +24,6 @@
         - python-pyflakes
         - python-poetry
         - python-pip
-        - the_silver_searcher
         - bat
         - exa
         - xsel
@@ -51,14 +50,12 @@
         - keychain
         - alacritty
         - pkg-config
-        - intel-ucode
         - tlp
         - tp_smapi
         - x86_energy_perf_policy
         - acpi_call
         - ttf-liberation
         - ttf-dejavu
-        - wpa_supplicant
         - acpi
         - xorg-fonts-misc
         - noto-fonts-emoji # For emoji on chromium
@@ -67,12 +64,9 @@
         - mplayer
         - scrot
         - lxappearance
-        - i3-wm
-        - i3lock
         - xautolock
         - xorg-server
         - xorg-xinit
-        - mesa
         - htop
         - lsof
         - zip
@@ -85,7 +79,6 @@
         - unclutter
         - arc-gtk-theme
         - arc-icon-theme
-        - dialog # For wifi-menu
         - reflector # for pacman mirrors
         # For openbox setup
         - lxpanel
@@ -98,8 +91,6 @@
        state: installed
        update_cache: true
        name:
-        - screenfetch
-        - cmatrix
         - firefox
         - powertop
         - udisks2
@@ -108,7 +99,7 @@
         - pavucontrol
         - pulseaudio
         - ranger
-        - mtpfs  # For connecting with androi
+        - mtpfs  # For connecting with android
         - gvfs-mtp
         - fd
         - time
@@ -121,17 +112,13 @@
         - w3m           # For ranger
         - gvfs-smb      # For samba share
         - calibre
-        - discord
         - chromium
         - wget
         - rust
         - arch-wiki-docs
         - dunst
-        - smartmontools # tlp-stat recomendation
-        - ethtool       # tlp-stat recomendation
         - xournalpp     # for reading pdfs
         - inetutils     # For telnet and stuff
-        - ugrep         # Super fast search
         - perl-image-exiftool # extra for ugrep and for checking exif stuff
 
           #- docker
