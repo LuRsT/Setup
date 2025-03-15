@@ -16,11 +16,6 @@
         - { name: 'bin' }
         - { name: '.stowrc' }
 
-   - name: Install pip dependencies
-     pip:
-        name: python-language-server[all]
-        extra_args: --user --upgrade
-
    - name: Setup emacs as a daemon
      systemd:
         name: emacs
