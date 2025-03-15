@@ -175,6 +175,11 @@
 ;;;;;; Evil stuff
 ;; Configure evil
 
+(with-eval-after-load 'evil
+    (defalias #'jorward-evil-word #'forward-evil-symbol)
+    ;; make evil-search-word look for symbol rather than word boundaries
+    (setq-default evil-symbol-word-search t))
+
 ;; Comment by pressing `c` in visual mode
 ; (evil-define-key 'visual 'global "c" 'comment-region)
 
@@ -342,19 +347,6 @@
 (add-hook 'org-mode-hook 'evil-org-mode)
 (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
 
-;; Make TAB work for toggle only
-(defun my/org-cycle-only-current-subtree ()
-  "Cycle the visibility of the current subtree only."
-  (interactive)
-  (org-narrow-to-subtree)
-  (org-cycle)
-  (widen))
-
-(with-eval-after-load 'org
-  (define-key org-mode-map (kbd "TAB") 'my/org-cycle-only-current-subtree))
-
-
-
 (require 'evil-org-agenda)
 (evil-org-agenda-set-keys)
 
@@ -439,16 +431,21 @@
 
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 
-;; NeoTreE
+;; NeoTree
 (use-package neotree :ensure t)
 (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 
-
 ;; YAML
 (use-package yaml :ensure t)
+
+;; highlight-indentation for yaml (file in 'custom' folder)
+;; From: https://blog.chmouel.com/2016/09/07/dealing-with-yaml-in-emacs/
+(require 'highlight-indentation)
+(set-face-background 'highlight-indentation-face "#e3e3d3")
+(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 
 ;; Markdown
 (use-package markdown-mode

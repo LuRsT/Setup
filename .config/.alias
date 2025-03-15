@@ -35,7 +35,7 @@ alias ga='git annex'
 alias dropboxd='~/.dropbox-dist/dropboxd'
 alias tmux="env TERM=xterm-256color-italic tmux"
 alias halt='halt -p'
-alias ducks='du -cms * | sort -rn | head'
+alias ducks='du -cmsh * | sort -rn | head'
 alias grep='grep --color'
 alias selva='telnet -4 selva.grogue.org 8888'
 alias webserver='python3 -m http.server'
