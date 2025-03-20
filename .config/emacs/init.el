@@ -478,16 +478,7 @@
 
 ;; LSP
 (use-package lsp-mode
-  :ensure t
-  :commands (lsp lsp-deferred)
-  :hook (lsp-mode . efs/lsp-mode-setup)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  :hook (
-         (python-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
-  (lsp-enable-which-key-integration t))
+  :ensure t)
 
 (use-package lsp-ui
   :ensure t
