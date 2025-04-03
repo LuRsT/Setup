@@ -3,9 +3,12 @@
                     ("org" . "https://orgmode.org/elpa/")
                     ("elpa" . "https://elpa.gnu.org/packages/")))
 
+;; To update packages
+; M-x list-packages
+; U to mark to upgrade , then x to actually upgrade them
+
 ; (setq user-full-name "Gil")
 ; (setq user-mail-address "")
-
 
 ; Makes dired not open so many buffers
 (setq dired-kill-when-opening-new-dired-buffer t)
@@ -16,6 +19,9 @@
 
 ; Disable backup
 (setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq set-mark-command-repeat-pop t)
+(setq large-file-warning-threshold nil)
 
 (setq nano-font-family-monospaced "JetBrains Mono")
 (setq nano-font-family-proportional "JetBrains Mono")
@@ -330,6 +336,38 @@
 (general-setq evil-search-module 'evil-search)
 
 ;;;; Org-Mode configuration
+
+;; Make tab only toggle current heading
+(defun my/org-toggle-heading ()
+  "Toggle visibility of the current Org heading without expanding children."
+  (interactive)
+  (when (org-at-heading-p)
+    (if (org-fold-folded-p)
+        (progn
+          (org-fold-show-entry)
+          (org-fold-hide-subtree))) ;; Ensures only the current heading is visible
+      (org-fold-hide-subtree)))  ;; Fold only the current heading
+
+(defun my/force-org-tab-key ()
+  "Ensure `TAB` is ALWAYS bound to `my/org-toggle-heading` in Org mode."
+  (interactive)
+  ;; Unbind TAB globally and in Org mode to clear any interference
+  (global-unset-key (kbd "TAB"))
+  (define-key org-mode-map (kbd "TAB") nil)
+  (define-key evil-motion-state-map (kbd "TAB") nil)
+  (define-key evil-normal-state-map (kbd "TAB") nil)
+  (define-key evil-insert-state-map (kbd "TAB") nil)
+  ;; Now enforce our function for TAB
+  (define-key org-mode-map (kbd "TAB") #'my/org-toggle-heading)
+  (message "TAB is now my/org-toggle-heading"))
+
+;; Ensure this runs after Org is fully loaded
+(with-eval-after-load 'org
+  (my/force-org-tab-key))
+
+;; Also force the keybinding every time Org mode starts
+(add-hook 'org-mode-hook #'my/force-org-tab-key)
+
 ;; Proportional Font Size
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 
