@@ -45,6 +45,7 @@
        update_cache: true
        name:
         - base
+        - ntp # For time stuff: ntpd
         - man-db
         - man-pages
         - time
@@ -128,6 +129,11 @@
    - name: Setup TLP
      systemd:
         name: tlp
+        enabled: yes
+
+   - name: Setup NTP
+     systemd:
+        name: ntpd
         enabled: yes
 
    - name: Setup Reflector
