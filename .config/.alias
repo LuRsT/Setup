@@ -73,6 +73,8 @@ alias emg="emacsclient -c" #GUI emacs
 alias xclip="xclip -selection c"
 alias weather="curl wttr.in"
 alias hn="curl hkkr.in"
+alias t="terraform"
+alias vimdiff="nvim -d"
 
 # Get the status code of a site quickly
 alias hstat="curl -o /dev/null --silent --head --write-out '%{http_code}\n'" $1

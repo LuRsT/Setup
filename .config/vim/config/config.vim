@@ -10,7 +10,6 @@ set ruler
 set shiftwidth=4
 set showcmd
 set tabstop=4
-set termencoding=utf-8
 set encoding=utf-8
 set updatetime=500
 set wildmenu
