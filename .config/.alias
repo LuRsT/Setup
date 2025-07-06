@@ -53,6 +53,7 @@ alias ca="cargo"
 alias d="docker"
 alias dps="docker ps --format '{{.ID}}: {{.Names}}'"
 alias cat="bat"
+alias t="terraform"
 
 # From https://twitter.com/rixxtr/status/1174968619131752448
 alias rsync-copy="rsync -avz --info=progress2 -h"
