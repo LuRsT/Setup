@@ -77,6 +77,7 @@
         - unrar
         - feh
         - vlc
+        - vlc-plugin-ffmpeg
         - redshift
         - unclutter
         - arc-gtk-theme
