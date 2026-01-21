@@ -61,6 +61,8 @@
         - acpi
         - xorg-fonts-misc
         - noto-fonts-emoji # For emoji on chromium
+        - noto-fonts
+        - noto-fonts-cjk
         - xorg-xrandr
         - wireless_tools
         - mplayer
