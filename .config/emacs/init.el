@@ -1,9 +1,14 @@
 ;; Initialize package system early
+
 (require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org" . "https://orgmode.org/elpa/")
                          ("elpa" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
+
+;; DOCS
+;; To re-load config, run M-x eval-buffer
+;; To update packages M-x package-refresh-contents
 
 ;; To update packages
 ; M-x list-packages
@@ -18,6 +23,10 @@
 ;(unless package-archive-contents
 ;  (package-refresh-contents))
 
+;; Remove toolbar and menubar and scroll-bar
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; Enable backups with sensible settings
 (setq set-mark-command-repeat-pop t)
@@ -523,7 +532,6 @@
   :ensure t
   :defer t
   :hook (prog-mode . flycheck-mode))
-
 
 ;; LSP - Language Server Protocol
 (use-package lsp-mode
