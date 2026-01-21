@@ -1,7 +1,9 @@
-;; TODO: CHeck whether I need all these bellow
+;; Initialize package system early
+(require 'package)
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
-                    ("org" . "https://orgmode.org/elpa/")
-                    ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
 
 ;; To update packages
 ; M-x list-packages
@@ -17,9 +19,7 @@
 ;  (package-refresh-contents))
 
 
-; Disable backup
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+;; Enable backups with sensible settings
 (setq set-mark-command-repeat-pop t)
 (setq large-file-warning-threshold nil)
 
@@ -57,8 +57,6 @@
       )
 
 
-(use-package counsel :ensure t)
-
 ;; Load paths
 (add-to-list 'load-path "~/.config/emacs/nano")
 (add-to-list 'load-path "~/.config/emacs/custom") ; My own downloaded plugins
@@ -88,6 +86,10 @@
 (which-key-mode)
 
 
+;; Dependencies for harpoon
+(use-package f :ensure t)
+(use-package hydra :ensure t)
+
 ;; Harpoon (file in 'custom' folder)
 (require 'harpoon)
 
@@ -98,31 +100,28 @@
 ;; Enable line numbers in coding mode
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
-;; Initialize package sources
-(require 'package)
-
-
 ;; Enable all JetBrains Mono ligatures in programming modes
-(use-package ligature :ensure t)
 (use-package ligature
-  :load-path "path-to-ligature-repo"
+  :ensure t
+  :defer t
+  :hook (prog-mode . ligature-mode)
   :config
   (ligature-set-ligatures 'prog-mode '("-|" "-~" "---" "-<<" "-<" "--" "->" "->>" "-->" "///" "/=" "/=="
-				    "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
-				    "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
-				    "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
-				    "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
-				    "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
-				    ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
-				    "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
-				    "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
-				    "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
-				    "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#"))
-	;; Enables ligature checks globally in all buffers. You can also do it
-	;; per mode with `ligature-mode'.
-	(global-ligature-mode t))
+                                       "/>" "//" "/*" "*>" "***" "*/" "<-" "<<-" "<=>" "<=" "<|" "<||"
+                                       "<|||" "<|>" "<:" "<>" "<-<" "<<<" "<==" "<<=" "<=<" "<==>" "<-|"
+                                       "<<" "<~>" "<=|" "<~~" "<~" "<$>" "<$" "<+>" "<+" "</>" "</" "<*"
+                                       "<*>" "<->" "<!--" ":>" ":<" ":::" "::" ":?" ":?>" ":=" "::=" "=>>"
+                                       "==>" "=/=" "=!=" "=>" "===" "=:=" "==" "!==" "!!" "!=" ">]" ">:"
+                                       ">>-" ">>=" ">=>" ">>>" ">-" ">=" "&&&" "&&" "|||>" "||>" "|>" "|]"
+                                       "|}" "|=>" "|->" "|=" "||-" "|-" "||=" "||" ".." ".?" ".=" ".-" "..<"
+                                       "..." "+++" "+>" "++" "[||]" "[<" "[|" "{|" "??" "?." "?=" "?:" "##"
+                                       "###" "####" "#[" "#{" "#=" "#!" "#:" "#_(" "#_" "#?" "#(" ";;" "_|_"
+                                       "__" "~~" "~~>" "~>" "~-" "~@" "$>" "^=" "]#")))
 
-(use-package command-log-mode :ensure t)
+(use-package command-log-mode
+  :ensure t
+  :defer t
+  :commands command-log-mode)
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -157,10 +156,7 @@
 (require 'nano-counsel)
 
 
-;; Remove toolbar and menubar and scroll-bar
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+;; UI elements disabled in early-init.el for faster startup
 
 
 ; Make Ivy Fuzzy
@@ -221,13 +217,14 @@
 
 ;; Evil snipe
 (use-package evil-snipe
-  :ensure t)
-(require 'evil-snipe)
-(setq evil-snipe-mode 1)
-(setq evil-snipe-override-mode 1)
-(setq evil-snipe-scope 'buffer)
-(setq evil-snipe-enable-highlight t)
-(setq evil-snipe-enable-incremental-highlight t)
+  :ensure t
+  :after evil
+  :config
+  (evil-snipe-mode 1)
+  (evil-snipe-override-mode 1)
+  (setq evil-snipe-scope 'buffer)
+  (setq evil-snipe-enable-highlight t)
+  (setq evil-snipe-enable-incremental-highlight t))
 
 ;; General
 (use-package general
@@ -371,22 +368,22 @@
 ;; Proportional Font Size
 (add-hook 'org-mode-hook 'variable-pitch-mode)
 
-;; Org-bullets
+;; Org-bullets - pretty bullets for org headings
 (use-package org-bullets
-	:ensure t
-	:config
-	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :ensure t
+  :defer t
+  :hook (org-mode . org-bullets-mode))
 
 
-;; Evil-org-mode
-(use-package evil-org :ensure t)
-(add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
-(require 'evil-org)
-(add-hook 'org-mode-hook 'evil-org-mode)
-(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
-
-(require 'evil-org-agenda)
-(evil-org-agenda-set-keys)
+;; Evil-org-mode - vim bindings for org-mode
+(use-package evil-org
+  :ensure t
+  :defer t
+  :hook (org-mode . evil-org-mode)
+  :config
+  (evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
 
 (use-package evil-collection
   :ensure t
@@ -470,14 +467,22 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 
 ;; NeoTree
-(use-package neotree :ensure t)
-(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
-(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
-(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
-(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(use-package neotree
+  :ensure t
+  :defer t
+  :commands neotree-toggle
+  :config
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter))
 
-;; YAML
-(use-package yaml :ensure t)
+;; YAML editing mode
+(use-package yaml-mode
+  :ensure t
+  :defer t
+  :mode "\\.ya?ml\\'"
+  :hook (yaml-mode . highlight-indentation-mode))
 
 ;; highlight-indentation for yaml (file in 'custom' folder)
 ;; From: https://blog.chmouel.com/2016/09/07/dealing-with-yaml-in-emacs/
@@ -503,39 +508,84 @@
 (require 'find-dired)
 (setq find-ls-option '("-exec ls -ldh {} +" . "-ldh"))
 
-;; Company
+;; Company - completion framework
 (use-package company
-  :ensure t)
-;; TODO: Check the backends I could find useful
+  :ensure t
+  :defer t
+  :hook (prog-mode . company-mode)
+  :custom
+  (company-minimum-prefix-length 2)
+  (company-idle-delay 0.2)
+  (company-selection-wrap-around t))
 
-;; Flycheck
+;; Flycheck - syntax checking
 (use-package flycheck
-  :ensure t)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+  :ensure t
+  :defer t
+  :hook (prog-mode . flycheck-mode))
 
 
-;; LSP
+;; LSP - Language Server Protocol
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :defer t
+  :commands (lsp lsp-deferred)
+  :hook ((python-mode . lsp-deferred)
+         (terraform-mode . lsp-deferred))
+  :init
+  (setq lsp-keymap-prefix "C-c l")  ; Set prefix for lsp-command-keymap
+  :custom
+  (lsp-idle-delay 0.5)              ; Debounce LSP requests
+  (lsp-log-io nil)                  ; Disable IO logging for performance
+  (lsp-completion-provider :capf)   ; Use completion-at-point
+  (lsp-enable-snippet t)            ; Enable snippet support
+  (lsp-enable-symbol-highlighting t)
+  (lsp-headerline-breadcrumb-enable nil) ; Disable breadcrumbs (cleaner UI)
+  :config
+  (setq read-process-output-max (* 1024 1024))) ; 1mb for LSP process output
 
 (use-package lsp-ui
   :ensure t
+  :defer t
   :hook (lsp-mode . lsp-ui-mode)
   :custom
-  (lsp-ui-doc-position 'bottom))
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-position 'bottom)
+  (lsp-ui-doc-delay 0.5)
+  (lsp-ui-sideline-enable t)
+  (lsp-ui-sideline-show-diagnostics t))
 
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-(setq gc-cons-threshold 100000000)
+;; Python - requires pylsp (pip install python-lsp-server)
+;; Or pyright: npm install -g pyright
+(use-package python
+  :defer t
+  :hook (python-mode . (lambda ()
+                         (setq-local indent-tabs-mode nil)
+                         (setq-local tab-width 4))))
 
-;; Your init file should contain only one such instance.
-;; If there is more than one, they won't work right.
+;; Terraform - requires terraform-ls
+;; Install: https://github.com/hashicorp/terraform-ls
+(use-package terraform-mode
+  :ensure t
+  :defer t
+  :mode "\\.tf\\'"
+  :hook (terraform-mode . terraform-format-on-save-mode)
+  :custom
+  (terraform-indent-level 2))
+
+;; Lower GC threshold after startup (set high in early-init.el)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 16 1024 1024))))
+
+;; Custom variables - managed by Emacs Custom system
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(rg evil-snipe lsp-ui lsp-mode org-bullets svg-lib yaml flycheck company company-mode terraform-mode ligature neotree which-key counsel-projectile projectile magit evil-collection command-log-mode)))
+ '(package-selected-packages nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
