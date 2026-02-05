@@ -1,8 +1,3 @@
-" NERDTree
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeShowHidden = 1
-
 " Lighline
 set laststatus=2
 set ttimeoutlen=1
@@ -87,35 +82,6 @@ function! WordCount()
     endif
     return ""
 endfunction
-
-" Vim-Markdown
-let g:vim_markdown_folding_disabled = 1
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-
-" Ale
-let b:ale_linters = ['flake8', 'pylint']
-let b:ale_fixers = ['black']
-let g:ale_set_highlights = 0
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
-let g:ale_virtualtext_cursor = 1
-
-" Ags
-let g:ags_agexe = 'rg'
-
-let g:ags_agargs = {
-  \ '--column'         : ['', ''],
-  \ '--line-number'    : ['', ''],
-  \ '--context'        : ['g:ags_agcontext', '-C'],
-  \ '--max-count'      : ['g:ags_agmaxcount', ''],
-  \ '--heading'        : ['',''],
-  \ '--smart-case'     : ['','-S'],
-  \ '--color'          : ['always',''],
-  \ '--colors'         : [['match:fg:green', 'match:bg:black', 'match:style:nobold', 'path:fg:red', 'path:style:bold', 'line:fg:black', 'line:style:bold'] ,''],
-  \ }
-
 
 " Fzf
 
