@@ -1,3 +1,14 @@
+if &cp | set nocp | endif
+let s:cpo_save=&cpo
+set termguicolors
+
+set runtimepath=$HOME/.config/vim,$VIM,$VIMRUNTIME
+
+filetype plugin indent on
+
+let &cpo=s:cpo_save
+unlet s:cpo_save
+
 "BS past autoindents, line boundaries, and even the start of insertion
 set backspace=indent,eol,start
 set cmdheight=2
@@ -10,7 +21,6 @@ set encoding=utf-8
 set updatetime=500
 set wildmenu
 set number
-"set cindent
 set cursorline
 set scrolloff=5
 set gdefault

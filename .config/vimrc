@@ -1,19 +1,8 @@
-if &cp | set nocp | endif
-let s:cpo_save=&cpo
-set termguicolors
-
-set runtimepath=$HOME/.config/vim,$VIM,$VIMRUNTIME
-
-filetype plugin indent on
-
-let &cpo=s:cpo_save
-unlet s:cpo_save
+" Common Configuration
+source $HOME/.config/vim/config/config.vim
 
 " Lua stuff
 source $HOME/.config/vim/config/lua.lua
-
-" Common Configuration
-source $HOME/.config/vim/config/config.vim
 
 " Plugins
 source $HOME/.config/vim/config/plugins.vim

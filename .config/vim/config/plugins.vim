@@ -83,11 +83,6 @@ function! WordCount()
     return ""
 endfunction
 
-" Fzf
-
-" Set up Pop up window
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
 """"" Easymotion
 
 " s{char} to move to {char}
@@ -97,9 +92,6 @@ nmap f <Plug>(easymotion-overwin-f)
 " Vim-highlightedyank
 let g:highlightedyank_highlight_duration = 200
 
-" Notational fzf vim
-let g:nv_search_paths = ['~/vimwiki']
-
 " WhichKey
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
@@ -108,11 +100,3 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 xnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 xnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
-
-" Rust
-let g:rustfmt_autosave = 1
-
-
-" NERD Tree + devicons
-let NERDTreeDirArrowExpandable = " "
-let NERDTreeDirArrowCollapsible = " "
