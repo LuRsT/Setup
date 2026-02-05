@@ -1,58 +1,16 @@
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
-
-set t_Co=256 " 256 Colors
-syntax on
+set termguicolors
 
 set runtimepath=$HOME/.config/vim,$VIM,$VIMRUNTIME
-
-""" BEGIN Plugins
-
-if empty(glob('$HOME/.config/vim/autoload/plug.vim'))
-    silent !curl -fLo $HOME/.config/vim/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-call plug#begin('~/.vim/plugged')
-
-" Plugins
-
-Plug 'airblade/vim-gitgutter'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'dense-analysis/ale'
-Plug 'easymotion/vim-easymotion'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'hotwatermorning/auto-git-diff'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'liuchengxu/vim-which-key'
-Plug 'machakann/vim-highlightedyank'
-Plug 'plasticboy/vim-markdown',  {'for': 'markdown'}
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
-Plug 'ryanoasis/vim-devicons'
-Plug 'scrooloose/nerdtree'
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-
-" Coloschemes
-
-Plug 'sainnhe/gruvbox-material'
-
-call plug#end()
 
 filetype plugin indent on
 
 let &cpo=s:cpo_save
 unlet s:cpo_save
 
-
-" Colorscheme
-source $HOME/.config/vim/config/colors.vim
+" Lua stuff
+source $HOME/.config/vim/config/lua.lua
 
 " Common Configuration
 source $HOME/.config/vim/config/config.vim
@@ -65,3 +23,6 @@ source $HOME/.config/vim/config/shortcuts.vim
 
 " Functions
 source $HOME/.config/vim/config/functions.vim
+
+" Colorscheme
+source $HOME/.config/vim/config/colors.vim

@@ -145,3 +145,8 @@ xnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 " Rust
 let g:rustfmt_autosave = 1
+
+
+" NERD Tree + devicons
+let NERDTreeDirArrowExpandable = " "
+let NERDTreeDirArrowCollapsible = " "
