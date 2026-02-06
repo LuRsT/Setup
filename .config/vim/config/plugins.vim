@@ -89,9 +89,6 @@ endfunction
 map  f <Plug>(easymotion-bd-f)
 nmap f <Plug>(easymotion-overwin-f)
 
-" Vim-highlightedyank
-let g:highlightedyank_highlight_duration = 200
-
 " WhichKey
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','

@@ -72,11 +72,13 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     { "airblade/vim-gitgutter" },
-    { "christoomey/vim-tmux-navigator" },
     { "easymotion/vim-easymotion" },
-    { "editorconfig/editorconfig-vim" },
     { "hotwatermorning/auto-git-diff" },
     { "itchyny/lightline.vim" },
+
+
+    { "christoomey/vim-tmux-navigator" },
+
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -104,7 +106,12 @@ require("lazy").setup({
         end,
     },
     { "liuchengxu/vim-which-key" },
-    { "machakann/vim-highlightedyank" },
+    {
+        "machakann/vim-highlightedyank",
+        config = function()
+            vim.g.highlightedyank_highlight_duration = 200 -- ms
+        end
+    },
     { "norcalli/nvim-colorizer.lua" },
     { "plasticboy/vim-markdown" },
     {
