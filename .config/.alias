@@ -1,7 +1,8 @@
-# Exports
-export MYVIMRC="$HOME/.config/vimrc"
-export VIMINIT="source $MYVIMRC"
+# Unset vim vars
+set -e MYVIMRC
+set -e VIMINIT
 
+# Exports
 export EDITOR=nvim
 export PYTHONDONTWRITEBYTECODE=1
 export HISTCONTROL=ignoredups

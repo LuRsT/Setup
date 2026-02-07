@@ -36,28 +36,7 @@ nnoremap <C-g> :Telescope buffers<CR>
 " """""" LEADER KEYS
 
 " Mark a todo item with an x [X]
-map <leader>tx :s/\[\ \]/[X]/<CR>:nohl<CR>
-
-" Open .vim config stuff
-map <leader>vv :e ~/.config/vimrc<CR>
-map <leader>vs :e ~/.config/vim/config/shortcuts.vim<CR>
-map <leader>vp :e ~/.config/vim/config/plugins.vim<CR>
-map <leader>vc :e ~/.config/vim/config/config.vim<CR>
-
-map <leader>ft :Neotree<CR>
-
-" Execute a command from the current line and past results below
-nmap <leader>E yyp:.!bash<CR>
-
-" Windows
-nmap <leader>wv :vs<CR>
-nmap <leader>ws :sp<CR>
-
-nmap <leader>wh <C-W><C-H>
-nmap <leader>wl <C-W><C-L>
-nmap <leader>wj <C-W><C-J>
-nmap <leader>wk <C-W><C-K>
-
+map <CR> :s/\[\ \]/[X]/<CR>:nohl<CR>
 
 " Abreviations
 :iabbrev for@ for _ in x:
