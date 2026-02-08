@@ -1,8 +1,8 @@
 -- Common Configuration
 require('config.common')
 
--- Lua stuff
-require('config.lua')
+-- Plugin stuff
+require('config.plugins')
 
 -- Colorscheme
 require('config.colors')

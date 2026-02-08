@@ -90,3 +90,52 @@ end
 
 -- Use Neovim's built-in inspector (shows more info!)
 vim.keymap.set('n', '<F3>', '<cmd>Inspect<CR>', { desc = 'Inspect highlight' })
+
+
+vim.opt.signcolumn = 'yes'     -- Always show sign column (for LSP diagnostics)
+vim.opt.termguicolors = true   -- Better colors in modern terminals
+-- Folds
+vim.opt.foldenable = false  -- Disable all folding
+--vim.opt.foldmethod = 'expr'
+--vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+
+-- File ignore patterns
+vim.opt.wildignore:append({ '*.o', '*.pyc', '__pycache__', 'node_modules' })
+
+-- Auto-save on focus lost (pairs well with autowrite)
+vim.api.nvim_create_autocmd("FocusLost", {
+  pattern = "*",
+  command = "silent! wa"
+})
+
+vim.filetype.add({
+  extension = {
+    j2 = 'html',
+  }
+})
+
+-- Persistent undo
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand('~/.config/vim/undo_files')
+
+-- Some common typos
+vim.api.nvim_create_user_command('W', 'w', {})
+vim.api.nvim_create_user_command('Q', 'q', {})
+vim.api.nvim_create_user_command('Wq', 'wq', {})
+vim.api.nvim_create_user_command('WQ', 'wq', {})
+vim.api.nvim_create_user_command('Qa', 'qa', {})
+vim.api.nvim_create_user_command('QA', 'qa', {})
+vim.api.nvim_create_user_command('Vs', 'vs', {})
+
+-- Resize windows with Alt+hjkl
+vim.keymap.set('n', '<a-j>', '<c-w>+', { desc = 'Increase window height' })
+vim.keymap.set('n', '<a-k>', '<c-w>-', { desc = 'Decrease window height' })
+vim.keymap.set('n', '<a-l>', '<c-w><', { desc = 'Decrease window width' })
+vim.keymap.set('n', '<a-h>', '<c-w>>', { desc = 'Increase window width' })
+
+-- Create new splits with Alt+Shift+hjkl
+vim.keymap.set('n', '<a-J>', '<c-w>s<c-w>k', { desc = 'Split below and move up' })
+vim.keymap.set('n', '<a-K>', '<c-w>s', { desc = 'Split below' })
+vim.keymap.set('n', '<a-H>', '<c-w>v', { desc = 'Split right' })
+vim.keymap.set('n', '<a-L>', '<c-w>v<c-w>h', { desc = 'Split right and move left' })
+
