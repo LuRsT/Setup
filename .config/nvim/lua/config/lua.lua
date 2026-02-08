@@ -151,27 +151,28 @@ require("lazy").setup({
     },
     {
         "folke/which-key.nvim",
-        version = "~2.1",
         event = "VeryLazy",
         config = function()
             local wk = require("which-key")
-            wk.setup()
+            wk.setup({
+            preset = "modern",
+        })
 
-            -- Define the actual keymaps
-            vim.keymap.set('n', '<leader>vv', ':e ~/.config/nvim/init.lua<CR>', { desc = 'Edit init.lua' })
-            vim.keymap.set('n', '<leader>vs', ':e ~/.config/nvim/lua/config/shortcuts.lua<CR>', { desc = 'Edit shortcuts' })
-            vim.keymap.set('n', '<leader>vp', ':e ~/.config/nvim/lua/plugins.lua<CR>', { desc = 'Edit plugins' })
-            vim.keymap.set('n', '<leader>vc', ':e ~/.config/nvim/lua/config/options.lua<CR>', { desc = 'Edit config' })
-            vim.keymap.set('n', '<leader>ft', ':Neotree<CR>', { desc = 'File tree' })
-            --vim.keymap.set('n', '<leader>E', 'yyp:.!bash<CR>', { desc = 'Execute line as bash' })
+        -- Define keymaps with descriptions
+        vim.keymap.set('n', '<leader>vv', '<cmd>e ~/.config/nvim/init.lua<CR>', { desc = 'Edit init.lua' })
+        vim.keymap.set('n', '<leader>vs', '<cmd>e ~/.config/nvim/lua/config/shortcuts.lua<CR>', { desc = 'Edit shortcuts' })
+        vim.keymap.set('n', '<leader>vp', '<cmd>e ~/.config/nvim/lua/plugins/init.lua<CR>', { desc = 'Edit plugins' })
+        vim.keymap.set('n', '<leader>vc', '<cmd>e ~/.config/nvim/lua/config/common.lua<CR>', { desc = 'Edit config' })
+        vim.keymap.set('n', '<leader>ft', '<cmd>Neotree<CR>', { desc = 'File tree' })
+        vim.keymap.set('n', '<leader>E', 'yyp:.!bash<CR>', { desc = 'Execute line as bash' })
 
-            -- Window mappings
-            --vim.keymap.set('n', '<leader>wv', ':vs<CR>', { desc = 'Vertical split' })
-            --vim.keymap.set('n', '<leader>ws', ':sp<CR>', { desc = 'Horizontal split' })
-            --vim.keymap.set('n', '<leader>wh', '<C-W><C-H>', { desc = 'Move to left window' })
-            --vim.keymap.set('n', '<leader>wl', '<C-W><C-L>', { desc = 'Move to right window' })
-            --vim.keymap.set('n', '<leader>wj', '<C-W><C-J>', { desc = 'Move to bottom window' })
-            --vim.keymap.set('n', '<leader>wk', '<C-W><C-K>', { desc = 'Move to top window' })
+        -- Register group names (this makes <leader>v show "Vim config" instead of "+3")
+        wk.add({
+            { "<leader>v", group = "Vim config" },
+            { "<leader>f", group = "File/Find" },
+            { "<leader>w", group = "Windows" },
+            { "<leader>g", group = "Git" },
+        })
         end,
     },
     {

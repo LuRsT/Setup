@@ -43,3 +43,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
   command = [[%s/\s\+$//e]]
 })
+
+-- Keep visual selection after indenting
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent and reselect' })
+vim.keymap.set('v', '<', '<gv', { desc = 'Unindent and reselect' })
