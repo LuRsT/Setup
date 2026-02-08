@@ -47,3 +47,46 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 -- Keep visual selection after indenting
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent and reselect' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Unindent and reselect' })
+
+-- Navigate by paragraph with BS/CR
+vim.keymap.set({'n', 'o', 'v'}, '<BS>', '{')
+vim.keymap.set('v', '<CR>', '}')
+vim.keymap.set({'n', 'o'}, '<CR>', function()
+  return vim.bo.buftype == '' and '}' or '<CR>'
+end, { expr = true })
+
+-- Use tab and shift-tab to indent region (keep visual selection)
+vim.keymap.set('n', '<Tab>', 'v>', { desc = 'Indent line' })
+vim.keymap.set('n', '<S-Tab>', 'v<', { desc = 'Unindent line' })
+vim.keymap.set('v', '<Tab>', '>gv', { desc = 'Indent selection' })
+vim.keymap.set('v', '<S-Tab>', '<gv', { desc = 'Unindent selection' })
+
+-- Use ; as :
+vim.keymap.set('n', ';', ':', { desc = 'Command mode' })
+
+-- Remove Q because who needs ex mode?
+vim.keymap.set('n', 'Q', '<nop>', { desc = 'Disabled (Ex mode)' })
+
+-- Display current filename
+vim.keymap.set('n', '<C-x>', '<cmd>echo expand("%:p")<CR>', { desc = 'Show full path' })
+
+-- Search for files with Telescope
+vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<CR>', { desc = 'Find files' })
+vim.keymap.set('n', '<C-g>', '<cmd>Telescope buffers<CR>', { desc = 'Switch buffers' })
+
+-- Mark todo item as done
+vim.keymap.set('', '<CR>', ':s/\\[ \\]/[X]/<CR>:nohl<CR>', { desc = 'Mark todo done' })
+
+-- Abbreviations
+local abbrevs = {
+  ['for@'] = 'for _ in x:',
+  ['if@'] = 'if condition:',
+  ['def@'] = 'def function_name():',
+}
+
+for lhs, rhs in pairs(abbrevs) do
+  vim.cmd(string.format('iabbrev %s %s', lhs, rhs))
+end
+
+-- Use Neovim's built-in inspector (shows more info!)
+vim.keymap.set('n', '<F3>', '<cmd>Inspect<CR>', { desc = 'Inspect highlight' })
