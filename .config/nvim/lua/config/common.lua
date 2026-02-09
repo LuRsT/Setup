@@ -59,7 +59,7 @@ vim.filetype.add({
 
 -- Persistent undo
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.expand('~/.config/vim/undo_files')
+vim.opt.undodir = vim.fn.expand('~/.config/nvim/undo_files')
 
 -- Some common typos
 vim.api.nvim_create_user_command('W', 'w', {})
