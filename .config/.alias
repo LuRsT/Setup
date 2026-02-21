@@ -67,6 +67,7 @@ alias f="nvim (fd | fzf)"
 alias ff="fd | fzf"
 alias the='dict -d moby-thesaurus'
 alias c="cd ~/dev/(/usr/bin/ls ~/dev | fzf)"
+alias cc="claude"
 alias e="nvim -c ':NV'"
 alias dc="docker-compose"
 alias ca="cargo"
