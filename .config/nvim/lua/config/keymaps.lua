@@ -29,7 +29,15 @@ vim.keymap.set('n', '<C-p>', '<cmd>Telescope find_files<CR>', { desc = 'Find fil
 vim.keymap.set('n', '<C-g>', '<cmd>Telescope buffers<CR>', { desc = 'Switch buffers' })
 
 -- Mark todo item as done
-vim.keymap.set('', '<CR>', ':s/\\[ \\]/[X]/<CR>:nohl<CR>', { desc = 'Mark todo done' })
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.keymap.set('', '<CR>', ':s/\\[ \\]/[X]/<CR>:nohl<CR>', {
+      buffer = true,  -- makes this mapping local to the buffer
+      desc = 'Mark todo done'
+    })
+  end,
+})
 
 -- Use Neovim's built-in inspector (shows more info!)
 vim.keymap.set('n', '<F3>', '<cmd>Inspect<CR>', { desc = 'Inspect highlight' })
