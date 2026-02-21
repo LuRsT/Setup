@@ -71,7 +71,9 @@ require("lazy").setup({
         config = function()
             require("telescope").setup({
                 defaults = {
+                    sorting_strategy = 'ascending',  -- Results go top to bottom
                     layout_config = {
+                        prompt_position = 'top',       -- Move prompt to top too
                         width = 0.9,
                         height = 0.6,
                     },
