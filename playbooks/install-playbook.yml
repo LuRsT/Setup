@@ -3,143 +3,89 @@
   become: yes
   become_method: sudo
   tasks:
-   - name: Install packages for my dev setup
+   - name: Install things
      pacman:
-       state: installed
-       update_cache: true
        name:
-        - neovim
-        - dmenu
-        - emacs
-        - jq
-        - entr
-        - openssh
-        - fish
-        - tmux
-        - viewnior
-        - ctags
-        - imagemagick
-        - python-virtualenvwrapper
-        - python-neovim
-        - python-isort
-        - python-pyflakes
-        - python-poetry
-        - python-pip
-        - bat
-        - exa
-        - xsel
-        - xclip
-        - ripgrep
-        - xfce4-clipman-plugin
-        - fzf
-        - base-devel
-        - libpng
-        - zlib
-        - make
-        - stow
-        - net-tools
-        - most
-   - name: Install packages for the OS
-     pacman:
-       state: installed
+          # My dev env
+          - neovim
+          - fzf
+          - fd
+          - entr
+          - jq
+          - openssh
+          - fish
+          - tmux
+          - viewnior
+          - ctags
+          - imagemagick
+          - python-virtualenvwrapper
+          - bat
+          - eza
+          - xsel
+          - xclip
+          - ripgrep
+          - xfce4-clipman-plugin
+
+          # OS
+          - base
+          - time
+          - keychain
+          - alacritty
+          - pkgconf
+          - intel-ucode
+          - tlp
+          - tp_smapi
+          - x86_energy_perf_policy
+          - ttf-liberation
+          - ttf-dejavu
+          - acpi
+          - xorg-fonts-misc
+          - xorg-xrandr
+          - wireless_tools
+          - yt-dlp
+          - scrot
+          - lxappearance
+          - i3lock
+          - xorg-server
+          - xf86-video-intel
+          - xorg-xinit
+          - htop
+          - lsof
+          - zip
+          - 7zip
+          - unzip
+          - unrar
+          - feh
+          - vlc
+          - openbox
+          - redshift
+          - unclutter
+          - arc-gtk-theme
+          - arc-icon-theme
+
+          # Extra
+          - screenfetch
+          - cmatrix
+          - firefox
+          - rofi
+          - powertop
+          - udisks2
+          - pcmanfm
+          - pavucontrol
+          - ranger
+
+          # For connecting with android
+          - mtpfs
+          - gvfs-mtp
+
+          # For thumbnails in videos
+          - ffmpegthumbnailer
+
+          # For ranger
+          - highlight
+          - w3m
+
+          # For samba share
+          - gvfs-smb
+       state: present
        update_cache: true
-       name:
-        - base
-        - ntp # For time stuff: ntpd
-        - man-db
-        - man-pages
-        - time
-        - keychain
-        - alacritty
-        - pkg-config
-        - tlp
-        - tp_smapi
-        - x86_energy_perf_policy
-        - acpi_call
-        - ttf-liberation
-        - ttf-dejavu
-        - acpi
-        - xorg-fonts-misc
-        - noto-fonts-emoji # For emoji on chromium
-        - noto-fonts
-        - noto-fonts-cjk
-        - xorg-xrandr
-        - wireless_tools
-        - mplayer
-        - scrot
-        - lxappearance
-        - xautolock
-        - xorg-server
-        - xorg-xinit
-        - htop
-        - lsof
-        - zip
-        - p7zip
-        - unzip
-        - unrar
-        - feh
-        - vlc
-        - vlc-plugin-ffmpeg
-        - redshift
-        - unclutter
-        - arc-gtk-theme
-        - arc-icon-theme
-        - reflector # for pacman mirrors
-        # For openbox setup
-        - lxpanel
-        - lxappearance-obconf
-        - obconf
-        - openbox
-
-   - name: Install extra packages
-     pacman:
-       state: installed
-       update_cache: true
-       name:
-        - firefox
-        - powertop
-        - udisks2
-        - pcmanfm
-        - file-roller # for handling zip files with pcmanfm
-        - pavucontrol
-        - pulseaudio
-        - ranger
-        - mtpfs  # For connecting with android
-        - gvfs-mtp
-        - fd
-        - time
-        - ffmpegthumbnailer # For thumbnails in video
-        - cmake         # For vterm in emac
-        - gcc           # suckless tool
-        - git-annex     # suckless tool
-        - strace
-        - highlight     # For ranger
-        - w3m           # For ranger
-        - gvfs-smb      # For samba share
-        - calibre
-        - chromium
-        - wget
-        - rust
-        - arch-wiki-docs
-        - dunst
-        - xournalpp     # for reading pdfs
-        - inetutils     # For telnet and stuff
-        - perl-image-exiftool # extra for ugrep and for checking exif stuff
-
-          #- docker
-          #- docker-buildx
-
-   - name: Setup TLP
-     systemd:
-        name: tlp
-        enabled: yes
-
-   - name: Setup NTP
-     systemd:
-        name: ntpd
-        enabled: yes
-
-   - name: Setup Reflector
-     systemd:
-        name: reflector
-        enabled: yes
