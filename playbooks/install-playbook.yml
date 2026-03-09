@@ -18,13 +18,12 @@
           - viewnior
           - ctags
           - imagemagick
-          - python-virtualenvwrapper
           - bat
           - eza
           - xsel
           - xclip
           - ripgrep
-          - xfce4-clipman-plugin
+          - clipmenu
 
           # OS
           - base
@@ -41,7 +40,13 @@
           - acpi
           - xorg-fonts-misc
           - xorg-xrandr
-          - wireless_tools
+          - iwd
+          - acpi_call-dkms
+          - lxpanel
+          - pipewire
+          - pipewire-pulse
+          - pipewire-alsa
+          - wireplumber
           - yt-dlp
           - scrot
           - lxappearance
@@ -67,7 +72,7 @@
           - screenfetch
           - cmatrix
           - firefox
-          - rofi
+          - dmenu
           - powertop
           - udisks2
           - pcmanfm
