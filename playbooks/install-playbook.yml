@@ -67,6 +67,22 @@
           - unclutter
           - arc-gtk-theme
           - arc-icon-theme
+          
+          # Sway and friends
+          - brightnessctl
+          - waybar
+          - sway 
+          - swaylock
+          - swayidle
+          - swaybg
+          - grim
+          - slurp
+          - wl-clipboard
+          - cliphist
+          - bemenu
+          - gammastep
+          - qt6-wayland
+          - xdg-desktop-portal-wlr
 
           # Extra
           - screenfetch

@@ -42,7 +42,9 @@
     },
 
     "backlight": {
-        "format": "bri {percent}%"
+        "format": "bri {percent}%",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-"
     },
 
     "pulseaudio": {
