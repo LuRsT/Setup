@@ -67,11 +67,11 @@
           - unclutter
           - arc-gtk-theme
           - arc-icon-theme
-          
+
           # Sway and friends
           - brightnessctl
           - waybar
-          - sway 
+          - sway
           - swaylock
           - swayidle
           - swaybg
@@ -83,6 +83,7 @@
           - gammastep
           - qt6-wayland
           - xdg-desktop-portal-wlr
+          - nwg-look
 
           # Extra
           - screenfetch
