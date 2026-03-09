@@ -1,0 +1,106 @@
+# ~/.config/sway/config
+# Translated from openbox rc.xml
+
+set $mod Mod4
+set $term alacritty
+set $menu bemenu-run
+
+# --- Input ---
+input "type:keyboard" {
+    xkb_layout gb
+    xkb_options caps:ctrl_modifier
+}
+
+# Hide cursor after 3 seconds idle
+seat seat0 hide_cursor 3000
+
+# Drag floating windows with Win+LMB, resize with Win+RMB
+floating_modifier $mod normal
+
+# --- Output ---
+# Run 'swaymsg -t get_outputs' to find your output name
+# Set your wallpaper here:
+output eDP-1 bg ~/.config/background_4k.jpg fill
+
+# --- Autostart ---
+exec dunst -conf ~/.config/.dunstrc
+exec gammastep -O 5000                # replaces redshift (wayland-native)
+exec solaar
+exec wl-paste --watch cliphist store
+# NOTE: clipmenud is X11-only. Replace with: exec wl-paste --watch cliphist store
+#       and bind a key to: cliphist list | bemenu | cliphist decode | wl-copy
+
+# --- Keybindings: Applications ---
+bindsym $mod+Return exec $term
+bindsym $mod+p exec $menu
+bindsym $mod+e exec pcmanfm
+bindsym $mod+Shift+x exec swaylock -f -c 000000
+
+# --- Keybindings: Window management ---
+bindsym $mod+Shift+c kill
+bindsym $mod+f fullscreen toggle
+bindsym $mod+Shift+Space fullscreen toggle
+bindsym $mod+Shift+f floating toggle
+
+# --- Keybindings: Focus (hjkl + arrows) ---
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Alt+Tab window switching
+bindsym Alt+Tab focus next sibling
+bindsym Alt+Shift+Tab focus prev sibling
+
+# --- Keybindings: Move windows ---
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# --- Keybindings: Layout (tiling) ---
+bindsym $mod+b splith
+bindsym $mod+v splitv
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+t layout toggle split
+
+# --- Keybindings: Workspaces ---
+# Go to workspace (replaces openbox GoToDesktop 1-9)
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+
+# Move window to workspace (replaces openbox SendToDesktop)
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+
+# --- Keybindings: Sway control ---
+bindsym $mod+Shift+r reload
+bindsym $mod+Shift+w exec waybar
+#bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -B 'Yes, exit' 'swaymsg exit'
+
+exec waybar
+
+# --- Appearance ---
+# No window borders/titlebars (matches openbox decor=no)
+default_border none
+default_floating_border none
