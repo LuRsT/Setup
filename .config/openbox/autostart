@@ -1,3 +1,5 @@
 lxpanel &
 
 ~/bin/autostart.sh &
+
+clipmenud &
