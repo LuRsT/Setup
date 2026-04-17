@@ -24,6 +24,7 @@
           - xclip
           - ripgrep
           - clipmenu
+          - uv
 
           # OS
           - base
@@ -84,6 +85,7 @@
           - qt6-wayland
           - xdg-desktop-portal-wlr
           - nwg-look
+          - less # For git aliases
 
           # Extra
           - screenfetch
@@ -95,6 +97,9 @@
           - pcmanfm
           - pavucontrol
           - ranger
+          - stow
+          - ttf-cascadia-code
+          - ttf-cascadia-code-nerd
 
           # For connecting with android
           - mtpfs
