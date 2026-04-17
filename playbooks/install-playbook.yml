@@ -66,8 +66,6 @@
           - openbox
           - redshift
           - unclutter
-          - arc-gtk-theme
-          - arc-icon-theme
 
           # Sway and friends
           - brightnessctl

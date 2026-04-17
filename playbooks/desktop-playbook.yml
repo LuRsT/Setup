@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  tasks:
+   - name: Install things
+     pacman:
+       name:
+          - gnome
+          - gnome-tweaks
+       state: present
+       update_cache: true
+
+   - name: Enable GDM
+     systemd:
+       name: gdm
+       enabled: yes
