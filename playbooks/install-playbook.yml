@@ -38,6 +38,8 @@
           - x86_energy_perf_policy
           - ttf-liberation
           - ttf-dejavu
+          - ttf-cascadia-code
+          - ttf-cascadia-code-nerd
           - acpi
           - xorg-fonts-misc
           - xorg-xrandr

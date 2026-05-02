@@ -7,7 +7,8 @@ URxvt*.transparent: true
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
 URxvt*.shading: 30
 
-URxvt*font: xft:OperatorMono Nerd Font::size=11
+! URxvt*font: xft:OperatorMono Nerd Font::size=11
+URxvt*font: xft:Cascadia Code NF::size=12
 
 ! Scrollback buffer lines - 65535 is max on most machines (64 is default)
 URxvt*saveLines: 12000

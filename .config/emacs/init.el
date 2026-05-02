@@ -32,9 +32,9 @@
 (setq set-mark-command-repeat-pop t)
 (setq large-file-warning-threshold nil)
 
-(setq nano-font-family-monospaced "JetBrains Mono")
-(setq nano-font-family-proportional "JetBrains Mono")
-(setq nano-font-size 14)
+(setq nano-font-family-monospaced "Cascadia Code NF")
+(setq nano-font-family-proportional "Cascadia Code NF")
+(setq nano-font-size 12)
 
 (setq backup-directory-alist '(("." . "~/.config/emacs/backup"))
   backup-by-copying t    ; Don't delink hardlinks
