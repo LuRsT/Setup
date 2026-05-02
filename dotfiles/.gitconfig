@@ -72,8 +72,10 @@
     autosquash = true
     updateRefs = true
 [remote "origin"]
-	prune = true
+    prune = true
 [pull]
-	rebase = false
+    rebase = false
 [log]
-	follow = true
+    follow = true
+[submodule]
+    recurse = true

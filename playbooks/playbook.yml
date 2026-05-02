@@ -4,7 +4,7 @@
      home_dir: /home/{{ ansible_user_id }}
      repo_dir: "{{ home_dir }}/dev/Setup"
      repo_url: git@github.com:LuRsT/Setup.git
-     key_file: "{{ home_dir }}/.ssh/id_rsa"
+     key_file: "{{ home_dir }}/.ssh/id_ed25519"
   tasks:
    - name: Link dotfiles
      file:
