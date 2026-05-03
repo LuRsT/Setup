@@ -102,3 +102,13 @@ vim.api.nvim_create_autocmd("FocusLost", {
   pattern = "*",
   command = "silent! wa"
 })
+
+-- Diagnostics: errors before warnings, rounded float, errors-only inline
+vim.diagnostic.config({
+  severity_sort = true,
+  float = { border = 'rounded', source = 'if_many' },
+  virtual_text = {
+    prefix = '●',
+    severity = { min = vim.diagnostic.severity.ERROR },
+  },
+})
