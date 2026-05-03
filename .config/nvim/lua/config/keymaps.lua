@@ -55,3 +55,19 @@ vim.keymap.set('n', '<leader>Z', 'zA', { desc = 'Toggle fold recursively' })
 -- Diagnostics
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 
+-- LSP keymaps (buffer-local; only active when an LSP attaches).
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local opts = { buffer = args.buf, noremap = true, silent = true }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action,
+      vim.tbl_extend('force', opts, { desc = 'Code action' }))
+    vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename,
+      vim.tbl_extend('force', opts, { desc = 'Rename symbol' }))
+    vim.keymap.set('n', '<leader>cf',
+      function() vim.lsp.buf.format({ async = false, name = 'ruff' }) end,
+      vim.tbl_extend('force', opts, { desc = 'Format buffer (ruff)' }))
+  end,
+})
+

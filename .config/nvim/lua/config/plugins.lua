@@ -118,6 +118,7 @@ require("lazy").setup({
             { "<leader>f", group = "File/Find" },
             { "<leader>w", group = "Windows" },
             { "<leader>g", group = "Git" },
+            { "<leader>c", group = "Code" },
         })
         end,
     },
@@ -242,17 +243,6 @@ vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.lsp.enable('basedpyright')
     vim.lsp.enable('ruff')
-  end,
-})
-
--- Keybindings
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    local opts = { buffer = args.buf, noremap = true, silent = true }
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
   end,
 })
 
