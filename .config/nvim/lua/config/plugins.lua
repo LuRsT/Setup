@@ -15,12 +15,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -115,9 +109,6 @@ require("lazy").setup({
 
         -- Define keymaps with descriptions
         vim.keymap.set('n', '<leader>vv', '<cmd>e ~/.config/nvim/init.lua<CR>', { desc = 'Edit init.lua' })
-        vim.keymap.set('n', '<leader>vs', '<cmd>e ~/.config/nvim/lua/config/shortcuts.lua<CR>', { desc = 'Edit shortcuts' })
-        vim.keymap.set('n', '<leader>vp', '<cmd>e ~/.config/nvim/lua/plugins/init.lua<CR>', { desc = 'Edit plugins' })
-        vim.keymap.set('n', '<leader>vc', '<cmd>e ~/.config/nvim/lua/config/common.lua<CR>', { desc = 'Edit config' })
         vim.keymap.set('n', '<leader>ft', '<cmd>Neotree<CR>', { desc = 'File tree' })
         vim.keymap.set('n', '<leader>E', 'yyp:.!bash<CR>', { desc = 'Execute line as bash' })
 

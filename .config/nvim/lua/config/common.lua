@@ -1,3 +1,7 @@
+-- Set Leader keys
+vim.g.mapleader = ' '
+vim.g.maplocalleader = '\\'
+
 -- Enable filetype detection, plugins, and indent
 vim.cmd('filetype plugin indent on')
 
@@ -32,7 +36,7 @@ vim.o.expandtab = true
 vim.o.shiftround = true
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
-vim.o.autowrite = true  -- Save buffer automatically when changing files
+vim.o.autowrite = true              -- Save buffer automatically when changing files
 vim.o.fileformats = 'unix,mac,dos'  -- Handle Mac and DOS line-endings but prefer Unix
 
 -- Wildignore patterns
@@ -62,8 +66,8 @@ vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand('~/.config/nvim/undo_files')
 
 -- Some common typos
-vim.api.nvim_create_user_command('W', 'w', {})
-vim.api.nvim_create_user_command('Q', 'q', {})
+vim.api.nvim_create_user_command('W',  'w',  {})
+vim.api.nvim_create_user_command('Q',  'q',  {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
@@ -73,7 +77,7 @@ vim.api.nvim_create_user_command('Vs', 'vs', {})
 -- Abbreviations
 local abbrevs = {
   ['for@'] = 'for _ in x:',
-  ['if@'] = 'if condition:',
+  ['if@']  = 'if condition:',
   ['def@'] = 'def function_name():',
 }
 
@@ -98,5 +102,3 @@ vim.api.nvim_create_autocmd("FocusLost", {
   pattern = "*",
   command = "silent! wa"
 })
-
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
