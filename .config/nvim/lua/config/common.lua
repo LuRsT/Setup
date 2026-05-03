@@ -2,12 +2,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 
--- Enable filetype detection, plugins, and indent
-vim.cmd('filetype plugin indent on')
-
--- Disable vi compatibility (not needed in Neovim, but kept for completeness)
-vim.o.compatible = false
-
 -- Terminal and colors
 vim.o.termguicolors = true
 
@@ -19,7 +13,6 @@ vim.o.inccommand = 'split'
 vim.o.ruler = true
 vim.o.shiftwidth = 4
 vim.o.tabstop = 4
-vim.o.encoding = 'utf-8'
 vim.o.updatetime = 500
 vim.o.wildmenu = true
 vim.o.number = true
@@ -43,7 +36,6 @@ vim.o.fileformats = 'unix,mac,dos'  -- Handle Mac and DOS line-endings but prefe
 vim.opt.wildignore:append({ '*/.git/*', '*/tmp/*', '*.swp' })
 
 vim.opt.signcolumn = 'yes'     -- Always show sign column (for LSP diagnostics)
-vim.opt.termguicolors = true   -- Better colors in modern terminals
 
 -- Fold settings
 vim.opt.foldenable = false
@@ -73,17 +65,6 @@ vim.api.nvim_create_user_command('WQ', 'wq', {})
 vim.api.nvim_create_user_command('Qa', 'qa', {})
 vim.api.nvim_create_user_command('QA', 'qa', {})
 vim.api.nvim_create_user_command('Vs', 'vs', {})
-
--- Abbreviations
-local abbrevs = {
-  ['for@'] = 'for _ in x:',
-  ['if@']  = 'if condition:',
-  ['def@'] = 'def function_name():',
-}
-
-for lhs, rhs in pairs(abbrevs) do
-  vim.cmd(string.format('iabbrev %s %s', lhs, rhs))
-end
 
 -- Strip trailing whitespace on save.
 -- Except for markdown

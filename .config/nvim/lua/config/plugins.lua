@@ -237,15 +237,6 @@ vim.lsp.config.ruff = {
   capabilities = capabilities,
 }
 
--- Enable LSPs for Python files
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'python',
-  callback = function()
-    vim.lsp.enable('basedpyright')
-    vim.lsp.enable('ruff')
-  end,
-})
-
 -- Tmux-navigator
 vim.keymap.set('n', '<c-h>', '<cmd>TmuxNavigateLeft<cr>')
 vim.keymap.set('n', '<c-j>', '<cmd>TmuxNavigateDown<cr>')
