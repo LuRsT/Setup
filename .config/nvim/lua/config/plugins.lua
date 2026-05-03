@@ -173,7 +173,28 @@ require("lazy").setup({
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "neovim/nvim-lspconfig" },
-    { "hrsh7th/nvim-cmp" },
+    {
+      "hrsh7th/nvim-cmp",
+      dependencies = { "hrsh7th/cmp-nvim-lsp" },
+      lazy = false,
+      config = function()
+        local cmp = require("cmp")
+        cmp.setup({
+          snippet = {
+            expand = function(args) vim.snippet.expand(args.body) end,
+          },
+          sources = cmp.config.sources({
+            { name = "nvim_lsp" },
+          }),
+          mapping = cmp.mapping.preset.insert({
+            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<CR>"] = cmp.mapping.confirm({ select = false }),
+            ["<C-n>"] = cmp.mapping.select_next_item(),
+            ["<C-p>"] = cmp.mapping.select_prev_item(),
+          }),
+        })
+      end,
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   --
@@ -188,33 +209,48 @@ require("lazy").setup({
 -- Mason setup
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "pyright" },
+  ensure_installed = { "basedpyright", "ruff" },
 })
 
 -- New vim.lsp.config API
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local capabilities = ok and cmp_nvim_lsp.default_capabilities()
+  or vim.lsp.protocol.make_client_capabilities()
+
 vim.lsp.config('*', {
   root_markers = { '.git' },
+  capabilities = capabilities,
 })
 
-vim.lsp.config.pyright = {
-  cmd = { 'pyright-langserver', '--stdio' },
+vim.lsp.config.basedpyright = {
+  cmd = { 'basedpyright-langserver', '--stdio' },
   filetypes = { 'python' },
   root_markers = { 'pyproject.toml', 'setup.py', '.git' },
+  capabilities = capabilities,
   settings = {
-    python = {
+    basedpyright = {
       analysis = {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
+        autoImportCompletions = true,
       }
     }
   }
 }
 
--- Enable LSP for Python files
+vim.lsp.config.ruff = {
+  cmd = { 'ruff', 'server' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
+  capabilities = capabilities,
+}
+
+-- Enable LSPs for Python files
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'python',
   callback = function()
-    vim.lsp.enable('pyright')
+    vim.lsp.enable('basedpyright')
+    vim.lsp.enable('ruff')
   end,
 })
 
