@@ -81,10 +81,16 @@ for lhs, rhs in pairs(abbrevs) do
   vim.cmd(string.format('iabbrev %s %s', lhs, rhs))
 end
 
--- Autocommand: Delete trailing whitespaces on save
+-- Strip trailing whitespace on save.
+-- Except for markdown
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = '*',
-  command = [[%s/\s\+$//e]]
+  callback = function()
+    if vim.bo.filetype == 'markdown' then return end
+    local view = vim.fn.winsaveview()
+    vim.cmd([[silent! keeppatterns %s/\s\+$//e]])
+    vim.fn.winrestview(view)
+  end,
 })
 
 -- Auto-save on focus lost
