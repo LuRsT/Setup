@@ -1,4 +1,0 @@
-#!/bin/bash
-while true; do
-    inotifywait -e modify -r "$1" && `$2`
-done

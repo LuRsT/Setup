@@ -1,2 +1,3 @@
 #!/bin/bash
+# Set the desktop background via feh.
 feh --bg-center ~/.config/background_4k.jpg

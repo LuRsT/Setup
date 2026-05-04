@@ -1,5 +1,5 @@
 #!/bin/fish
+# fzf-pick a file, then fzf its git log with a preview of each revision.
 
-# Check out git logs for a specific file
 set FILE (fzf)
 git log --oneline --follow -- $FILE | fzf --color --preview "git show (echo {} | cut -d ' ' -f 1):$FILE"

@@ -1,4 +1,6 @@
 #!/bin/bash
+# Openbox startup: launches desktop daemons (background, clipboard, notifications, ssh-add, etc.)
+
 # Hide mouse cursor while typing
 unclutter -idle 2 &
 

@@ -1,17 +1,8 @@
 #!/bin/bash
-hr '-'
+# Stop containers and prune everything (containers, volumes, images, networks, build cache).
+
 stop_docker
 
 hr '-'
-echo "Cleaning Docker containers..."
-docker ps -a | awk '{print $1}' | xargs --no-run-if-empty docker rm
 
-
-hr '-'
-echo "Cleaning Docker volumes..."
-docker volume rm $(docker volume ls -q)
-
-
-hr '-'
-echo "Cleaning Docker images..."
-docker rmi $(docker images -q)
+docker system prune -af --volumes

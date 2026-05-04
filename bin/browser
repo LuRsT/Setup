@@ -1,4 +1,6 @@
 #!/bin/bash
+# Open a URL/file in $BROWSER, or pipe HTML in via stdin.
+
 if [ -t 0 ]; then
     if [ -n "$1" ]; then
         $BROWSER $1

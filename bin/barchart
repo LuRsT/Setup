@@ -1,9 +1,8 @@
 #!/usr/bin/perl
+# Print a barchart of duplicated lines in a file showing relative frequencies. Usage: barchart file.txt
+
 use strict;
 use warnings;
-
-# Prints a barchart of a file made out of duplicated strings,
-# displaying their relative size to each other.
 
 if ( !scalar @ARGV ) {
     die <<MSG;
@@ -12,13 +11,13 @@ Missing Argument.
 MSG
 }
 
-my $file = open(FILE, '<', $ARGV[0]);
+open(my $fh, '<', $ARGV[0]) or die "Can't open $ARGV[0]: $!";
 
 my $max    = 0;
 my %struct = ();
 
 # Generate structure
-while( <FILE> ) {
+while ( <$fh> ) {
     my $word = $_;
 
     $struct{$word} += 1;

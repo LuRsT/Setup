@@ -1,4 +1,6 @@
 #!/bin/bash
+# Toggle the external HDMI1 monitor on/off via xrandr (default output: eDP1).
+
 DEFAULT_OUTPUT='eDP1'
 
 # Outputs to toggle if connected

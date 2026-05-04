@@ -1,11 +1,9 @@
 #!/bin/bash
+# Lock the screen (via i3lock) using a fresh blurred screenshot.
 
-file=/tmp/screenshotblur.jpg
+screenshot=/tmp/screenshotblur.jpg
+lock=/tmp/lock.png
 
-if [ -a /tmp/lock.png ]; then
-    i3lock -i /tmp/lock.png
-else
-    scrot "$file"
-    convert $file -scale 5% -scale 2000% /tmp/lock.png
-    i3lock -i /tmp/lock.png
-fi
+scrot "$screenshot"
+convert "$screenshot" -scale 5% -scale 2000% "$lock"
+i3lock -i "$lock"

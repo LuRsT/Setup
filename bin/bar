@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+# Render a colored bar from a numeric value extracted from a command via regex. Run with --help.
+
 use strict;
 use warnings;
 

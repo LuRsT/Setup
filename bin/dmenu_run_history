@@ -1,4 +1,5 @@
 #!/bin/sh
+# dmenu launcher with frequency-sorted history.
 
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
 if [ -d "$cachedir" ]; then

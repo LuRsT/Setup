@@ -1,19 +1,8 @@
 #!/bin/bash
-filename=$1
-extension="${filename##*.}"
+# Extract an archive (modern tar auto-detects compression). Bare .gz uses gzip -d.
 
-if [ "$extension" == "tar.gz" ]; then
-    tar -zxvf $filename
-elif [ "$extension" == "gz" ]; then
-    gzip -d $filename
-elif [ "$extension" == "tar" ]; then
-    tar -xvf $filename
-elif [ "$extension" == "bz2" ]; then
-    tar jxf $filename
-elif [ "$extension" == "tbz2" ]; then
-    tar xf $filename
-elif [ "$extension" == "tgz" ]; then
-    tar -zxvf $filename
-else
-    cat `which untar`
-fi
+case "$1" in
+    *.tar|*.tar.gz|*.tgz|*.tar.bz2|*.tbz2) tar xvf "$1" ;;
+    *.gz) gzip -d "$1" ;;
+    *) cat "$(command -v untar)" ;;
+esac

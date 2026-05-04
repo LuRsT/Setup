@@ -1,4 +1,5 @@
 #!/bin/bash
+# Play beep.wav and send a desktop notification.
 
-mplayer ~/bin/beep.wav > /dev/null 2>&1
+mpv --really-quiet ~/bin/beep.wav
 notify-send "beep"

@@ -1,3 +1,0 @@
-#!/bin/bash
-
-git diff --name-only HEAD master | sed 's/^src\///' | grep "\.py"
