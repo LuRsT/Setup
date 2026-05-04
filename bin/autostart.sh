@@ -1,5 +1,5 @@
 #!/bin/bash
-# Openbox startup: launches desktop daemons (background, clipboard, notifications, ssh-add, etc.)
+# Openbox startup: launches desktop daemons (background, clipboard, notifications, etc.)
 
 # Hide mouse cursor while typing
 unclutter -idle 2 &
@@ -18,7 +18,4 @@ solaar &
 
 dunst -conf ~/.config/.dunstrc &
 
-ssh-add ~/.ssh/id_ed25519
-
 conky &
-
