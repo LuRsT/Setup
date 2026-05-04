@@ -98,8 +98,6 @@
           - pavucontrol
           - ranger
           - stow
-          - ttf-cascadia-code
-          - ttf-cascadia-code-nerd
 
           # For connecting with android
           - mtpfs
