@@ -1,15 +1,12 @@
 .config/*
 !.config/fish
-!.config/doom
 !.config/emacs
 !.config/nvim
 .config/fish/fish_variables
-.config/doom/config.el
 
 .wmii/history*
 *.so
 *.pyc
 bin/*
 .fonts/
-.config/doom/custom.el
 dotfiles/.emacs.d/*
