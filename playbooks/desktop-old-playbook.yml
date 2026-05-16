@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  become: yes
+  become_method: sudo
+  tasks:
+   - name: Install old-school desktop apps
+     pacman:
+       name:
+          - xsel
+          - xclip
+          - clipmenu
+          - xorg-fonts-misc
+          - xorg-xrandr
+          - xorg-server
+          - xorg-xinit
+          - lxappearance
+          - i3lock
+          - feh
+          - lxpanel
+          - pipewire
+          - pipewire-pulse
+          - pipewire-alsa
+          - scrot
+          - unclutter
+          - dmenu
+          - pcmanfm
+          - pavucontrol
+       state: present
+       update_cache: true

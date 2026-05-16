@@ -20,11 +20,14 @@
           - imagemagick
           - bat
           - eza
-          - xsel
-          - xclip
           - ripgrep
-          - clipmenu
           - uv
+          - emacs
+          - npm
+          - just
+          - tk
+          - entr
+          - pyright
 
           # OS
           - base
@@ -32,79 +35,44 @@
           - keychain
           - alacritty
           - pkgconf
-          - intel-ucode
           - tlp
           - tp_smapi
           - x86_energy_perf_policy
           - ttf-liberation
           - ttf-dejavu
-          - ttf-cascadia-code
           - ttf-cascadia-code-nerd
           - acpi
-          - xorg-fonts-misc
-          - xorg-xrandr
           - iwd
           - acpi_call-dkms
-          - lxpanel
-          - pipewire
-          - pipewire-pulse
-          - pipewire-alsa
           - wireplumber
           - yt-dlp
-          - scrot
-          - lxappearance
-          - i3lock
-          - xorg-server
-          - xf86-video-intel
-          - xorg-xinit
           - htop
           - lsof
           - zip
           - 7zip
           - unzip
           - unrar
-          - feh
           - vlc
           - openbox
           - redshift
-          - unclutter
+          - less
 
-          # Sway and friends
-          - brightnessctl
-          - waybar
-          - sway
-          - swaylock
-          - swayidle
-          - swaybg
-          - grim
-          - slurp
-          - wl-clipboard
-          - cliphist
-          - bemenu
-          - gammastep
-          - qt6-wayland
-          - xdg-desktop-portal-wlr
-          - nwg-look
-          - less # For git aliases
+          # Intel specific
+          - intel-ucode
+          - xf86-video-intel
 
           # Extra
-          - screenfetch
           - cmatrix
           - firefox
-          - dmenu
           - powertop
           - udisks2
-          - pcmanfm
-          - pavucontrol
           - ranger
           - stow
+          - ufw
 
           # For connecting with android
           - mtpfs
           - gvfs-mtp
-
-          # For thumbnails in videos
-          - ffmpegthumbnailer
 
           # For ranger
           - highlight
