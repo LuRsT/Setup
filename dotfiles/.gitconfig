@@ -11,6 +11,7 @@
     up = fetch origin master:master
     dcs = diff --stat --cached
     ai = "!git add $(git status --short | fzf --multi --preview 'git diff -- {2..}' | awk '{print $2}')"
+    pai = "!git add -p $(git status --short | fzf --multi --preview 'git diff -- {2..}' | awk '{print $2}')"
     chi = "!git checkout $(git branch | grep -v '^\\*' | fzf)"
     ch = checkout
     b = branch
@@ -34,6 +35,13 @@
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
     clean-merged = !git branch --merged master | grep -Ev \"(^\\*|^  master$)\" | xargs git branch --delete
     clean-gone = !git fetch --prune && git branch --verbose | awk '/\\[gone]/{print $1}' |  xargs git branch --delete --force
+
+    # Worktrees
+    w = worktree
+    wa = worktree add
+    wl = worktree list
+    wr = worktree remove
+    wp = worktree prune
 [apply]
     whitespace = nowarn
 [github]
