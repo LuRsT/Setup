@@ -69,6 +69,7 @@
           - ranger
           - stow
           - ufw
+          - net-tools
 
           # For connecting with android
           - mtpfs

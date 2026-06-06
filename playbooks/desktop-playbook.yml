@@ -8,6 +8,10 @@
        name:
           - gnome
           - gnome-tweaks
+
+          # For hardware accellaration on firefox/chromium
+          - intel-media-driver
+          - libva-utils
        state: present
        update_cache: true
 
