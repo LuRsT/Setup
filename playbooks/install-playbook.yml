@@ -3,6 +3,29 @@
   become: yes
   become_method: sudo
   tasks:
+   - name: Intel GPU + microcode
+     pacman:
+       name:
+          - intel-ucode
+          - intel-media-driver
+          - vulkan-intel
+          - intel-gpu-tools
+       state: present
+       update_cache: true
+     when: "'GenuineIntel' in ansible_processor"
+
+   - name: AMD GPU + microcode
+     pacman:
+       name:
+          - amd-ucode
+          - libva-mesa-driver
+          - mesa-vdpau
+          - vulkan-radeon
+          - radeontop
+       state: present
+       update_cache: true
+     when: "'AuthenticAMD' in ansible_processor"
+
    - name: Install things
      pacman:
        name:
@@ -57,10 +80,6 @@
           - redshift
           - less
 
-          # Intel specific
-          - intel-ucode
-          - xf86-video-intel
-
           # Extra
           - cmatrix
           - firefox
@@ -70,6 +89,7 @@
           - stow
           - ufw
           - net-tools
+          - libva-utils
 
           # For connecting with android
           - mtpfs
