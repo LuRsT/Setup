@@ -42,3 +42,8 @@ end
 if status --is-interactive
     keychain --eval --quiet -Q id_ed25519 | source
 end
+
+# Pyenv
+# if pyenv rehash hangs, just rm ~/.pyenv/shims/.pyenv-shim
+# Could use this to speed it up too: pyenv init - --no-rehash | source
+pyenv init - fish | source
