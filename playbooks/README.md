@@ -8,6 +8,7 @@ How to use this:
 - Run: `ansible-playbook install-playbook.yml`
 - Run: `ansible-playbook playbook.yml`
 - If you want gnome: `ansible-playbook desktop-playbook.yml`
+- If you want the old school desktop: `ansible-playbook desktop-old-playbook.yml`
 
 ## Manual Gnome settings
 
@@ -18,5 +19,5 @@ In settings > keyboard shortcuts > switch windows -> setto alt-tab
 Run the script:
 
 ```sh
-$ ./gnome-settings.sh
+$ ../gnome-settings.sh
 ```
