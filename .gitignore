@@ -2,6 +2,8 @@
 !.config/fish
 !.config/doom
 !.config/nvim
+.config/nvim/undo_files
+.config/nvim/lazy-lock.json
 .config/fish/fish_variables
 .config/doom/config.el
 
