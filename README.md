@@ -2,9 +2,9 @@
 
 My dotfiles and ~/bin
 
-Screenshot as of May 2021
+<img width="1740" height="1243" alt="2026-06-07-093413_1740x1243_scrot" src="https://github.com/user-attachments/assets/169b1907-7f81-4b1d-87dc-3fc64a9c6fd7" />
 
-![2021-05-15-110759_1483x918_scrot](https://user-images.githubusercontent.com/263583/118356582-78539500-b565-11eb-9dbd-98830dadb1f9.png)
+_Screenshot as of June 2026_
 
 ## How to set up
 
