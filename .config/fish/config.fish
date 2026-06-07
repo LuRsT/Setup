@@ -43,7 +43,10 @@ if status --is-interactive
     keychain --eval --quiet -Q id_ed25519 | source
 end
 
-# Pyenv
-# if pyenv rehash hangs, just rm ~/.pyenv/shims/.pyenv-shim
-# Could use this to speed it up too: pyenv init - --no-rehash | source
-pyenv init - fish | source
+# Pyenv — only init when installed
+# --no-rehash skips the per-startup `pyenv rehash`, which blocks on the
+# ~/.pyenv/shims/.pyenv-shim flock under shell contention. Run `pyenv rehash`
+# by hand after installing a Python package that ships a CLI.
+if type -q pyenv
+    pyenv init - --no-rehash fish | source
+end
