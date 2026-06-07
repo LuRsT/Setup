@@ -3,9 +3,8 @@
 ###  Enable on gnome tweaks, middle click paste
 
 ### For resizing windows
-gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true`
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 ## To make Super+P launch apps
-gsettings set org.gnome.mutter.keybindings switch-monitor "['XF86Display']"
 gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>p']"
 
 ## Set quick display switch to Super M
