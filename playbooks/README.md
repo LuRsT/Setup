@@ -1,22 +1,21 @@
-# Setup my dotfiles using Ansible
+# Setup dotfiles and packages using Ansible
 
-How to use this:
-- Install `ansible`
-- Install `git`
-- Clone this repo
-- Copy private key to `~/.ssh/`
-- Run: `ansible-playbook install-playbook.yml`
-- Run: `ansible-playbook playbook.yml`
-- If you want gnome: `ansible-playbook desktop-playbook.yml`
-- If you want the old school desktop: `ansible-playbook desktop-old-playbook.yml`
+```sh
+ansible-playbook install-playbook.yml`
+ansible-playbook playbook.yml`
+# if you want gnome desktop
+ansible-playbook desktop-playbook.yml
+# for openbox
+ansible-playbook desktop-old-playbook.yml
+```
 
 ## Manual Gnome settings
 
-- Alt+tab ( to switch windows in the same workspace only)
+### Alt+tab ( to switch windows in the same workspace only):
 
-In settings > keyboard shortcuts > switch windows -> setto alt-tab
+In settings > keyboard shortcuts > switch windows -> set to alt-tab
 
-Run the script:
+### For the rest:
 
 ```sh
 $ ../gnome-settings.sh

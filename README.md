@@ -8,7 +8,7 @@ _Screenshot as of June 2026_
 
 ## How to set up
 
-This is usually done after I install my OS clean. I install `git` and `ansible`, `git clone` this repo.
+After you install the OS (Arch btw) from scratch:
 
 ``` sh
 sudo pacman -S git ansible
@@ -16,14 +16,10 @@ mkdir dev && cd dev
 git clone https://github.com/LuRsT/Setup.git
 ```
 
-Then go inside the `playbooks/` directory to run the ansible playbooks and then `stow` the dotfiles folder.
+Then read and follow the steps in [Playbooks README](playbooks/README.md) to install the packages.
+
+Finally, `stow` the dotfiles folder.
 
 ``` sh
-cd Setup/playbooks
-ansible-playbook install-playbook.yml
-ansible-playbook playbook.yml
-cd ..
 stow dotfiles
 ```
-
-For updating, doing a `git pull` on this repo should be enough, unless there's new dotfiles, then you need to `stow` them again.
