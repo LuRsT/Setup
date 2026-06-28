@@ -5,10 +5,15 @@
     ca = commit --amend
     cp = cherry-pick
     s = status --short -b
-    d = diff
-    ds = diff --stat
-    dc = diff --cached
+    ; d = diff
+    d = -c diff.external=difft diff
+    ; ds = diff --stat
+    ds = -c diff.external=difft diff --stat
+    ; dc = diff --cached
+    dc = -c diff.external=difft diff --cached
     up = fetch origin master:master
+    # From https://github.com/Schnouki/dotfiles/blob/b3db0dea6b7b8d46da8fd707c1067906f7697198/git/config#L11
+    upp = !git fetch --prune && git checkout $(git rev-parse --abbrev-ref origin/HEAD | sed -s 's!^origin/!!') && git pull
     dcs = diff --stat --cached
     ai = "!git add $(git status --short | fzf --multi --preview 'git diff -- {2..}' | awk '{print $2}')"
     pai = "!git add -p $(git status --short | fzf --multi --preview 'git diff -- {2..}' | awk '{print $2}')"
@@ -42,6 +47,11 @@
     wl = worktree list
     wr = worktree remove
     wp = worktree prune
+
+    # Difftastic aliases
+    dlog = -c diff.external=difft log --ext-diff
+    dshow = -c diff.external=difft show --ext-diff
+    ddiff = -c diff.external=difft diff
 [apply]
     whitespace = nowarn
 [github]
@@ -54,13 +64,20 @@
 [push]
     default = current
 [diff]
-    tool = vimdiff
+    algorithm = histogram
+    colorMoved = plain
+    compactionHeuristic = true
+    noprefix = true
+    renames = true
+    ; tool = vimdiff
+    tool = difftastic
 [merge]
     tool = meld
 [difftool]
     prompt = false
 [core]
     excludesfile = /home/lurst/.gitignore_global
+    pager = bat -p
 [grep]
     extendRegexp = true
     lineNumber = true
@@ -81,3 +98,10 @@
     follow = true
 [submodule]
     recurse = true
+[fetch]
+    all = true
+    prune = true
+    pruneTags = true
+[rerere]
+    enabled = true
+    autoupdate = true
