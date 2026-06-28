@@ -50,3 +50,7 @@ end
 if type -q pyenv
     pyenv init - --no-rehash fish | source
 end
+
+function gf --description 'fzf-pick a changed git file'
+    git status --porcelain | fzf | cut -c4- | sed 's/.* -> //'
+end
