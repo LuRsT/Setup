@@ -6,6 +6,7 @@
    - name: Install old-school desktop apps
      pacman:
        name:
+          - openbox
           - xsel
           - xclip
           - clipmenu

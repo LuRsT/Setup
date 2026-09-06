@@ -52,7 +52,6 @@
           - pyright
 
           # OS
-          - base
           - time
           - keychain
           - alacritty
@@ -74,7 +73,6 @@
           - unzip
           - unrar
           - vlc
-          - openbox
           - redshift
           - less
 
