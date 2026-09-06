@@ -11,15 +11,47 @@ _Screenshot as of June 2026_
 After you install the OS (Arch btw) from scratch:
 
 ``` sh
-sudo pacman -S git ansible
-mkdir dev && cd dev
-git clone https://github.com/LuRsT/Setup.git
+curl -fsSL https://raw.githubusercontent.com/LuRsT/Setup/master/bootstrap.sh | bash
 ```
 
-Then read and follow the steps in [Playbooks README](playbooks/README.md) to install the packages.
-
-Finally, `stow` the dotfiles folder.
+Or, from a clone:
 
 ``` sh
-stow dotfiles
+git clone https://github.com/LuRsT/Setup.git ~/dev/Setup
+~/dev/Setup/bootstrap.sh
 ```
+
+`bootstrap.sh` installs the packages, links the dotfiles, and applies the GNOME
+settings, which is everything that used to be a manual sequence of
+`ansible-playbook` and `stow` commands.
+
+## Keeping a machine up to date
+
+The script converges on the state this repository describes rather than
+installing once, so re-run it whenever the repository changes. Add a package to
+`playbooks/install-playbook.yml`, run the script again, and only that package is
+installed.
+
+``` sh
+./bootstrap.sh --check   # show what would change, touch nothing
+./bootstrap.sh           # apply
+```
+
+Re-running on a machine that is already set up reports `ok` for every link and
+leaves them alone. Where something does have to move out of the way, a real
+`~/.bashrc` from a fresh install, say, it goes to `~/.setup-backup/<timestamp>/`
+first. Nothing is ever deleted.
+
+## What it deliberately leaves alone
+
+SSH keys stay manual, so the bootstrap clones over HTTPS. Generate a key and
+point the remote at SSH once the machine is up:
+
+``` sh
+ssh-keygen -t ed25519
+git -C ~/dev/Setup remote set-url origin git@github.com:LuRsT/Setup.git
+```
+
+The openbox desktop isn't installed either, since GNOME is the one in use. See
+the [playbooks README](playbooks/README.md) for that and for running the
+playbooks individually.
