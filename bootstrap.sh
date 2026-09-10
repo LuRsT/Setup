@@ -24,6 +24,17 @@ NETWORK_TIMEOUT_SECONDS=5
 MIRROR_COUNTRIES='GB,IE,NL,FR,DE'
 MIRROR_COUNT=20
 
+# Nothing here used to pin the locale or the keymap, so a machine kept whatever
+# was clicked during installation. That is more than dates and spelling: Gnome's
+# input chooser lists the layouts for the current locale and hides the rest
+# behind More..., so a machine installed as en_US appears to have no English
+# (UK) at all. The X11 keymap is set too, since Gnome's own input source only
+# applies once logged in, leaving GDM's password prompt on the wrong layout.
+LOCALE='en_GB.UTF-8'
+CONSOLE_KEYMAP='uk'
+X11_LAYOUT='gb'
+X11_OPTIONS='terminate:ctrl_alt_bksp,ctrl:nocaps'
+
 REPO_DIR=''
 IS_CHECK=false
 
@@ -267,6 +278,32 @@ run_playbook() {
     "${command[@]}"
 }
 
+# Run after the packages, because set-x11-keymap validates the layout against
+# xkeyboard-config, which arrives with Gnome.
+configure_locale() {
+    local locale_gen='/etc/locale.gen'
+
+    log "locale   $LOCALE, console $CONSOLE_KEYMAP, x11 $X11_LAYOUT"
+
+    if $IS_CHECK; then
+        return 0
+    fi
+
+    # locale-gen builds only the uncommented entries, and the file ships with
+    # every line commented out, so the locale has to be enabled before it can
+    # be generated. Matched with a trailing space to keep en_GB.UTF-8 from also
+    # hitting a line for a longer name that starts the same way.
+    if ! grep -qE "^${LOCALE//./\\.} " "$locale_gen"; then
+        log "locale   enabling $LOCALE in $locale_gen"
+        sudo sed -i -E "s/^#\\s*(${LOCALE//./\\.} )/\\1/" "$locale_gen"
+        sudo locale-gen
+    fi
+
+    sudo localectl set-locale "LANG=$LOCALE"
+    sudo localectl set-keymap "$CONSOLE_KEYMAP"
+    sudo localectl set-x11-keymap "$X11_LAYOUT" '' '' "$X11_OPTIONS"
+}
+
 apply_gnome_settings() {
     if ! command -v gsettings >/dev/null; then
         log "skip     gnome-settings.sh (gsettings not installed)"
@@ -297,6 +334,7 @@ main() {
     clear_stow_conflicts
     stow_dotfiles
     run_playbook 'desktop-playbook.yml'
+    configure_locale
     apply_gnome_settings
     log 'done'
 }
