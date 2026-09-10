@@ -7,7 +7,7 @@ set -euo pipefail
 REPO_URL='https://github.com/LuRsT/Setup.git'
 DEFAULT_REPO_DIR="$HOME/dev/Setup"
 BACKUP_DIR="$HOME/.setup-backup/$(date +%Y%m%d-%H%M%S)"
-PREREQ_PACKAGES=('git' 'ansible' 'stow')
+PREREQ_PACKAGES=('git' 'ansible' 'stow' 'reflector')
 
 # Linked wholesale rather than through stow: ~/.config is a single symlink into
 # the repo, so whatever an app writes there lands in the repo and is filtered by
@@ -16,6 +16,13 @@ LINKED_PATHS=('.config' 'bin' '.stowrc')
 
 # Only DNS is checked; pacman reports anything worse well enough on its own.
 NETWORK_TIMEOUT_SECONDS=5
+
+# The mirrorlist an Arch ISO ships with is not ordered by speed, and a slow
+# mirror makes the install phase crawl or time out outright. Neighbours are
+# included alongside GB because the fastest mirror is often just across the
+# channel, and a country with no mirrors at all would otherwise strand us.
+MIRROR_COUNTRIES='GB,IE,NL,FR,DE'
+MIRROR_COUNT=20
 
 REPO_DIR=''
 IS_CHECK=false
@@ -204,6 +211,46 @@ stow_dotfiles() {
     "${command[@]}"
 }
 
+# Ranked before the playbooks rather than inside them: ansible's pacman module
+# uses whatever mirrorlist it finds, so this only helps if it lands first.
+# A failure here is not fatal, since the existing mirrorlist still works; it is
+# only slower, which is the very thing this is trying to fix.
+rank_mirrors() {
+    local mirrorlist='/etc/pacman.d/mirrorlist'
+    local staged
+
+    log "mirrors  $MIRROR_COUNT fastest https mirrors in $MIRROR_COUNTRIES"
+
+    if $IS_CHECK; then
+        return 0
+    fi
+
+    # Written to a temp file first, because --save truncates its target before
+    # it has any results: an interrupted run against the real mirrorlist would
+    # leave the machine with no mirrors, and so no way to install the packages
+    # that would repair it.
+    staged="$(mktemp)"
+
+    if ! sudo reflector --country "$MIRROR_COUNTRIES" --protocol https \
+        --latest "$MIRROR_COUNT" --sort rate --save "$staged"; then
+        sudo rm -f "$staged"
+        log 'warn     reflector failed, keeping the existing mirrorlist'
+        return 0
+    fi
+
+    # An empty file is a successful exit with nothing to show for it, which
+    # would be indistinguishable from a working mirrorlist until pacman ran.
+    if [ ! -s "$staged" ]; then
+        sudo rm -f "$staged"
+        log 'warn     reflector found no mirrors, keeping the existing mirrorlist'
+        return 0
+    fi
+
+    sudo cp "$mirrorlist" "$mirrorlist.bootstrap-backup"
+    sudo install --mode 644 "$staged" "$mirrorlist"
+    sudo rm -f "$staged"
+}
+
 # Run under sudo rather than leaning on ansible's become, whose sudo -n needs a
 # warm timestamp this machine does not reliably keep. Safe because both playbooks
 # touch only pacman and systemd, and neither reads the invoking user's identity
@@ -244,6 +291,7 @@ main() {
     install_prereqs
     sync_repo
     require_sudo
+    rank_mirrors
     run_playbook 'install-playbook.yml'
     link_repo_paths
     clear_stow_conflicts
