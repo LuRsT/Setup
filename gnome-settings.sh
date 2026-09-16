@@ -1,6 +1,8 @@
 #!/bin/bash
 ## Gnome instructions
-###  Enable on gnome tweaks, middle click paste
+
+## Middle click pastes the primary selection, which Gnome now turns off by default
+gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true
 
 ### For resizing windows
 gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
@@ -33,6 +35,9 @@ gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 ## Lock screen with Super+Shift+x
 gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super><Shift>x', '<Super>l']"
 
+## Screenshot tool with Super+Shift+s
+gsettings set org.gnome.shell.keybindings show-screenshot-ui "['<Shift><Super>s']"
+
 ## Set up the workspaces (bindings cover 9, only the first 5 are live)
 gsettings set org.gnome.mutter dynamic-workspaces false
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 5
@@ -45,6 +50,13 @@ done
 for i in $(seq 1 9); do
   gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']"
 done
+
+## Super+Left/Right walks through the workspaces. Gnome binds those keys to
+## half-screen tiling by default, so tiling loses them.
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>Left']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>Right']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-left "[]"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-right "[]"
 
 ## Clear other shortcuts that may interfere
 for i in $(seq 1 9); do
@@ -71,9 +83,15 @@ gsettings reset org.gnome.desktop.interface icon-theme
 ## Dark mode and the accent colour are built into Gnome, no theme needed
 gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 gsettings set org.gnome.desktop.interface accent-color 'green'
-## No animations, and show the battery percentage in the top bar
-gsettings set org.gnome.desktop.interface enable-animations false
+## Keep animations on, and show the battery percentage in the top bar. Set
+## rather than left out, so machines that ran this with them off get them back.
+gsettings set org.gnome.desktop.interface enable-animations true
 gsettings set org.gnome.desktop.interface show-battery-percentage true
+## Wallpaper, also used by the lock screen. ~/.config is linked into this repo
+## before this script runs, so the image is already there on a fresh machine.
+gsettings set org.gnome.desktop.background picture-uri "file://$HOME/.config/background_4k.jpg"
+gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/.config/background_4k.jpg"
+gsettings set org.gnome.desktop.screensaver picture-uri "file://$HOME/.config/background_4k.jpg"
 
 ## UK layout, caps lock as another ctrl, and ctrl+alt+backspace to kill X
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'gb')]"
@@ -84,6 +102,14 @@ gsettings set org.gnome.desktop.input-sources xkb-options "['terminate:ctrl_alt_
 
 ## Scroll the way the scrollbar moves, not the way the page moves
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+
+## Don't let the light sensor change the screen brightness
+gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
+
+## Gnome Console: Cascadia Code (from ttf-cascadia-code) and unlimited scrollback
+gsettings set org.gnome.Console use-system-font false
+gsettings set org.gnome.Console custom-font 'Cascadia Code NF 12'
+gsettings set org.gnome.Console ignore-scrollback-limit true
 
 ## Show dotfiles in GTK file dialogs, and don't float directories to the top
 gsettings set org.gtk.Settings.FileChooser show-hidden true

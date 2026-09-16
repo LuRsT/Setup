@@ -1,1 +1,4 @@
 OPTIONS=boulder:0, color, autodig, !cmdassist, norest_on_space, !autopickup
+OPTIONS=msg_window:full
+OPTIONS=msghistory:200
+MSGTYPE=stop "You feel"

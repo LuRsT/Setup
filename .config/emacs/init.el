@@ -495,9 +495,9 @@
 
 ;; highlight-indentation for yaml (file in 'custom' folder)
 ;; From: https://blog.chmouel.com/2016/09/07/dealing-with-yaml-in-emacs/
-(require 'highlight-indentation)
-(set-face-background 'highlight-indentation-face "#e3e3d3")
-(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+;; (require 'highlight-indentation)
+;; (set-face-background 'highlight-indentation-face "#e3e3d3")
+;; (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 
 ;; Markdown
 (use-package markdown-mode

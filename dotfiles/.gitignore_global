@@ -50,3 +50,5 @@ scratch
 geckodriver.log
 *node_modules*
 *.env*
+
+**/.claude/.cc-writes/
