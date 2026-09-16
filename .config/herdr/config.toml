@@ -1,0 +1,51 @@
+onboarding = false
+
+# Keybindings mirror dotfiles/.tmux.conf. herdr tabs play the role of tmux windows.
+[keys]
+# Command prefix (like screen)
+prefix = "ctrl+a"
+
+split_vertical = "prefix+plus" # side by side, like tmux `split-window -h`
+split_horizontal = "prefix+_"  # stacked, like tmux `split-window -v`
+
+# Tabs control
+previous_tab = "ctrl+t"
+next_tab = "ctrl+y"
+
+# Vim style pane selection (prefix fallback) is already herdr's default:
+# focus_pane_left/down/up/right = "prefix+h/j/k/l"
+
+# Copy mode to / key
+copy_mode = "prefix+slash"
+
+# tmux defaults that herdr binds elsewhere
+detach = "prefix+d"
+rename_tab = "prefix+comma"
+close_tab = "prefix+ampersand"
+last_pane = "prefix+semicolon"
+
+# Smart pane switching with awareness of Vim/Neovim splits.
+# Pairs with vim-tmux-navigator in .config/nvim (plugins.lua).
+[[keys.command]]
+key = "ctrl+h"
+type = "shell"
+command = "~/.config/herdr/navigate.sh left ctrl+h"
+description = "focus pane left (vim-aware)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "shell"
+command = "~/.config/herdr/navigate.sh down ctrl+j"
+description = "focus pane down (vim-aware)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "shell"
+command = "~/.config/herdr/navigate.sh up ctrl+k"
+description = "focus pane up (vim-aware)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "shell"
+command = "~/.config/herdr/navigate.sh right ctrl+l"
+description = "focus pane right (vim-aware)"
