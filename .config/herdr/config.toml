@@ -12,6 +12,9 @@ split_horizontal = "prefix+_"  # stacked, like tmux `split-window -v`
 previous_tab = "ctrl+t"
 next_tab = "ctrl+y"
 
+# Spaces (herdr workspaces): jump straight to space N
+switch_workspace = "ctrl+1..9"
+
 # Vim style pane selection (prefix fallback) is already herdr's default:
 # focus_pane_left/down/up/right = "prefix+h/j/k/l"
 
