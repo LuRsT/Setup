@@ -239,8 +239,9 @@ rank_mirrors() {
     # Written to a temp file first, because --save truncates its target before
     # it has any results: an interrupted run against the real mirrorlist would
     # leave the machine with no mirrors, and so no way to install the packages
-    # that would repair it.
-    staged="$(mktemp)"
+    # that would repair it. Created as root, because fs.protected_regular stops
+    # even root from opening someone else's file in /tmp for writing.
+    staged="$(sudo mktemp)"
 
     if ! sudo reflector --country "$MIRROR_COUNTRIES" --protocol https \
         --latest "$MIRROR_COUNT" --sort rate --save "$staged"; then
