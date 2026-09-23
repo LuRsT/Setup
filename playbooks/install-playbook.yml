@@ -12,7 +12,7 @@
           - intel-gpu-tools
        state: present
        update_cache: true
-     when: "'GenuineIntel' in ansible_processor"
+     when: "'GenuineIntel' in ansible_facts['processor']"
 
    - name: AMD GPU + microcode
      pacman:
@@ -24,7 +24,7 @@
           - radeontop
        state: present
        update_cache: true
-     when: "'AuthenticAMD' in ansible_processor"
+     when: "'AuthenticAMD' in ansible_facts['processor']"
 
    - name: Install things
      pacman:
