@@ -50,6 +50,7 @@
           - tk
           - entr
           - pyright
+          - difftastic
 
           # OS
           - time
