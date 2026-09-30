@@ -1,5 +1,11 @@
 onboarding = false
 
+# Zoom indicator for the tab bar, like the 🔍 in tmux's status bar
+[ui]
+tab_bar_right = [
+  { type = "command", command = "~/.config/herdr/zoom-indicator.sh", interval_seconds = 1, timeout_seconds = 1 },
+]
+
 # Keybindings mirror dotfiles/.tmux.conf. herdr tabs play the role of tmux windows.
 [keys]
 # Command prefix (like screen)
