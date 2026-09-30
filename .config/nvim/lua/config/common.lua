@@ -29,6 +29,10 @@ vim.o.expandtab = true
 vim.o.shiftround = true
 vim.o.mouse = 'a'
 vim.o.clipboard = 'unnamedplus'
+-- wl-clipboard needs window focus on GNOME Wayland, which GNOME refuses, so
+-- `p` hangs behind a "wl-clipboard is ready" notification. xclip goes
+-- through XWayland, whose clipboard GNOME keeps in sync without focus.
+vim.g.clipboard = 'xclip'
 vim.o.autowrite = true              -- Save buffer automatically when changing files
 vim.o.fileformats = 'unix,mac,dos'  -- Handle Mac and DOS line-endings but prefer Unix
 
