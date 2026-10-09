@@ -5,7 +5,7 @@ to apply them. Run one directly when you want only that part:
 
 ``` sh
 sudo ansible-playbook install-playbook.yml   # packages, microcode, and GPU drivers
-sudo ansible-playbook desktop-playbook.yml   # GNOME and GDM
+sudo ansible-playbook desktop-playbook.yml   # GNOME, GDM, systemd-oomd, and zram
 ```
 
 The openbox desktop is not part of the bootstrap. Install it by hand if you want

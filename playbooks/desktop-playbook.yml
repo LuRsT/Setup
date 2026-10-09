@@ -15,3 +15,65 @@
      systemd:
        name: gdm
        enabled: yes
+
+   # Without this, a full RAM leaves it to the kernel OOM killer, which once
+   # took out the terminal running every agent instead of the browser that
+   # filled the memory. systemd-oomd ships with systemd but watches nothing
+   # until a unit opts in, so these drop-ins copy Fedora's defaults: kill the
+   # app under the user session whose memory pressure stays high, and kill
+   # the biggest user of swap once swap is nearly full
+   - name: Create the systemd drop-in directories for systemd-oomd
+     file:
+       path: "{{ item }}"
+       state: directory
+       mode: "0755"
+     loop:
+       - /etc/systemd/system/user@.service.d
+       - /etc/systemd/system/-.slice.d
+
+   - name: Let systemd-oomd watch user sessions
+     copy:
+       dest: /etc/systemd/system/user@.service.d/10-oomd-user-service-defaults.conf
+       content: |
+         [Service]
+         ManagedOOMMemoryPressure=kill
+         ManagedOOMMemoryPressureLimit=50%
+       mode: "0644"
+
+   - name: Let systemd-oomd watch swap use
+     copy:
+       dest: /etc/systemd/system/-.slice.d/10-oomd-root-slice-defaults.conf
+       content: |
+         [Slice]
+         ManagedOOMSwap=kill
+       mode: "0644"
+
+   - name: Enable systemd-oomd
+     systemd:
+       name: systemd-oomd
+       enabled: yes
+       state: started
+       daemon_reload: yes
+
+   # Compressed swap in RAM, so a full RAM slows things down instead of
+   # killing them, and systemd-oomd has swap use to judge by. zstd packs
+   # memory roughly 3:1, so half of RAM as zram holds about 1.5x RAM's worth
+   - name: Install zram-generator
+     pacman:
+       name: zram-generator
+       state: present
+
+   - name: Configure zram swap
+     copy:
+       dest: /etc/systemd/zram-generator.conf
+       content: |
+         [zram0]
+         zram-size = ram / 2
+         compression-algorithm = zstd
+       mode: "0644"
+
+   - name: Start zram swap
+     systemd:
+       name: systemd-zram-setup@zram0
+       state: started
+       daemon_reload: yes
