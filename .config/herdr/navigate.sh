@@ -8,6 +8,8 @@
 direction="$1"
 key="$2"
 herdr="${HERDR_BIN_PATH:-herdr}"
+# A server started before a herdr upgrade exports its old, now "(deleted)" path.
+[ -x "$herdr" ] || herdr=herdr
 pane="$HERDR_ACTIVE_PANE_ID"
 
 if "$herdr" pane process-info --pane "$pane" \
