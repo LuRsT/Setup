@@ -1,9 +1,11 @@
 {
+  "permissions": {
+    "defaultMode": "default"
+  },
   "model": "opus",
   "statusLine": {
     "type": "command",
-    "command": "~/.claude/statusline.sh",
-    "padding": 0
+    "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
     "pyright-lsp@claude-plugins-official": true,
@@ -18,24 +20,37 @@
     }
   },
   "effortLevel": "xhigh",
+  "tui": "default",
+  "theme": "auto",
+  "skipAutoPermissionPrompt": false,
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "autoCompactWindow": 400000
+    }
+  },
   "hooks": {
-    "SessionStart": [
+    "PreToolUse": [
       {
+        "matcher": "Bash",
         "hooks": [
           {
             "type": "command",
-            "command": "/home/lurst/bin/herdr-claude record 2>/dev/null || true",
-            "timeout": 10
+            "command": "jq -r '.tool_input.command' | grep -qiE 'co-authored-by: *claude|--no-verify' && { echo 'Blocked: no Claude co-author trailers and no --no-verify' >&2; exit 2; } || exit 0"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/scripts/guard-git.py"
           }
         ]
       }
     ],
-    "SessionEnd": [
+    "SessionStart": [
       {
+        "matcher": "*",
         "hooks": [
           {
             "type": "command",
-            "command": "/home/lurst/bin/herdr-claude record 2>/dev/null || true",
+            "command": "bash '/home/lurst/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10
           }
         ]

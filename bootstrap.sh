@@ -15,7 +15,8 @@ PREREQ_PACKAGES=('git' 'ansible' 'stow' 'reflector')
 #
 # ~/.claude is the exception: it holds credentials and history, so only these
 # files are linked one by one, and the rest of the directory never reaches here.
-LINKED_PATHS=('.config' 'bin' '.stowrc' '.claude/settings.json' '.claude/statusline.sh')
+LINKED_PATHS=('.config' 'bin' '.stowrc' '.claude/settings.json' '.claude/statusline.sh'
+    '.claude/CLAUDE.md' '.claude/scripts/guard-git.py')
 
 # Only DNS is checked; pacman reports anything worse well enough on its own.
 NETWORK_TIMEOUT_SECONDS=5
