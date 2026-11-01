@@ -38,7 +38,7 @@
     sp = "!git stash pop   $(git stash list | fzf --preview 'git stash show $(echo {} | cut -f1 -d:)' | cut -f1 -d:)"
 
     verbs = "!git log --pretty=format:'%s' | cut -d \" \" -f 1 | sort | uniq -c | sort -nr"
-    clean-merged = !git branch --merged master | grep -Ev \"(^\\*|^  master$)\" | xargs git branch --delete
+    clean-merged = !git branch --merged origin/HEAD | grep -Ev \"(^\\*|^  (main|master)$)\" | xargs -r git branch --delete
     clean-gone = !git fetch --prune && git branch --verbose | awk '/\\[gone]/{print $1}' |  xargs git branch --delete --force
 
     # Worktrees
@@ -63,6 +63,9 @@
     ui = auto
 [push]
     default = current
+    autoSetupRemote = true
+[branch]
+    autoSetupMerge = simple
 [diff]
     algorithm = histogram
     colorMoved = plain
