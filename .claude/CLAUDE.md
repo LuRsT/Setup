@@ -26,6 +26,13 @@ still win on project-specific details.
 - Default to the smallest thing that answers the question: a copy-pasteable snippet, not a CLI tool; a 5-line PR description, not an essay. Ask before adding CSV export, argparse, retries, or config files.
 - Write all drafts, replies, and docs in English unless I explicitly ask for another language, even when the source material (customer ticket, thread) is in another language.
 
+## Context efficiency
+
+- Prefer inline work over a subagent for tasks under ~5 tool calls.
+- Read files with purpose: know what you're looking for before you open one.
+- Use Grep to locate the relevant section before reading a whole large file. For files over 500 lines, read only that section with offset/limit.
+- Don't echo back file contents you just read.
+
 ## Working style
 
 - Never state a root cause, diagnosis, or 'this is fixed' without running the command that proves it. If unverified, say 'hypothesis' explicitly.
