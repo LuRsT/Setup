@@ -17,5 +17,29 @@
       }
     }
   },
-  "effortLevel": "xhigh"
+  "effortLevel": "xhigh",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/lurst/bin/herdr-claude record 2>/dev/null || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/lurst/bin/herdr-claude record 2>/dev/null || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }

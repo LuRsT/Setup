@@ -52,3 +52,4 @@ geckodriver.log
 *.env*
 
 **/.claude/.cc-writes/
+**/.claude/settings.local.json

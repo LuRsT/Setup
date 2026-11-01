@@ -12,7 +12,10 @@ PREREQ_PACKAGES=('git' 'ansible' 'stow' 'reflector')
 # Linked wholesale rather than through stow: ~/.config is a single symlink into
 # the repo, so whatever an app writes there lands in the repo and is filtered by
 # .gitignore's allowlist.
-LINKED_PATHS=('.config' 'bin' '.stowrc')
+#
+# ~/.claude is the exception: it holds credentials and history, so only these
+# files are linked one by one, and the rest of the directory never reaches here.
+LINKED_PATHS=('.config' 'bin' '.stowrc' '.claude/settings.json' '.claude/statusline.sh')
 
 # Only DNS is checked; pacman reports anything worse well enough on its own.
 NETWORK_TIMEOUT_SECONDS=5
@@ -173,6 +176,7 @@ link_to() {
         return 0
     fi
 
+    mkdir -p "$(dirname "$target_path")"
     ln -s "$source_path" "$target_path"
 }
 
