@@ -1,0 +1,21 @@
+{
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "pyright-lsp@claude-plugins-official": true,
+    "sdlc@gil": true
+  },
+  "extraKnownMarketplaces": {
+    "gil": {
+      "source": {
+        "source": "git",
+        "url": "git@forge:gil/gils-clone.git"
+      }
+    }
+  },
+  "effortLevel": "xhigh"
+}
