@@ -13,10 +13,13 @@ PREREQ_PACKAGES=('git' 'ansible' 'stow' 'reflector')
 # the repo, so whatever an app writes there lands in the repo and is filtered by
 # .gitignore's allowlist.
 #
-# ~/.claude is the exception: it holds credentials and history, so only these
-# files are linked one by one, and the rest of the directory never reaches here.
+# ~/.claude and ~/.pi/agent are the exception: they hold credentials, sessions
+# and history, so only these paths are linked one by one, and the rest of each
+# directory never reaches here.
 LINKED_PATHS=('.config' 'bin' '.stowrc' '.claude/settings.json' '.claude/statusline.sh'
-    '.claude/CLAUDE.md' '.claude/scripts/guard-git.py')
+    '.claude/CLAUDE.md' '.claude/scripts/guard-git.py'
+    '.pi/agent/APPEND_SYSTEM.md' '.pi/agent/prompts' '.pi/agent/themes'
+    '.pi/agent/extensions/claude-look.ts')
 
 # Only DNS is checked; pacman reports anything worse well enough on its own.
 NETWORK_TIMEOUT_SECONDS=5
