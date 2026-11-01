@@ -1,3 +1,4 @@
+;; -*- lexical-binding: nil -*-
 ;;; nano-theme --- Face settings for nano-emacs
 ;;; License:
 ;; ---------------------------------------------------------------------

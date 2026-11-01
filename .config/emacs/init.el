@@ -1,3 +1,5 @@
+;;; init.el --- Gil's Emacs config -*- lexical-binding: t -*-
+
 ;; Initialize package system early
 
 (require 'package)
