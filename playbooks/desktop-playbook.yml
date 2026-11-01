@@ -8,8 +8,29 @@
        name:
           - gnome
           - gnome-tweaks
+          # Vitals reads memory and network stats through libgtop; lm_sensors
+          # is for poking at the same sensors from a terminal
+          - git
+          - libgtop
+          - lm_sensors
        state: present
        update_cache: true
+
+   # Vitals puts the CPU temperature in the top bar. Cloned from GitHub rather
+   # than extensions.gnome.org so no browser add-on is needed. Pinned to the
+   # commit behind tag v84.0.0 (read through before pinning), since a tag can
+   # be moved. To upgrade, read the diff and bump the commit.
+   - name: Install the Vitals Shell extension
+     git:
+       repo: https://github.com/corecoding/Vitals
+       dest: /usr/share/gnome-shell/extensions/Vitals@CoreCoding.com
+       version: 7108c2ae4146226c40eb6496e1829ca5ade8030e
+
+   # The repo ships the settings schema uncompiled, and the extension won't
+   # load without the compiled one
+   - name: Compile the Vitals settings schema
+     command: glib-compile-schemas /usr/share/gnome-shell/extensions/Vitals@CoreCoding.com/schemas
+     changed_when: false
 
    - name: Enable GDM
      systemd:

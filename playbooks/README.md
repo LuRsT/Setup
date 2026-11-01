@@ -5,8 +5,12 @@ to apply them. Run one directly when you want only that part:
 
 ``` sh
 sudo ansible-playbook install-playbook.yml   # packages, microcode, and GPU drivers
-sudo ansible-playbook desktop-playbook.yml   # GNOME, GDM, systemd-oomd, and zram
+sudo ansible-playbook desktop-playbook.yml   # GNOME, GDM, Vitals, systemd-oomd, and zram
 ```
+
+The Vitals extension, which puts the CPU temperature in the top bar, is cloned
+from GitHub at a pinned commit. To upgrade it, read the diff to the new tag and
+update the commit in `desktop-playbook.yml`.
 
 The openbox desktop is not part of the bootstrap. Install it by hand if you want
 it back:

@@ -108,6 +108,15 @@ gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 ## Don't let the light sensor change the screen brightness
 gsettings set org.gnome.settings-daemon.plugins.power ambient-enabled false
 
+## Vitals (installed by desktop-playbook.yml) shows the CPU package temperature
+## in the top bar. A new extension only shows up after logging out and back in.
+## Its schema lives with the extension, not in the system schema directory.
+## Public IP is off because it phones api.corecoding.com on every refresh.
+gsettings set org.gnome.shell enabled-extensions "['Vitals@CoreCoding.com']"
+VITALS_SCHEMAS=/usr/share/gnome-shell/extensions/Vitals@CoreCoding.com/schemas
+gsettings --schemadir "$VITALS_SCHEMAS" set org.gnome.shell.extensions.vitals hot-sensors "['_temperature_processor_0_']"
+gsettings --schemadir "$VITALS_SCHEMAS" set org.gnome.shell.extensions.vitals include-public-ip false
+
 ## Gnome Console: Cascadia Code (from ttf-cascadia-code) and unlimited scrollback
 gsettings set org.gnome.Console use-system-font false
 gsettings set org.gnome.Console custom-font 'Cascadia Code NF 12'
