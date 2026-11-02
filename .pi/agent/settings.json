@@ -1,0 +1,6 @@
+{
+  "lastChangelogVersion": "1.4.0",
+  "defaultProvider": "openrouter",
+  "defaultModel": "moonshotai/kimi-k2.6",
+  "theme": "austere"
+}

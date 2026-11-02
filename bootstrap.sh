@@ -18,8 +18,8 @@ PREREQ_PACKAGES=('git' 'ansible' 'stow' 'reflector')
 # directory never reaches here.
 LINKED_PATHS=('.config' 'bin' '.stowrc' '.claude/settings.json' '.claude/statusline.sh'
     '.claude/CLAUDE.md' '.claude/scripts/guard-git.py'
-    '.pi/agent/APPEND_SYSTEM.md' '.pi/agent/prompts' '.pi/agent/themes'
-    '.pi/agent/extensions/claude-look.ts')
+    '.pi/agent/settings.json' '.pi/agent/APPEND_SYSTEM.md' '.pi/agent/prompts'
+    '.pi/agent/themes' '.pi/agent/extensions/claude-look.ts')
 
 # Only DNS is checked; pacman reports anything worse well enough on its own.
 NETWORK_TIMEOUT_SECONDS=5
