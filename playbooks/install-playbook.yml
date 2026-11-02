@@ -19,7 +19,6 @@
        name:
           - amd-ucode
           - libva-mesa-driver
-          - mesa-vdpau
           - vulkan-radeon
           - radeontop
        state: present
