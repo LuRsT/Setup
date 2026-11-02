@@ -1,0 +1,87 @@
+// Mirrors ~/.config/nvim where Zed has an equivalent.
+// gd, K, [d/]d, za, gc and ys/cs/ds are already Zed's vim defaults.
+[
+  {
+    "context": "vim_mode == normal && !menu",
+    "bindings": {
+      ";": "command_palette::Toggle",
+      "shift-q": null,
+      "tab": "vim::Indent",
+      "shift-tab": "vim::Outdent",
+      "enter": "vim::EndOfParagraph",
+      "backspace": "vim::StartOfParagraph",
+      "-": "project_panel::ToggleFocus",
+      "ctrl-p": "file_finder::Toggle",
+      "ctrl-g": "tab_switcher::Toggle",
+      "ctrl-x": "workspace::CopyPath",
+
+      "alt-j": "vim::ResizePaneUp",
+      "alt-k": "vim::ResizePaneDown",
+      "alt-l": "vim::ResizePaneLeft",
+      "alt-h": "vim::ResizePaneRight",
+
+      "space space": "file_finder::Toggle",
+      "space f f": "file_finder::Toggle",
+      "space f g": "pane::DeploySearch",
+      "space f b": "tab_switcher::Toggle",
+      "space f r": "editor::FindAllReferences",
+      "space f s": "outline::Toggle",
+      "space f t": "project_panel::ToggleFocus",
+      "space r g": "pane::DeploySearch",
+
+      "space g b": "git::Blame",
+      "space g s": "git_panel::ToggleFocus",
+      "space g l": "git_panel::ActivateHistoryTab",
+
+      "space c a": "editor::ToggleCodeActions",
+      "space c r": "editor::Rename",
+      "space c f": "editor::Format",
+
+      "space e": "editor::Hover",
+      "space z": "editor::ToggleFold",
+      "space shift-z": "editor::ToggleFoldRecursive",
+      "space v v": "zed::OpenSettings",
+
+      // Zed runs the test in its own terminal instead of the last tmux pane.
+      // Put the cursor on the `def test_...` line; the menu lists its pytest task.
+      "space t t": "editor::ToggleCodeActions"
+    }
+  },
+  {
+    "context": "vim_mode == visual && !menu",
+    "bindings": {
+      ">": ["workspace::SendKeystrokes", "> g v"],
+      "<": ["workspace::SendKeystrokes", "< g v"],
+      "tab": ["workspace::SendKeystrokes", "> g v"],
+      "shift-tab": ["workspace::SendKeystrokes", "< g v"],
+      "enter": "vim::EndOfParagraph",
+      "backspace": "vim::StartOfParagraph"
+    }
+  },
+  {
+    "context": "vim_mode == operator",
+    "bindings": {
+      "enter": "vim::EndOfParagraph",
+      "backspace": "vim::StartOfParagraph"
+    }
+  },
+  {
+    // vim-tmux-navigator: move between Zed panes
+    "context": "VimControl && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    // Telescope-style ctrl-j/k in pickers
+    "context": "Picker || menu",
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious",
+      "ctrl-l": "menu::Confirm"
+    }
+  }
+]

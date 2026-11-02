@@ -1,0 +1,55 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "git_panel": {
+    "tree_view": false
+  },
+  "project_panel": {
+    "dock": "left",
+    "git_status_indicator": true
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "vim_mode": true,
+  "vim": {
+    "gdefault": true
+  },
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 300
+  },
+  "use_smartcase_search": true,
+  "vertical_scroll_margin": 5,
+  "autosave": "on_window_change",
+  "show_whitespaces": "trailing",
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+      "max_severity": "error"
+    }
+  },
+  "file_types": {
+    "HTML": ["j2"]
+  },
+  "languages": {
+    "Plain Text": {
+      "show_whitespaces": "none"
+    }
+  },
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Gruvbox Dark",
+  },
+}
