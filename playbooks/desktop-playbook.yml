@@ -13,6 +13,7 @@
           - git
           - libgtop
           - lm_sensors
+          - gnome-shell-extension-appindicator
        state: present
        update_cache: true
 

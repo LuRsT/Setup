@@ -92,6 +92,9 @@
           - mtpfs
           - gvfs-mtp
 
+          # For logitech stuff
+          - solaar
+
           # For ranger
           - highlight
           - w3m
