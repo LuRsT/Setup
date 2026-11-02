@@ -277,3 +277,9 @@ vim.keymap.set('n', '<c-\\>', '<cmd>TmuxNavigatePrevious<cr>')
 -- :Telescope git_branches      -- Switch branches
 -- :Telescope git_status        -- Interactive git status (stage/unstage files)
 -- :Telescope git_stash         -- Browse and apply stashes
+
+
+-- Open up floats to see hints/warnings/errors pop ups
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })

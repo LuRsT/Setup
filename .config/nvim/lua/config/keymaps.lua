@@ -71,3 +71,64 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Run pytest for the test under the cursor.
+-- Verbose by design: every step logs via vim.api.nvim_echo so it always lands
+-- in :messages, regardless of which notify handler is installed.
+local function log(msg)
+  vim.api.nvim_echo({ { '[run-test] ' .. msg, 'Normal' } }, true, {})
+end
+
+local function run_test_under_cursor()
+  local file = vim.fn.expand('%')
+  log('file=' .. file .. ' ft=' .. vim.bo.filetype)
+  if file == '' then return log('abort: no file') end
+  if vim.bo.filetype ~= 'python' then return log('abort: not python') end
+
+  local ok_node, node = pcall(vim.treesitter.get_node)
+  if not ok_node or not node then
+    return log('abort: treesitter.get_node() returned nothing (parser not attached?)')
+  end
+  log('start node=' .. node:type())
+
+  local function name_of(n)
+    local field = n:field('name')[1]
+    return field and vim.treesitter.get_node_text(field, 0) or nil
+  end
+
+  local test_name, class_name
+  local cur = node
+  while cur do
+    local t = cur:type()
+    if t == 'function_definition' and not test_name then
+      local n = name_of(cur)
+      if n and n:match('^test_') then test_name = n end
+    elseif t == 'class_definition' and test_name then
+      class_name = name_of(cur)
+      break
+    end
+    cur = cur:parent()
+  end
+
+  if not test_name then return log('no enclosing test_* function') end
+  log('found test=' .. test_name .. ' class=' .. (class_name or '<none>'))
+
+  local nodeid = file .. '::' .. (class_name and (class_name .. '::' .. test_name) or test_name)
+  local cmd = 'pytest ' .. vim.fn.shellescape(nodeid)
+
+  local ok_unnamed = pcall(vim.fn.setreg, '"', cmd)
+  local ok_plus    = pcall(vim.fn.setreg, '+', cmd)
+  log('clipboard set: unnamed=' .. tostring(ok_unnamed) .. ' plus=' .. tostring(ok_plus))
+
+  if vim.env.TMUX then
+    local pane = vim.fn.system({ 'tmux', 'display-message', '-p', '#{last_pane_id}' }):gsub('%s+$', '')
+    log('tmux last_pane_id=' .. pane .. ' (shell_error=' .. vim.v.shell_error .. ')')
+    if vim.v.shell_error == 0 and pane ~= '' then
+      vim.fn.system({ 'tmux', 'send-keys', '-t', pane, cmd, 'Enter' })
+      log('tmux send-keys shell_error=' .. vim.v.shell_error)
+    end
+  end
+
+  log('cmd: ' .. cmd)
+end
+
+vim.keymap.set('n', '<leader>tt', run_test_under_cursor, { desc = 'Run test under cursor (tmux/clipboard)' })
