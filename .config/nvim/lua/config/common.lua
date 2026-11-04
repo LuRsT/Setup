@@ -88,6 +88,13 @@ vim.api.nvim_create_autocmd("FocusLost", {
   command = "silent! wa"
 })
 
+-- Briefly highlight yanked text (replaces vim-highlightedyank).
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.hl.on_yank({ timeout = 200 })
+  end,
+})
+
 -- Diagnostics: errors before warnings, rounded float, errors-only inline
 vim.diagnostic.config({
   severity_sort = true,

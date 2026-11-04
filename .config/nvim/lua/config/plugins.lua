@@ -130,12 +130,6 @@ require("lazy").setup({
         })
         end,
     },
-    {
-        "machakann/vim-highlightedyank",
-        config = function()
-            vim.g.highlightedyank_highlight_duration = 200 -- ms
-        end
-    },
     { "norcalli/nvim-colorizer.lua" },
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -153,7 +147,6 @@ require("lazy").setup({
             vim.keymap.set("n", "-", "<cmd>Oil<cr>")
         end,
     },
-    { "tpope/vim-commentary" },
     { "tpope/vim-fugitive" },
     { "tpope/vim-surround" },
     { "sainnhe/gruvbox-material" },
@@ -172,28 +165,6 @@ require("lazy").setup({
     { "williamboman/mason.nvim" },
     { "williamboman/mason-lspconfig.nvim" },
     { "neovim/nvim-lspconfig" },
-    {
-      "hrsh7th/nvim-cmp",
-      dependencies = { "hrsh7th/cmp-nvim-lsp" },
-      lazy = false,
-      config = function()
-        local cmp = require("cmp")
-        cmp.setup({
-          snippet = {
-            expand = function(args) vim.snippet.expand(args.body) end,
-          },
-          sources = cmp.config.sources({
-            { name = "nvim_lsp" },
-          }),
-          mapping = cmp.mapping.preset.insert({
-            ["<C-Space>"] = cmp.mapping.complete(),
-            ["<CR>"] = cmp.mapping.confirm({ select = false }),
-            ["<C-n>"] = cmp.mapping.select_next_item(),
-            ["<C-p>"] = cmp.mapping.select_prev_item(),
-          }),
-        })
-      end,
-    },
   },
   -- Configure any other settings here. See the documentation for more details.
   --
@@ -212,20 +183,14 @@ require("mason-lspconfig").setup({
 })
 
 -- New vim.lsp.config API
-local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
-local capabilities = ok and cmp_nvim_lsp.default_capabilities()
-  or vim.lsp.protocol.make_client_capabilities()
-
 vim.lsp.config('*', {
   root_markers = { '.git' },
-  capabilities = capabilities,
 })
 
 vim.lsp.config.basedpyright = {
   cmd = { 'basedpyright-langserver', '--stdio' },
   filetypes = { 'python' },
   root_markers = { 'pyproject.toml', 'setup.py', '.git' },
-  capabilities = capabilities,
   settings = {
     basedpyright = {
       analysis = {
@@ -241,8 +206,54 @@ vim.lsp.config.ruff = {
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
   root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
-  capabilities = capabilities,
 }
+
+-- Built-in LSP completion (replaces nvim-cmp).
+-- Nothing is preselected, so <CR> only accepts an item picked with <C-n>/<C-p>.
+-- No 'fuzzy': it ranks basedpyright results badly ("Pat" put
+-- PendingDeprecationWarning above pathlib.Path).
+vim.opt.completeopt = { 'menuone', 'noselect', 'popup' }
+
+-- Servers only list a few trigger characters (like '.'). Adding the
+-- identifier characters makes the menu open as you type, like nvim-cmp did.
+local IDENTIFIER_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_'
+local clients_with_identifier_triggers = {}
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client or not client:supports_method('textDocument/completion') then
+      return
+    end
+
+    -- LspAttach fires once per buffer, but the capabilities are per client.
+    if not clients_with_identifier_triggers[client.id] then
+      local completion_provider = client.server_capabilities.completionProvider
+      local trigger_chars = completion_provider.triggerCharacters or {}
+      for index = 1, #IDENTIFIER_CHARS do
+        local char = IDENTIFIER_CHARS:sub(index, index)
+        table.insert(trigger_chars, char)
+      end
+      completion_provider.triggerCharacters = trigger_chars
+      clients_with_identifier_triggers[client.id] = true
+    end
+
+    vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+  end,
+})
+
+vim.keymap.set('i', '<C-Space>', vim.lsp.completion.get, { desc = 'Trigger completion' })
+
+-- Only <C-y> applies auto-imports and expands snippets, so <CR> sends it
+-- when an item is selected and inserts a newline otherwise.
+vim.keymap.set('i', '<CR>', function()
+  local menu_is_open = vim.fn.pumvisible() == 1
+  local selected_index = vim.fn.complete_info({ 'selected' }).selected
+  if menu_is_open and selected_index ~= -1 then
+    return '<C-y>'
+  end
+  return '<CR>'
+end, { expr = true, desc = 'Accept selected completion or newline' })
 
 -- Tmux-navigator
 vim.keymap.set('n', '<c-h>', '<cmd>TmuxNavigateLeft<cr>')
