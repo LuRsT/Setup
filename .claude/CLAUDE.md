@@ -19,7 +19,7 @@ still win on project-specific details.
 
 - NEVER add `Co-Authored-By: Claude` (or any Claude/AI attribution trailer) to commit messages. This applies to every repo and every commit.
 - Never use `git commit --no-verify`. If pre-commit hooks fail (ruff, mypy), fix the issue or ask me.
-- Do not push or force-push without asking; the git guard blocks it. Tell me the exact command to run instead.
+- Do not push or force-push without asking; the git guard blocks it, except a plain push in a repo I opted in with `git config claude.allowPush true`. Force-push is never allowed. Tell me the exact command to run instead.
 
 ## Output style
 
